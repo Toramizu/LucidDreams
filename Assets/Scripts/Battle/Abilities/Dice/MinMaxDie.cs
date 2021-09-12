@@ -15,7 +15,7 @@ public class MinMaxDie : DiceCondition
 
     public override bool Check(int die)
     {
-        return die == value || (die > value) == max;
+        return (die == value || (die < value) == max) || die == 0;
     }
 
     public override string ConditionText()

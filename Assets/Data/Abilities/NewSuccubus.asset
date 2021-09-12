@@ -15,7 +15,7 @@ MonoBehaviour:
   title: Test ability
   description: This does nothing
   conditions:
-  - type: 0
+  - type: 3
     value: 3
     toggle: 0
   - type: 1

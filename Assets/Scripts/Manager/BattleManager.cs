@@ -6,6 +6,7 @@ public class BattleManager : MonoBehaviour
 {
     [SerializeField] Opponent opponent;
     [SerializeField] Player player;
+    [SerializeField] DiceHolder dice;
 
     public void StartBattle(OpponentData oData)
     {
@@ -28,5 +29,10 @@ public class BattleManager : MonoBehaviour
     public void SetAbility(AbilityData data, int slot)
     {
         player.SetAbility(data, slot);
+    }
+
+    public void Roll(int amount, bool reset)
+    {
+        dice.Roll(amount, reset);
     }
 }

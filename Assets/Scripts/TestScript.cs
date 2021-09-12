@@ -23,6 +23,7 @@ public class TestScript : MonoBehaviour
         //GameManager.Instance.DreamManager.StartDream(dData);
         //GameManager.Instance.BattleManager.StartBattle(oData);
         GameManager.Instance.BattleManager.SetAbility(aData, 0);
+        GameManager.Instance.BattleManager.Roll(2, false);
         Debug.Log("Done");
 
     }
