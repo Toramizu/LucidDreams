@@ -910,6 +910,7 @@ GameObject:
   - component: {fileID: 6931469702269140466}
   - component: {fileID: 6931469702269140467}
   - component: {fileID: 6931469701992984159}
+  - component: {fileID: 2834907611639941461}
   m_Layer: 5
   m_Name: Ability
   m_TagString: Untagged
@@ -1054,6 +1055,18 @@ MonoBehaviour:
   - {fileID: 6931469701843608733}
   - {fileID: 6931469701279697246}
   countText: {fileID: 6931469701549314134}
+--- !u!225 &2834907611639941461
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6931469702269140468}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6931469702325364614
 GameObject:
   m_ObjectHideFlags: 0

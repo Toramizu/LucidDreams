@@ -19,14 +19,4 @@ public class Opponent : Character
         this.data = data;
         LoadCharacter(data);
     }
-
-    public override bool InflictDamage(int amount)
-    {
-        if (base.InflictDamage(amount))
-        {
-            Debug.Log("Combat won!");
-            return true;
-        }
-        return false;
-    }
 }

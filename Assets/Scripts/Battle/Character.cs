@@ -7,16 +7,23 @@ using UnityEngine.UI;
 public abstract class Character : MonoBehaviour
 {
     [SerializeField] Image characterImage;
+    [SerializeField] Sprite defaultImage;
     [SerializeField] TMP_Text characterName;
     [SerializeField] SimpleGauge gauge;
     [SerializeField] Button borrowed;
 
     protected int Arousal { get; set; }
+    public bool Finished { get { return Arousal >= Data.MaxArousal; } }
+
     protected abstract CharacterData Data { get; }
 
     public void LoadCharacter(CharacterData data)
     {
-        characterImage.sprite = data.Image;
+        if (data.Image == null)
+            characterImage.sprite = defaultImage;
+        else
+            characterImage.sprite = data.Image;
+
         characterName.text = data.Name;
         Arousal = 0;
         gauge.Fill(Arousal, data.MaxArousal);

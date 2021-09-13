@@ -16,24 +16,22 @@ public class TestScript : MonoBehaviour
     }
 
     [SerializeField] OpponentData oData;
+    [SerializeField] PlayerData pData;
     [SerializeField] DreamData dData;
     [SerializeField] AbilityData aData;
     void Test1()
     {
         //GameManager.Instance.DreamManager.StartDream(dData);
-        //GameManager.Instance.BattleManager.StartBattle(oData);
-        GameManager.Instance.BattleManager.SetAbility(aData, 0);
-        GameManager.Instance.BattleManager.Roll(2, false);
+        //GameManager.Instance.BattleManager.SetAbility(aData, 0);
+        GameManager.Instance.BattleManager.SetPlayer(pData);
+        GameManager.Instance.BattleManager.StartBattle(oData);
         Debug.Log("Done");
 
     }
 
     void Test2()
     {
-        int r = Random.Range(1, 7);
-        Debug.Log(r);
-
-        GameManager.Instance.BattleManager.InflictDamage(r);
+        GameManager.Instance.BattleManager.Roll(2, false);
     }
 
     void Test5()

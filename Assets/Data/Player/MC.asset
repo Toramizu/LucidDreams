@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f5706a1e8b080499bc3f9a7dde678b, type: 3}
   m_Name: MC
   m_EditorClassIdentifier: 
-  sName: 
+  sName: Player
   image: {fileID: 0}
-  maxArousal: 0
+  maxArousal: 100
   source: 
+  abilities:
+  - {fileID: 11400000, guid: 050ab56bfc46d204ba3bb284ef91d7ec, type: 2}
+  - {fileID: 11400000, guid: 9a29abacb7ed7e64f84a43c942c56a69, type: 2}
+  rolls: 3

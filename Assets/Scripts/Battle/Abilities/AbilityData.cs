@@ -23,6 +23,8 @@ public class AbilityData : ScriptableObject
     [SerializeField] int total;
     public int Total { get { return total; } }
 
+    [SerializeField] List<EffectData> effects;
+    public List<EffectData> Effects { get { return effects; } }
 }
 
 [System.Serializable]
@@ -61,4 +63,36 @@ public enum ConditionType
     Equals,
     EvenOdd,
     MinMax,
+}
+
+[System.Serializable]
+public class EffectData
+{
+    [SerializeField] Effects effect;
+    public Effects Effect { get { return effect; } }
+
+    [SerializeField] int bonus;
+    public int Bonus { get { return bonus; } }
+    [SerializeField] bool usesDice = true;
+    public bool UsesDice { get { return usesDice; } }
+    [SerializeField] float multiplier;
+    public float Multiplier { get { return multiplier; } }
+
+    [SerializeField] bool targetsUser;
+    public bool TargetsUser { get { return targetsUser; } }
+
+    public AbilityEffect ToEffect()
+    {
+        switch (effect)
+        {
+            case Effects.Damage:
+            default:
+                return new DamageEffect(bonus, usesDice, multiplier, targetsUser);
+        }
+    }
+}
+
+public enum Effects
+{
+    Damage,
 }

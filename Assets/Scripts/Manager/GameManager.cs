@@ -18,4 +18,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] DreamManager dreamManager;
     public DreamManager DreamManager { get { return dreamManager; } }
+
+    [SerializeField] Parser parser;
+    public Parser Parser { get { return parser; } }
 }

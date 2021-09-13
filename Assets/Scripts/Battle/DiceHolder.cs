@@ -11,6 +11,18 @@ public class DiceHolder : MonoBehaviour
 
     List<RolledDie> rolledDice = new List<RolledDie>();
 
+    public bool NoADiceRemaining
+    {
+        get
+        {
+            foreach (RolledDie die in rolledDice)
+                if (die.isActiveAndEnabled)
+                    return false;
+
+            return true;
+        }
+    }
+
     public void Roll(int amount, bool reset)
     {
         if (reset)
@@ -33,7 +45,7 @@ public class DiceHolder : MonoBehaviour
         die.transform.localPosition = new Vector3(rolledDice.Count * dieSize, 0, 0);
     }
 
-    void ResetDice()
+    public void ResetDice()
     {
         foreach (RolledDie die in rolledDice)
             Destroy(die.gameObject);

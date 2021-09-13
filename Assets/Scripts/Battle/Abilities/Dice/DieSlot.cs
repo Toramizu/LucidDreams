@@ -67,7 +67,6 @@ public class DieSlot : MonoBehaviour, IDropHandler
             {
                 SlottedDie = die;
                 die.CurrentSlot = this;
-                //die.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
                 die.transform.position = transform.position;
                 Ability.Check();
             }
