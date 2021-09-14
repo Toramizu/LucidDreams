@@ -17,6 +17,9 @@ public abstract class Character : MonoBehaviour
 
     protected abstract CharacterData Data { get; }
 
+    [SerializeField] TraitsSheet traits;
+    public TraitsSheet Traits { get { return traits; } }
+
     public void LoadCharacter(CharacterData data)
     {
         if (data.Image == null)
@@ -27,6 +30,8 @@ public abstract class Character : MonoBehaviour
         characterName.text = data.Name;
         Arousal = 0;
         gauge.Fill(Arousal, data.MaxArousal);
+
+        traits.Clear();
 
         borrowed.gameObject.SetActive(data.Source != null && data.Source != "");
     }

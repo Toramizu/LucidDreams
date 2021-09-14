@@ -21,4 +21,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Parser parser;
     public Parser Parser { get { return parser; } }
+
+    [SerializeField] GameAssets assets;
+    public GameAssets Assets { get { return assets; } }
 }

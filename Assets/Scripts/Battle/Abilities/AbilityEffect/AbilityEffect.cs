@@ -4,9 +4,9 @@ using UnityEngine;
 
 public abstract class AbilityEffect
 {
-    [SerializeField] protected int bonus;
-    [SerializeField] protected bool usesDice;
-    [SerializeField] protected float multiplier = 1;
+    protected int bonus;
+    protected bool usesDice;
+    protected float multiplier = 1;
 
     [SerializeField] protected bool targetsUser;
 

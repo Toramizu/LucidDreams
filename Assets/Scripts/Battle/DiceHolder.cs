@@ -30,19 +30,32 @@ public class DiceHolder : MonoBehaviour
 
         for(int i = 0; i < amount; i++)
         {
-            RolledDie die = Instantiate(diePrefab, transform, false);
+            Give(Random.Range(minRoll, maxRoll + 1));
+            /*RolledDie die = Instantiate(diePrefab, transform, false);
             die.gameObject.SetActive(true);
 
             PlaceDie(die);
 
             rolledDice.Add(die);
-            die.Value = Random.Range(minRoll, maxRoll + 1);
+            die.Value = Random.Range(minRoll, maxRoll + 1);*/
         }
+    }
+
+    public void Give(int value)
+    {
+        RolledDie die = Instantiate(diePrefab, transform, false);
+        die.gameObject.SetActive(true);
+
+        PlaceDie(die);
+
+        rolledDice.Add(die);
+        die.Value = value;
     }
 
     void PlaceDie(RolledDie die)
     {
-        die.transform.localPosition = new Vector3(rolledDice.Count * dieSize, 0, 0);
+        die.Position = new Vector3(rolledDice.Count * dieSize, 0, 0);
+        //die.transform.localPosition = new Vector3(rolledDice.Count * dieSize, 0, 0);
     }
 
     public void ResetDice()
@@ -51,5 +64,11 @@ public class DiceHolder : MonoBehaviour
             Destroy(die.gameObject);
 
         rolledDice.Clear();
+    }
+
+    public void ResetDicePosition()
+    {
+        foreach (RolledDie die in rolledDice)
+            die.ResetPosition();
     }
 }

@@ -17,6 +17,7 @@ MonoBehaviour:
   maxArousal: 100
   source: 
   abilities:
-  - {fileID: 11400000, guid: 050ab56bfc46d204ba3bb284ef91d7ec, type: 2}
   - {fileID: 11400000, guid: 9a29abacb7ed7e64f84a43c942c56a69, type: 2}
+  - {fileID: 11400000, guid: d7da1f4042bc49d4a93e906d87cb52cc, type: 2}
+  - {fileID: 11400000, guid: b4bf2568f65cc8f48997e5cf686240b8, type: 2}
   rolls: 3

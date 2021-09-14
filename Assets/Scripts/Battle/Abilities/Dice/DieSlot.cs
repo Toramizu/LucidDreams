@@ -59,8 +59,9 @@ public class DieSlot : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        if(eventData.pointerDrag != null )
-        {
+        if (eventData.pointerDrag != null)
+            OnDrop(eventData.pointerDrag.GetComponent<RolledDie>());
+        /*{
             RolledDie die = eventData.pointerDrag.GetComponent<RolledDie>();
 
             if(die != null && condition.Check(die.Value))
@@ -70,6 +71,21 @@ public class DieSlot : MonoBehaviour, IDropHandler
                 die.transform.position = transform.position;
                 Ability.Check();
             }
+        }*/
+    }
+
+    public void OnDrop(RolledDie die)
+    {
+        if (die != null && condition.Check(die.Value))
+        {
+            SlottedDie = die;
+            die.CurrentSlot = this;
+            die.transform.position = transform.position;
+            Ability.Check();
+        }
+        else
+        {
+
         }
     }
 }

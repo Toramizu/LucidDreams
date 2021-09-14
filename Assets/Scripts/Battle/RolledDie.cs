@@ -15,6 +15,16 @@ public class RolledDie : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     CanvasGroup canvasGroup;
 
     public DieSlot CurrentSlot { get; set; }
+    Vector3 position;
+    public Vector3 Position
+    {
+        get { return position; }
+        set
+        {
+            position = value;
+            transform.localPosition = value;
+        }
+    }
 
     int value;
     public int Value
@@ -51,8 +61,8 @@ public class RolledDie : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
     void SplitDie()
     {
-        value = dieFaces.Count - 1;
-        //Add die
+        GameManager.Instance.BattleManager.Give(value - dieFaces.Count + 1);
+        Value = dieFaces.Count - 1;
     }
 
 
@@ -62,6 +72,12 @@ public class RolledDie : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
         image.sprite = dieFaces[0];
     }
 
+    public void ResetPosition()
+    {
+        transform.localPosition = position;
+    }
+
+    #region Drag & Drop
     public void OnPointerDown(PointerEventData eventData)
     {
     }
@@ -85,5 +101,5 @@ public class RolledDie : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     {
         canvasGroup.blocksRaycasts = true;
     }
-
+    #endregion
 }

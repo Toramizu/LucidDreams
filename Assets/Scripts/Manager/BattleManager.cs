@@ -38,6 +38,8 @@ public class BattleManager : MonoBehaviour
 
     public void NextRound()
     {
+        opponent.Traits.EndTurn(opponent);
+        player.Traits.StartTurn(player);
         Roll(player.Rolls, true);
     }
 
@@ -50,22 +52,55 @@ public class BattleManager : MonoBehaviour
     public void EndRound()
     {
         dice.ResetDice();
-        player.NewRound();
+
+        player.Traits.EndTurn(player);
+        opponent.Traits.StartTurn(opponent);
 
         Debug.Log("Opponent turn");
+        player.NewRound();
         NextRound();
     }
 
-    public void InflictsDamage(int amount, bool toOpponent)
+    public void InflictsDamage(int amount, bool toOpponent, bool fromOpponent)
+    {
+        Character target;
+        if (toOpponent)
+            target = opponent;
+        else
+            target = player;
+        Character user;
+        if (fromOpponent)
+            user = opponent;
+        else
+            user = player;
+
+
+        user.Traits.OnAttack(ref amount, user, target);
+        target.Traits.OnDefense(ref amount, target, user);
+
+        target.InflictDamage(amount);
+    }
+
+    public void AddTrait(Trait trait, int amount, bool toOpponent)
     {
         if (toOpponent)
-            opponent.InflictDamage(amount);
+            opponent.Traits.AddTrait(trait, amount);
         else
-            player.InflictDamage(amount);
+            player.Traits.AddTrait(trait, amount);
     }
 
     public void Roll(int amount, bool reset)
     {
         dice.Roll(amount, reset);
+    }
+
+    public void Give(int value)
+    {
+        dice.Give(value);
+    }
+
+    public void ResetDicePosition()
+    {
+        dice.ResetDicePosition();
     }
 }

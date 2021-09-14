@@ -68,8 +68,8 @@ public enum ConditionType
 [System.Serializable]
 public class EffectData
 {
-    [SerializeField] Effects effect;
-    public Effects Effect { get { return effect; } }
+    [SerializeField] EffectsEnum effect;
+    public EffectsEnum Effect { get { return effect; } }
 
     [SerializeField] int bonus;
     public int Bonus { get { return bonus; } }
@@ -77,6 +77,7 @@ public class EffectData
     public bool UsesDice { get { return usesDice; } }
     [SerializeField] float multiplier;
     public float Multiplier { get { return multiplier; } }
+    [SerializeField] string stringValue;
 
     [SerializeField] bool targetsUser;
     public bool TargetsUser { get { return targetsUser; } }
@@ -85,14 +86,18 @@ public class EffectData
     {
         switch (effect)
         {
-            case Effects.Damage:
+            case EffectsEnum.Trait:
+                return new TraitEffect(stringValue, bonus, usesDice, multiplier, targetsUser);
+
+            case EffectsEnum.Damage:
             default:
                 return new DamageEffect(bonus, usesDice, multiplier, targetsUser);
         }
     }
 }
 
-public enum Effects
+public enum EffectsEnum
 {
     Damage,
+    Trait,
 }

@@ -10,23 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d93417b2c1c2f1243a5b0d3af9c0940b, type: 3}
-  m_Name: NewSuccubus
+  m_Name: Dominate
   m_EditorClassIdentifier: 
-  title: Test ability
-  description: This does nothing
+  title: Dominate
+  description: Gain 1 Dom
   conditions:
-  - type: 3
-    value: 3
+  - type: 0
+    value: 6
     toggle: 0
-  - type: 1
-    value: 5
-    toggle: 0
-  - type: 2
-    value: 0
-    toggle: 1
-  - type: 3
-    value: 2
-    toggle: 1
   uses: 0
   equalDice: 0
   total: 0
+  effects:
+  - effect: 1
+    bonus: 1
+    usesDice: 0
+    multiplier: 0
+    stringValue: Dom
+    targetsUser: 1

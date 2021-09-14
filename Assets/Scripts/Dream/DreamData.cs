@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewDream", menuName = "Data/Dream", order = 3)]
 public class DreamData : ScriptableObject
 {
+    [SerializeField] string id;
+    public string ID { get { return id; } }
+
     [SerializeField] int dreamSize;
     public int DreamSize { get { return dreamSize; } }
 
