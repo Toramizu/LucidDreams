@@ -9,13 +9,13 @@ public class DamageEffect : AbilityEffect
         : base(bonus, usesDice, mult, targetsUser)
     { }
 
-    public override void Play(bool isOpponent, int dice)
+    public override void Play(int dice)
     {
         int dmg = bonus;
         if(usesDice)
             dmg += (int) (dice * multiplier);
 
-        GameManager.Instance.BattleManager.InflictsDamage(dmg, isOpponent == targetsUser, isOpponent);
+        GameManager.Instance.BattleManager.InflictsDamage(dmg, targetsUser);
 
         GameManager.Instance.BattleManager.CheckBattleStatus();
     }

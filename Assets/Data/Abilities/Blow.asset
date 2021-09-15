@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d93417b2c1c2f1243a5b0d3af9c0940b, type: 3}
-  m_Name: Bash
+  m_Name: Blow
   m_EditorClassIdentifier: 
-  title: Bash
+  title: Blow
   description: Inflicts _ Damages
   conditions:
   - type: 0

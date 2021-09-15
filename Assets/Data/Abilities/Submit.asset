@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Submit
   m_EditorClassIdentifier: 
   title: Endure
-  description: Give 1 Sub
+  description: Gain 1 Sub
   conditions:
   - type: 0
     value: 1

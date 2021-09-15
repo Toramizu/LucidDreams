@@ -15,14 +15,11 @@ public class TestScript : MonoBehaviour
             Test5();
     }
 
-    [SerializeField] OpponentData oData;
-    [SerializeField] PlayerData pData;
+    [SerializeField] CharacterData oData;
+    [SerializeField] CharacterData pData;
     [SerializeField] DreamData dData;
     [SerializeField] AbilityData aData;
 
-    [SerializeField] Player p;
-    [SerializeField] Opponent o;
-    [SerializeField] Trait dt;
     void Test1()
     {
         //GameManager.Instance.DreamManager.StartDream(dData);
@@ -35,8 +32,8 @@ public class TestScript : MonoBehaviour
 
     void Test2()
     {
-        GameManager.Instance.BattleManager.Give(23);
-        //GameManager.Instance.BattleManager.Roll(3, false);
+        //GameManager.Instance.BattleManager.R(1);
+        GameManager.Instance.BattleManager.Roll(3, false);
     }
 
     void Test5()

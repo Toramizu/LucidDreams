@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -11,7 +12,6 @@ public class Ability : Hidable
     [SerializeField] List<DieSlot> DiceSlots;
 
     [SerializeField] TMP_Text countText;
-    [SerializeField] bool isOpponent;
 
     int? count;
     public int? Count {
@@ -113,13 +113,43 @@ public class Ability : Hidable
         }
 
         foreach (AbilityEffect effect in effects)
-            effect.Play(isOpponent, total);
-
-        //GameManager.Instance.BattleManager.HitOpponent(total);
-        //Debug.Log(total);
-
+            effect.Play(total);
+        
         Uses--;
         if (Uses <= 0)
             Hide();
+    }
+
+    public List<RolledDie> TryFill(List<RolledDie> dice)
+    {
+        //Keep dice fitting conditions
+        List<RolledDie> placedDice = new List<RolledDie>();
+
+        foreach (DieSlot slot in DiceSlots)
+        {
+            if (slot.isActiveAndEnabled)
+            {
+                foreach (RolledDie die in dice)
+                {
+                    //If a die fits
+                    if (slot.Condition.Check(die.Value) && !placedDice.Contains(die))
+                    {
+                        //Keep die & go to next slot
+                        placedDice.Add(die);
+                        break;
+                    }
+                    //If no die found, skip ability
+                    return dice;
+                }
+            }
+        }
+
+        //Place die in slot
+        //TODO : Animating dice going into slots
+        for (int i = 0; i < DiceSlots.Count && DiceSlots[i].isActiveAndEnabled; i++)
+            DiceSlots[i].OnDrop(placedDice[i]);
+
+        //Return list without used dice
+        return dice.Except(placedDice).ToList();
     }
 }

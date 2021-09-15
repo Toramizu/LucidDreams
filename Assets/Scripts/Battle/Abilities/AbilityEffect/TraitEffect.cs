@@ -13,13 +13,13 @@ public class TraitEffect : AbilityEffect
         this.trait = GameManager.Instance.Assets.Traits[trait];
     }
 
-    public override void Play(bool isOpponent, int dice)
+    public override void Play(int dice)
     {
         int amount = bonus;
         if (usesDice)
             amount += (int)(dice * multiplier);
 
-        GameManager.Instance.BattleManager.AddTrait(trait, amount, isOpponent == targetsUser);
+        GameManager.Instance.BattleManager.AddTrait(trait, amount, targetsUser);
     }
 
 }

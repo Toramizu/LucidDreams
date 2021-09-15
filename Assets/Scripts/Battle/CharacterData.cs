@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "NewSuccubus", menuName = "Data/Succubus", order = 1)]
 public class CharacterData : ScriptableObject
 {
     [SerializeField] protected string sName;
@@ -28,4 +29,10 @@ public class CharacterData : ScriptableObject
         get { return source; }
         set { source = value; }
     }
+
+    [SerializeField] List<AbilityData> abilities;
+    public List<AbilityData> Abilities { get { return abilities; } set { abilities = value; } }
+
+    [SerializeField] int rolls = 3;
+    public int Rolls { get { return rolls; } set { rolls = value; } }
 }

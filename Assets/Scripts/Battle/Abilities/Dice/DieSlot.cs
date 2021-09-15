@@ -83,9 +83,5 @@ public class DieSlot : MonoBehaviour, IDropHandler
             die.transform.position = transform.position;
             Ability.Check();
         }
-        else
-        {
-
-        }
     }
 }

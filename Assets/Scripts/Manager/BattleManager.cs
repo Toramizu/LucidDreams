@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
-    [SerializeField] Opponent opponent;
-    [SerializeField] Player player;
-    [SerializeField] DiceHolder dice;
+    [SerializeField] Character opponent;
+    [SerializeField] Character player;
 
-    public void SetPlayer(PlayerData data)
+    bool playerTurn;
+
+    public void SetPlayer(CharacterData data)
     {
-        player.LoadPlayer(data);
+        player.LoadCharacter(data);
     }
 
-    public void StartBattle(OpponentData oData)
+    public void StartBattle(CharacterData oData)
     {
         gameObject.SetActive(true);
-        opponent.LoadOpponent(oData);
+        opponent.LoadCharacter(oData);
         NextRound();
     }
 
@@ -31,48 +32,37 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void SetAbility(AbilityData data, int slot)
-    {
-        player.SetAbility(data, slot);
-    }
-
     public void NextRound()
     {
-        opponent.Traits.EndTurn(opponent);
-        player.Traits.StartTurn(player);
-        Roll(player.Rolls, true);
+        opponent.EndTurn();
+        player.StartTurn();
+        playerTurn = true;
     }
-
-    /*public void CheckEndRound()
-    {
-        if (player.NoAbilityRemaining || dice.NoADiceRemaining)
-            EndRound();
-    }*/
 
     public void EndRound()
     {
-        dice.ResetDice();
+        playerTurn = false;
+        player.EndTurn();
+        opponent.StartTurn();
 
-        player.Traits.EndTurn(player);
-        opponent.Traits.StartTurn(opponent);
+        opponent.PlayTurn();
 
-        Debug.Log("Opponent turn");
-        player.NewRound();
         NextRound();
     }
 
-    public void InflictsDamage(int amount, bool toOpponent, bool fromOpponent)
+    public void InflictsDamage(int amount, bool targetsUser)
     {
-        Character target;
-        if (toOpponent)
-            target = opponent;
-        else
-            target = player;
         Character user;
-        if (fromOpponent)
-            user = opponent;
-        else
+        if (playerTurn)
             user = player;
+        else
+            user = opponent;
+
+        Character target;
+        if (playerTurn == targetsUser)
+            target = player;
+        else
+            target = opponent;
 
 
         user.Traits.OnAttack(ref amount, user, target);
@@ -81,26 +71,32 @@ public class BattleManager : MonoBehaviour
         target.InflictDamage(amount);
     }
 
-    public void AddTrait(Trait trait, int amount, bool toOpponent)
+    public void AddTrait(Trait trait, int amount, bool targetsUser)
     {
-        if (toOpponent)
-            opponent.Traits.AddTrait(trait, amount);
-        else
+        if (playerTurn == targetsUser)
             player.Traits.AddTrait(trait, amount);
+        else
+            opponent.Traits.AddTrait(trait, amount);
     }
 
     public void Roll(int amount, bool reset)
     {
-        dice.Roll(amount, reset);
+        if (playerTurn)
+            player.Roll(amount, reset);
+        else
+            opponent.Roll(amount, reset);
     }
 
     public void Give(int value)
     {
-        dice.Give(value);
+        if (playerTurn)
+            player.Give(value);
+        else
+            opponent.Give(value);
     }
 
     public void ResetDicePosition()
     {
-        dice.ResetDicePosition();
+        player.ResetDicePosition();
     }
 }

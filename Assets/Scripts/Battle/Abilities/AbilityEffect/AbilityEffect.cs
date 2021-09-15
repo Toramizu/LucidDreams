@@ -18,5 +18,5 @@ public abstract class AbilityEffect
         this.targetsUser = targetsUser;
     }
 
-    public abstract void Play(bool isOpponent, int dice);
+    public abstract void Play(int dice);
 }

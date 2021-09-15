@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73f5706a1e8b080499bc3f9a7dde678b, type: 3}
-  m_Name: MC
+  m_Script: {fileID: 11500000, guid: 8ef64e80cc15a1b4389e18feaf752153, type: 3}
+  m_Name: Main
   m_EditorClassIdentifier: 
   sName: Player
   image: {fileID: 0}
