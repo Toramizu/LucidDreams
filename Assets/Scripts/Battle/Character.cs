@@ -96,7 +96,7 @@ public class Character : MonoBehaviour
 
     public void StartTurn()
     {
-        abilityPanel.gameObject.SetActive(true);
+        ToggleAbilities(true);
         Traits.StartTurn(this);
         dice.Roll(Rolls, true);
 
@@ -108,7 +108,7 @@ public class Character : MonoBehaviour
     public void EndTurn()
     {
         ResetDice();
-        abilityPanel.gameObject.SetActive(false);
+        ToggleAbilities(false);
         Traits.EndTurn(this);
     }
 
@@ -135,15 +135,63 @@ public class Character : MonoBehaviour
     public void PlayTurn()
     {
         List<RolledDie> rolled = new List<RolledDie>(dice.RolledDice).OrderByDescending(o => o.Value).ToList();
-        //List<RolledDie> SortedList = rolled.OrderBy(o => o.Value).ToList();
-
-        string log = "Opponent's turn :";
-        foreach (RolledDie die in rolled)
-            log += " " + die.Value;
-        Debug.Log(log);
-
+        
+        Dictionary<DieSlot, RolledDie> toPlace = new Dictionary<DieSlot, RolledDie>();
         foreach (Ability abi in abilities)
-            if(abi.isActiveAndEnabled)
-                abi.TryFill(rolled);
+            if (abi.isActiveAndEnabled)
+                abi.TryFill(rolled, toPlace);
+
+        StartCoroutine(AutoMoveDice(toPlace));
     }
-}
+
+    public void ToggleAbilities(bool toggle)
+    {
+        abilityPanel.gameObject.SetActive(toggle);
+    }
+
+    #region Auto Play
+
+    Dictionary<DieSlot, RolledDie> toPlace;
+    Queue<DieSlot> slots;
+    DieSlot currentSlot;
+    RolledDie currentDie;
+
+    IEnumerator AutoMoveDice(Dictionary<DieSlot, RolledDie> toPlace)
+    {
+        yield return null;
+        this.toPlace = toPlace;
+        slots = new Queue<DieSlot>(toPlace.Keys);
+
+        PlaceNext();
+    }
+
+    void PlaceNext()
+    {
+        if (slots.Count == 0)
+        {
+            GameManager.Instance.BattleManager.NextRound();
+        }
+        else
+        {
+            currentSlot = slots.Dequeue();
+            currentDie = toPlace[currentSlot];
+
+            iTween.MoveTo(currentDie.gameObject, iTween.Hash(
+                "x", currentSlot.transform.position.x,
+                "y", currentSlot.transform.position.y,
+                //"speed", 500f,
+                "time", .8f,
+                "easeType", iTween.EaseType.easeOutSine,
+                "onComplete", "SlotDie",
+                "onCompleteTarget", gameObject
+                ));
+        }
+    }
+
+    void SlotDie()
+    {
+        currentSlot.OnDrop(currentDie);
+        PlaceNext();
+    }
+    #endregion
+} 

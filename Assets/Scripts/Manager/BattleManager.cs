@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
-    [SerializeField] Character opponent;
+    [SerializeField] Opponent opponent;
     [SerializeField] Character player;
 
-    bool playerTurn;
+    public bool PlayerTurn { get; private set; }
 
     public void SetPlayer(CharacterData data)
     {
@@ -34,32 +34,39 @@ public class BattleManager : MonoBehaviour
 
     public void NextRound()
     {
-        opponent.EndTurn();
-        player.StartTurn();
-        playerTurn = true;
+        if (PlayerTurn)
+        {
+            EndRound();
+        }
+        else
+        {
+            opponent.EndTurn();
+            player.StartTurn();
+            PlayerTurn = true;
+        }
     }
 
     public void EndRound()
     {
-        playerTurn = false;
+        PlayerTurn = false;
         player.EndTurn();
         opponent.StartTurn();
 
         opponent.PlayTurn();
 
-        NextRound();
+        //NextRound();
     }
 
     public void InflictsDamage(int amount, bool targetsUser)
     {
         Character user;
-        if (playerTurn)
+        if (PlayerTurn)
             user = player;
         else
             user = opponent;
 
         Character target;
-        if (playerTurn == targetsUser)
+        if (PlayerTurn == targetsUser)
             target = player;
         else
             target = opponent;
@@ -73,7 +80,7 @@ public class BattleManager : MonoBehaviour
 
     public void AddTrait(Trait trait, int amount, bool targetsUser)
     {
-        if (playerTurn == targetsUser)
+        if (PlayerTurn == targetsUser)
             player.Traits.AddTrait(trait, amount);
         else
             opponent.Traits.AddTrait(trait, amount);
@@ -81,7 +88,7 @@ public class BattleManager : MonoBehaviour
 
     public void Roll(int amount, bool reset)
     {
-        if (playerTurn)
+        if (PlayerTurn)
             player.Roll(amount, reset);
         else
             opponent.Roll(amount, reset);
@@ -89,7 +96,7 @@ public class BattleManager : MonoBehaviour
 
     public void Give(int value)
     {
-        if (playerTurn)
+        if (PlayerTurn)
             player.Give(value);
         else
             opponent.Give(value);
@@ -98,5 +105,14 @@ public class BattleManager : MonoBehaviour
     public void ResetDicePosition()
     {
         player.ResetDicePosition();
+    }
+
+    public void ToggleOpponentAbilities(bool toggle)
+    {
+        if (PlayerTurn)
+        {
+            player.ToggleAbilities(!toggle);
+            opponent.ToggleAbilities(toggle);
+        }
     }
 }

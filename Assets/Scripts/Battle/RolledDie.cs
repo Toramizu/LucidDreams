@@ -84,22 +84,27 @@ public class RolledDie : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        canvasGroup.blocksRaycasts = false;
-        if(CurrentSlot != null)
+        if (GameManager.Instance.BattleManager.PlayerTurn)
         {
-            CurrentSlot.SlottedDie = null;
-            CurrentSlot = null;
+            canvasGroup.blocksRaycasts = false;
+            if (CurrentSlot != null)
+            {
+                CurrentSlot.SlottedDie = null;
+                CurrentSlot = null;
+            }
         }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        if (GameManager.Instance.BattleManager.PlayerTurn)
+            rTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.blocksRaycasts = true;
+        if (GameManager.Instance.BattleManager.PlayerTurn)
+            canvasGroup.blocksRaycasts = true;
     }
     #endregion
 }

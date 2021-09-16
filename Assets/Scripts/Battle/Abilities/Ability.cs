@@ -120,7 +120,7 @@ public class Ability : Hidable
             Hide();
     }
 
-    public List<RolledDie> TryFill(List<RolledDie> dice)
+    public List<RolledDie> TryFill(List<RolledDie> dice, Dictionary<DieSlot, RolledDie> toPlace)
     {
         //Keep dice fitting conditions
         List<RolledDie> placedDice = new List<RolledDie>();
@@ -147,7 +147,8 @@ public class Ability : Hidable
         //Place die in slot
         //TODO : Animating dice going into slots
         for (int i = 0; i < DiceSlots.Count && DiceSlots[i].isActiveAndEnabled; i++)
-            DiceSlots[i].OnDrop(placedDice[i]);
+            toPlace.Add(DiceSlots[i], placedDice[i]);
+            //DiceSlots[i].OnDrop(placedDice[i]);
 
         //Return list without used dice
         return dice.Except(placedDice).ToList();
