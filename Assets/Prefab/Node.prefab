@@ -148,3 +148,5 @@ MonoBehaviour:
   coo:
     x: 0
     y: 0
+  leftPos: {x: -30, y: 30, z: 0}
+  rightPos: {x: 30, y: 30, z: 0}

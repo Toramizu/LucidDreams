@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa01dbcaf3b251348995293fe9dcc9a4, type: 3}
   m_Name: FirstDream
   m_EditorClassIdentifier: 
+  id: 
   dreamSize: 0
-  succubi: 0
-  boss: 
+  succubiCount: 2
+  boss: {fileID: 11400000, guid: 815f2c4a93e2e2f4cac854da177ada87, type: 2}
+  succubi:
+  - {fileID: 11400000, guid: bd58a6de732b3fd44be06d9e093c11a3, type: 2}
+  - {fileID: 11400000, guid: bd58a6de732b3fd44be06d9e093c11a3, type: 2}
+  - {fileID: 11400000, guid: bd58a6de732b3fd44be06d9e093c11a3, type: 2}
   nodes:
   - coo:
       x: 0
@@ -34,7 +39,7 @@ MonoBehaviour:
   - coo:
       x: 0
       y: 3
-    content: 0
+    content: 1
     value: 
   - coo:
       x: 0
@@ -49,7 +54,7 @@ MonoBehaviour:
   - coo:
       x: 0
       y: -3
-    content: 0
+    content: 3
     value: 
   - coo:
       x: 1
@@ -64,7 +69,7 @@ MonoBehaviour:
   - coo:
       x: 2
       y: 2
-    content: 0
+    content: 1
     value: 
   - coo:
       x: -1
@@ -79,8 +84,8 @@ MonoBehaviour:
   - coo:
       x: -2
       y: 2
-    content: 0
+    content: 1
     value: 
   start:
-    x: 5
-    y: 3
+    x: 0
+    y: 0

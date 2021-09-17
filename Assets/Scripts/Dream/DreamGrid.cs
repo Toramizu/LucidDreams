@@ -40,12 +40,32 @@ public class DreamGrid : MonoBehaviour
     public void Clear()
     {
         foreach (DreamNode node in nodes.Values)
+        {
+            node.Clear();
             node.Toggle(false);
+        }
     }
 
     public void SetNode(DreamNodeData data)
     {
         if (nodes.ContainsKey(data.Coo))
             nodes[data.Coo].Init(data);
+    }
+
+    public List<DreamNode> FindPath(DreamNode from, DreamNode to)
+    {
+        List<DreamNode> path = new List<DreamNode>();
+
+
+        return null;
+    }
+
+    public bool AreNeighbour(DreamNode from, DreamNode to)
+    {
+        int x = from.Coordinate.X - to.Coordinate.X;
+        int y = from.Coordinate.Y - to.Coordinate.Y;
+        Debug.Log(from.Coordinate + " - " + to.Coordinate + " = " + x + " & " + y);
+
+        return (x == 0 && y >= -1 && y <= 1) || (y == 0 && x >= -1 && x <= 1);
     }
 }

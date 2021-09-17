@@ -6,14 +6,16 @@ using UnityEngine.UI;
 public class DreamNode : MonoBehaviour
 {
     [SerializeField] Coordinate coo;
+    public Coordinate Coordinate { get { return coo; } }
+    [SerializeField] Vector3 leftPos;
+    [SerializeField] Vector3 rightPos;
 
-    DreamManager manager;
     DreamNodeData data;
+    DreamToken currentToken;
 
     public void Init(Coordinate coo, DreamManager manager)
     {
         this.coo = coo;
-        this.manager = manager;
     }
 
     public void Init(DreamNodeData data)
@@ -29,6 +31,42 @@ public class DreamNode : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log(coo);
+        GameManager.Instance.DreamManager.Clicked(this);
+    }
+
+    public void OnEnter()
+    {
+        if (currentToken != null)
+        {
+            //GameManager.Instance.BattleManager.StartBattle(currentToken.Character);
+        }
+    }
+
+    public void PlaceAt(DreamToken token, bool left)
+    {
+        if (left)
+            token.transform.position = transform.position + leftPos;
+        else
+        {
+            token.transform.position = transform.position + rightPos;
+            currentToken = token;
+        }
+    }
+
+    public void MoveTo(DreamToken token)
+    {
+        iTween.MoveTo(token.gameObject, iTween.Hash(
+            "x", transform.position.x + leftPos.x,
+            "y", transform.position.y + leftPos.y,
+            "time", .8f,
+            "easeType", iTween.EaseType.easeOutSine,
+            "onComplete", "OnEnter",
+            "onCompleteTarget", gameObject
+            ));
+    }
+
+    public void Clear()
+    {
+        currentToken = null;
     }
 }

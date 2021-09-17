@@ -22,10 +22,10 @@ public class TestScript : MonoBehaviour
 
     void Test1()
     {
-        //GameManager.Instance.DreamManager.StartDream(dData);
+        GameManager.Instance.DreamManager.StartDream(dData, pData);
         //GameManager.Instance.BattleManager.SetAbility(aData, 0);
-        GameManager.Instance.BattleManager.SetPlayer(pData);
-        GameManager.Instance.BattleManager.StartBattle(oData);
+        //GameManager.Instance.BattleManager.SetPlayer(pData);
+        //GameManager.Instance.BattleManager.StartBattle(oData);
         Debug.Log("Done");
 
     }
