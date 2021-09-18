@@ -24,4 +24,17 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameAssets assets;
     public GameAssets Assets { get { return assets; } }
+
+    public void StartBattle(CharacterData opponent)
+    {
+        dreamManager.gameObject.SetActive(false);
+        battleManager.gameObject.SetActive(true);
+        battleManager.StartBattle(opponent);
+    }
+
+    public void EndBattle()
+    {
+        battleManager.gameObject.SetActive(false);
+        dreamManager.gameObject.SetActive(true);
+    }
 }

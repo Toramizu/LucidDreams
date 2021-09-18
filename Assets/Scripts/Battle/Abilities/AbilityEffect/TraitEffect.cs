@@ -15,11 +15,8 @@ public class TraitEffect : AbilityEffect
 
     public override void Play(int dice)
     {
-        int amount = bonus;
-        if (usesDice)
-            amount += (int)(dice * multiplier);
-
-        GameManager.Instance.BattleManager.AddTrait(trait, amount, targetsUser);
+        Debug.Log(Value(dice));
+        GameManager.Instance.BattleManager.AddTrait(trait, Value(dice), targetsUser);
     }
 
 }

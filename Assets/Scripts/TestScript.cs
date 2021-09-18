@@ -33,7 +33,7 @@ public class TestScript : MonoBehaviour
     void Test2()
     {
         //GameManager.Instance.BattleManager.R(1);
-        GameManager.Instance.BattleManager.Roll(3, false);
+        GameManager.Instance.BattleManager.Roll(3, false, null);
     }
 
     void Test5()

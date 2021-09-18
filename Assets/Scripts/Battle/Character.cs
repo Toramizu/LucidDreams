@@ -14,7 +14,11 @@ public class Character : MonoBehaviour
     [SerializeField] Button borrowed;
 
     protected int Arousal { get; set; }
-    public bool Finished { get { return Arousal >= Data.MaxArousal; } }
+    public bool Finished { get { return Arousal >= currentLevel.MaxArousal; } }
+
+    public int Level { get; set; }
+    CharacterLevel currentLevel;
+    public int Exp { get; set; }
 
     protected CharacterData Data { get; private set; }
 
@@ -49,13 +53,13 @@ public class Character : MonoBehaviour
 
         characterName.text = data.Name;
         Arousal = 0;
-        gauge.Fill(Arousal, data.MaxArousal);
+        gauge.Fill(Arousal, currentLevel.MaxArousal);
 
         traits.Clear();
 
         borrowed.gameObject.SetActive(data.Source != null && data.Source != "");
 
-        Rolls = data.Rolls;
+        Rolls = currentLevel.Dice;
         for (int i = 0; i < abilities.Count; i++)
         {
             if (i < data.Abilities.Count)
@@ -80,12 +84,12 @@ public class Character : MonoBehaviour
         Arousal += amount;
         if (Arousal < 0)
             Arousal = 0;
-        else if (Arousal > Data.MaxArousal)
-            Arousal = Data.MaxArousal;
+        else if (Arousal > currentLevel.MaxArousal)
+            Arousal = currentLevel.MaxArousal;
 
-        gauge.Fill(Arousal, Data.MaxArousal);
+        gauge.Fill(Arousal, currentLevel.MaxArousal);
 
-        return Arousal >= Data.MaxArousal;
+        return Arousal >= currentLevel.MaxArousal;
     }
 
     public void OpenBorrowed()
@@ -97,8 +101,8 @@ public class Character : MonoBehaviour
     public void StartTurn()
     {
         ToggleAbilities(true);
+        dice.Roll(Rolls, true, null);
         Traits.StartTurn(this);
-        dice.Roll(Rolls, true);
 
         foreach (Ability abi in abilities)
             if (abi.isActiveAndEnabled)
@@ -112,9 +116,9 @@ public class Character : MonoBehaviour
         Traits.EndTurn(this);
     }
 
-    public void Roll(int amount, bool reset)
+    public void Roll(int amount, bool reset, DiceCondition condition)
     {
-        dice.Roll(amount, reset);
+        dice.Roll(amount, reset, condition);
     }
 
     public void Give(int value)

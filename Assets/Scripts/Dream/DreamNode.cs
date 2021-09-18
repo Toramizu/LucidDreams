@@ -38,7 +38,8 @@ public class DreamNode : MonoBehaviour
     {
         if (currentToken != null)
         {
-            //GameManager.Instance.BattleManager.StartBattle(currentToken.Character);
+            GameManager.Instance.StartBattle(currentToken.Character);
+            currentToken = null;
         }
     }
 

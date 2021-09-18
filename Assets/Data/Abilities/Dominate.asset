@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dominate
   m_EditorClassIdentifier: 
   title: Dominate
-  description: Gain 1 Dom
+  description: Gain _ Dom
   conditions:
   - type: 0
     value: 6
@@ -23,8 +23,8 @@ MonoBehaviour:
   total: 0
   effects:
   - effect: 1
-    bonus: 1
-    usesDice: 0
-    multiplier: 0
+    bonus: 0
+    usesDice: 1
+    multiplier: 1
     stringValue: Dom
     targetsUser: 1

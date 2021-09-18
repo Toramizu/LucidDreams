@@ -41,11 +41,6 @@ public class TraitsSheet
         {
             traits[trait].Amount = trait.MaxStack;
         }
-
-        /*if(traits.ContainsKey(trait))
-            Debug.Log(trait.ID + " => " + traits[trait]);
-        else
-            Debug.Log(trait.ID + " => Removed");*/
     }
 
     public void RemoveTrait(Trait trait)

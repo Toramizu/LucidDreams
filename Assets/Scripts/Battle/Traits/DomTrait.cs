@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Dominant", menuName = "Data/Trait/Dominant", order = 5)]
+[CreateAssetMenu(fileName = "Dominant", menuName = "Data/Trait/Dominant")]
 public class DomTrait : Trait
 {
     public override void OnAttack(ref int damages, Character current, Character other)
@@ -11,10 +11,9 @@ public class DomTrait : Trait
             return;
 
         damages += current.Traits.TraitStack(this);
-        current.Traits.AddTrait(this, -1);
     }
 
-    public override void StartTurn(Character current)
+    public override void EndTurn(Character current)
     {
         current.Traits.RemoveTrait(this);
     }

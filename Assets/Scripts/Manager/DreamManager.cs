@@ -20,6 +20,7 @@ public class DreamManager : MonoBehaviour
 
     public void StartDream(DreamData data, CharacterData cData)
     {
+        GameManager.Instance.BattleManager.SetPlayer(cData);
         ClearDream();
 
         Dictionary<NodeContent, List<DreamNode>> nodeEvents = new Dictionary<NodeContent, List<DreamNode>>();

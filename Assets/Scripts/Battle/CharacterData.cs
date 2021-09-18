@@ -17,12 +17,12 @@ public class CharacterData : ScriptableObject
         get { return image; }
         set { image = value; }
     }
-    [SerializeField] protected int maxArousal;
+    /*[SerializeField] protected int maxArousal;
     public int MaxArousal
     {
         get { return maxArousal; }
         set { maxArousal = value; }
-    }
+    }*/
     [SerializeField] protected string source;
     public string Source
     {
@@ -33,6 +33,9 @@ public class CharacterData : ScriptableObject
     [SerializeField] List<AbilityData> abilities;
     public List<AbilityData> Abilities { get { return abilities; } set { abilities = value; } }
 
-    [SerializeField] int rolls = 3;
-    public int Rolls { get { return rolls; } set { rolls = value; } }
+    /*[SerializeField] int rolls = 3;
+    public int Rolls { get { return rolls; } set { rolls = value; } }*/
+
+    [SerializeField] List<CharacterLevel> levels;
+    public List<CharacterLevel> Level { get{ return levels; } }
 }

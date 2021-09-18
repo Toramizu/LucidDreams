@@ -64,7 +64,6 @@ public class DreamGrid : MonoBehaviour
     {
         int x = from.Coordinate.X - to.Coordinate.X;
         int y = from.Coordinate.Y - to.Coordinate.Y;
-        Debug.Log(from.Coordinate + " - " + to.Coordinate + " = " + x + " & " + y);
 
         return (x == 0 && y >= -1 && y <= 1) || (y == 0 && x >= -1 && x <= 1);
     }

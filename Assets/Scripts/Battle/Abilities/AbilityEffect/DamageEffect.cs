@@ -11,12 +11,6 @@ public class DamageEffect : AbilityEffect
 
     public override void Play(int dice)
     {
-        int dmg = bonus;
-        if(usesDice)
-            dmg += (int) (dice * multiplier);
-
-        GameManager.Instance.BattleManager.InflictsDamage(dmg, targetsUser);
-
-        GameManager.Instance.BattleManager.CheckBattleStatus();
+        GameManager.Instance.BattleManager.InflictsDamage(Value(dice), targetsUser, false);
     }
 }

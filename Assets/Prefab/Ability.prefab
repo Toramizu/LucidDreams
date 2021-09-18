@@ -1047,6 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f65c5943bbfd548be66615338531c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 2834907611639941461}
   title: {fileID: 6931469702791086834}
   description: {fileID: 6931469701264273886}
   DiceSlots:
@@ -1055,7 +1056,6 @@ MonoBehaviour:
   - {fileID: 6931469701843608733}
   - {fileID: 6931469701279697246}
   countText: {fileID: 6931469701549314134}
-  isOpponent: 0
 --- !u!225 &2834907611639941461
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public abstract class Trait : ScriptableObject
     public Sprite Icon { get { return icon; } }
     [SerializeField] Trait reverseTrait;
     public Trait ReversrTrait { get { return reverseTrait; } }
-    [SerializeField] int maxStack = 1;
+    [SerializeField] int maxStack = 0;
     public int MaxStack { get { return maxStack; } }
     
     public virtual void OnAttack(ref int damages, Character current, Character other) { }

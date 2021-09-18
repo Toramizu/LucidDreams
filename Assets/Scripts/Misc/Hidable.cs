@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Hidable : MonoBehaviour
 {
-    CanvasGroup canvasGroup;
+    [SerializeField] CanvasGroup canvasGroup;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
     }

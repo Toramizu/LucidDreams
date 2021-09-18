@@ -11,6 +11,7 @@ public class BattleManager : MonoBehaviour
 
     public void SetPlayer(CharacterData data)
     {
+        Debug.Log("Player set");
         player.LoadCharacter(data);
     }
 
@@ -18,6 +19,7 @@ public class BattleManager : MonoBehaviour
     {
         gameObject.SetActive(true);
         opponent.LoadCharacter(oData);
+        PlayerTurn = false;
         NextRound();
     }
 
@@ -25,7 +27,7 @@ public class BattleManager : MonoBehaviour
     {
         if(opponent.Finished)
         {
-            Debug.Log("Battle Won!");
+            GameManager.Instance.EndBattle();
         }else if (player.Finished)
         {
             Debug.Log("Game Over...");
@@ -41,23 +43,26 @@ public class BattleManager : MonoBehaviour
         else
         {
             opponent.EndTurn();
-            player.StartTurn();
             PlayerTurn = true;
+            player.StartTurn();
         }
     }
 
     public void EndRound()
     {
-        PlayerTurn = false;
-        player.EndTurn();
-        opponent.StartTurn();
+        if (PlayerTurn)
+        {
+            player.EndTurn();
+            PlayerTurn = false;
+            opponent.StartTurn();
 
-        opponent.PlayTurn();
+            opponent.PlayTurn();
+        }
 
         //NextRound();
     }
 
-    public void InflictsDamage(int amount, bool targetsUser)
+    public void InflictsDamage(int amount, bool targetsCurrent, bool ignoreTraits)
     {
         Character user;
         if (PlayerTurn)
@@ -66,16 +71,19 @@ public class BattleManager : MonoBehaviour
             user = opponent;
 
         Character target;
-        if (PlayerTurn == targetsUser)
+        if (PlayerTurn == targetsCurrent)
             target = player;
         else
             target = opponent;
 
-
-        user.Traits.OnAttack(ref amount, user, target);
-        target.Traits.OnDefense(ref amount, target, user);
+        if (!ignoreTraits)
+        {
+            user.Traits.OnAttack(ref amount, user, target);
+            target.Traits.OnDefense(ref amount, target, user);
+        }
 
         target.InflictDamage(amount);
+        CheckBattleStatus();
     }
 
     public void AddTrait(Trait trait, int amount, bool targetsUser)
@@ -86,12 +94,12 @@ public class BattleManager : MonoBehaviour
             opponent.Traits.AddTrait(trait, amount);
     }
 
-    public void Roll(int amount, bool reset)
+    public void Roll(int amount, bool reset, DiceCondition condition)
     {
         if (PlayerTurn)
-            player.Roll(amount, reset);
+            player.Roll(amount, reset, condition);
         else
-            opponent.Roll(amount, reset);
+            opponent.Roll(amount, reset, condition);
     }
 
     public void Give(int value)

@@ -30,9 +30,9 @@ public class Ability : Hidable
     public int Uses { get; set; }
     List<AbilityEffect> effects = new List<AbilityEffect>();
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         foreach (DieSlot slot in DiceSlots)
             slot.Ability = this;
     }

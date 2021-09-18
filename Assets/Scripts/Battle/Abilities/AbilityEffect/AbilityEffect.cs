@@ -18,5 +18,14 @@ public abstract class AbilityEffect
         this.targetsUser = targetsUser;
     }
 
+    protected int Value(int dice)
+    {
+        int amount = bonus;
+        if (usesDice)
+            amount += (int)(dice * multiplier);
+        return amount;
+    }
+
     public abstract void Play(int dice);
+
 }

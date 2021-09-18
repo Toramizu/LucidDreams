@@ -25,13 +25,24 @@ public class DiceHolder : MonoBehaviour
         }
     }
 
-    public void Roll(int amount, bool reset)
+    public void Roll(int amount, bool reset, DiceCondition condition)
     {
         if (reset)
             ResetDice();
 
         for(int i = 0; i < amount; i++)
-            Give(Random.Range(minRoll, maxRoll + 1));
+        {
+            int roll = Random.Range(minRoll, maxRoll + 1);
+
+            int safety = 0;
+            while(condition != null && condition.Check(roll) && safety < 100)
+            {
+                roll = Random.Range(minRoll, maxRoll + 1);
+                safety++;
+            }
+
+            Give(roll);
+        }
     }
 
     public void Give(int value)

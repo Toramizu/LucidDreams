@@ -14,10 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sName: Player
   image: {fileID: 0}
-  maxArousal: 100
   source: 
   abilities:
   - {fileID: 11400000, guid: 9a29abacb7ed7e64f84a43c942c56a69, type: 2}
   - {fileID: 11400000, guid: d7da1f4042bc49d4a93e906d87cb52cc, type: 2}
   - {fileID: 11400000, guid: b4bf2568f65cc8f48997e5cf686240b8, type: 2}
-  rolls: 3
+  - {fileID: 11400000, guid: e11b189e582dcd24b8ef68bb29289395, type: 2}
+  - {fileID: 11400000, guid: 89bbc570626779f41a243df9e718d66c, type: 2}
+  levels:
+  - dice: 2
+    maxArousal: 20
+    expToNext: 2
+  - dice: 3
+    maxArousal: 25
+    expToNext: 4
+  - dice: 3
+    maxArousal: 30
+    expToNext: 0

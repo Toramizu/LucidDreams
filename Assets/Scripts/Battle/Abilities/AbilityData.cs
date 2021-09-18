@@ -75,7 +75,7 @@ public class EffectData
     public int Bonus { get { return bonus; } }
     [SerializeField] bool usesDice = true;
     public bool UsesDice { get { return usesDice; } }
-    [SerializeField] float multiplier;
+    [SerializeField] float multiplier = 1f;
     public float Multiplier { get { return multiplier; } }
     [SerializeField] string stringValue;
 
@@ -89,6 +89,12 @@ public class EffectData
             case EffectsEnum.Trait:
                 return new TraitEffect(stringValue, bonus, usesDice, multiplier, targetsUser);
 
+            case EffectsEnum.Roll:
+                return new RollDiceEffect(bonus, usesDice, multiplier, targetsUser);
+
+            case EffectsEnum.Give:
+                return new GiveDiceEffect(bonus, usesDice, multiplier, targetsUser);
+
             case EffectsEnum.Damage:
             default:
                 return new DamageEffect(bonus, usesDice, multiplier, targetsUser);
@@ -100,4 +106,6 @@ public enum EffectsEnum
 {
     Damage,
     Trait,
+    Roll,
+    Give,
 }

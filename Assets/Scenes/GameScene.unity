@@ -1828,6 +1828,8 @@ MonoBehaviour:
   traits:
   - {fileID: 11400000, guid: 0e02ce4b4c878214faec45bd5e03788a, type: 2}
   - {fileID: 11400000, guid: e8c7739e892a84c479308c6bbb8c1715, type: 2}
+  - {fileID: 11400000, guid: 40f1157b268952141b03f9fb7a58076b, type: 2}
+  - {fileID: 11400000, guid: 6a41875fa4a5e0b4cb0c4dbba5b789fa, type: 2}
 --- !u!224 &427078645 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6931469701992984128, guid: 3198a34223716284f8134bb315583baf, type: 3}
