@@ -6,7 +6,7 @@ public class AnyDie : DiceCondition
 {
     public override bool Check(int die)
     {
-        return true;
+        return base.Check(die);
     }
 
     public override string ConditionText()

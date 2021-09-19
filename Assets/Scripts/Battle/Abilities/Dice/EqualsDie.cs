@@ -12,7 +12,7 @@ public class EqualsDie : DiceCondition
 
     public override bool Check(int die)
     {
-        return die == value || die == 0;
+        return base.Check(die) && (die == value || die == 0);
     }
 
     public override string ConditionText()

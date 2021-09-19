@@ -30,13 +30,13 @@ public class TraitsSheet
             traits[trait].Amount += amount;
         else
             AddNewTrait(trait, amount);
-        
+
         if (traits[trait].Amount <= 0)
         {
             if (traits[trait].Amount < 0 && trait.ReversrTrait != null)
                 AddTrait(trait.ReversrTrait, -traits[trait].Amount);
 
-            traits.Remove(trait);
+            RemoveTrait(trait);
         } else if (trait.MaxStack > 0 && traits[trait].Amount > trait.MaxStack)
         {
             traits[trait].Amount = trait.MaxStack;
@@ -45,7 +45,6 @@ public class TraitsSheet
 
     public void RemoveTrait(Trait trait)
     {
-        //Debug.Log(trait.ID + " => Removed");
         MonoBehaviour.Destroy(traits[trait].gameObject);
         traits.Remove(trait);
     }

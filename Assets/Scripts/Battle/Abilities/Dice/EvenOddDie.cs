@@ -12,7 +12,7 @@ public class EvenOddDie : DiceCondition
 
     public override bool Check(int die)
     {
-        return ((die % 2 == 0) != odd) || die == 0;
+        return base.Check(die) && (((die % 2 == 0) != odd) || die == 0);
     }
 
     public override string ConditionText()

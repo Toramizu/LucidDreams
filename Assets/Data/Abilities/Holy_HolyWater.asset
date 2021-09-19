@@ -14,8 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Holy Water
   description: 
-  conditions: []
+  conditions:
+  - type: 1
+    value: 1
+    toggle: 0
   uses: 0
   equalDice: 0
   total: 0
-  effects: []
+  effects:
+  - effect: 1
+    bonus: 2
+    usesDice: 0
+    multiplier: 0
+    stringValue: Sticky
+    targetsUser: 0

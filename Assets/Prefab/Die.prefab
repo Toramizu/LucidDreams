@@ -97,4 +97,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 357de212012670e4086642bb02e39d89, type: 3}
   - {fileID: 21300000, guid: 0ed8edaeb6a1b344b912519275d3cfda, type: 3}
   - {fileID: 21300000, guid: c4ccdf58704126a449e7f473c23ef7e2, type: 3}
+  lockSprite: {fileID: 21300000, guid: 2e67042567f7a524babf7eb0a6ae45e3, type: 3}
   canvas: {fileID: 0}

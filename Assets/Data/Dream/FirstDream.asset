@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 
   dreamSize: 0
   succubiCount: 2
-  boss: {fileID: 11400000, guid: 815f2c4a93e2e2f4cac854da177ada87, type: 2}
+  boss: {fileID: 11400000, guid: 97b8172e36efbd7449f406ad8214115c, type: 2}
   succubi:
   - {fileID: 11400000, guid: bd58a6de732b3fd44be06d9e093c11a3, type: 2}
   - {fileID: 11400000, guid: bd58a6de732b3fd44be06d9e093c11a3, type: 2}

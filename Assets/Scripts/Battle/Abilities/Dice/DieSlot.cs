@@ -10,8 +10,31 @@ public class DieSlot : MonoBehaviour, IDropHandler
     [SerializeField] Image image;
     [SerializeField] List<Sprite> faces;
     [SerializeField] TMP_Text text;
+    [SerializeField] GameObject links;
 
-    public RolledDie SlottedDie { get; set; }
+    RolledDie slottedDie;
+    public RolledDie SlottedDie {
+        get { return slottedDie; }
+        set
+        {
+            slottedDie = value;
+
+            if(condition.Linked != null)
+            {
+                if(slottedDie == null)
+                {
+                    condition.Linked.Count--;
+                    if(condition.Linked.Count <= 0)
+                        condition.Linked.Value = 0;
+                }
+                else
+                {
+                    condition.Linked.Value = slottedDie.Value;
+                    condition.Linked.Count++;
+                }
+            }
+        }
+    }
     public bool Slotted { get { return SlottedDie != null; } }
     public int Value {
         get
@@ -29,6 +52,16 @@ public class DieSlot : MonoBehaviour, IDropHandler
     public DiceCondition Condition {
         get { return condition; }
         set { SetCondition(value); }
+    }
+
+    public LinkedValue Linked
+    {
+        get { return condition.Linked; }
+        set
+        {
+            condition.Linked = value;
+            links.SetActive(value != null);
+        }
     }
 
     public void SetCondition(DiceCondition cond)
@@ -59,8 +92,12 @@ public class DieSlot : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (eventData.pointerDrag != null)
-            OnDrop(eventData.pointerDrag.GetComponent<RolledDie>());
+        if (eventData.pointerDrag != null && GameManager.Instance.BattleManager.PlayerTurn)
+        {
+            RolledDie die = eventData.pointerDrag.GetComponent<RolledDie>();
+            if(!die.Locked)
+                OnDrop(die);
+        }
         /*{
             RolledDie die = eventData.pointerDrag.GetComponent<RolledDie>();
 

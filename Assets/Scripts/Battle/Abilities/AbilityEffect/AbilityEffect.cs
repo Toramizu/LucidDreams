@@ -20,6 +20,9 @@ public abstract class AbilityEffect
 
     protected int Value(int dice)
     {
+        if (usesDice && multiplier == 0)
+            multiplier = 1;
+
         int amount = bonus;
         if (usesDice)
             amount += (int)(dice * multiplier);

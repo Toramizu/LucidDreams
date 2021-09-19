@@ -26,9 +26,20 @@ public class Ability : Hidable
         }
     }
 
+    LinkedValue link;
+
     AbilityData data;
     public int Uses { get; set; }
     List<AbilityEffect> effects = new List<AbilityEffect>();
+
+    int locked;
+    public int Lock {
+        get { return locked; }
+        set {
+            locked = value;
+
+        }
+    }
 
     protected override void Awake()
     {
@@ -43,12 +54,18 @@ public class Ability : Hidable
         title.text = data.Title;
         description.text = GameManager.Instance.Parser.ParseDescription(data.Description);
 
+        if (data.EqualDice)
+            link = new LinkedValue();
+        else
+            link = null;
+
         for (int i = 0; i < DiceSlots.Count; i++)
         {
             if (i < data.Conditions.Count)
             {
                 DiceSlots[i].gameObject.SetActive(true);
-                DiceSlots[i].SetCondition(data.Conditions[i].ToCondition());
+                DiceSlots[i].SetCondition(data.Conditions[i].ToCondition()); ;
+                DiceSlots[i].Linked = link;
             }
             else
                 DiceSlots[i].gameObject.SetActive(false);
@@ -63,13 +80,18 @@ public class Ability : Hidable
         foreach (EffectData effect in data.Effects)
             effects.Add(effect.ToEffect());
 
-            ResetAbility();
+        ResetAbility();
     }
 
     public void ResetAbility()
     {
         Show();
         Uses = data.Uses;
+        if (link != null)
+        {
+            link.Value = 0;
+            link.Count = 0;
+        }
 
         if (Count <= 0)
             Count = data.Total;
@@ -120,7 +142,7 @@ public class Ability : Hidable
             Hide();
     }
 
-    public List<RolledDie> TryFill(List<RolledDie> dice, Dictionary<DieSlot, RolledDie> toPlace)
+    public /*List<RolledDie>*/ void TryFill(List<RolledDie> dice, Dictionary<DieSlot, RolledDie> toPlace)
     {
         //Keep dice fitting conditions
         List<RolledDie> placedDice = new List<RolledDie>();
@@ -139,18 +161,30 @@ public class Ability : Hidable
                         break;
                     }
                     //If no die found, skip ability
-                    return dice;
+                    return; //dice;
                 }
             }
         }
 
+        Debug.Log(title.text + " : " + DiceSlots.Count + " - " + placedDice.Count);
         //Place die in slot
         //TODO : Animating dice going into slots
         for (int i = 0; i < DiceSlots.Count && DiceSlots[i].isActiveAndEnabled; i++)
             toPlace.Add(DiceSlots[i], placedDice[i]);
-            //DiceSlots[i].OnDrop(placedDice[i]);
+        //DiceSlots[i].OnDrop(placedDice[i]);
+
+        //Remove placed dice from remaining
+        foreach (RolledDie placed in placedDice)
+            dice.Remove(placed);
 
         //Return list without used dice
-        return dice.Except(placedDice).ToList();
+        //return dice.Except(placedDice).ToList();
     }
+}
+
+public enum AbilityStatus
+{
+    Weak = -1,
+    Normal = 0,
+    Strong = 1
 }

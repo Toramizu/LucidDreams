@@ -15,8 +15,12 @@ MonoBehaviour:
   sName: Holy
   image: {fileID: 21300000, guid: afe6dd8ba0aca4046b0e34e4b04c337f, type: 3}
   source: http://www.hentai-foundry.com/pictures/user/MissBehaviour/631747/Holy-water---Commission
-  abilities: []
+  abilities:
+  - {fileID: 11400000, guid: 0cb5470ef4f989247abdc4c85b7388eb, type: 2}
+  - {fileID: 11400000, guid: fe8d9b4b5473d0640adf358963a8ae4c, type: 2}
+  - {fileID: 11400000, guid: 30197cc929fecab47b5a4016ec71d15a, type: 2}
   levels:
-  - dice: 3
+  - dice: 4
     maxArousal: 30
     expToNext: 0
+    abilities: []

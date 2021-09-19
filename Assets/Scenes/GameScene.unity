@@ -1830,6 +1830,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e8c7739e892a84c479308c6bbb8c1715, type: 2}
   - {fileID: 11400000, guid: 40f1157b268952141b03f9fb7a58076b, type: 2}
   - {fileID: 11400000, guid: 6a41875fa4a5e0b4cb0c4dbba5b789fa, type: 2}
+  - {fileID: 11400000, guid: 74a9a0389038db64fac663cb6b32b701, type: 2}
+  - {fileID: 11400000, guid: d0e75b115a1b69b43ade6cb63a66d38c, type: 2}
+  - {fileID: 11400000, guid: 080306e91e68950469b9e180163a7137, type: 2}
 --- !u!224 &427078645 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6931469701992984128, guid: 3198a34223716284f8134bb315583baf, type: 3}

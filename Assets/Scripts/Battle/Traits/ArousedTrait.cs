@@ -7,7 +7,6 @@ public class ArousedTrait : Trait
 {
     public override void EndTurn(Character current)
     {
-        Debug.Log("Aroused");
         GameManager.Instance.BattleManager.InflictsDamage(current.Traits.TraitStack(this), true, true);
         current.Traits.AddTrait(this, -1);
     }

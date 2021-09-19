@@ -8,6 +8,7 @@ public class RolledDie : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 {
     [SerializeField] Image image;
     [SerializeField] List<Sprite> dieFaces;
+    [SerializeField] Sprite lockSprite;
 
     [SerializeField] Canvas canvas;
 
@@ -26,13 +27,23 @@ public class RolledDie : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
         }
     }
 
-    int value;
+    [SerializeField] int value;
     public int Value
     {
         get { return value; }
         set
         {
             this.value = value;
+            ParseValue();
+        }
+    }
+
+    bool locked;
+    public bool Locked
+    {
+        get { return locked; }
+        set {
+            locked = value;
             ParseValue();
         }
     }
@@ -51,7 +62,9 @@ public class RolledDie : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
     void ParseValue()
     {
-        if (value >= dieFaces.Count)
+        if (locked)
+            image.sprite = lockSprite;
+        else if (value >= dieFaces.Count)
             SplitDie();
         else if (value <= 0)
             EmptyDie();
@@ -84,7 +97,7 @@ public class RolledDie : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (GameManager.Instance.BattleManager.PlayerTurn)
+        if (GameManager.Instance.BattleManager.PlayerTurn && !locked)
         {
             canvasGroup.blocksRaycasts = false;
             if (CurrentSlot != null)
@@ -97,13 +110,13 @@ public class RolledDie : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (GameManager.Instance.BattleManager.PlayerTurn)
+        if (GameManager.Instance.BattleManager.PlayerTurn && !locked)
             rTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (GameManager.Instance.BattleManager.PlayerTurn)
+        if (GameManager.Instance.BattleManager.PlayerTurn && !locked)
             canvasGroup.blocksRaycasts = true;
     }
     #endregion

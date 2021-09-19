@@ -24,8 +24,10 @@ public class Character : MonoBehaviour
 
     [SerializeField] Transform abilityPanel;
     [SerializeField] List<Ability> abilities;
+    public List<Ability> Abilities { get { return abilities; } }
     public int Rolls { get; set; }
     [SerializeField] DiceHolder dice;
+    public DiceHolder Dice { get { return dice; } }
 
     [SerializeField] TraitsSheet traits;
     public TraitsSheet Traits { get { return traits; } }
@@ -45,6 +47,7 @@ public class Character : MonoBehaviour
     public void LoadCharacter(CharacterData data)
     {
         Data = data;
+        currentLevel = data.Level[0];
 
         if (data.Image == null)
             characterImage.sprite = defaultImage;
@@ -139,11 +142,19 @@ public class Character : MonoBehaviour
     public void PlayTurn()
     {
         List<RolledDie> rolled = new List<RolledDie>(dice.RolledDice).OrderByDescending(o => o.Value).ToList();
+        for (int i = rolled.Count - 1; i >= 0; i--)
+            if (rolled[i].Locked)
+                rolled.Remove(rolled[i]);
         
         Dictionary<DieSlot, RolledDie> toPlace = new Dictionary<DieSlot, RolledDie>();
         foreach (Ability abi in abilities)
+        {
             if (abi.isActiveAndEnabled)
-                abi.TryFill(rolled, toPlace);
+                /*rolled = */abi.TryFill(rolled, toPlace);
+
+            if (rolled.Count == 0)
+                break;
+        }
 
         StartCoroutine(AutoMoveDice(toPlace));
     }
@@ -165,6 +176,7 @@ public class Character : MonoBehaviour
         yield return null;
         this.toPlace = toPlace;
         slots = new Queue<DieSlot>(toPlace.Keys);
+
 
         PlaceNext();
     }

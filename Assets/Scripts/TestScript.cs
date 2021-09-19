@@ -10,6 +10,8 @@ public class TestScript : MonoBehaviour
             Test1();
         if (Input.GetKeyDown(KeyCode.F2))
             Test2();
+        if (Input.GetKeyDown(KeyCode.F3))
+            Test3();
 
         if (Input.GetKeyDown(KeyCode.F5))
             Test5();
@@ -34,6 +36,12 @@ public class TestScript : MonoBehaviour
     {
         //GameManager.Instance.BattleManager.R(1);
         GameManager.Instance.BattleManager.Roll(3, false, null);
+    }
+
+    void Test3()
+    {
+        //GameManager.Instance.BattleManager.R(1);
+        GameManager.Instance.BattleManager.Give(0);
     }
 
     void Test5()

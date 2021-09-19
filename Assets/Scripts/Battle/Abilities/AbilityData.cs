@@ -95,6 +95,12 @@ public class EffectData
             case EffectsEnum.Give:
                 return new GiveDiceEffect(bonus, usesDice, multiplier, targetsUser);
 
+            case EffectsEnum.Deny:
+                return new DenyEffect(bonus, usesDice, multiplier, targetsUser);
+
+            case EffectsEnum.Unlock:
+                return new UnlockDiceEffect(bonus, usesDice, multiplier, targetsUser);
+
             case EffectsEnum.Damage:
             default:
                 return new DamageEffect(bonus, usesDice, multiplier, targetsUser);
@@ -108,4 +114,6 @@ public enum EffectsEnum
     Trait,
     Roll,
     Give,
+    Unlock,
+    Deny,
 }

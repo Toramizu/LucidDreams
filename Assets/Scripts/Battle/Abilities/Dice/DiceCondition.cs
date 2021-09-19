@@ -4,7 +4,19 @@ using UnityEngine;
 
 public abstract class DiceCondition
 {
-    public abstract bool Check(int die);
+    public LinkedValue Linked { get; set; }
+
+    public virtual bool Check(int die)
+    {
+        return Linked == null || Linked.Value == die || Linked.Value == 0;
+    }
 
     public abstract string ConditionText();
 }
+
+public class LinkedValue
+{
+    public int Value { get; set; }
+    public int Count { get; set; }
+}
+

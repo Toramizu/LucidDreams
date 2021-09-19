@@ -15,7 +15,6 @@ public class TraitEffect : AbilityEffect
 
     public override void Play(int dice)
     {
-        Debug.Log(Value(dice));
         GameManager.Instance.BattleManager.AddTrait(trait, Value(dice), targetsUser);
     }
 

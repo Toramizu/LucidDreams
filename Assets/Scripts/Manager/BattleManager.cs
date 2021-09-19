@@ -123,4 +123,20 @@ public class BattleManager : MonoBehaviour
             opponent.ToggleAbilities(toggle);
         }
     }
+
+    public DiceHolder RolledDice()
+    {
+        if (PlayerTurn)
+            return player.Dice;
+        else
+            return opponent.Dice;
+    }
+
+    public List<Ability> Abilities(bool current)
+    {
+        if (PlayerTurn && current)
+            return player.Abilities;
+        else
+            return opponent.Abilities;
+    }
 }
