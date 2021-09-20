@@ -25,6 +25,9 @@ public class DreamData : ScriptableObject
 
     [SerializeField] Coordinate start = new Coordinate(0,0);
     public Coordinate Start { get { return start; } }
+
+    [SerializeField] ShopData shop;
+    public ShopData Shop { get { return shop; } }
 }
 
 [System.Serializable]
@@ -46,4 +49,5 @@ public enum NodeContent
     Succubus,
     Exit,
     Boss,
+    Shop,
 }

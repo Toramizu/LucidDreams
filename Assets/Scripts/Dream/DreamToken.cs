@@ -8,17 +8,18 @@ public class DreamToken : MonoBehaviour
     [SerializeField] Image image;
     [SerializeField] Sprite defaultImage;
 
-    CharacterData chara;
-    public CharacterData Character
+    [SerializeField] Sprite shopImage;
+    
+    public void SetCharacter(CharacterData chara)
     {
-        get { return chara; }
-        set
-        {
-            chara = value;
-            if (chara.Image == null)
-                image.sprite = defaultImage;
-            else
-                image.sprite = chara.Image;
-        }
+        if (chara.Image == null)
+            image.sprite = defaultImage;
+        else
+            image.sprite = chara.Image;
+    }
+
+    public void SetShop()
+    {
+        image.sprite = shopImage;
     }
 }

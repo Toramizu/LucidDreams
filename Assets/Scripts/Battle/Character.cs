@@ -13,14 +13,16 @@ public class Character : MonoBehaviour
     [SerializeField] SimpleGauge gauge;
     [SerializeField] Button borrowed;
 
-    protected int Arousal { get; set; }
-    public bool Finished { get { return Arousal >= currentLevel.MaxArousal; } }
+    public int Arousal { get; set; }
+    public int MaxArousal { get; set; }
+    public bool Finished { get { return Arousal >= MaxArousal; } }
 
-    public int Level { get; set; }
-    CharacterLevel currentLevel;
-    public int Exp { get; set; }
+    //public int Level { get; set; }
+    //CharacterLevel currentLevel;
+    //public int Exp { get; set; }
 
     protected CharacterData Data { get; private set; }
+    public int Crystals { get { return Data.Crystals; } }
 
     [SerializeField] Transform abilityPanel;
     [SerializeField] List<Ability> abilities;
@@ -47,7 +49,7 @@ public class Character : MonoBehaviour
     public void LoadCharacter(CharacterData data)
     {
         Data = data;
-        currentLevel = data.Level[0];
+        //currentLevel = data.Level[0];
 
         if (data.Image == null)
             characterImage.sprite = defaultImage;
@@ -56,13 +58,14 @@ public class Character : MonoBehaviour
 
         characterName.text = data.Name;
         Arousal = 0;
-        gauge.Fill(Arousal, currentLevel.MaxArousal);
+        MaxArousal = data.MaxArousal;
+        gauge.Fill(Arousal, MaxArousal);
 
         traits.Clear();
 
         borrowed.gameObject.SetActive(data.Source != null && data.Source != "");
 
-        Rolls = currentLevel.Dice;
+        Rolls = data.Dice;
         for (int i = 0; i < abilities.Count; i++)
         {
             if (i < data.Abilities.Count)
@@ -87,12 +90,12 @@ public class Character : MonoBehaviour
         Arousal += amount;
         if (Arousal < 0)
             Arousal = 0;
-        else if (Arousal > currentLevel.MaxArousal)
-            Arousal = currentLevel.MaxArousal;
+        else if (Arousal > MaxArousal)
+            Arousal = MaxArousal;
 
-        gauge.Fill(Arousal, currentLevel.MaxArousal);
+        gauge.Fill(Arousal, MaxArousal);
 
-        return Arousal >= currentLevel.MaxArousal;
+        return Arousal >= MaxArousal;
     }
 
     public void OpenBorrowed()

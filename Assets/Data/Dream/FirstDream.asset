@@ -29,7 +29,7 @@ MonoBehaviour:
   - coo:
       x: 0
       y: 1
-    content: 0
+    content: 4
     value: 
   - coo:
       x: 0
@@ -89,3 +89,16 @@ MonoBehaviour:
   start:
     x: 0
     y: 0
+  shop:
+    abilities:
+    - {fileID: 11400000, guid: 9a29abacb7ed7e64f84a43c942c56a69, type: 2}
+    - {fileID: 11400000, guid: e11b189e582dcd24b8ef68bb29289395, type: 2}
+    - {fileID: 11400000, guid: e8964e6f3bf96124ebf1fc5fb0f37df6, type: 2}
+    - {fileID: 11400000, guid: b1d7bd3e759c985479a69bd80e165d1c, type: 2}
+    - {fileID: 11400000, guid: 2dc805fd4bd3cb2499dbaa1006655476, type: 2}
+    - {fileID: 11400000, guid: d7da1f4042bc49d4a93e906d87cb52cc, type: 2}
+    - {fileID: 11400000, guid: 89bbc570626779f41a243df9e718d66c, type: 2}
+    - {fileID: 11400000, guid: b4bf2568f65cc8f48997e5cf686240b8, type: 2}
+    maxAbilities: 2
+    arousalMod: 1
+    abilityMod: 1

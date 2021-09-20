@@ -25,6 +25,9 @@ public class AbilityData : ScriptableObject
 
     [SerializeField] List<EffectData> effects;
     public List<EffectData> Effects { get { return effects; } }
+
+    [SerializeField] int price;
+    public int Price { get { return price; } }
 }
 
 [System.Serializable]

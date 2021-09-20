@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    [SerializeField] PlayerManager playerManager;
+    public PlayerManager PlayerManager { get { return playerManager; } }
+
     [SerializeField] BattleManager battleManager;
     public BattleManager BattleManager { get { return battleManager; } }
 
@@ -27,14 +30,25 @@ public class GameManager : MonoBehaviour
 
     public void StartBattle(CharacterData opponent)
     {
-        dreamManager.gameObject.SetActive(false);
-        battleManager.gameObject.SetActive(true);
+        dreamManager.Close();
+            //gameObject.SetActive(false);
+        //battleManager.gameObject.SetActive(true);
         battleManager.StartBattle(opponent);
     }
 
-    public void EndBattle()
+    public void StartDream(DreamData data, CharacterData pcData)
     {
-        battleManager.gameObject.SetActive(false);
-        dreamManager.gameObject.SetActive(true);
+        dreamManager.StartDream(data, pcData);
+    }
+
+    public void EndBattle(int crystals)
+    {
+        playerManager.Crystals += crystals;
+
+        battleManager.Close();
+        dreamManager.Open(playerManager);
+
+        //battleManager.gameObject.SetActive(false);
+        //dreamManager.gameObject.SetActive(true);
     }
 }

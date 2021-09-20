@@ -28,7 +28,7 @@ public class Ability : Hidable
 
     LinkedValue link;
 
-    AbilityData data;
+    public AbilityData Data { get; private set; }
     public int Uses { get; set; }
     List<AbilityEffect> effects = new List<AbilityEffect>();
 
@@ -50,7 +50,7 @@ public class Ability : Hidable
 
     public void Init(AbilityData data)
     {
-        this.data = data;
+        this.Data = data;
         title.text = data.Title;
         description.text = GameManager.Instance.Parser.ParseDescription(data.Description);
 
@@ -86,7 +86,7 @@ public class Ability : Hidable
     public void ResetAbility()
     {
         Show();
-        Uses = data.Uses;
+        Uses = Data.Uses;
         if (link != null)
         {
             link.Value = 0;
@@ -94,7 +94,7 @@ public class Ability : Hidable
         }
 
         if (Count <= 0)
-            Count = data.Total;
+            Count = Data.Total;
     }
 
     public void Check()
@@ -144,6 +144,8 @@ public class Ability : Hidable
 
     public /*List<RolledDie>*/ void TryFill(List<RolledDie> dice, Dictionary<DieSlot, RolledDie> toPlace)
     {
+        if (dice.Count == 0) return;
+
         //Keep dice fitting conditions
         List<RolledDie> placedDice = new List<RolledDie>();
 
@@ -166,7 +168,7 @@ public class Ability : Hidable
             }
         }
 
-        Debug.Log(title.text + " : " + DiceSlots.Count + " - " + placedDice.Count);
+        //Debug.Log(title.text + " : " + DiceSlots.Count + " - " + placedDice.Count);
         //Place die in slot
         //TODO : Animating dice going into slots
         for (int i = 0; i < DiceSlots.Count && DiceSlots[i].isActiveAndEnabled; i++)

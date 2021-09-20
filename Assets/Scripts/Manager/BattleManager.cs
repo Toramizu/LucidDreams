@@ -7,6 +7,8 @@ public class BattleManager : MonoBehaviour
     [SerializeField] Opponent opponent;
     [SerializeField] Character player;
 
+    [SerializeField] EndPanel endPanel;
+
     public bool PlayerTurn { get; private set; }
 
     public void SetPlayer(CharacterData data)
@@ -23,11 +25,17 @@ public class BattleManager : MonoBehaviour
         NextRound();
     }
 
+    public void Close()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void CheckBattleStatus()
     {
         if(opponent.Finished)
         {
-            GameManager.Instance.EndBattle();
+            //GameManager.Instance.EndBattle(opponent);
+            endPanel.Victory(opponent.Crystals);
         }else if (player.Finished)
         {
             Debug.Log("Game Over...");

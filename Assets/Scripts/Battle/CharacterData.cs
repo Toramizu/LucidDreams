@@ -36,6 +36,14 @@ public class CharacterData : ScriptableObject
     /*[SerializeField] int rolls = 3;
     public int Rolls { get { return rolls; } set { rolls = value; } }*/
 
-    [SerializeField] List<CharacterLevel> levels;
-    public List<CharacterLevel> Level { get{ return levels; } }
+    /*[SerializeField] List<CharacterLevel> levels;
+    public List<CharacterLevel> Level { get{ return levels; } }*/
+
+    [SerializeField] int dice;
+    public int Dice { get { return dice; } }
+    [SerializeField] int maxArousal;
+    public int MaxArousal { get { return maxArousal; } }
+
+    [SerializeField] int crystals;
+    public int Crystals { get { return crystals; } }
 }

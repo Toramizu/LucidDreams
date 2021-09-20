@@ -22,16 +22,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e11b189e582dcd24b8ef68bb29289395, type: 2}
   - {fileID: 11400000, guid: 89bbc570626779f41a243df9e718d66c, type: 2}
   - {fileID: 11400000, guid: b1d7bd3e759c985479a69bd80e165d1c, type: 2}
-  levels:
-  - dice: 3
-    maxArousal: 20
-    expToNext: 2
-    abilities: []
-  - dice: 3
-    maxArousal: 25
-    expToNext: 4
-    abilities: []
-  - dice: 3
-    maxArousal: 30
-    expToNext: 0
-    abilities: []
+  dice: 3
+  maxArousal: 30
+  crystals: 5

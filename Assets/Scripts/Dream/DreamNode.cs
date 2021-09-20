@@ -7,18 +7,23 @@ public class DreamNode : MonoBehaviour
 {
     [SerializeField] Coordinate coo;
     public Coordinate Coordinate { get { return coo; } }
+    [SerializeField] DreamToken rightToken;
     [SerializeField] Vector3 leftPos;
     [SerializeField] Vector3 rightPos;
 
-    DreamNodeData data;
-    DreamToken currentToken;
+    //DreamToken currentToken;
+
+    CharacterData cData;
+    ShopData sData;
 
     public void Init(Coordinate coo, DreamManager manager)
     {
         this.coo = coo;
+        rightToken.gameObject.SetActive(false);
+        rightToken.transform.position = transform.position + rightPos;
     }
 
-    public void Init(DreamNodeData data)
+    public void Init()
     {
         Toggle(true);
     }
@@ -36,22 +41,34 @@ public class DreamNode : MonoBehaviour
 
     public void OnEnter()
     {
-        if (currentToken != null)
+        if (cData != null)
         {
-            GameManager.Instance.StartBattle(currentToken.Character);
-            currentToken = null;
+            GameManager.Instance.StartBattle(cData);
+            rightToken.transform.localScale = new Vector3(.5f, .5f, .5f);
+            cData = null;
+        } else if(sData != null)
+        {
+            GameManager.Instance.DreamManager.OpenShop(sData);
         }
     }
 
-    public void PlaceAt(DreamToken token, bool left)
+    public void PlacePlayer(DreamToken token)
     {
-        if (left)
-            token.transform.position = transform.position + leftPos;
-        else
-        {
-            token.transform.position = transform.position + rightPos;
-            currentToken = token;
-        }
+        token.transform.position = transform.position + leftPos;
+    }
+
+    public void SetCharacter(CharacterData data)
+    {
+        cData = data;
+        rightToken.gameObject.SetActive(true);
+        rightToken.SetCharacter(data);
+    }
+
+    public void SetShop(ShopData data)
+    {
+        sData = data;
+        rightToken.gameObject.SetActive(true);
+        rightToken.SetShop();
     }
 
     public void MoveTo(DreamToken token)
@@ -68,6 +85,6 @@ public class DreamNode : MonoBehaviour
 
     public void Clear()
     {
-        currentToken = null;
+        rightToken.gameObject.SetActive(false);
     }
 }

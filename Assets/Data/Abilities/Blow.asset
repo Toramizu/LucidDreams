@@ -18,12 +18,6 @@ MonoBehaviour:
   - type: 0
     value: 0
     toggle: 0
-  - type: 0
-    value: 0
-    toggle: 0
-  - type: 0
-    value: 0
-    toggle: 0
   uses: 0
   equalDice: 1
   total: 0

@@ -17,7 +17,6 @@ MonoBehaviour:
   source: http://www.hentai-foundry.com/pictures/user/Shadowboxer/889370/Succubus-Pauline-Futa
   abilities:
   - {fileID: 11400000, guid: 9a29abacb7ed7e64f84a43c942c56a69, type: 2}
-  levels:
-  - dice: 3
-    maxArousal: 20
-    expToNext: 0
+  dice: 3
+  maxArousal: 20
+  crystals: 2

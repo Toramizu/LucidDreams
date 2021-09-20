@@ -49,7 +49,7 @@ public class DreamGrid : MonoBehaviour
     public void SetNode(DreamNodeData data)
     {
         if (nodes.ContainsKey(data.Coo))
-            nodes[data.Coo].Init(data);
+            nodes[data.Coo].Init();
     }
 
     public List<DreamNode> FindPath(DreamNode from, DreamNode to)
