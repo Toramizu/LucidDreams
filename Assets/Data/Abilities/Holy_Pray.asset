@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Holy_Pray
   m_EditorClassIdentifier: 
   title: Pray
-  description: Gain _ Sub
+  description: Submit for _
   conditions:
   - type: 2
     value: 0
@@ -28,3 +28,4 @@ MonoBehaviour:
     multiplier: 1
     stringValue: Sub
     targetsUser: 0
+  price: 0

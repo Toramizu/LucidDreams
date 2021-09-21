@@ -148,8 +148,8 @@ public class Character : MonoBehaviour
         for (int i = rolled.Count - 1; i >= 0; i--)
             if (rolled[i].Locked)
                 rolled.Remove(rolled[i]);
-        
-        Dictionary<DieSlot, RolledDie> toPlace = new Dictionary<DieSlot, RolledDie>();
+
+        Dictionary<RolledDie, DieSlot> toPlace = new Dictionary<RolledDie, DieSlot>();
         foreach (Ability abi in abilities)
         {
             if (abi.isActiveAndEnabled)
@@ -169,16 +169,16 @@ public class Character : MonoBehaviour
 
     #region Auto Play
 
-    Dictionary<DieSlot, RolledDie> toPlace;
-    Queue<DieSlot> slots;
+    Dictionary<RolledDie, DieSlot> toPlace;
+    Queue<RolledDie> slots;
     DieSlot currentSlot;
     RolledDie currentDie;
 
-    IEnumerator AutoMoveDice(Dictionary<DieSlot, RolledDie> toPlace)
+    IEnumerator AutoMoveDice(Dictionary<RolledDie, DieSlot> toPlace)
     {
         yield return null;
         this.toPlace = toPlace;
-        slots = new Queue<DieSlot>(toPlace.Keys);
+        slots = new Queue<RolledDie>(toPlace.Keys);
 
 
         PlaceNext();
@@ -192,8 +192,8 @@ public class Character : MonoBehaviour
         }
         else
         {
-            currentSlot = slots.Dequeue();
-            currentDie = toPlace[currentSlot];
+            currentDie = slots.Dequeue();
+            currentSlot = toPlace[currentDie];
 
             iTween.MoveTo(currentDie.gameObject, iTween.Hash(
                 "x", currentSlot.transform.position.x,

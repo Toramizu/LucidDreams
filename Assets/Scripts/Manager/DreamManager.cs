@@ -77,6 +77,7 @@ public class DreamManager : MonoBehaviour
             for(int i = 0; i < data.SuccubiCount && succubi.Count > 0; i++)
             {
                 CharacterData rSucc = succubi[Random.Range(0, succubi.Count)];
+                succubi.Remove(rSucc);
                 DreamNode node = nodes[Random.Range(0, nodes.Count)];
                 node.SetCharacter(rSucc);
                 nodes.Remove(node);

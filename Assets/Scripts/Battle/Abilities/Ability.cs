@@ -18,11 +18,19 @@ public class Ability : Hidable
         get {return count; }
         set { count = value;
             if(count == null)
-                countText.text = "";
+            {
+                countText.gameObject.SetActive(false);
+            }
             else if (count <= 0)
+            {
+                countText.gameObject.SetActive(true);
                 countText.text = "0";
+            }
             else
+            {
+                countText.gameObject.SetActive(true);
                 countText.text = value.ToString();
+            }
         }
     }
 
@@ -142,12 +150,14 @@ public class Ability : Hidable
             Hide();
     }
 
-    public /*List<RolledDie>*/ void TryFill(List<RolledDie> dice, Dictionary<DieSlot, RolledDie> toPlace)
+    public /*List<RolledDie>*/ void TryFill(List<RolledDie> dice, Dictionary<RolledDie, DieSlot> toPlace)
     {
         if (dice.Count == 0) return;
 
         //Keep dice fitting conditions
-        List<RolledDie> placedDice = new List<RolledDie>();
+        //List<RolledDie> placedDice = new List<RolledDie>();
+        Dictionary<RolledDie, DieSlot> placed = new Dictionary<RolledDie, DieSlot>();
+        int? count = this.count;
 
         foreach (DieSlot slot in DiceSlots)
         {
@@ -156,31 +166,35 @@ public class Ability : Hidable
                 foreach (RolledDie die in dice)
                 {
                     //If a die fits
-                    if (slot.Condition.Check(die.Value) && !placedDice.Contains(die))
+                    if (slot.Condition.Check(die.Value) && !placed.ContainsKey(die))
                     {
                         //Keep die & go to next slot
-                        placedDice.Add(die);
-                        break;
+                        placed.Add(die, slot);
+
+                        if(count != null)
+                        {
+                            count -= die.Value;
+                            if (count <= 0)
+                                break;
+                        }
+                        else
+                            break;
                     }
-                    //If no die found, skip ability
-                    return; //dice;
+                    else
+                    {
+                        //If no die found, skip ability
+                        return; //dice;
+                    }
                 }
             }
         }
 
-        //Debug.Log(title.text + " : " + DiceSlots.Count + " - " + placedDice.Count);
-        //Place die in slot
-        //TODO : Animating dice going into slots
-        for (int i = 0; i < DiceSlots.Count && DiceSlots[i].isActiveAndEnabled; i++)
-            toPlace.Add(DiceSlots[i], placedDice[i]);
-        //DiceSlots[i].OnDrop(placedDice[i]);
-
-        //Remove placed dice from remaining
-        foreach (RolledDie placed in placedDice)
-            dice.Remove(placed);
-
-        //Return list without used dice
-        //return dice.Except(placedDice).ToList();
+        //Place die in slot & Remove placed dice from remaining
+        foreach(RolledDie die in placed.Keys)
+        {
+            toPlace.Add(die, placed[die]);
+            dice.Remove(die);
+        }
     }
 }
 

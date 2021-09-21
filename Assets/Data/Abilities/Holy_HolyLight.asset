@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Holy_HolyLight
   m_EditorClassIdentifier: 
   title: Holy Light
-  description: Inflicts _ Damages and Arouses for 2
+  description: Inflicts _ Arousal and 2 Aroused
   conditions:
   - type: 2
     value: 0
@@ -34,3 +34,4 @@ MonoBehaviour:
     multiplier: 0
     stringValue: Aroused
     targetsUser: 0
+  price: 0

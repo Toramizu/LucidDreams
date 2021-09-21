@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Blow
   m_EditorClassIdentifier: 
   title: Blow
-  description: Inflicts _ Damages
+  description: Inflicts _ Arousal
   conditions:
   - type: 0
     value: 0
@@ -28,3 +28,4 @@ MonoBehaviour:
     multiplier: 1
     stringValue: 
     targetsUser: 0
+  price: 0
