@@ -32,6 +32,6 @@ MonoBehaviour:
     bonus: 2
     usesDice: 0
     multiplier: 0
-    stringValue: Arousal
+    stringValue: Aroused
     targetsUser: 0
   price: 0

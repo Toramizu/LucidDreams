@@ -10,7 +10,7 @@ public class DreamGrid : MonoBehaviour
     [SerializeField] DreamNode dreamNodePrefab;
     [SerializeField] GridLayoutGroup layout;
 
-    Dictionary<Coordinate, DreamNode> nodes;
+    Dictionary<Coordinate, DreamNode> nodes = new Dictionary<Coordinate, DreamNode>();
 
     public DreamNode this[Coordinate coo]
     {

@@ -14,12 +14,7 @@ public class DreamShop : MonoBehaviour
     [SerializeField] Button maxArousalButton;
 
     ShopData data;
-
-    private void Start()
-    {
-        gameObject.SetActive(false);
-    }
-
+    
     public void InitShop(ShopData data)
     {
         gameObject.SetActive(true);

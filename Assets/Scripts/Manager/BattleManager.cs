@@ -10,17 +10,12 @@ public class BattleManager : MonoBehaviour
     [SerializeField] EndPanel endPanel;
 
     public bool PlayerTurn { get; private set; }
-
-    public void SetPlayer(CharacterData data)
-    {
-        Debug.Log("Player set");
-        player.LoadCharacter(data);
-    }
-
-    public void StartBattle(CharacterData oData)
+    
+    public void StartBattle(CharacterData oData, List<AbilityData> pAbis)
     {
         gameObject.SetActive(true);
         opponent.LoadCharacter(oData);
+        player.LoadAbilities(pAbis);
         PlayerTurn = false;
         NextRound();
     }
@@ -38,7 +33,7 @@ public class BattleManager : MonoBehaviour
             endPanel.Victory(opponent.Crystals);
         }else if (player.Finished)
         {
-            Debug.Log("Game Over...");
+            GameManager.Instance.NextDay();
         }
     }
 

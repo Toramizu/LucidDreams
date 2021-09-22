@@ -77,12 +77,15 @@ public class Character : MonoBehaviour
 
     public void SetAbility(AbilityData data, int slot)
     {
-        //Debug.Log("Ability? " + slot + " <= " + slot);
-        if (slot <= abilities.Count)
-        {
-            abilities[slot].gameObject.SetActive(true);
+        Debug.Log(slot);
+        if (slot < abilities.Count)
             abilities[slot].Init(data);
-        }
+    }
+
+    public void LoadAbilities(List<AbilityData> abis)
+    {
+        for (int i = 0; i < abis.Count && i < abilities.Count; i++)
+            SetAbility(abis[i], i);
     }
 
     public virtual bool InflictDamage(int amount)

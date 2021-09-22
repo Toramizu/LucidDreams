@@ -14,6 +14,8 @@ public class DreamManager : MonoBehaviour
 
     [SerializeField] DreamToken playerToken;
 
+    [SerializeField] AbilityUI abilities;
+
     public bool CanMove { get; set; }
 
     DreamNode currentNode;
@@ -23,9 +25,8 @@ public class DreamManager : MonoBehaviour
         grid.Init(this);
     }
 
-    public void Open(PlayerManager pData)
+    public void Open()
     {
-        //crystals.text = pData.Crystals.ToString();
         gameObject.SetActive(true);
         CanMove = true;
     }
@@ -38,7 +39,8 @@ public class DreamManager : MonoBehaviour
 
     public void StartDream(DreamData data, CharacterData cData)
     {
-        GameManager.Instance.BattleManager.SetPlayer(cData);
+        Open();
+        GameManager.Instance.PlayerManager.SetPlayer(cData);
         ClearDream();
 
         Dictionary<NodeContent, List<DreamNode>> nodeEvents = new Dictionary<NodeContent, List<DreamNode>>();

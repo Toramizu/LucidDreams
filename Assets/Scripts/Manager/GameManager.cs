@@ -28,17 +28,27 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameAssets assets;
     public GameAssets Assets { get { return assets; } }
 
+
+    [SerializeField] CharacterData pData;
+    [SerializeField] DreamData dData;
+    [SerializeField] GameObject dayTmp;
+
+    public void StartGame()
+    {
+        StartDream(dData, pData);
+        dayTmp.SetActive(false);
+    }
+
     public void StartBattle(CharacterData opponent)
     {
         dreamManager.Close();
-            //gameObject.SetActive(false);
-        //battleManager.gameObject.SetActive(true);
-        battleManager.StartBattle(opponent);
+        battleManager.StartBattle(opponent, playerManager.Abilities);
     }
 
     public void StartDream(DreamData data, CharacterData pcData)
     {
         dreamManager.StartDream(data, pcData);
+        battleManager.Close();
     }
 
     public void EndBattle(int crystals)
@@ -46,9 +56,11 @@ public class GameManager : MonoBehaviour
         playerManager.Crystals += crystals;
 
         battleManager.Close();
-        dreamManager.Open(playerManager);
+        dreamManager.Open();
+    }
 
-        //battleManager.gameObject.SetActive(false);
-        //dreamManager.gameObject.SetActive(true);
+    public void NextDay()
+    {
+        dayTmp.SetActive(true);
     }
 }

@@ -16,6 +16,30 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] Character player;
     [SerializeField] TMP_Text crystalsText;
+    [SerializeField] AbilityUI abilities;
+
+    public List<AbilityData> Abilities { get; set; }
+    //public List<AbilityData> StoredAbilities { get; set; } = new List<AbilityData>();
+    /*{
+        get {
+            List<AbilityData> abis = new List<AbilityData>();
+            foreach(Ability abi in player.Abilities)
+                abis.Add(abi.)
+
+            return null;
+        }
+        set {
+            for (int i = 0; i < value.Count; i++)
+                player.SetAbility(value[i], i);
+        }
+    }*/
+
+    public void SetPlayer(CharacterData data)
+    {
+        player.LoadCharacter(data);
+        Abilities = data.Abilities;
+        //EquipedAbilities = data.Abilities;
+    }
 
     public void LearnAbility(AbilityData data, int cost)
     {

@@ -59,6 +59,15 @@ public class Ability : Hidable
     public void Init(AbilityData data)
     {
         this.Data = data;
+
+        if (data == null)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        gameObject.SetActive(true);
+
         title.text = data.Title;
         description.text = GameManager.Instance.Parser.ParseDescription(data.Description);
 
