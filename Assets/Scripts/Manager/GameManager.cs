@@ -33,6 +33,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] DreamData dData;
     [SerializeField] GameObject dayTmp;
 
+    private void Awake()
+    {
+        battleManager.Open();
+        dreamManager.Open();
+        dayTmp.gameObject.SetActive(true);
+    }
+
     public void StartGame()
     {
         StartDream(dData, pData);

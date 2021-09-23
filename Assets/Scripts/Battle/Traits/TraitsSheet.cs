@@ -51,7 +51,7 @@ public class TraitsSheet
 
     void AddNewTrait(Trait trait, int amount)
     {
-        TraitUI t = MonoBehaviour.Instantiate(traitPrefab, traitHolder, true);
+        TraitUI t = MonoBehaviour.Instantiate(traitPrefab, traitHolder, false);
         t.Init(trait, amount);
 
         traits.Add(trait, t);

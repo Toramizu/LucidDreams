@@ -14,6 +14,6 @@ public class DenyEffect : AbilityEffect
         List<Ability> abilities = GameManager.Instance.BattleManager.Abilities(targetsUser);
 
         Ability abi = abilities[Random.Range(0, abilities.Count)];
-        abi.Lock = Value(dice);
+        //abi.Lock = Value(dice);
     }
 }

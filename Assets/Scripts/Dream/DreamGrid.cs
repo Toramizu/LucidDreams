@@ -22,6 +22,11 @@ public class DreamGrid : MonoBehaviour
             }
     }
 
+    public bool IsEmpty
+    {
+        get { return nodes.Count == 0; }
+    }
+
     public void Init(DreamManager manager)
     {
         nodes = new Dictionary<Coordinate, DreamNode>();

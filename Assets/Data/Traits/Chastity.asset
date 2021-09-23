@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Chastity
   m_EditorClassIdentifier: 
   id: Chastity
+  description: Locks X dice
   icon: {fileID: 21300000, guid: 596a7d4a47fb5e14d92669417900a908, type: 3}
   reverseTrait: {fileID: 0}
   maxStack: 0

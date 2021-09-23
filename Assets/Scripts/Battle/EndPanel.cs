@@ -9,12 +9,7 @@ public class EndPanel : MonoBehaviour
     [SerializeField] TMP_Text victoryText;
 
     int crystals;
-
-    private void Awake()
-    {
-        Close();
-    }
-
+    
     public void Victory(int crystals)
     {
         this.crystals = crystals;

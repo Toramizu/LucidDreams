@@ -6,6 +6,8 @@ public abstract class Trait : ScriptableObject
 {
     [SerializeField] string id;
     public string ID { get { return id; } }
+    [SerializeField] string description;
+    public string Description { get { return description; } }
     [SerializeField] protected Sprite icon;
     public Sprite Icon { get { return icon; } }
     [SerializeField] Trait reverseTrait;

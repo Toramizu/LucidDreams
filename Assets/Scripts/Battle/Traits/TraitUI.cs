@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TraitUI : MonoBehaviour
+public class TraitUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] Image icon;
     [SerializeField] TMP_Text text;
+
+    Trait trait;
 
     int amount;
     public int Amount
@@ -25,7 +28,18 @@ public class TraitUI : MonoBehaviour
 
     public void Init(Trait t, int amount)
     {
+        trait = t;
         icon.sprite = t.Icon;
         Amount = amount;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        GameManager.Instance.BattleManager.ShowTooltip(trait);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        GameManager.Instance.BattleManager.ShowTooltip(null);
     }
 }

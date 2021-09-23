@@ -8,6 +8,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] Character player;
 
     [SerializeField] EndPanel endPanel;
+    [SerializeField] TraitTooltip tooltip;
 
     public bool PlayerTurn { get; private set; }
     
@@ -18,6 +19,11 @@ public class BattleManager : MonoBehaviour
         player.LoadAbilities(pAbis);
         PlayerTurn = false;
         NextRound();
+    }
+
+    public void Open()
+    {
+        gameObject.SetActive(true);
     }
 
     public void Close()
@@ -141,5 +147,10 @@ public class BattleManager : MonoBehaviour
             return player.Abilities;
         else
             return opponent.Abilities;
+    }
+
+    public void ShowTooltip(Trait trait)
+    {
+        tooltip.Open(trait);
     }
 }

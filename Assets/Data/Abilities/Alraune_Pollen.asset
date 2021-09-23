@@ -27,5 +27,5 @@ MonoBehaviour:
     usesDice: 0
     multiplier: 0
     stringValue: Pheromones
-    targetsUser: 0
+    targetsUser: 1
   price: 0

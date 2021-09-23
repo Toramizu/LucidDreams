@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DieSlot : MonoBehaviour, IDropHandler
+public class DieSlot : MonoBehaviour, IDie//IDropHandler
 {
     [SerializeField] Image image;
     [SerializeField] List<Sprite> faces;
@@ -53,6 +53,9 @@ public class DieSlot : MonoBehaviour, IDropHandler
         get { return condition; }
         set { SetCondition(value); }
     }
+    public bool IsActive { get { return isActiveAndEnabled; } }
+    public float X { get { return transform.position.x; } }
+    public float Y { get { return transform.position.y; } }
 
     public LinkedValue Linked
     {
@@ -88,6 +91,11 @@ public class DieSlot : MonoBehaviour, IDropHandler
             image.sprite = faces[0];
             text.text = cond.ConditionText();
         }
+    }
+
+    public bool Check(int die)
+    {
+        return condition.Check(die);
     }
 
     public void OnDrop(PointerEventData eventData)

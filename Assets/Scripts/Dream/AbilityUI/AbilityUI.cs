@@ -25,7 +25,7 @@ public class AbilityUI : MonoBehaviour
 
         for (int i = 0; i < 6; i++)
         {
-            MiniAbility slot = Instantiate(miniAbilityPrefab, equipped, true);
+            MiniAbility slot = Instantiate(miniAbilityPrefab, equipped, false);
             equippedAbi.Add(slot);
             slot.EquipSlot = i;
             slot.DefaultPosition = new Vector3(miniX * (i % 2), -miniY * (i / 2), 0);
@@ -35,7 +35,7 @@ public class AbilityUI : MonoBehaviour
 
         for (int i = 0; i < minisStorageX * minisStorageY; i++)
         {
-            MiniAbility slot = Instantiate(miniAbilityPrefab, storage, true);
+            MiniAbility slot = Instantiate(miniAbilityPrefab, storage, false);
             storedAbi.Add(slot);
             slot.DefaultPosition = new Vector3(miniX * (i % minisStorageX), -miniY * (i / minisStorageX), 0);
             slot.AbiUI = this;

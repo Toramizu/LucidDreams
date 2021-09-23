@@ -40,12 +40,24 @@ public class Ability : Hidable
     public int Uses { get; set; }
     List<AbilityEffect> effects = new List<AbilityEffect>();
 
-    int locked;
+    /*int locked;
     public int Lock {
         get { return locked; }
         set {
             locked = value;
 
+        }
+    }*/
+
+    [SerializeField] GameObject lockTransform;
+    [SerializeField] LockSlot lockSlot;
+    public LockSlot LockSlot { get { return lockSlot; } }
+    bool locked;
+    public bool Locked {
+        get { return locked; }
+        set
+        {
+            LockAbility(value);
         }
     }
 
@@ -97,6 +109,8 @@ public class Ability : Hidable
         foreach (EffectData effect in data.Effects)
             effects.Add(effect.ToEffect());
 
+        Locked = false;
+
         ResetAbility();
     }
 
@@ -112,6 +126,8 @@ public class Ability : Hidable
 
         if (Count <= 0)
             Count = Data.Total;
+
+        //Locked = false;
     }
 
     public void Check()
@@ -139,6 +155,12 @@ public class Ability : Hidable
         }
     }
 
+    public void LockAbility(bool toggle)
+    {
+        locked = toggle;
+        lockTransform.SetActive(toggle);
+    }
+
     void PlayAbility()
     {
         int total = 0;
@@ -159,23 +181,22 @@ public class Ability : Hidable
             Hide();
     }
 
-    public /*List<RolledDie>*/ void TryFill(List<RolledDie> dice, Dictionary<RolledDie, DieSlot> toPlace)
+    public /*List<RolledDie>*/ void TryFill(List<RolledDie> dice, Dictionary<RolledDie, IDie> toPlace) // TODO : Manage locked dice
     {
         if (dice.Count == 0) return;
 
         //Keep dice fitting conditions
-        //List<RolledDie> placedDice = new List<RolledDie>();
-        Dictionary<RolledDie, DieSlot> placed = new Dictionary<RolledDie, DieSlot>();
+        Dictionary<RolledDie, IDie> placed = new Dictionary<RolledDie, IDie>();
         int? count = this.count;
 
-        foreach (DieSlot slot in DiceSlots)
+        foreach (IDie slot in DiceSlots)
         {
-            if (slot.isActiveAndEnabled)
+            if (slot.IsActive)
             {
                 foreach (RolledDie die in dice)
                 {
                     //If a die fits
-                    if (slot.Condition.Check(die.Value) && !placed.ContainsKey(die))
+                    if (slot.Check(die.Value) && !placed.ContainsKey(die))
                     {
                         //Keep die & go to next slot
                         placed.Add(die, slot);
@@ -197,6 +218,7 @@ public class Ability : Hidable
                 }
             }
         }
+
 
         //Place die in slot & Remove placed dice from remaining
         foreach(RolledDie die in placed.Keys)
