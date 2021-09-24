@@ -13,4 +13,9 @@ public class DodgeTrait : Trait
         damages = 0;
         current.Traits.AddTrait(this, -1);
     }
+
+    public override void StartTurn(Character current)
+    {
+        current.Traits.RemoveTrait(this);
+    }
 }

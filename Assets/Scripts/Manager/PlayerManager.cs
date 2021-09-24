@@ -16,7 +16,6 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] Character player;
     [SerializeField] TMP_Text crystalsText;
-    [SerializeField] AbilityUI abilities;
 
     public List<AbilityData> Abilities { get; set; }
     //public List<AbilityData> StoredAbilities { get; set; } = new List<AbilityData>();

@@ -145,25 +145,6 @@ public class Character : MonoBehaviour
         dice.ResetDicePosition();
     }
 
-    public void PlayTurn()
-    {
-        List<RolledDie> rolled = new List<RolledDie>(dice.RolledDice).OrderByDescending(o => o.Value).ToList();
-        for (int i = rolled.Count - 1; i >= 0; i--)
-            if (rolled[i].Locked)
-                rolled.Remove(rolled[i]);
-
-        Dictionary<RolledDie, IDie> toPlace = new Dictionary<RolledDie, IDie>();
-        foreach (Ability abi in abilities)
-        {
-            if (abi.isActiveAndEnabled)
-                /*rolled = */abi.TryFill(rolled, toPlace);
-
-            if (rolled.Count == 0)
-                break;
-        }
-
-        StartCoroutine(AutoMoveDice(toPlace));
-    }
 
     public void ToggleAbilities(bool toggle)
     {
@@ -172,16 +153,53 @@ public class Character : MonoBehaviour
 
     #region Auto Play
 
-    Dictionary<RolledDie, IDie> toPlace;
-    Queue<RolledDie> slots;
+    BattleAI ai = new BattleAI();
+
+    public void PlayTurn()
+    {
+        /*List<RolledDie> rolled = new List<RolledDie>(dice.RolledDice).OrderByDescending(o => o.Value).ToList();
+        for (int i = rolled.Count - 1; i >= 0; i--)
+            if (rolled[i].Locked)
+                rolled.Remove(rolled[i]);
+
+        Dictionary<RolledDie, IDie> toPlace = new Dictionary<RolledDie, IDie>();
+        foreach (Ability abi in abilities)
+        {
+            if (abi.isActiveAndEnabled)
+                abi.TryFill(rolled, toPlace);
+
+            if (rolled.Count == 0)
+                break;
+
+        
+        StartCoroutine(AutoMoveDice(toPlace));
+        }*/
+
+        List<DieToSlot> next = ai.FindNextAction(abilities, dice.RolledDice);
+        StartCoroutine(AutoMoveDice(next));
+    }
+
+    Dictionary<RolledDie, IDie> OLD_toPlace;
+    List<DieToSlot> toPlace;
+    Queue<RolledDie> OLD_slots;
+    Queue<DieToSlot> slots;
     IDie currentSlot;
     RolledDie currentDie;
 
     IEnumerator AutoMoveDice(Dictionary<RolledDie, IDie> toPlace)
     {
         yield return null;
+        this.OLD_toPlace = toPlace;
+        OLD_slots = new Queue<RolledDie>(toPlace.Keys);
+
+        OLD_PlaceNext();
+    }
+
+    IEnumerator AutoMoveDice(List<DieToSlot> toPlace)
+    {
+        yield return null;
         this.toPlace = toPlace;
-        slots = new Queue<RolledDie>(toPlace.Keys);
+        slots = new Queue<DieToSlot>(toPlace);
 
         PlaceNext();
     }
@@ -194,8 +212,32 @@ public class Character : MonoBehaviour
         }
         else
         {
-            currentDie = slots.Dequeue();
-            currentSlot = toPlace[currentDie];
+            DieToSlot dts = slots.Dequeue();
+            currentDie = dts.Die;
+            currentSlot = dts.Slot;
+
+            iTween.MoveTo(currentDie.gameObject, iTween.Hash(
+                "x", currentSlot.X,
+                "y", currentSlot.Y,
+                //"speed", 500f,
+                "time", .8f,
+                "easeType", iTween.EaseType.easeOutSine,
+                "onComplete", "SlotDie",
+                "onCompleteTarget", gameObject
+                ));
+        }
+    }
+
+    void OLD_PlaceNext()
+    {
+        if (OLD_slots.Count == 0)
+        {
+            StartCoroutine(WaitEndTurn());
+        }
+        else
+        {
+            currentDie = OLD_slots.Dequeue();
+            currentSlot = OLD_toPlace[currentDie];
 
             iTween.MoveTo(currentDie.gameObject, iTween.Hash(
                 "x", currentSlot.X,
@@ -211,7 +253,7 @@ public class Character : MonoBehaviour
 
     IEnumerator WaitEndTurn()
     {
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(1);
         GameManager.Instance.BattleManager.NextRound();
     }
 
@@ -219,6 +261,7 @@ public class Character : MonoBehaviour
     {
         currentSlot.OnDrop(currentDie);
         PlaceNext();
+        //OLD_PlaceNext();
     }
     #endregion
 } 

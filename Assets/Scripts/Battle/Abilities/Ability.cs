@@ -10,6 +10,7 @@ public class Ability : Hidable
     [SerializeField] TMP_Text description;
 
     [SerializeField] List<DieSlot> DiceSlots;
+    public List<DieSlot> Slots { get { return DiceSlots; } }
 
     [SerializeField] TMP_Text countText;
 

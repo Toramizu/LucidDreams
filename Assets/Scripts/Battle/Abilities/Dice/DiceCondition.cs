@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class DiceCondition
 {
     public LinkedValue Linked { get; set; }
+    public abstract int[] AcceptedValues { get; }
 
     public virtual bool Check(int die)
     {

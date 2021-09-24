@@ -28,4 +28,4 @@ MonoBehaviour:
     multiplier: 1
     stringValue: Sub
     targetsUser: 0
-  price: 0
+  price: 5

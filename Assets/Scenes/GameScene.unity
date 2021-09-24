@@ -3126,8 +3126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crystals: 0
   player: {fileID: 49640193}
-  crystalsText: {fileID: 0}
-  abilities: {fileID: 0}
+  crystalsText: {fileID: 1325934924}
 --- !u!1 &398774138
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,21 @@ public class MinMaxDie : DiceCondition
     [SerializeField] bool max;
     public bool Max { get { return max; } set { max = value; } }
 
+    public override int[] AcceptedValues {
+        get {
+            List<int> vals = new List<int>() { 0 };
+
+            if (max)
+                for (int i = 1; i <= value; i++)
+                    vals.Add(i);
+            else
+                for (int i = value; i <= 6; i++)
+                    vals.Add(i);
+
+            return vals.ToArray();
+        }
+    }
+
     public MinMaxDie() { }
     public MinMaxDie(bool max, int value) { this.max = max; this.value = value; }
 

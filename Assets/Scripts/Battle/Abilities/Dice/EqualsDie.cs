@@ -7,6 +7,8 @@ public class EqualsDie : DiceCondition
     [SerializeField] int value;
     public int Value { get { return value; } set { this.value = value; } }
 
+    public override int[] AcceptedValues { get { return new int[] { 0, Value }; } }
+
     public EqualsDie() { }
     public EqualsDie(int value) { this.value = value; }
 

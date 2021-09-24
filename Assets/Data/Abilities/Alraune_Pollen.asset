@@ -28,4 +28,4 @@ MonoBehaviour:
     multiplier: 0
     stringValue: Pheromones
     targetsUser: 1
-  price: 0
+  price: 5
