@@ -14,6 +14,9 @@ public abstract class Trait : ScriptableObject
     public Trait ReversrTrait { get { return reverseTrait; } }
     [SerializeField] int maxStack = 0;
     public int MaxStack { get { return maxStack; } }
+
+    [SerializeField] float aiValue;
+    public float AIValue { get { return aiValue; } }
     
     public virtual void OnAttack(ref int damages, Character current, Character other) { }
     public virtual void OnDefense(ref int damages, Character current, Character other) { }

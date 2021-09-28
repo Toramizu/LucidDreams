@@ -6,6 +6,8 @@ public class TraitEffect : AbilityEffect
 {
     Trait trait;
 
+    protected override float AIValue { get { return trait.AIValue; } }
+
     public TraitEffect() { }
     public TraitEffect(string trait, int bonus, bool usesDice, float mult, bool targetsUser)
         : base(bonus, usesDice, mult, targetsUser)
@@ -18,4 +20,20 @@ public class TraitEffect : AbilityEffect
         GameManager.Instance.BattleManager.AddTrait(trait, Value(dice), targetsUser);
     }
 
+    public override float GetAIValue(int dice, AIData current)
+    {
+        Character target;
+        if (targetsUser)
+            target = current.User;
+        else
+            target = current.Target;
+
+
+        int v = Value(dice);
+        int applied = target.Traits.TraitStack(trait);
+        if (v > trait.MaxStack - applied)
+            v = trait.MaxStack - applied;
+
+        return AIValue * v;
+    }
 }

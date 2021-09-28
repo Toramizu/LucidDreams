@@ -228,6 +228,16 @@ public class Ability : Hidable
             dice.Remove(die);
         }
     }
+
+    public float GetAIValue(int dice, AIData current)
+    {
+        float val = 0;
+
+        foreach (AbilityEffect effect in effects)
+            val += effect.GetAIValue(dice, current);
+
+        return val;
+    }
 }
 
 public enum AbilityStatus

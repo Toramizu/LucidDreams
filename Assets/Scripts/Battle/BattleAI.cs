@@ -10,8 +10,8 @@ public class BattleAI
 
     List<SimpleSlot> sSlots;
     List<SimpleDie> sDice;
-
-    public List<DieToSlot> FindNextAction(List<Ability> abilities, List<RolledDie> dice)
+    
+    public List<DieToSlot> FindNextAction(List<Ability> abilities, List<RolledDie> dice, Character user, Character target)
     {
         Debug.Log("Start AI");
         sSlots = new List<SimpleSlot>();
@@ -20,6 +20,7 @@ public class BattleAI
             if (ability.isActiveAndEnabled)
             {
                 SlotSharedData cd = new SlotSharedData(ability.Count, ability.Uses);
+                cd.Ability = ability;
 
                 if (ability.Locked)
                 {
@@ -43,25 +44,30 @@ public class BattleAI
         foreach (RolledDie die in dice)
             sDice.Add(new SimpleDie(die));
 
-        int max = int.MinValue;
+        AIData best = new AIData();
         List<DieToSlot> bestTry = null;
 
-        for(int i = 0; i < sample; i++)         //TODO : replace 10 by sample
+        for(int i = 0; i < sample; i++)
         {
-            List<DieToSlot> currentTry = RandomTry();
-            int value = Random.Range(int.MinValue, int.MaxValue);
+            AIData current = new AIData(user, target);
+            List<DieToSlot> currentTry = RandomTry(current);
+            //int value = Random.Range(int.MinValue, int.MaxValue);
 
-            if(value > max)
+            current.FinalCheck();
+            //Debug.Log(current.AIValue);
+
+            if(current.AIValue > best.AIValue)
             {
-                max = value;
+                best = current;
                 bestTry = currentTry;
             }
         }
 
+        //Debug.Log("Final : " + best.AIValue);
         return bestTry;
     }
 
-    List<DieToSlot> RandomTry()
+    List<DieToSlot> RandomTry(AIData current)
     {
         List<DieToSlot> placedDice = new List<DieToSlot>();
 
@@ -73,14 +79,14 @@ public class BattleAI
         while (slots.Count > 0 && dice.Count > 0)
         {
             SimpleDie die = dice.Dequeue();
-            GetSlot(die, slots, placedDice);
+            GetSlot(die, slots, placedDice, current);
         }
 
 
         return placedDice;
     }
 
-    void GetSlot(SimpleDie die, List<SimpleSlot> slots, List<DieToSlot> placed)
+    void GetSlot(SimpleDie die, List<SimpleSlot> slots, List<DieToSlot> placed, AIData current)
     {
         List<SimpleSlot> okSlots = slots.Where(ok => ok.Values.Contains(die.Value)).ToList();
 
@@ -88,13 +94,13 @@ public class BattleAI
         {
             SimpleSlot slot = okSlots[Random.Range(0, okSlots.Count)];
 
-            slot.Used = true;
+            slot.Current = die.Die.Value;
             placed.Add(new DieToSlot(die.Die, slot.Slot));
 
             if(slot.CoundownDie(die.Value))
             {
                 slots.Remove(slot);
-                slot.Shared.Check(slots);
+                slot.Shared.Check(slots, current);
                 if (slot.Locking != null)
                 {
                     slots.AddRange(slot.Locking);
@@ -110,7 +116,7 @@ class SimpleSlot
     public List<SimpleSlot> Locking { get; private set; } = new List<SimpleSlot>();
     public int[] Values { get; private set; }
     public SlotSharedData Shared { get; private set; }
-    public bool Used { get; set; }
+    public int Current { get; set; }
 
     public SimpleSlot(LockSlot lockSlot)
     {
@@ -131,7 +137,7 @@ class SimpleSlot
 
     public void Reset()
     {
-        Used = false;
+        Current = -1;
         Shared.Reset();
     }
 
@@ -149,6 +155,7 @@ class SimpleSlot
 
 class SlotSharedData
 {
+    public Ability Ability { get; set; }
     public int? Countdown { get; set; }
     int? baseCountdown;
     public int Uses { get; private set; }
@@ -161,16 +168,21 @@ class SlotSharedData
         baseUses = uses;
     }
 
-    public void Check(List<SimpleSlot> slots)
+    public void Check(List<SimpleSlot> slots, AIData current)
     {
         foreach (SimpleSlot slot in Slots)
-            if (!slot.Used) return;
+            if (slot.Current <= 0) return;
+
+        int dice = 0;
+        foreach (SimpleSlot slot in Slots)
+            dice += slot.Current;
+        current.AIValue += Ability.GetAIValue(dice, current);
 
         Uses -= 1;
         if (Uses > 0)
         {
             foreach (SimpleSlot slot in Slots)
-                slot.Used = false;
+                slot.Current = -1;
 
             slots.AddRange(Slots);
         }
@@ -204,5 +216,34 @@ public class DieToSlot
     public DieToSlot(RolledDie die, IDie slot) {
         Die = die;
         Slot = slot;
+    }
+}
+
+public class AIData
+{
+    public float AIValue { get; set; }
+    public Character User { get; set; }
+    public int UserHP { get; set; }
+    public Character Target { get; set; }
+    public int TargetHP { get; set; }
+
+    public AIData()
+    {
+        AIValue = float.MinValue;
+    }
+    public AIData(Character user, Character target)
+    {
+        User = user;
+        UserHP = user.Missing;
+        Target = target;
+        TargetHP = target.Missing;
+    }
+
+    public void FinalCheck()
+    {
+        if (UserHP < 0)
+            AIValue -= 10000;
+        if (TargetHP < 0)
+            AIValue += 1000;
     }
 }

@@ -11,6 +11,14 @@ public class BattleManager : MonoBehaviour
     [SerializeField] TraitTooltip tooltip;
 
     public bool PlayerTurn { get; private set; }
+
+    public Character Other(Character current)
+    {
+        if (current == opponent)
+            return player;
+        else
+            return opponent;
+    }
     
     public void StartBattle(CharacterData oData, List<AbilityData> pAbis)
     {
@@ -85,14 +93,21 @@ public class BattleManager : MonoBehaviour
         else
             target = opponent;
 
+        int total = CalculateDamages(amount, user, target, ignoreTraits);
+
+        target.InflictDamage(total);
+        CheckBattleStatus();
+    }
+
+    public int CalculateDamages(int amount, Character user, Character target, bool ignoreTraits)
+    {
         if (!ignoreTraits)
         {
             user.Traits.OnAttack(ref amount, user, target);
             target.Traits.OnDefense(ref amount, target, user);
         }
 
-        target.InflictDamage(amount);
-        CheckBattleStatus();
+        return amount;
     }
 
     public void AddTrait(Trait trait, int amount, bool targetsUser)

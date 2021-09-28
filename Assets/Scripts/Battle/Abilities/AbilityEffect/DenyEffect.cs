@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DenyEffect : AbilityEffect
 {
+    protected override float AIValue { get { return 8f; } }
+
     public DenyEffect() { }
     public DenyEffect(int bonus, bool usesDice, float mult, bool targetsUser)
         : base(bonus, usesDice, mult, targetsUser)

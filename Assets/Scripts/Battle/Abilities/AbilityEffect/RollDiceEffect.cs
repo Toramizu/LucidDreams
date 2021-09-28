@@ -7,6 +7,8 @@ public class RollDiceEffect : AbilityEffect
     [SerializeField] ConditionData condition;
     [SerializeField] int amount;
 
+    protected override float AIValue { get { return 8f; } }
+
     public RollDiceEffect() { }
     public RollDiceEffect(int bonus, bool usesDice, float mult, bool targetsUser)
         : base(bonus, usesDice, mult, targetsUser)

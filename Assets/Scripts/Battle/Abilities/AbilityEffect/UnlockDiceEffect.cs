@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UnlockDiceEffect : AbilityEffect
 {
+    protected override float AIValue { get { return 0f; } }
+
     public UnlockDiceEffect() { }
     public UnlockDiceEffect(int bonus, bool usesDice, float mult, bool targetsUser)
         : base(bonus, usesDice, mult, targetsUser) { }

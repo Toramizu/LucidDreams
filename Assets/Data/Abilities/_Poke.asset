@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93417b2c1c2f1243a5b0d3af9c0940b, type: 3}
   m_Name: _Poke
   m_EditorClassIdentifier: 
-  title: 
-  description: 
+  title: Poke
+  description: Pokes for 1
   conditions:
   - type: 0
     value: 0

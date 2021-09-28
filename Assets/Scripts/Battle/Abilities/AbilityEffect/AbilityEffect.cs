@@ -8,6 +8,8 @@ public abstract class AbilityEffect
     protected bool usesDice;
     protected float multiplier = 1;
 
+    protected abstract float AIValue { get; }
+
     [SerializeField] protected bool targetsUser;
 
     public AbilityEffect() { }
@@ -31,4 +33,8 @@ public abstract class AbilityEffect
 
     public abstract void Play(int dice);
 
+    public virtual float GetAIValue(int dice, AIData current)
+    {
+        return AIValue * Value(dice);
+    }
 }

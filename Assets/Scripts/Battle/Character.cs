@@ -16,6 +16,7 @@ public class Character : MonoBehaviour
     public int Arousal { get; set; }
     public int MaxArousal { get; set; }
     public bool Finished { get { return Arousal >= MaxArousal; } }
+    public int Missing { get { return MaxArousal - Arousal; } }
 
     //public int Level { get; set; }
     //CharacterLevel currentLevel;
@@ -175,7 +176,7 @@ public class Character : MonoBehaviour
         StartCoroutine(AutoMoveDice(toPlace));
         }*/
 
-        List<DieToSlot> next = ai.FindNextAction(abilities, dice.RolledDice);
+        List<DieToSlot> next = ai.FindNextAction(abilities, dice.RolledDice, this, GameManager.Instance.BattleManager.Other(this));
         StartCoroutine(AutoMoveDice(next));
     }
 
