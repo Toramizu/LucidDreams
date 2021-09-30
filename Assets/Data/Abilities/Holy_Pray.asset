@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Holy_Pray
   m_EditorClassIdentifier: 
   title: Pray
-  description: Submit for _
+  description: Submit for _Die _Sub
   conditions:
   - type: 2
     value: 0
@@ -28,4 +28,8 @@ MonoBehaviour:
     multiplier: 1
     stringValue: Sub
     targetsUser: 0
+    condition:
+      type: 0
+      value: 0
+      toggle: 0
   price: 5

@@ -7,10 +7,7 @@ public class DreamData : ScriptableObject
 {
     [SerializeField] string id;
     public string ID { get { return id; } }
-
-    [SerializeField] int dreamSize;
-    public int DreamSize { get { return dreamSize; } }
-
+    
     [SerializeField] int succubiCount;
     public int SuccubiCount { get { return succubiCount; } }
 
@@ -19,15 +16,15 @@ public class DreamData : ScriptableObject
 
     [SerializeField] List<CharacterData> succubi;
     public List<CharacterData> Succubi { get { return succubi; } }
-
-    [SerializeField] List<DreamNodeData> nodes;
-    public List<DreamNodeData> Nodes { get { return nodes; } }
-
-    [SerializeField] Coordinate start = new Coordinate(0,0);
-    public Coordinate Start { get { return start; } }
-
+    
     [SerializeField] ShopData shop;
     public ShopData Shop { get { return shop; } }
+
+    [SerializeField] List<DreamMapData> maps;
+    public List<DreamMapData> Maps { get { return maps; } }
+
+    [SerializeField] List<DreamData> nexts;
+    public List<DreamData> Nexts { get { return nexts; } }
 }
 
 [System.Serializable]
@@ -38,16 +35,13 @@ public class DreamNodeData
 
     [SerializeField] NodeContent content;
     public NodeContent Content { get { return content; } }
-
-    [SerializeField] string value;
-    public string Value { get { return value; } }
 }
 
 public enum NodeContent
 {
     None,
     Succubus,
-    Exit,
     Boss,
+    Exit,
     Shop,
 }

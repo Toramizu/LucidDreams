@@ -5,12 +5,10 @@ using UnityEngine;
 public class GiveDiceEffect : AbilityEffect
 {
     [SerializeField] int amount;
-
-    protected override float AIValue { get { return 8f; } }
-
+    
     public GiveDiceEffect() { }
-    public GiveDiceEffect(int bonus, bool usesDice, float mult, bool targetsUser)
-        : base(bonus, usesDice, mult, targetsUser)
+    public GiveDiceEffect(int bonus, bool usesDice, float mult, bool targetsUser, DiceCondition condition)
+        : base(bonus, usesDice, mult, targetsUser, condition)
     { }
 
     public override void Play(int dice)

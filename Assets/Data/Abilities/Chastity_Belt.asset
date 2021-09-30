@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chastity_Belt
   m_EditorClassIdentifier: 
   title: Chastity Belt
-  description: Give _ Chastity
+  description: Give _Die _Cha
   conditions:
   - type: 0
     value: 0
@@ -28,4 +28,8 @@ MonoBehaviour:
     multiplier: 1
     stringValue: Chastity
     targetsUser: 0
+    condition:
+      type: 0
+      value: 0
+      toggle: 0
   price: 5

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Debug_Bukkake
   m_EditorClassIdentifier: 
   title: Bukkake
-  description: Give _ Sticky
+  description: Give _Die _Sti
   conditions:
   - type: 0
     value: 1
@@ -28,4 +28,8 @@ MonoBehaviour:
     multiplier: 1
     stringValue: Sticky
     targetsUser: 0
+    condition:
+      type: 0
+      value: 0
+      toggle: 0
   price: 5

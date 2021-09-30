@@ -18,5 +18,5 @@ MonoBehaviour:
   abilities:
   - {fileID: 11400000, guid: 9a29abacb7ed7e64f84a43c942c56a69, type: 2}
   dice: 3
-  maxArousal: 20
+  maxArousal: 69
   crystals: 2

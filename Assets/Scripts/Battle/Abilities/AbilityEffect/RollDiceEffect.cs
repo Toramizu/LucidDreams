@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class RollDiceEffect : AbilityEffect
 {
-    [SerializeField] ConditionData condition;
+    [SerializeField] ConditionData rollCondition;
     [SerializeField] int amount;
 
-    protected override float AIValue { get { return 8f; } }
-
     public RollDiceEffect() { }
-    public RollDiceEffect(int bonus, bool usesDice, float mult, bool targetsUser)
-        : base(bonus, usesDice, mult, targetsUser)
+    public RollDiceEffect(int bonus, bool usesDice, float mult, bool targetsUser, DiceCondition condition)
+        : base(bonus, usesDice, mult, targetsUser, condition)
     { }
 
     public override void Play(int dice)
     {
-        GameManager.Instance.BattleManager.Roll(Value(dice), false, condition.ToCondition());
+        GameManager.Instance.BattleManager.Roll(Value(dice), false, rollCondition.ToCondition());
     }
 }

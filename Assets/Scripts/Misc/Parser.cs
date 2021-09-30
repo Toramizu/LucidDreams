@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Parser : MonoBehaviour
 {
-    [SerializeField] string dieSymbol = "▢";
-    [SerializeField] string dieReplacedSymbol = "_";
     [SerializeField] List<ParserItem> symbols;
 
     public string ParseDescription(string description)

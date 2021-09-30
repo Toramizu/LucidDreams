@@ -7,8 +7,8 @@ public class DenyEffect : AbilityEffect
     protected override float AIValue { get { return 8f; } }
 
     public DenyEffect() { }
-    public DenyEffect(int bonus, bool usesDice, float mult, bool targetsUser)
-        : base(bonus, usesDice, mult, targetsUser)
+    public DenyEffect(int bonus, bool usesDice, float mult, bool targetsUser, DiceCondition condition)
+        : base(bonus, usesDice, mult, targetsUser, condition)
     { }
 
     public override void Play(int dice)

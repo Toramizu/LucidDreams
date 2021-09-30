@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Debug_Bondage
   m_EditorClassIdentifier: 
   title: Bondage
-  description: Rope in _ Bondage
+  description: Rope in _Die _Bon
   conditions:
   - type: 0
     value: 0
@@ -28,4 +28,8 @@ MonoBehaviour:
     multiplier: 1
     stringValue: Bondage
     targetsUser: 0
+    condition:
+      type: 0
+      value: 0
+      toggle: 0
   price: 5

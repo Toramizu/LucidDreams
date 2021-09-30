@@ -84,29 +84,31 @@ public class EffectData
 
     [SerializeField] bool targetsUser;
     public bool TargetsUser { get { return targetsUser; } }
+    [SerializeField] ConditionData condition;
+    public ConditionData Condition { get { return condition; } }
 
     public AbilityEffect ToEffect()
     {
         switch (effect)
         {
             case EffectsEnum.Trait:
-                return new TraitEffect(stringValue, bonus, usesDice, multiplier, targetsUser);
+                return new TraitEffect(stringValue, bonus, usesDice, multiplier, targetsUser, condition.ToCondition());
 
             case EffectsEnum.Roll:
-                return new RollDiceEffect(bonus, usesDice, multiplier, targetsUser);
+                return new RollDiceEffect(bonus, usesDice, multiplier, targetsUser, condition.ToCondition());
 
             case EffectsEnum.Give:
-                return new GiveDiceEffect(bonus, usesDice, multiplier, targetsUser);
+                return new GiveDiceEffect(bonus, usesDice, multiplier, targetsUser, condition.ToCondition());
 
             case EffectsEnum.Deny:
-                return new DenyEffect(bonus, usesDice, multiplier, targetsUser);
+                return new DenyEffect(bonus, usesDice, multiplier, targetsUser, condition.ToCondition());
 
             case EffectsEnum.Unlock:
-                return new UnlockDiceEffect(bonus, usesDice, multiplier, targetsUser);
+                return new UnlockDiceEffect(bonus, usesDice, multiplier, targetsUser, condition.ToCondition());
 
             case EffectsEnum.Damage:
             default:
-                return new DamageEffect(bonus, usesDice, multiplier, targetsUser);
+                return new DamageEffect(bonus, usesDice, multiplier, targetsUser, condition.ToCondition());
         }
     }
 }

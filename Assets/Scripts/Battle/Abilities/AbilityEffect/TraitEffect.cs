@@ -9,8 +9,8 @@ public class TraitEffect : AbilityEffect
     protected override float AIValue { get { return trait.AIValue; } }
 
     public TraitEffect() { }
-    public TraitEffect(string trait, int bonus, bool usesDice, float mult, bool targetsUser)
-        : base(bonus, usesDice, mult, targetsUser)
+    public TraitEffect(string trait, int bonus, bool usesDice, float mult, bool targetsUser, DiceCondition condition)
+        : base(bonus, usesDice, mult, targetsUser, condition)
     {
         this.trait = GameManager.Instance.Assets.Traits[trait];
     }
@@ -22,6 +22,9 @@ public class TraitEffect : AbilityEffect
 
     public override float GetAIValue(int dice, AIData current)
     {
+        if (condition != null && !condition.Check(dice))
+            return 0f;
+
         Character target;
         if (targetsUser)
             target = current.User;

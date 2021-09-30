@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Dominant", menuName = "Data/Trait/Dominant")]
+[CreateAssetMenu(fileName = "Dominant", menuName = "Data/Trait/Dominant", order = 5)]
 public class DomTrait : Trait
 {
     public override void OnAttack(ref int damages, Character current, Character other)

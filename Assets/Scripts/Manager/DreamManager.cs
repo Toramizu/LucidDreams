@@ -41,10 +41,15 @@ public class DreamManager : MonoBehaviour
     {
         Open();
         GameManager.Instance.PlayerManager.SetPlayer(cData);
-        ClearDream();
+
+        ContinueDream(data);
+
+        playerToken.SetCharacter(cData);
+        /*ClearDream();
+        DreamMapData map = data.Maps[Random.Range(0, data.Maps.Count)];
 
         Dictionary<NodeContent, List<DreamNode>> nodeEvents = new Dictionary<NodeContent, List<DreamNode>>();
-        foreach (DreamNodeData nData in data.Nodes)
+        foreach (DreamNodeData nData in map.Nodes)
         {
             grid.SetNode(nData);
 
@@ -55,10 +60,34 @@ public class DreamManager : MonoBehaviour
 
         FillNodes(data, nodeEvents);
 
-        currentNode = grid[data.Start];
-        //playerToken = Instantiate(tokenPrefab, transform);
+        currentNode = grid[map.Start];
         playerToken.SetCharacter(cData);
         currentNode.PlacePlayer(playerToken);
+
+        crystals.text = "0";
+        CanMove = true;*/
+    }
+
+    public void ContinueDream(DreamData data)
+    {
+        ClearDream();
+        DreamMapData map = data.Maps[Random.Range(0, data.Maps.Count)];
+
+        Dictionary<NodeContent, List<DreamNode>> nodeEvents = new Dictionary<NodeContent, List<DreamNode>>();
+        foreach (DreamNodeData nData in map.Nodes)
+        {
+            grid.SetNode(nData);
+
+            if (!nodeEvents.ContainsKey(nData.Content))
+                nodeEvents.Add(nData.Content, new List<DreamNode>());
+            nodeEvents[nData.Content].Add(grid[nData.Coo]);
+        }
+
+        FillNodes(data, nodeEvents);
+
+        currentNode = grid[map.Start];
+        currentNode.PlacePlayer(playerToken);
+        //playerToken = Instantiate(tokenPrefab, transform);
 
         crystals.text = "0";
         CanMove = true;
@@ -66,6 +95,24 @@ public class DreamManager : MonoBehaviour
 
     void FillNodes(DreamData data, Dictionary<NodeContent, List<DreamNode>> nodeEvents)
     {
+        if (nodeEvents.ContainsKey(NodeContent.Exit) && nodeEvents[NodeContent.Exit].Count > 0)
+        {
+            List<DreamData> nexts = new List<DreamData>(data.Nexts);
+            List<DreamNode> nodes = new List<DreamNode>(nodeEvents[NodeContent.Exit]);
+
+            while(nexts.Count > 0 && nodes.Count > 0)
+            {
+                DreamData next = nexts[Random.Range(0, nexts.Count)];
+                nexts.Remove(next);
+                DreamNode node = nodes[Random.Range(0, nodes.Count)];
+                nodes.Remove(node);
+
+                node.SetExit(next);
+            }
+
+            //nodeEvents[NodeContent.Exit][Random.Range(0, nodeEvents[NodeContent.Exit].Count)].SetExit(data.Boss, data.);
+        }
+
         if (nodeEvents.ContainsKey(NodeContent.Boss) && nodeEvents[NodeContent.Boss].Count > 0)
         {
             nodeEvents[NodeContent.Boss][Random.Range(0, nodeEvents[NodeContent.Boss].Count)].SetCharacter(data.Boss);
@@ -91,10 +138,10 @@ public class DreamManager : MonoBehaviour
             nodeEvents[NodeContent.Shop][Random.Range(0, nodeEvents[NodeContent.Shop].Count)].SetShop(data.Shop);
         }
 
-        if (nodeEvents.ContainsKey(NodeContent.Exit) && nodeEvents[NodeContent.Exit].Count > 0)
+        /*if (nodeEvents.ContainsKey(NodeContent.Exit) && nodeEvents[NodeContent.Exit].Count > 0)
         {
 
-        }
+        }*/
     }
 
     void ClearDream()

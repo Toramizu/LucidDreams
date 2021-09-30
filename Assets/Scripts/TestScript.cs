@@ -17,17 +17,17 @@ public class TestScript : MonoBehaviour
             Test5();
     }
 
-    [SerializeField] CharacterData oData;
+    /*[SerializeField] CharacterData oData;
     [SerializeField] CharacterData pData;
     [SerializeField] DreamData dData;
-    [SerializeField] AbilityData aData;
+    [SerializeField] AbilityData aData;*/
+    [SerializeField] DreamData dd;
+    [SerializeField] DreamMapData dmd;
 
     void Test1()
     {
-        GameManager.Instance.StartDream(dData, pData);
-        //GameManager.Instance.BattleManager.SetAbility(aData, 0);
-        //GameManager.Instance.BattleManager.SetPlayer(pData);
-        //GameManager.Instance.BattleManager.StartBattle(oData);
+        //dmd.nodes = dd.Nodes;
+        //dmd.start = dd.Start;
         Debug.Log("Done");
 
     }
@@ -46,7 +46,7 @@ public class TestScript : MonoBehaviour
 
     void Test5()
     {
-        dData.Nodes.Clear();
+        /*dData.Nodes.Clear();
 
         DreamNodeData dnd1 = new DreamNodeData();
         dnd1.Coo = new Coordinate(0, 0);
@@ -89,6 +89,6 @@ public class TestScript : MonoBehaviour
         DreamNodeData dnd14 = new DreamNodeData();
         dnd14.Coo = new Coordinate(-2, 2);
         dData.Nodes.Add(dnd14);
-        Debug.Log("Done");
+        Debug.Log("Done");*/
     }
 }

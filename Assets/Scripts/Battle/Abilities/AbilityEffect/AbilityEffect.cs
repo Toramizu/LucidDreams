@@ -8,16 +8,19 @@ public abstract class AbilityEffect
     protected bool usesDice;
     protected float multiplier = 1;
 
-    protected abstract float AIValue { get; }
+    protected DiceCondition condition;
+
+    protected virtual float AIValue { get { return 0f; } }
 
     [SerializeField] protected bool targetsUser;
 
     public AbilityEffect() { }
-    public AbilityEffect(int bonus, bool usesDice, float mult, bool targetsUser) {
+    public AbilityEffect(int bonus, bool usesDice, float mult, bool targetsUser, DiceCondition condition) {
         this.bonus = bonus;
         this.usesDice = usesDice;
         this.multiplier = mult;
         this.targetsUser = targetsUser;
+        this.condition = condition;
     }
 
     protected int Value(int dice)
@@ -31,10 +34,19 @@ public abstract class AbilityEffect
         return amount;
     }
 
+    public void CheckAndPlay(int dice)
+    {
+        if (condition == null || condition.Check(dice))
+            Play(dice);
+    }
+
     public abstract void Play(int dice);
 
     public virtual float GetAIValue(int dice, AIData current)
     {
-        return AIValue * Value(dice);
+        if (condition == null || condition.Check(dice))
+            return AIValue * Value(dice);
+        else
+            return 0f;
     }
 }

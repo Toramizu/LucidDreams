@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Holy_HolyWater
   m_EditorClassIdentifier: 
   title: Holy Water
-  description: Sprays Holy Water and 2 Sticky
+  description: Sprays Holy Water and 2 _Sti
   conditions:
   - type: 1
     value: 1
@@ -28,4 +28,8 @@ MonoBehaviour:
     multiplier: 0
     stringValue: Sticky
     targetsUser: 0
+    condition:
+      type: 0
+      value: 0
+      toggle: 0
   price: 5

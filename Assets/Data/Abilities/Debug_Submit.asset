@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Debug_Submit
   m_EditorClassIdentifier: 
   title: Endure
-  description: Gain _ Sub
+  description: Gain _Die _Sub
   conditions:
   - type: 0
     value: 1
@@ -28,4 +28,8 @@ MonoBehaviour:
     multiplier: 1
     stringValue: Sub
     targetsUser: 1
+    condition:
+      type: 0
+      value: 0
+      toggle: 0
   price: 5

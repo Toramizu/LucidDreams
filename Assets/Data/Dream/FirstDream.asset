@@ -13,84 +13,70 @@ MonoBehaviour:
   m_Name: FirstDream
   m_EditorClassIdentifier: 
   id: 
-  dreamSize: 0
   succubiCount: 2
   boss: {fileID: 11400000, guid: 97b8172e36efbd7449f406ad8214115c, type: 2}
   succubi:
-  - {fileID: 11400000, guid: 815f2c4a93e2e2f4cac854da177ada87, type: 2}
-  - {fileID: 11400000, guid: 815f2c4a93e2e2f4cac854da177ada87, type: 2}
+  - {fileID: 11400000, guid: c4f39de445ce8c94ab5fa62ce253f1e2, type: 2}
+  - {fileID: 11400000, guid: 6b7b179b25898c24b8c8030813849184, type: 2}
   - {fileID: 11400000, guid: 02446fdf63476a34baed4400d4d9e7c0, type: 2}
+  - {fileID: 11400000, guid: dc246bbad55ddc147b4ea5ffa3f140ea, type: 2}
   nodes:
   - coo:
       x: 0
       y: 0
     content: 0
-    value: 
   - coo:
       x: 0
       y: 1
     content: 0
-    value: 
   - coo:
       x: 0
       y: 2
     content: 0
-    value: 
   - coo:
       x: 0
       y: 3
     content: 1
-    value: 
   - coo:
       x: 0
       y: -1
     content: 0
-    value: 
   - coo:
       x: 0
       y: -2
     content: 0
-    value: 
   - coo:
       x: 0
       y: -3
     content: 3
-    value: 
   - coo:
       x: 1
       y: 1
     content: 0
-    value: 
   - coo:
       x: 2
       y: 1
     content: 0
-    value: 
   - coo:
       x: 2
       y: 2
     content: 1
-    value: 
   - coo:
       x: -1
       y: 1
     content: 0
-    value: 
   - coo:
       x: -2
       y: 1
     content: 0
-    value: 
   - coo:
       x: -2
       y: 2
     content: 1
-    value: 
   - coo:
       x: -1
       y: -1
     content: 4
-    value: 
   start:
     x: 0
     y: 0
@@ -108,3 +94,7 @@ MonoBehaviour:
     maxAbilities: 2
     arousalMod: 1
     abilityMod: 1
+  maps:
+  - {fileID: 11400000, guid: 4421aa5bfa841184a8032c1a2fddea3f, type: 2}
+  nexts:
+  - {fileID: 11400000}

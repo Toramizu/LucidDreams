@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Alraune_Honey
   m_EditorClassIdentifier: 
   title: Vines
-  description: Tie them up for _ Arousal and 1 Bondage
+  description: Tie them up for _Die and 1 Bondage
   conditions:
   - type: 2
     value: 0
@@ -28,10 +28,18 @@ MonoBehaviour:
     multiplier: 1
     stringValue: 
     targetsUser: 0
+    condition:
+      type: 0
+      value: 0
+      toggle: 0
   - effect: 1
     bonus: 1
     usesDice: 0
     multiplier: 0
     stringValue: Bondage
     targetsUser: 0
+    condition:
+      type: 0
+      value: 0
+      toggle: 0
   price: 5

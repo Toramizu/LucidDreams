@@ -7,8 +7,8 @@ public class DamageEffect : AbilityEffect
     protected override float AIValue { get { return 10f; } }
 
     public DamageEffect() { }
-    public DamageEffect(int bonus, bool usesDice, float mult, bool targetsUser) 
-        : base(bonus, usesDice, mult, targetsUser)
+    public DamageEffect(int bonus, bool usesDice, float mult, bool targetsUser, DiceCondition condition) 
+        : base(bonus, usesDice, mult, targetsUser, condition)
     { }
 
     public override void Play(int dice)
@@ -18,6 +18,9 @@ public class DamageEffect : AbilityEffect
 
     public override float GetAIValue(int dice, AIData current)
     {
+        if (condition != null && !condition.Check(dice))
+            return 0f;
+
         Character user = current.User;
 
 

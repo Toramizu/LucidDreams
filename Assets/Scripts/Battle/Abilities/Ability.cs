@@ -118,7 +118,10 @@ public class Ability : Hidable
     public void ResetAbility()
     {
         Show();
-        Uses = Data.Uses;
+        if (Data.Uses == -1)
+            Uses = int.MaxValue;
+        else
+            Uses = Data.Uses;
         if (link != null)
         {
             link.Value = 0;
@@ -175,7 +178,7 @@ public class Ability : Hidable
         }
 
         foreach (AbilityEffect effect in effects)
-            effect.Play(total);
+            effect.CheckAndPlay(total);
         
         Uses--;
         if (Uses <= 0)

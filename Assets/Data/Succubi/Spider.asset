@@ -15,7 +15,10 @@ MonoBehaviour:
   sName: Spider
   image: {fileID: 21300000, guid: a4d7df7a444ef5248a2a3329ff37fcd0, type: 3}
   source: http://www.hentai-foundry.com/pictures/user/KnightGawain/455756/Commission---Malcanthet
-  abilities: []
-  dice: 0
-  maxArousal: 0
-  crystals: 0
+  abilities:
+  - {fileID: 11400000, guid: aa860c130769a8340a8151b67c28472b, type: 2}
+  - {fileID: 11400000, guid: ba6ceb27438170746a3c9deff163e585, type: 2}
+  - {fileID: 11400000, guid: 7c25d53b74d7af448b3e1aaad513cbdd, type: 2}
+  dice: 3
+  maxArousal: 13
+  crystals: 3

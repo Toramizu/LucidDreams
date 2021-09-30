@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Debug_Dodge
   m_EditorClassIdentifier: 
   title: Dodge
-  description: Gain _ Dodge
+  description: Gain _Die _Dod
   conditions:
   - type: 0
     value: 1
@@ -28,4 +28,8 @@ MonoBehaviour:
     multiplier: 1
     stringValue: Dodge
     targetsUser: 1
+    condition:
+      type: 0
+      value: 0
+      toggle: 0
   price: 5

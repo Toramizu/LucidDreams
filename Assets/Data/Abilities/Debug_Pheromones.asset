@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Debug_Pheromones
   m_EditorClassIdentifier: 
   title: Pheromones
-  description: Gain _ Pheromones
+  description: Gain _Die _Phe
   conditions:
   - type: 0
     value: 0
@@ -28,4 +28,8 @@ MonoBehaviour:
     multiplier: 1
     stringValue: Pheromones
     targetsUser: 1
+    condition:
+      type: 0
+      value: 0
+      toggle: 0
   price: 5

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 274597a07e4e4d149be535577a7e0fc7
+guid: 5020631c1356d0d4bbc55b3ffb4109d9
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -26,6 +26,9 @@ TextureImporter:
   - first:
       213: -1370661682523340017
     second: spritesheet_7
+  - first:
+      213: -8276262488406422588
+    second: spritesheet_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -123,7 +126,7 @@ TextureImporter:
         width: 514
         height: 514
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,12 +142,12 @@ TextureImporter:
       name: spritesheet_1
       rect:
         serializedVersion: 2
-        x: 517
+        x: 514
         y: 1028
         width: 514
         height: 514
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,7 +168,7 @@ TextureImporter:
         width: 514
         height: 514
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -185,7 +188,7 @@ TextureImporter:
         y: 514
         width: 514
         height: 514
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -206,7 +209,7 @@ TextureImporter:
         y: 514
         width: 514
         height: 514
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -228,7 +231,7 @@ TextureImporter:
         width: 514
         height: 514
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -248,7 +251,7 @@ TextureImporter:
         y: 0
         width: 514
         height: 514
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -265,11 +268,11 @@ TextureImporter:
       name: spritesheet_7
       rect:
         serializedVersion: 2
-        x: 512
+        x: 514
         y: 0
         width: 514
         height: 514
-      alignment: 6
+      alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -282,10 +285,31 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 1028
+        y: 0
+        width: 514
+        height: 514
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cb05a6cd1fc42d80800000000000000
+      internalID: -8276262488406422588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f8131b56d08e7764dbea9d7f67722fe1
+    spriteID: 70965b46f36e5d74fb93f593a13977f0
     internalID: 0
     vertices: []
     indices: 
