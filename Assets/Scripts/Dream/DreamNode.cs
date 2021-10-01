@@ -13,23 +13,17 @@ public class DreamNode : MonoBehaviour
 
     [SerializeField] Image image;
     [SerializeField] Image nextMapImage;
-    /*NodeContent type;
-    readonly Dictionary<NodeContent, Color> colors = new Dictionary<NodeContent, Color>()
-    {
-        {NodeContent.None, Color.white},
-        {NodeContent.Succubus, Color.red},
-        {NodeContent.Exit, Color.black},
-        {NodeContent.Shop, Color.cyan},
-    };*/
 
-    //DreamToken currentToken;
+
+    protected GridManager manager;
 
     CharacterData cData;
     ShopData sData;
     DreamData next;
 
-    public void Init(Coordinate coo, DreamManager manager)
+    public void Init(Coordinate coo, GridManager manager)
     {
+        this.manager = manager;
         this.coo = coo;
         rightToken.gameObject.SetActive(false);
         rightToken.transform.position = transform.position + rightPos;
@@ -48,14 +42,15 @@ public class DreamNode : MonoBehaviour
         nextMapImage.gameObject.SetActive(false);
     }
 
-    public void OnClick()
+    public virtual void OnClick()
     {
-        GameManager.Instance.DreamManager.Clicked(this);
+        manager.Clicked(this);
+        //GameManager.Instance.DreamManager.Clicked(this);
     }
 
     public void OnEnter()
     {
-        Debug.Log(coo);
+        //Debug.Log(coo);
         if(cData != null)
         {
             if (cData != null)

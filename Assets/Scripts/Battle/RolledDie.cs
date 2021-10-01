@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class RolledDie : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class RolledDie : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] Image image;
     [SerializeField] List<Sprite> dieFaces;
@@ -91,10 +91,6 @@ public class RolledDie : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     }
 
     #region Drag & Drop
-    public void OnPointerDown(PointerEventData eventData)
-    {
-    }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (GameManager.Instance.BattleManager.PlayerTurn && !locked)

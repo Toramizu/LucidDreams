@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DreamManager : MonoBehaviour
+public class DreamManager : MonoBehaviour, GridManager
 {
     [SerializeField] DreamGrid grid;
     //[SerializeField] DreamToken tokenPrefab;
