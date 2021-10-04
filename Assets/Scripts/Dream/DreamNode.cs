@@ -11,9 +11,10 @@ public class DreamNode : MonoBehaviour
     [SerializeField] Vector3 leftPos;
     [SerializeField] Vector3 rightPos;
 
-    [SerializeField] Image image;
+    [SerializeField] protected Image image;
     [SerializeField] Image nextMapImage;
 
+    public List<NodeLink> CellLinks { get; set; } = new List<NodeLink>();
 
     protected GridManager manager;
 
@@ -21,10 +22,25 @@ public class DreamNode : MonoBehaviour
     ShopData sData;
     DreamData next;
 
+    NodeContent type;
+    public NodeContent Type {
+        get { return type; }
+        set { SetType(value); }
+    }
+
     public void Init(Coordinate coo, GridManager manager)
     {
         this.manager = manager;
         this.coo = coo;
+        rightToken.gameObject.SetActive(false);
+        rightToken.transform.position = transform.position + rightPos;
+        nextMapImage.gameObject.SetActive(false);
+    }
+
+    public void Init(Vector3 position, GridManager manager)
+    {
+        this.manager = manager;
+        transform.localPosition = position;
         rightToken.gameObject.SetActive(false);
         rightToken.transform.position = transform.position + rightPos;
         nextMapImage.gameObject.SetActive(false);
@@ -67,38 +83,6 @@ public class DreamNode : MonoBehaviour
         {
             GameManager.Instance.DreamManager.ContinueDream(next);
         }
-
-        /*switch (type)
-        {
-            case NodeContent.Shop:
-                GameManager.Instance.DreamManager.OpenShop(sData);
-                break;
-
-            case NodeContent.Succubus:
-            case NodeContent.Boss:
-                if (cData != null)
-                {
-                    GameManager.Instance.StartBattle(cData);
-                    rightToken.transform.localScale = new Vector3(.5f, .5f, .5f);
-                    cData = null;
-                }
-                break;
-
-            case NodeContent.Exit:
-                Debug.Log("Next map");
-                GameManager.Instance.DreamManager.ContinueDream(next);
-                break;
-        }*/
-
-        /*if (cData != null)
-        {
-            GameManager.Instance.StartBattle(cData);
-            rightToken.transform.localScale = new Vector3(.5f, .5f, .5f);
-            cData = null;
-        } else if(sData != null)
-        {
-            GameManager.Instance.DreamManager.OpenShop(sData);
-        }*/
     }
 
     public void PlacePlayer(DreamToken token)
@@ -106,13 +90,16 @@ public class DreamNode : MonoBehaviour
         token.transform.position = transform.position + leftPos;
     }
 
-    public void SetCharacter(CharacterData data)
+    public void SetCharacter(CharacterData data, bool boss)
     {
         cData = data;
         rightToken.gameObject.SetActive(true);
         rightToken.SetCharacter(data);
         rightToken.transform.localScale = new Vector3(1f, 1f, 1f);
-        image.color = Color.red;
+        if(boss)
+            SetType(NodeContent.Boss);
+        else
+            SetType(NodeContent.Succubus);
     }
 
     public void SetShop(ShopData data)
@@ -120,14 +107,51 @@ public class DreamNode : MonoBehaviour
         sData = data;
         rightToken.gameObject.SetActive(true);
         rightToken.SetShop();
-        image.color = Color.cyan;
+        SetType(NodeContent.Shop);
     }
 
     public void SetExit(DreamData next)
     {
         this.next = next;
         nextMapImage.gameObject.SetActive(true);
-        image.color = Color.gray;
+        SetType(NodeContent.Exit);
+    }
+
+    public void SetType(NodeContent type)
+    {
+        this.type = type;
+        SetColor();
+    }
+
+    public void SetColor()
+    {
+        switch (Type)
+        {
+            case NodeContent.None:
+            default:
+                image.color = Color.white;
+                break;
+
+            case NodeContent.Succubus:
+                image.color = Color.magenta;
+                break;
+
+            case NodeContent.Boss:
+                image.color = Color.red;
+                break;
+
+            case NodeContent.Shop:
+                image.color = Color.cyan;
+                break;
+
+            case NodeContent.Start:
+                image.color = Color.green;
+                break;
+
+            case NodeContent.Exit:
+                image.color = Color.gray;
+                break;
+        }
     }
 
     public void MoveTo(DreamToken token)

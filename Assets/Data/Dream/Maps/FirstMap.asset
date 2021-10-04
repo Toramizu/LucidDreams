@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001940ae7d3a74c4284026ebf3690de7, type: 3}
+  m_Name: FirstMap
+  m_EditorClassIdentifier: 
+  id: FirstMap
+  nodes:
+  - coo:
+      x: 0
+      y: 0
+    position: {x: 368.5556, y: -57.915913, z: 0}
+    content: 0
+  - coo:
+      x: 0
+      y: 0
+    position: {x: 122.85193, y: 75.46619, z: 0}
+    content: 0
+  - coo:
+      x: 0
+      y: 0
+    position: {x: -358.02557, y: 219.37845, z: 0}
+    content: 2
+  - coo:
+      x: 0
+      y: 0
+    position: {x: 71.95624, y: -312.39487, z: 0}
+    content: 3
+  - coo:
+      x: 0
+      y: 0
+    position: {x: 259.744, y: 303.61972, z: 0}
+    content: 1
+  - coo:
+      x: 0
+      y: 0
+    position: {x: -472.10226, y: -24.570385, z: 0}
+    content: 0
+  - coo:
+      x: 0
+      y: 0
+    position: {x: -107.05669, y: 254.47891, z: 0}
+    content: 0
+  - coo:
+      x: 0
+      y: 0
+    position: {x: 282.55936, y: 61.42597, z: 0}
+    content: 0
+  - coo:
+      x: 0
+      y: 0
+    position: {x: 214.1133, y: -122.85194, z: 0}
+    content: 0
+  - coo:
+      x: 0
+      y: 0
+    position: {x: 61.42597, y: 191.29794, z: 0}
+    content: 1
+  - coo:
+      x: 0
+      y: 0
+    position: {x: -22.815357, y: -157.95244, z: 0}
+    content: 0
+  - coo:
+      x: 0
+      y: 0
+    position: {x: -238.68361, y: -80.73133, z: 0}
+    content: 0
+  - coo:
+      x: 0
+      y: 0
+    position: {x: -184.27777, y: 85.99635, z: 0}
+    content: 1
+  - coo:
+      x: 0
+      y: 0
+    position: {x: -440.51187, y: -189.54292, z: 0}
+    content: 4

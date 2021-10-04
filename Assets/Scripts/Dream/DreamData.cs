@@ -33,8 +33,17 @@ public class DreamNodeData
     [SerializeField] Coordinate coo;
     public Coordinate Coo { get { return coo; } set { coo = value; } }
 
+    [SerializeField] Vector3 position;
+    public Vector3 Position { get { return position; } set { position = value; } }
+
     [SerializeField] NodeContent content;
-    public NodeContent Content { get { return content; } }
+    public NodeContent Content { get { return content; } set { content = value; } }
+
+    public DreamNodeData() { }
+    public DreamNodeData(NodeContent content, Vector3 position) {
+        this.content = content;
+        this.position = position;
+    }
 }
 
 public enum NodeContent
@@ -42,6 +51,7 @@ public enum NodeContent
     None,
     Succubus,
     Boss,
+    Start,
     Exit,
     Shop,
 }

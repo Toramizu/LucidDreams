@@ -9,7 +9,10 @@ public class GameAssets : MonoBehaviour
 
     [SerializeField] List<DreamData> dreams;
     public Dictionary<string, DreamData> Dreams { get; private set; }
-    
+
+    [SerializeField] List<DreamMapData> maps;
+    public Dictionary<string, DreamMapData> Maps { get; private set; }
+
     [SerializeField] List<CharacterData> succubi;
     public Dictionary<string, CharacterData> Succubi { get; private set; }
 
@@ -25,6 +28,10 @@ public class GameAssets : MonoBehaviour
         Dreams = new Dictionary<string, DreamData>();
         foreach (DreamData dream in dreams)
             Dreams.Add(dream.ID, dream);
+
+        Maps = new Dictionary<string, DreamMapData>();
+        foreach (DreamMapData map in maps)
+            Maps.Add(map.ID, map);
 
         Succubi = new Dictionary<string, CharacterData>();
         foreach (CharacterData succu in succubi)

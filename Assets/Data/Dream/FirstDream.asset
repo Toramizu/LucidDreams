@@ -20,66 +20,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6b7b179b25898c24b8c8030813849184, type: 2}
   - {fileID: 11400000, guid: 02446fdf63476a34baed4400d4d9e7c0, type: 2}
   - {fileID: 11400000, guid: dc246bbad55ddc147b4ea5ffa3f140ea, type: 2}
-  nodes:
-  - coo:
-      x: 0
-      y: 0
-    content: 0
-  - coo:
-      x: 0
-      y: 1
-    content: 0
-  - coo:
-      x: 0
-      y: 2
-    content: 0
-  - coo:
-      x: 0
-      y: 3
-    content: 1
-  - coo:
-      x: 0
-      y: -1
-    content: 0
-  - coo:
-      x: 0
-      y: -2
-    content: 0
-  - coo:
-      x: 0
-      y: -3
-    content: 3
-  - coo:
-      x: 1
-      y: 1
-    content: 0
-  - coo:
-      x: 2
-      y: 1
-    content: 0
-  - coo:
-      x: 2
-      y: 2
-    content: 1
-  - coo:
-      x: -1
-      y: 1
-    content: 0
-  - coo:
-      x: -2
-      y: 1
-    content: 0
-  - coo:
-      x: -2
-      y: 2
-    content: 1
-  - coo:
-      x: -1
-      y: -1
-    content: 4
-  start:
-    x: 0
-    y: 0
   shop:
     abilities:
     - {fileID: 11400000, guid: 9a29abacb7ed7e64f84a43c942c56a69, type: 2}
@@ -95,6 +35,6 @@ MonoBehaviour:
     arousalMod: 1
     abilityMod: 1
   maps:
-  - {fileID: 11400000, guid: 4421aa5bfa841184a8032c1a2fddea3f, type: 2}
+  - {fileID: 11400000, guid: 3ece0b81938be334e95b6422b4b51581, type: 2}
   nexts:
   - {fileID: 11400000}

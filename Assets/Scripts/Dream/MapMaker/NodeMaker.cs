@@ -22,12 +22,17 @@ public class NodeMaker : DreamNode, IBeginDragHandler, IDragHandler, IEndDragHan
     private void Update()
     {
         if (held && Input.GetKeyDown(KeyCode.Delete))
-            Delete();
+            maker.Delete(this);
     }
 
     void Delete()
     {
 
+    }
+
+    public void ColorSelect()
+    {
+        image.color = Color.yellow;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -45,5 +50,7 @@ public class NodeMaker : DreamNode, IBeginDragHandler, IDragHandler, IEndDragHan
     {
         held = false;
         canvasGroup.blocksRaycasts = true;
+        foreach (NodeLink link in CellLinks)
+            link.SetAllDirty();
     }
 }

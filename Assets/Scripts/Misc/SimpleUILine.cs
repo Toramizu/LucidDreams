@@ -6,7 +6,7 @@ using UnityEngine.UI;
 // Hacked from : https://www.youtube.com/watch?v=--LB7URk60A
 public class SimpleUILine : Graphic
 {
-    [SerializeField] List<Transform> points;
+    [SerializeField] protected List<Transform> points;
 
     [SerializeField] float thickness = 10f;
 

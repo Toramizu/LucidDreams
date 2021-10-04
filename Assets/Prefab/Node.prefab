@@ -172,7 +172,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2715068787849774437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -240,6 +240,10 @@ PrefabInstance:
     - target: {fileID: 3976741065700604034, guid: 893e6996b740d924aae47985b791e07a, type: 3}
       propertyPath: m_Name
       value: Dream Token
+      objectReference: {fileID: 0}
+    - target: {fileID: 3976741065700604034, guid: 893e6996b740d924aae47985b791e07a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3976741065700604035, guid: 893e6996b740d924aae47985b791e07a, type: 3}
       propertyPath: m_Pivot.x

@@ -6,11 +6,8 @@ using UnityEngine;
 public class DreamMapData : ScriptableObject
 {
     [SerializeField] string id;
-    public string ID { get { return id; } }
+    public string ID { get { return id; } set { id = value; } }
 
-    [SerializeField] public List<DreamNodeData> nodes;
-    public List<DreamNodeData> Nodes { get { return nodes; } }
-
-    [SerializeField] public Coordinate start = new Coordinate(0, 0);
-    public Coordinate Start { get { return start; } }
+    [SerializeField] List<DreamNodeData> nodes;
+    public List<DreamNodeData> Nodes { get { return nodes; } set { nodes = value; } }
 }
