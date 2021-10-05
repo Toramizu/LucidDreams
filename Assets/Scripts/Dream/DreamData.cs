@@ -39,6 +39,9 @@ public class DreamNodeData
     [SerializeField] NodeContent content;
     public NodeContent Content { get { return content; } set { content = value; } }
 
+    [SerializeField] List<int> nodeLinks = new List<int>();
+    public List<int> NodeLinks { get { return nodeLinks; } set { nodeLinks = value; } }
+
     public DreamNodeData() { }
     public DreamNodeData(NodeContent content, Vector3 position) {
         this.content = content;

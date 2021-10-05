@@ -33,7 +33,12 @@ public class MapMaker : MonoBehaviour, GridManager
         if (contentType == NodeContent.None)
             Link(node);
         else if (contentType != null)
-            node.SetType(contentType.Value);
+        {
+            if (contentType != node.Type)
+                node.SetType(contentType.Value);
+            else
+                node.SetType(NodeContent.None);
+        }
 
         //Debug.Log(node.Coordinate);
     }
@@ -51,14 +56,24 @@ public class MapMaker : MonoBehaviour, GridManager
         {
             if (selected)
             {
-                bool needsLinking = true;
+                NodeLink alreadyPresent = null;
+                //bool needsLinking = true;
                 foreach (NodeLink link in links)
                     if (link.Contains(selected, node))
-                        needsLinking = false;
+                        alreadyPresent = link;
+                        //needsLinking = false;
 
-                if (needsLinking)
+                if (alreadyPresent)
+                {
+                    links.Remove(alreadyPresent);
+                    alreadyPresent.Node1.CellLinks.Remove(alreadyPresent);
+                    alreadyPresent.Node2.CellLinks.Remove(alreadyPresent);
+                    Destroy(alreadyPresent.gameObject);
+                }
+                else
                 {
                     NodeLink link = Instantiate(linePrefab, transform, false);
+                    links.Add(link);
                     link.Node1 = selected;
                     link.Node2 = node;
 
@@ -75,7 +90,10 @@ public class MapMaker : MonoBehaviour, GridManager
     public void Delete(NodeMaker node)
     {
         for(int i = node.CellLinks.Count -1; i >= 0; i--)
+        {
+            links.Remove(node.CellLinks[i]);
             node.CellLinks[i].Delete();
+        }
 
         nodes.Remove(node);
         Destroy(node.gameObject);
@@ -172,11 +190,18 @@ public class MapMaker : MonoBehaviour, GridManager
         data.ID = mapName.text;
         data.Nodes = new List<DreamNodeData>();
 
+        Dictionary<NodeLink, int> linksID = new Dictionary<NodeLink, int>();
+        for (int i = 0; i < links.Count; i++)
+            linksID.Add(links[i], i);
+
         foreach(NodeMaker node in nodes)
         {
             DreamNodeData nData = new DreamNodeData(node.Type, node.transform.localPosition);
             data.Nodes.Add(nData);
+            foreach (NodeLink link in node.CellLinks)
+                nData.NodeLinks.Add(linksID[link]);
         }
+
 
         AssetDatabase.CreateAsset(data, "Assets/Data/Dream/Maps/" + data.ID + ".asset");
         AssetDatabase.SaveAssets();
@@ -191,15 +216,38 @@ public class MapMaker : MonoBehaviour, GridManager
             Debug.Log("Loading " + map + "...");
             Clear();
             DreamMapData data = GameManager.Instance.Assets.Maps[map];
+            Dictionary<int, NodeLink> links = new Dictionary<int, NodeLink>();
 
-            foreach(DreamNodeData node in data.Nodes)
+            foreach (DreamNodeData node in data.Nodes)
             {
                 NodeMaker newNode = Instantiate(nodePrefab, transform, false);
                 nodes.Add(newNode);
                 newNode.Init(node.Position, this);
                 newNode.SetType(node.Content);
                 newNode.gameObject.SetActive(true);
+
+                foreach (int link in node.NodeLinks) {
+                    if (links.ContainsKey(link))
+                    {
+                        links[link].Node2 = newNode;
+                        newNode.CellLinks.Add(links[link]);
+                    }
+                    else
+                    {
+                        NodeLink newLink = Instantiate(linePrefab, transform, false);
+                        newLink.Node1 = newNode;
+                        newNode.CellLinks.Add(newLink);
+                        links.Add(link, newLink);
+                        this.links.Add(newLink);
+                    }
+                }
             }
+
+            int i = 0;
+            foreach (NodeLink link in this.links)
+                link.transform.SetSiblingIndex(i++);
+            foreach (NodeMaker node in nodes)
+                node.transform.SetSiblingIndex(i++);
         }
         else
             Debug.Log("Map " + map + " not found...");

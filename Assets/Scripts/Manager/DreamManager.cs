@@ -49,18 +49,18 @@ public class DreamManager : MonoBehaviour, GridManager
     {
         DreamMapData map = data.Maps[Random.Range(0, data.Maps.Count)];
 
-        nodePanel.AddNodes(map.Nodes, this);
-        FillNodes(map, data);
+        Dictionary<NodeContent, List<DreamNode>> nodes = nodePanel.AddNodes(map.Nodes, this);
+        FillNodes(nodes, map, data);
 
         crystals.text = "0";
         CanMove = true;
     }
 
-    void FillNodes(DreamMapData map, DreamData data)
+    void FillNodes(Dictionary<NodeContent, List<DreamNode>> nodes, DreamMapData map, DreamData data)
     {
-        if (nodePanel.Nodes.ContainsKey(NodeContent.Start))
+        if (nodes.ContainsKey(NodeContent.Start))
         {
-            List<DreamNode> starts = nodePanel.Nodes[NodeContent.Start];
+            List<DreamNode> starts = nodes[NodeContent.Start];
             DreamNode start = starts[Random.Range(0, starts.Count)];
             start.SetType(NodeContent.Start);
             currentNode = start;
@@ -69,9 +69,9 @@ public class DreamManager : MonoBehaviour, GridManager
         else
             Debug.LogError("No start found for map " + map.ID);
 
-        if (nodePanel.Nodes.ContainsKey(NodeContent.Exit))
+        if (nodes.ContainsKey(NodeContent.Exit))
         {
-            List<DreamNode> exits = new List<DreamNode>(nodePanel.Nodes[NodeContent.Exit]);
+            List<DreamNode> exits = new List<DreamNode>(nodes[NodeContent.Exit]);
             List<DreamData> nexts = new List<DreamData>(data.Nexts);
 
             while (nexts.Count > 0 && exits.Count > 0)
@@ -85,12 +85,12 @@ public class DreamManager : MonoBehaviour, GridManager
             }
         }
 
-        if (nodePanel.Nodes.ContainsKey(NodeContent.Succubus))
+        if (nodes.ContainsKey(NodeContent.Succubus))
         {
-            List<DreamNode> succubi = new List<DreamNode>(nodePanel.Nodes[NodeContent.Succubus]);
+            List<DreamNode> succubi = new List<DreamNode>(nodes[NodeContent.Succubus]);
             List<CharacterData> opponents = new List<CharacterData>(data.Succubi);
 
-            for (int i = 0; i < data.SuccubiCount && opponents.Count > 0; i++)
+            for (int i = 0; i < data.SuccubiCount && succubi.Count > 0 && opponents.Count > 0; i++)
             {
                 CharacterData rSucc = opponents[Random.Range(0, opponents.Count)];
                 opponents.Remove(rSucc);
@@ -100,15 +100,15 @@ public class DreamManager : MonoBehaviour, GridManager
             }
         }
 
-        if (nodePanel.Nodes.ContainsKey(NodeContent.Boss))
+        if (nodes.ContainsKey(NodeContent.Boss))
         {
-            List<DreamNode> bosses = nodePanel.Nodes[NodeContent.Boss];
+            List<DreamNode> bosses = nodes[NodeContent.Boss];
             bosses[Random.Range(0, bosses.Count)].SetCharacter(data.Boss, true);
         }
 
-        if (nodePanel.Nodes.ContainsKey(NodeContent.Shop))
+        if (nodes.ContainsKey(NodeContent.Shop))
         {
-            List<DreamNode> shops = nodePanel.Nodes[NodeContent.Shop];
+            List<DreamNode> shops = nodes[NodeContent.Shop];
             shops[Random.Range(0, shops.Count)].SetShop(data.Shop);
         }
     }
@@ -207,7 +207,7 @@ public class DreamManager : MonoBehaviour, GridManager
 
     public void Clicked(DreamNode node)
     {
-        if (CanMove && grid.AreNeighbour(currentNode, node))
+        if (CanMove)
         {
             Debug.Log("Redo movement");
             currentNode = node;

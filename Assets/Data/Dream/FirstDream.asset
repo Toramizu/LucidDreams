@@ -35,6 +35,6 @@ MonoBehaviour:
     arousalMod: 1
     abilityMod: 1
   maps:
-  - {fileID: 11400000, guid: 3ece0b81938be334e95b6422b4b51581, type: 2}
+  - {fileID: 11400000, guid: 41bdc3ac3776f474d8f69fc4d566b6d6, type: 2}
   nexts:
   - {fileID: 11400000}

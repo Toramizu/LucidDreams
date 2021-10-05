@@ -3523,7 +3523,7 @@ MonoBehaviour:
   dreams: []
   maps:
   - {fileID: 11400000, guid: 4421aa5bfa841184a8032c1a2fddea3f, type: 2}
-  - {fileID: 11400000, guid: 3ece0b81938be334e95b6422b4b51581, type: 2}
+  - {fileID: 11400000, guid: 41bdc3ac3776f474d8f69fc4d566b6d6, type: 2}
   succubi: []
   traits:
   - {fileID: 11400000, guid: 0e02ce4b4c878214faec45bd5e03788a, type: 2}
@@ -15215,6 +15215,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dreamNodePrefab: {fileID: 5219097554708827155, guid: 14dbd19d9493d774fb3f9011cd6ee9b0, type: 3}
+  linkPrefab: {fileID: 540927156427909380, guid: 758b820e7362a45409f474e8f4453881, type: 3}
+  nodes: []
+  links: []
 --- !u!114 &1932013413
 MonoBehaviour:
   m_ObjectHideFlags: 0
