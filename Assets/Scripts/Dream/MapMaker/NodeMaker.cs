@@ -13,6 +13,8 @@ public class NodeMaker : DreamNode, IBeginDragHandler, IDragHandler, IEndDragHan
 
     MapMaker maker { get { return (MapMaker)manager; } }
 
+    public List<NodeLink> CellLinks { get; set; } = new List<NodeLink>();
+
     private void Awake()
     {
         rTransform = GetComponent<RectTransform>();

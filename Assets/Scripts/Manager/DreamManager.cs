@@ -204,19 +204,58 @@ public class DreamManager : MonoBehaviour, GridManager
     {
         grid.Clear();
     }
-
+    
     public void Clicked(DreamNode node)
     {
         if (CanMove)
         {
-            Debug.Log("Redo movement");
+            StartMove(Pathfinder.FindPath(currentNode, node));
+            /*List<PathNode> path = Pathfinder.FindPath(currentNode, node);
             currentNode = node;
-            node.MoveTo(playerToken);
+            node.MoveTo(playerToken);*/
         }
     }
-
     public void OpenShop(ShopData data)
     {
         shop.InitShop(data);
     }
+
+    #region Movement
+    Queue<PathNode> path;
+
+    void StartMove(List<PathNode> path)
+    {
+        if (path == null)
+            currentNode.OnEnter();
+        else
+        {
+            this.path = new Queue<PathNode>(path);
+            CheckAndMove();
+        }
+    }
+
+    void CheckAndMove()
+    {
+        if (path == null || path.Count == 0 || currentNode.PathStop)
+            currentNode.OnEnter();
+        else
+        {
+            currentNode = (DreamNode)path.Dequeue();
+            MoveTo(currentNode);
+        }
+    }
+
+    void MoveTo(DreamNode node)
+    {
+        iTween.MoveTo(playerToken.gameObject, iTween.Hash(
+            "x", node.TokenXPos,
+            "y", node.TokenYPos,
+            "time", .8f,
+            "easeType", iTween.EaseType.easeOutSine,
+            "onComplete", "CheckAndMove",
+            "onCompleteTarget", gameObject
+            ));
+    }
+
+    #endregion
 }

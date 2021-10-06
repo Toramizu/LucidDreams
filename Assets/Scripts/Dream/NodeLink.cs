@@ -48,8 +48,10 @@ public class NodeLink : SimpleUILine
 
     public void Delete()
     {
-        node1.CellLinks.Remove(this);
-        node2.CellLinks.Remove(this);
+        node1.RemoveNeighbour(node2);
+        //node2.RemoveNeighbour(node1);
+        //node1.CellLinks.Remove(this);
+        //node2.CellLinks.Remove(this);
 
         Destroy(gameObject);
     }

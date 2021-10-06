@@ -32,14 +32,17 @@ public class NodePanel : MonoBehaviour
             {
                 if (linksDict.ContainsKey(link))
                 {
-                    linksDict[link].Node2 = node;
-                    node.CellLinks.Add(linksDict[link]);
+                    NodeLink nLink = linksDict[link];
+                    nLink.Node2 = node;
+                    nLink.Node1.AddNeighbour(nLink.Node2);
+                    //nLink.Node1.AddNeighbour(nLink.Node1);
+                    //node.CellLinks.Add(linksDict[link]);
                 }
                 else
                 {
                     NodeLink newLink = Instantiate(linkPrefab, transform, false);
                     newLink.Node1 = node;
-                    node.CellLinks.Add(newLink);
+                    //node.CellLinks.Add(newLink);
                     linksDict.Add(link, newLink);
                     links.Add(newLink);
                 }

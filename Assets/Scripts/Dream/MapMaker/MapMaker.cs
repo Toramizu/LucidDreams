@@ -66,8 +66,8 @@ public class MapMaker : MonoBehaviour, GridManager
                 if (alreadyPresent)
                 {
                     links.Remove(alreadyPresent);
-                    alreadyPresent.Node1.CellLinks.Remove(alreadyPresent);
-                    alreadyPresent.Node2.CellLinks.Remove(alreadyPresent);
+                    ((NodeMaker)alreadyPresent.Node1).CellLinks.Remove(alreadyPresent);
+                    ((NodeMaker)alreadyPresent.Node2).CellLinks.Remove(alreadyPresent);
                     Destroy(alreadyPresent.gameObject);
                 }
                 else
@@ -78,7 +78,7 @@ public class MapMaker : MonoBehaviour, GridManager
                     link.Node2 = node;
 
                     selected.CellLinks.Add(link);
-                    node.CellLinks.Add(link);
+                    ((NodeMaker)node).CellLinks.Add(link);
                 }
             }
 
@@ -91,8 +91,17 @@ public class MapMaker : MonoBehaviour, GridManager
     {
         for(int i = node.CellLinks.Count -1; i >= 0; i--)
         {
-            links.Remove(node.CellLinks[i]);
-            node.CellLinks[i].Delete();
+            NodeLink link = node.CellLinks[i];
+            if (node == link.Node1)
+                ((NodeMaker)link.Node2).CellLinks.Remove(link);
+            else if (node == link.Node2)
+                ((NodeMaker)link.Node1).CellLinks.Remove(link);
+
+            links.Remove(link);
+            link.Delete();
+
+            //node.CellLinks[i].Delete();
+            //links.Remove(node.CellLinks[i]);
         }
 
         nodes.Remove(node);

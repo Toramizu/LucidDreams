@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DreamNode : MonoBehaviour
+public class DreamNode : MonoBehaviour, PathNode
 {
     [SerializeField] Coordinate coo;
     public Coordinate Coordinate { get { return coo; } }
@@ -14,7 +14,10 @@ public class DreamNode : MonoBehaviour
     [SerializeField] protected Image image;
     [SerializeField] Image nextMapImage;
 
-    public List<NodeLink> CellLinks { get; set; } = new List<NodeLink>();
+    //public List<NodeLink> CellLinks { get; set; } = new List<NodeLink>();
+    //public List<DreamNode> Neighbours { get; set; } = new List<DreamNode>();
+    [SerializeField] List<DreamNode> neighbours = new List<DreamNode>();
+    //{ get; set; }
 
     protected GridManager manager;
 
@@ -27,6 +30,22 @@ public class DreamNode : MonoBehaviour
         get { return type; }
         set { SetType(value); }
     }
+
+    #region Pathfinding
+    public bool PathStop { get { return cData != null; } }
+
+    public int PCost
+    {
+        get {
+            if (cData == null)
+                return 1;
+            else
+                return 100;
+        }
+    }
+
+    public List<PathNode> PNeighbours { get; private set; } = new List<PathNode>();
+    #endregion
 
     public void Init(Coordinate coo, GridManager manager)
     {
@@ -164,6 +183,25 @@ public class DreamNode : MonoBehaviour
             "onComplete", "OnEnter",
             "onCompleteTarget", gameObject
             ));
+    }
+
+    public float TokenXPos { get { return transform.position.x + leftPos.x; } }
+    public float TokenYPos { get { return transform.position.y + leftPos.y; } }
+
+    public void AddNeighbour(DreamNode node)
+    {
+        neighbours.Add(node);
+        PNeighbours.Add(node);
+        node.neighbours.Add(this);
+        node.PNeighbours.Add(this);
+    }
+
+    public void RemoveNeighbour(DreamNode node)
+    {
+        neighbours.Remove(node);
+        PNeighbours.Remove(node);
+        node.neighbours.Remove(this);
+        node.PNeighbours.Remove(this);
     }
 
     public void Clear()
