@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e37689a48e62c7468af65922524055a, type: 3}
-  m_Name: Dodge
+  m_Name: Unfeeling
   m_EditorClassIdentifier: 
-  id: Dodge
+  id: Unfeeling
   description: Ignores the next X arousal gains
-  icon: {fileID: 21300000, guid: 91bafe7b20026c041bbfa7f945737215, type: 3}
+  icon: {fileID: 21300000, guid: 644c14ed6b1ee804ca5dd397de964bb6, type: 3}
   reverseTrait: {fileID: 0}
   maxStack: 0
   aiValue: 8

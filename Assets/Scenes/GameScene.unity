@@ -3440,8 +3440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2329f67e01b795e48ae6af1af8b01ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dd: {fileID: 11400000, guid: 9a7e3f7eb2c10554883976dfeabdfbd8, type: 2}
-  dmd: {fileID: 11400000, guid: 4421aa5bfa841184a8032c1a2fddea3f, type: 2}
+  mapCreator: {fileID: 1537273199}
 --- !u!114 &344300347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3497,8 +3496,8 @@ MonoBehaviour:
     replacer: <sprite name="Boundage">
   - replaced: _Cha
     replacer: <sprite name="Chastity">
-  - replaced: _Dod
-    replacer: <sprite name="Dodge">
+  - replaced: _Unf
+    replacer: <sprite name="Unfeeling">
   - replaced: _Dom
     replacer: <sprite name="Dom">
   - replaced: _Phe
@@ -3524,16 +3523,17 @@ MonoBehaviour:
   maps:
   - {fileID: 11400000, guid: 4421aa5bfa841184a8032c1a2fddea3f, type: 2}
   - {fileID: 11400000, guid: 41bdc3ac3776f474d8f69fc4d566b6d6, type: 2}
+  mapAssets: {fileID: 11400000, guid: 332ecc280805810408776cc3e1a71dc2, type: 2}
   succubi: []
   traits:
-  - {fileID: 11400000, guid: 0e02ce4b4c878214faec45bd5e03788a, type: 2}
-  - {fileID: 11400000, guid: e8c7739e892a84c479308c6bbb8c1715, type: 2}
   - {fileID: 11400000, guid: 40f1157b268952141b03f9fb7a58076b, type: 2}
-  - {fileID: 11400000, guid: 6a41875fa4a5e0b4cb0c4dbba5b789fa, type: 2}
-  - {fileID: 11400000, guid: 74a9a0389038db64fac663cb6b32b701, type: 2}
-  - {fileID: 11400000, guid: d0e75b115a1b69b43ade6cb63a66d38c, type: 2}
-  - {fileID: 11400000, guid: 080306e91e68950469b9e180163a7137, type: 2}
   - {fileID: 11400000, guid: d0ce6147de8903e40adf3384ca1b66b4, type: 2}
+  - {fileID: 11400000, guid: 74a9a0389038db64fac663cb6b32b701, type: 2}
+  - {fileID: 11400000, guid: 0e02ce4b4c878214faec45bd5e03788a, type: 2}
+  - {fileID: 11400000, guid: 6a41875fa4a5e0b4cb0c4dbba5b789fa, type: 2}
+  - {fileID: 11400000, guid: d0e75b115a1b69b43ade6cb63a66d38c, type: 2}
+  - {fileID: 11400000, guid: e8c7739e892a84c479308c6bbb8c1715, type: 2}
+  - {fileID: 11400000, guid: 080306e91e68950469b9e180163a7137, type: 2}
 --- !u!114 &344300351
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d93417b2c1c2f1243a5b0d3af9c0940b, type: 3}
-  m_Name: Debug_Dodge
+  m_Name: Alch_Love
   m_EditorClassIdentifier: 
-  title: Unfeeling
-  description: Gain _Die _Dod
+  title: Love Potion
+  description: Make them fall in love for 5 _Aro
   conditions:
-  - type: 0
-    value: 1
+  - type: 1
+    value: 5
     toggle: 0
-  uses: 0
+  uses: 5
   equalDice: 0
   total: 0
   effects:
   - effect: 1
-    bonus: 0
-    usesDice: 1
-    multiplier: 1
-    stringValue: Unfeeling
-    targetsUser: 1
+    bonus: 5
+    usesDice: 0
+    multiplier: 0
+    stringValue: Aroused
+    targetsUser: 0
     condition:
       type: 0
       value: 0
       toggle: 0
-  price: 5
+  price: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: Sticky
   description: Lowers the value of X dice by 1
-  icon: {fileID: 21300000, guid: ed417afd95551f649bbcb6d6d3a02fab, type: 3}
+  icon: {fileID: 21300000, guid: 2137207e22c0b034abab63798232278d, type: 3}
   reverseTrait: {fileID: 0}
   maxStack: 0
   aiValue: 8

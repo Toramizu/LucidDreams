@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Dodge", menuName = "Data/Trait/Dodge")]
-public class DodgeTrait : Trait
+[CreateAssetMenu(fileName = "Unfeeling", menuName = "Data/Trait/Unfeeling")]
+public class UnfeelingTrait : Trait
 {
     public override void OnDefense(ref int damages, Character current, Character other)
     {

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: Pheromones
   description: Inflicts X Arousal in retaliation
-  icon: {fileID: 21300000, guid: 6c858b62e9748754d8454c4aa7654868, type: 3}
+  icon: {fileID: 21300000, guid: c366867c4f9aea841aaf1395eac9fc4c, type: 3}
   reverseTrait: {fileID: 0}
   maxStack: 0
   aiValue: 9

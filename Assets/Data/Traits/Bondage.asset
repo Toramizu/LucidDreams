@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: Bondage
   description: Locks X abilities, can unlock them with a die
-  icon: {fileID: 21300000, guid: 40213c913cf79e84d84fc2fb9b3d2f7d, type: 3}
+  icon: {fileID: 21300000, guid: bd93fb585baa7a7499133868ed65f873, type: 3}
   reverseTrait: {fileID: 0}
   maxStack: 0
   aiValue: 8

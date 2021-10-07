@@ -29,9 +29,9 @@ public class GameAssets : MonoBehaviour
         foreach (DreamData dream in dreams)
             Dreams.Add(dream.ID, dream);
 
-        Maps = new Dictionary<string, DreamMapData>();
+        /*Maps = new Dictionary<string, DreamMapData>();
         foreach (DreamMapData map in maps)
-            Maps.Add(map.ID, map);
+            Maps.Add(map.ID, map);*/
 
         Succubi = new Dictionary<string, CharacterData>();
         foreach (CharacterData succu in succubi)

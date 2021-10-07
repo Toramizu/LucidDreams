@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: Dom
   description: Inflicts X bonus arousal this turn
-  icon: {fileID: 21300000, guid: f62f5664ccf8d2d47baf600e6ab22a67, type: 3}
+  icon: {fileID: 21300000, guid: 7da88ea5eee88f5479a5567816701257, type: 3}
   reverseTrait: {fileID: 0}
   maxStack: 5
   aiValue: 8

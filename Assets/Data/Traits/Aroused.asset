@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: Aroused
   description: Gains X arousal at the end of turn.\nLowers by 1 each time
-  icon: {fileID: 21300000, guid: 339b85bb9d7eb9f48a52cc18199cc3e3, type: 3}
+  icon: {fileID: 21300000, guid: a869dfcbaf052cb47b9b28d49d78a325, type: 3}
   reverseTrait: {fileID: 0}
   maxStack: 0
   aiValue: 9

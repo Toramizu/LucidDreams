@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef64e80cc15a1b4389e18feaf752153, type: 3}
+  m_Name: Alchemist
+  m_EditorClassIdentifier: 
+  sName: Alchemist
+  image: {fileID: 21300000, guid: a48c330057c27c74cafd65272f2a64fe, type: 3}
+  source: ' http://www.hentai-foundry.com/pictures/user/VincentCC/702170/Ciera-and-Transmorphic-Tinture'
+  abilities:
+  - {fileID: 11400000, guid: a875ca0e3be56c148b68f83c998efe1c, type: 2}
+  - {fileID: 11400000, guid: 406a71a70fbc56f42af12d66dd2de863, type: 2}
+  - {fileID: 11400000, guid: 680cbe67a99d08845825adceb91228b1, type: 2}
+  - {fileID: 11400000, guid: a875ca0e3be56c148b68f83c998efe1c, type: 2}
+  - {fileID: 11400000, guid: 76f1a747c7c764943bc40d85dd31058f, type: 2}
+  - {fileID: 11400000, guid: 0034cb586e0593747bda8000b9238111, type: 2}
+  dice: 1
+  maxArousal: 17
+  crystals: 3
