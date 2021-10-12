@@ -16,10 +16,8 @@ MonoBehaviour:
   succubiCount: 2
   boss: {fileID: 11400000, guid: 97b8172e36efbd7449f406ad8214115c, type: 2}
   succubi:
-  - {fileID: 11400000, guid: c4f39de445ce8c94ab5fa62ce253f1e2, type: 2}
+  - {fileID: 11400000, guid: 97b8172e36efbd7449f406ad8214115c, type: 2}
   - {fileID: 11400000, guid: 6b7b179b25898c24b8c8030813849184, type: 2}
-  - {fileID: 11400000, guid: 02446fdf63476a34baed4400d4d9e7c0, type: 2}
-  - {fileID: 11400000, guid: dc246bbad55ddc147b4ea5ffa3f140ea, type: 2}
   shop:
     abilities:
     - {fileID: 11400000, guid: 9a29abacb7ed7e64f84a43c942c56a69, type: 2}
@@ -31,10 +29,11 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 89bbc570626779f41a243df9e718d66c, type: 2}
     - {fileID: 11400000, guid: b4bf2568f65cc8f48997e5cf686240b8, type: 2}
     - {fileID: 11400000, guid: 0ba81dee84c1ace4f91b0db821fe74de, type: 2}
+    minAbilities: 0
     maxAbilities: 2
     arousalMod: 1
     abilityMod: 1
   maps:
-  - {fileID: 11400000, guid: 41bdc3ac3776f474d8f69fc4d566b6d6, type: 2}
+  - {fileID: 11400000, guid: c73b622d907c8d94a93b926883761e08, type: 2}
   nexts:
-  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 1d471242214c3174b88f92bfd7a164fa, type: 2}

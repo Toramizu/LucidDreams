@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
-    [SerializeField] Opponent opponent;
-    [SerializeField] Character player;
+    [SerializeField] CharacterUI opponentUI;
+    Character opponent { get { return opponentUI.Character; } }
+    [SerializeField] CharacterUI playerUI;
+    Character player { get { return playerUI.Character; } }
 
     [SerializeField] EndPanel endPanel;
     [SerializeField] TraitTooltip tooltip;
 
     public bool PlayerTurn { get; private set; }
+    public Character GetCharacter(bool current)
+    {
+            if (PlayerTurn == current)
+                return player;
+            else
+                return opponent;
+    }
 
     public Character Other(Character current)
     {
@@ -39,16 +48,18 @@ public class BattleManager : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void RefreshDescr()
+    {
+        //foreach (Ability abi in GetCharacter(true).Abilities)
+          //  abi.RefreshDescr();
+    }
+
     public void CheckBattleStatus()
     {
         if(opponent.Finished)
-        {
-            //GameManager.Instance.EndBattle(opponent);
-            endPanel.Victory(opponent.Crystals);
-        }else if (player.Finished)
-        {
+            endPanel.Victory(opponent.Crystals, opponent.Data);
+        else if (player.Finished)
             GameManager.Instance.NextDay();
-        }
     }
 
     public void NextRound()

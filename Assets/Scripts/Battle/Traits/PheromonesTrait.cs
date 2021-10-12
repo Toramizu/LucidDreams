@@ -5,12 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Pheromones", menuName = "Data/Trait/Pheromones")]
 public class PheromonesTrait : Trait
 {
-    public override void OnDefense(ref int damages, Character current, Character other)
+    public override void OnDefense(ref int damages, Character current, Character other, int stack)
     {
-        GameManager.Instance.BattleManager.InflictsDamage(current.Traits.TraitStack(this), true, true);
+        GameManager.Instance.BattleManager.InflictsDamage(stack, true, true);
     }
 
-    public override void StartTurn(Character current)
+    public override void StartTurn(Character current, int stack)
     {
         current.Traits.RemoveTrait(this);
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Unfeeling", menuName = "Data/Trait/Unfeeling")]
 public class UnfeelingTrait : Trait
 {
-    public override void OnDefense(ref int damages, Character current, Character other)
+    public override void OnDefense(ref int damages, Character current, Character other, int stack)
     {
         if (damages <= 0)   //No effect on healing
             return;
@@ -14,7 +14,7 @@ public class UnfeelingTrait : Trait
         current.Traits.AddTrait(this, -1);
     }
 
-    public override void StartTurn(Character current)
+    public override void StartTurn(Character current, int stack)
     {
         current.Traits.RemoveTrait(this);
     }

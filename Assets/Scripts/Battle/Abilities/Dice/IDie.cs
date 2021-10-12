@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public interface IDie : IDropHandler
+public interface IDie //: IDropHandler
 {
     void OnDrop(RolledDie die);
     bool Check(int die);

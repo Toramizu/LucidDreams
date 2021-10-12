@@ -6,6 +6,7 @@ public abstract class AbilityEffect
 {
     protected int bonus;
     protected bool usesDice;
+    protected bool usesCumulativeBonus;
     protected float multiplier = 1;
 
     protected DiceCondition condition;
@@ -15,15 +16,22 @@ public abstract class AbilityEffect
     [SerializeField] protected bool targetsUser;
 
     public AbilityEffect() { }
-    public AbilityEffect(int bonus, bool usesDice, float mult, bool targetsUser, DiceCondition condition) {
-        this.bonus = bonus;
-        this.usesDice = usesDice;
-        this.multiplier = mult;
-        this.targetsUser = targetsUser;
-        this.condition = condition;
+    public AbilityEffect(EffectData data)
+    {
+        bonus = data.Bonus;
+        usesDice = data.UsesDice;
+        usesCumulativeBonus = data.UsesCumulativeBonus;
+        multiplier = data.Multiplier;
+        targetsUser = data.TargetsUser;
+        condition = data.Condition.ToCondition();
     }
 
-    protected int Value(int dice)
+    protected int Value(int dice, Ability abi)
+    {
+        return Value(dice, abi.Used);
+    }
+
+    protected int Value(int dice, int cumulative)
     {
         if (usesDice && multiplier == 0)
             multiplier = 1;
@@ -31,22 +39,22 @@ public abstract class AbilityEffect
         int amount = bonus;
         if (usesDice)
             amount += (int)(dice * multiplier);
+        if (usesCumulativeBonus)
+            amount += cumulative;
         return amount;
     }
 
-    public void CheckAndPlay(int dice)
+    public void CheckAndPlay(int dice, Ability abi)
     {
         if (condition == null || condition.Check(dice))
-            Play(dice);
+            Play(dice, abi);
     }
 
-    public abstract void Play(int dice);
+    public abstract void Play(int dice, Ability abi);
 
-    public virtual float GetAIValue(int dice, AIData current)
+    public virtual void GetAIValue(int dice, AIData current, Ability abi)
     {
-        if (condition == null || condition.Check(dice))
-            return AIValue * Value(dice);
-        else
-            return 0f;
+        /*if (condition == null || condition.Check(dice))
+            current.AIValue += AIValue * Value(dice, 0);*/
     }
 }

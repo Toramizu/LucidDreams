@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2407813718705793895}
   - component: {fileID: 8376847134356851703}
   - component: {fileID: 7395262745965793705}
-  - component: {fileID: 5879660123184598797}
+  - component: {fileID: -4340414315852040589}
   m_Layer: 5
   m_Name: Die
   m_TagString: Untagged
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5879660123184598797
+--- !u!114 &-4340414315852040589
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3825140517989511185}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72f06176e71dab9499e0dfccb00bcab4, type: 3}
+  m_Script: {fileID: 11500000, guid: 53ecd3863cca6d142a07010a302b149e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 7395262745965793705}

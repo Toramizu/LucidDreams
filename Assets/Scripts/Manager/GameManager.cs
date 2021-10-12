@@ -58,9 +58,10 @@ public class GameManager : MonoBehaviour
         battleManager.Close();
     }
 
-    public void EndBattle(int crystals)
+    public void EndBattle(int crystals, AbilityData newAbility)
     {
         playerManager.Crystals += crystals;
+        playerManager.LearnAbility(newAbility, 0);
 
         battleManager.Close();
         dreamManager.Open();

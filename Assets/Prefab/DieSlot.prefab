@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 8234875410441068725}
   - component: {fileID: 8234875410441068728}
   - component: {fileID: 8234875410441068727}
-  - component: {fileID: 8234875410441068726}
+  - component: {fileID: 5834306602132162172}
   m_Layer: 5
   m_Name: DieSlot
   m_TagString: Untagged
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8234875410441068726
+--- !u!114 &5834306602132162172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8234875410441068724}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 146803435ef4ab7418758a75c1cd2a48, type: 3}
+  m_Script: {fileID: 11500000, guid: 8635bf6a6828306478f7c222e8e01718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 8234875410441068727}
@@ -233,3 +233,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0ed8edaeb6a1b344b912519275d3cfda, type: 3}
   - {fileID: 21300000, guid: c4ccdf58704126a449e7f473c23ef7e2, type: 3}
   text: {fileID: 5321539820909044445}
+  links: {fileID: 0}

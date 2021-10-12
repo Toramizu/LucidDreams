@@ -7,21 +7,25 @@ public class DamageEffect : AbilityEffect
     protected override float AIValue { get { return 10f; } }
 
     public DamageEffect() { }
-    public DamageEffect(int bonus, bool usesDice, float mult, bool targetsUser, DiceCondition condition) 
-        : base(bonus, usesDice, mult, targetsUser, condition)
+    /*public DamageEffect(int bonus, bool usesDice, bool usesCumulativeBonus, float mult, bool targetsUser, DiceCondition condition) 
+        : base(bonus, usesDice, usesCumulativeBonus, mult, targetsUser, condition)
+    { }*/
+    public DamageEffect(EffectData data) : base(data)
     { }
 
-    public override void Play(int dice)
+    public override void Play(int dice, Ability abi)
     {
-        GameManager.Instance.BattleManager.InflictsDamage(Value(dice), targetsUser, false);
+        GameManager.Instance.BattleManager.InflictsDamage(Value(dice, abi), targetsUser, false);
     }
 
-    public override float GetAIValue(int dice, AIData current)
+    public override void GetAIValue(int dice, AIData current, Ability abi)
     {
         if (condition != null && !condition.Check(dice))
-            return 0f;
+            return ;
 
-        Character user = current.User;
+        current.InflictDamage(Value(dice, abi), targetsUser);
+
+        /*Character user = current.User;
 
 
         Character target;
@@ -30,17 +34,17 @@ public class DamageEffect : AbilityEffect
         else
             target = current.Target;
 
-        int amount = Value(dice);
+        int amount = Value(dice, 0);
 
         int total = GameManager.Instance.BattleManager.CalculateDamages(amount, user, target, false);
 
 
         if (targetsUser)
-            current.UserHP -= Value(dice);
+            current.UserHP -= total;
         else
-            current.TargetHP -= Value(dice);
+            current.TargetHP -= total;
 
 
-        return AIValue * total;
+        return AIValue * total;*/
     }
 }

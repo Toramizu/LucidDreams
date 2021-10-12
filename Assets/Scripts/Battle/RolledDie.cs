@@ -4,19 +4,25 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class RolledDie : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class RolledDie// : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] Image image;
+    public RolledDieUI DieUI { get; set; }
+    const int D_MAX = 6;
+
+    /*[SerializeField] Image image;
     [SerializeField] List<Sprite> dieFaces;
     [SerializeField] Sprite lockSprite;
 
     [SerializeField] Canvas canvas;
 
     RectTransform rTransform;
-    CanvasGroup canvasGroup;
+    CanvasGroup canvasGroup;*/
+
+    public GameObject GameObject { get { return DieUI.gameObject; } }
 
     public DieSlot CurrentSlot { get; set; }
-    Vector3 position;
+    public bool IsActive { get { return DieUI.isActiveAndEnabled; } }
+    /*Vector3 position;
     public Vector3 Position
     {
         get { return position; }
@@ -25,7 +31,7 @@ public class RolledDie : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             position = value;
             transform.localPosition = value;
         }
-    }
+    }*/
 
     [SerializeField] int value;
     public int Value
@@ -48,10 +54,9 @@ public class RolledDie : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         }
     }
 
-    private void Awake()
+    public RolledDie(int value)
     {
-        rTransform = GetComponent<RectTransform>();
-        canvasGroup = GetComponent<CanvasGroup>();
+        this.value = value;
     }
 
     public void Add(int amount)
@@ -63,34 +68,47 @@ public class RolledDie : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     void ParseValue()
     {
         if (locked)
-            image.sprite = lockSprite;
-        else if (value >= dieFaces.Count)
+            DieUI.Lock();
+        //image.sprite = lockSprite;
+        else if (value > D_MAX)
             SplitDie();
         else if (value <= 0)
             EmptyDie();
         else
-            image.sprite = dieFaces[value];
+            DieUI.ShowFace(value);
+            //image.sprite = dieFaces[value];
     }
 
     void SplitDie()
     {
-        GameManager.Instance.BattleManager.Give(value - dieFaces.Count + 1);
-        Value = dieFaces.Count - 1;
+        GameManager.Instance.BattleManager.Give(value - D_MAX + 1);
+        Value = D_MAX - 1;
     }
 
 
     void EmptyDie()
     {
         value = 0;
-        image.sprite = dieFaces[0];
+        DieUI.ShowFace(0);
+    }
+
+    public void SlotDie(DieSlotUI slot)
+    {
+        DieUI.transform.position = slot.Pos;
     }
 
     public void ResetPosition()
     {
-        transform.localPosition = position;
+        DieUI.ResetPosition();
+        //transform.localPosition = position;
     }
 
-    #region Drag & Drop
+    public void Hide()
+    {
+        DieUI.gameObject.SetActive(false);
+    }
+
+    /*#region Drag & Drop
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (GameManager.Instance.BattleManager.PlayerTurn && !locked)
@@ -115,5 +133,5 @@ public class RolledDie : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         if (GameManager.Instance.BattleManager.PlayerTurn && !locked)
             canvasGroup.blocksRaycasts = true;
     }
-    #endregion
+    #endregion*/
 }

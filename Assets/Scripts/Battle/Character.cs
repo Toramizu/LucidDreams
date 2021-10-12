@@ -5,32 +5,27 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Character : MonoBehaviour
+[System.Serializable]
+public class Character //: MonoBehaviour
 {
-    [SerializeField] Image characterImage;
-    [SerializeField] Sprite defaultImage;
-    [SerializeField] TMP_Text characterName;
-    [SerializeField] SimpleGauge gauge;
-    [SerializeField] Button borrowed;
-
+    public CharacterUI CharaUI { get; set; }
+    
     public int Arousal { get; set; }
     public int MaxArousal { get; set; }
     public bool Finished { get { return Arousal >= MaxArousal; } }
     public int Missing { get { return MaxArousal - Arousal; } }
-
-    //public int Level { get; set; }
-    //CharacterLevel currentLevel;
-    //public int Exp { get; set; }
-
-    protected CharacterData Data { get; private set; }
+    
+    public CharacterData Data { get; private set; }
     public int Crystals { get { return Data.Crystals; } }
 
-    [SerializeField] Transform abilityPanel;
-    [SerializeField] List<Ability> abilities;
-    public List<Ability> Abilities { get { return abilities; } }
+    //[SerializeField] Transform abilityPanel;
+    //[SerializeField] List<Ability> Abilities = new List<Ability>();
+    public List<Ability> Abilities { get; set; } = new List<Ability>();
+        //{ get { return Abilities; } }
     public int Rolls { get; set; }
-    [SerializeField] DiceHolder dice;
-    public DiceHolder Dice { get { return dice; } }
+
+    //[SerializeField] DiceHolder dice;
+    public DiceHolder Dice { get; private set; }
 
     [SerializeField] TraitsSheet traits;
     public TraitsSheet Traits { get { return traits; } }
@@ -39,8 +34,8 @@ public class Character : MonoBehaviour
     {
         get
         {
-            foreach (Ability abi in abilities)
-                if (abi.isActiveAndEnabled)
+            foreach (Ability abi in Abilities)
+                if (abi.IsActive)
                     return false;
 
             return true;
@@ -49,43 +44,71 @@ public class Character : MonoBehaviour
 
     public void LoadCharacter(CharacterData data)
     {
-        Data = data;
-        //currentLevel = data.Level[0];
-
-        if (data.Image == null)
-            characterImage.sprite = defaultImage;
+        if (CharaUI != null)
+        {
+            CharaUI.LoadCharacter(data);
+            Dice = new DiceHolder(CharaUI.Dice);
+        }
         else
-            characterImage.sprite = data.Image;
+        {
+            Dice = new DiceHolder(null);
+        }
 
-        characterName.text = data.Name;
+        Data = data;
         Arousal = 0;
         MaxArousal = data.MaxArousal;
-        gauge.Fill(Arousal, MaxArousal);
+        CharaUI.FillGauge(Arousal, MaxArousal);
 
         traits.Clear();
 
-        borrowed.gameObject.SetActive(data.Source != null && data.Source != "");
-
         Rolls = data.Dice;
-        for (int i = 0; i < abilities.Count; i++)
+        LoadAbilities(data.Abilities);
+        /*for(int i = 0; i < data.Abilities.Count; i++)
+        {
+            Abilities.Add(NewAbility(data.Abilities[i], i));
+        }*/
+
+        /*for (int i = 0; i < abilities.Count; i++)
         {
             if (i < data.Abilities.Count)
                 SetAbility(data.Abilities[i], i);
             else
                 abilities[i].gameObject.SetActive(false);
-        }
+        }*/
+    }
+
+    Ability NewAbility(AbilityData data, int slot)
+    {
+        AbilityUI aUI;
+        if (CharaUI != null)
+            aUI = CharaUI.AbilityUI(slot);
+        else
+            aUI = null;
+        return new Ability(data, aUI);
     }
 
     public void SetAbility(AbilityData data, int slot)
     {
-        if (slot < abilities.Count)
-            abilities[slot].Init(data);
+        if(CharaUI != null)
+        {
+            AbilityUI aUI = CharaUI.AbilityUI(slot);
+            if(aUI != null)
+                Abilities[slot].Init(data, CharaUI.AbilityUI(slot));
+        }
+
+
+        /*if (slot < abilities.Count)
+            abilities[slot].Init(data, CharaUI.AbilityUI(slot));*/
     }
 
     public void LoadAbilities(List<AbilityData> abis)
     {
-        for (int i = 0; i < abis.Count && i < abilities.Count; i++)
-            SetAbility(abis[i], i);
+        /*for (int i = 0; i < abis.Count && i < Abilities.Count; i++)
+            SetAbility(abis[i], i);*/
+        for (int i = 0; i < abis.Count; i++)
+        {
+            Abilities.Add(NewAbility(abis[i], i));
+        }
     }
 
     public virtual bool InflictDamage(int amount)
@@ -96,7 +119,7 @@ public class Character : MonoBehaviour
         else if (Arousal > MaxArousal)
             Arousal = MaxArousal;
 
-        gauge.Fill(Arousal, MaxArousal);
+        CharaUI.FillGauge(Arousal, MaxArousal);
 
         return Arousal >= MaxArousal;
     }
@@ -109,47 +132,47 @@ public class Character : MonoBehaviour
 
     public void StartTurn()
     {
-        ToggleAbilities(true);
-        dice.Roll(Rolls, true, null);
+        CharaUI.ToggleAbilities(true);
+        Dice.Roll(Rolls, true, null);
         Traits.StartTurn(this);
 
     }
 
     public void EndTurn()
     {
-        foreach (Ability abi in abilities)
-            if (abi.isActiveAndEnabled)
+        foreach (Ability abi in Abilities)
+            if (abi.IsActive)
                 abi.ResetAbility();
 
         ResetDice();
-        ToggleAbilities(false);
+        CharaUI.ToggleAbilities(false);
         Traits.EndTurn(this);
     }
 
     public void Roll(int amount, bool reset, DiceCondition condition)
     {
-        dice.Roll(amount, reset, condition);
+        Dice.Roll(amount, reset, condition);
     }
 
     public void Give(int value)
     {
-        dice.Give(value);
+        Dice.Give(value);
     }
 
     public void ResetDice()
     {
-        dice.ResetDice();
+        Dice.ResetDice();
     }
 
     public void ResetDicePosition()
     {
-        dice.ResetDicePosition();
+        Dice.ResetDicePosition();
     }
 
 
     public void ToggleAbilities(bool toggle)
     {
-        abilityPanel.gameObject.SetActive(toggle);
+        CharaUI.ToggleAbilities(toggle);
     }
 
     #region Auto Play
@@ -158,44 +181,19 @@ public class Character : MonoBehaviour
 
     public void PlayTurn()
     {
-        /*List<RolledDie> rolled = new List<RolledDie>(dice.RolledDice).OrderByDescending(o => o.Value).ToList();
-        for (int i = rolled.Count - 1; i >= 0; i--)
-            if (rolled[i].Locked)
-                rolled.Remove(rolled[i]);
-
-        Dictionary<RolledDie, IDie> toPlace = new Dictionary<RolledDie, IDie>();
-        foreach (Ability abi in abilities)
-        {
-            if (abi.isActiveAndEnabled)
-                abi.TryFill(rolled, toPlace);
-
-            if (rolled.Count == 0)
-                break;
-
+        List<DieToSlot> next = ai.FindNextAction(Abilities, Dice.RolledDice, this, GameManager.Instance.BattleManager.Other(this));
+        CharaUI.PlayTurn(next);
         
-        StartCoroutine(AutoMoveDice(toPlace));
-        }*/
-
-        List<DieToSlot> next = ai.FindNextAction(abilities, dice.RolledDice, this, GameManager.Instance.BattleManager.Other(this));
-        StartCoroutine(AutoMoveDice(next));
+        //StartCoroutine(AutoMoveDice(next));
     }
 
-    Dictionary<RolledDie, IDie> OLD_toPlace;
+    /*Dictionary<RolledDie, IDie> OLD_toPlace;
     List<DieToSlot> toPlace;
     Queue<RolledDie> OLD_slots;
     Queue<DieToSlot> slots;
     IDie currentSlot;
     RolledDie currentDie;
-
-    IEnumerator AutoMoveDice(Dictionary<RolledDie, IDie> toPlace)
-    {
-        yield return null;
-        this.OLD_toPlace = toPlace;
-        OLD_slots = new Queue<RolledDie>(toPlace.Keys);
-
-        OLD_PlaceNext();
-    }
-
+    
     IEnumerator AutoMoveDice(List<DieToSlot> toPlace)
     {
         yield return null;
@@ -263,6 +261,6 @@ public class Character : MonoBehaviour
         currentSlot.OnDrop(currentDie);
         PlaceNext();
         //OLD_PlaceNext();
-    }
+    }*/
     #endregion
 } 

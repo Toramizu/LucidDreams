@@ -14,24 +14,15 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    [SerializeField] Character player;
+    [SerializeField] CharacterUI playerUI;
+    Character player { get { return playerUI.Character; } }
     [SerializeField] TMP_Text crystalsText;
 
-    public List<AbilityData> Abilities { get; set; }
-    //public List<AbilityData> StoredAbilities { get; set; } = new List<AbilityData>();
-    /*{
-        get {
-            List<AbilityData> abis = new List<AbilityData>();
-            foreach(Ability abi in player.Abilities)
-                abis.Add(abi.)
-
-            return null;
-        }
-        set {
-            for (int i = 0; i < value.Count; i++)
-                player.SetAbility(value[i], i);
-        }
-    }*/
+    List<AbilityData> abilities;
+    public List<AbilityData> Abilities {
+        get { return abilities; }
+        set { abilities = new List<AbilityData>(value); }
+    }
 
     public void SetPlayer(CharacterData data)
     {
@@ -43,7 +34,8 @@ public class PlayerManager : MonoBehaviour
     public void LearnAbility(AbilityData data, int cost)
     {
         crystals -= cost;
-        Debug.Log("Learned " + data.Title);
+        //Debug.Log("Learned " + data.Title);
+        abilities.Add(data);
     }
 
     public void IncreaseMaxArousal(int amount, int cost)

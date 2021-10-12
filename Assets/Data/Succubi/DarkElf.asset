@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ef64e80cc15a1b4389e18feaf752153, type: 3}
-  m_Name: _Test
+  m_Name: DarkElf
   m_EditorClassIdentifier: 
-  sName: Test
-  image: {fileID: 0}
-  source: 
+  sName: Dark Elf
+  image: {fileID: 21300000, guid: d67540fc5e75153408d16f4349d483eb, type: 3}
+  source: http://www.hentai-foundry.com/pictures/user/ArcaneNSFW/884947/Dark-Elf-OC
   abilities:
-  - {fileID: 11400000, guid: dc8625a7b3171bc47b429f3c07deb326, type: 2}
-  dice: 5
-  maxArousal: 10
-  crystals: 0
+  - {fileID: 11400000, guid: e602600c3a79cab4dba9e84fe943419c, type: 2}
+  - {fileID: 11400000, guid: ca319f13bf9da214eaa8e55e27ca3561, type: 2}
+  dice: 4
+  maxArousal: 20
+  crystals: 3

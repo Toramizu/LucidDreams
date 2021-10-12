@@ -4,12 +4,12 @@ using UnityEngine;
 
 public abstract class DiceCondition
 {
-    public LinkedValue Linked { get; set; }
+    public LinkedValue Link { get; set; }
     public abstract int[] AcceptedValues { get; }
 
     public virtual bool Check(int die)
     {
-        return Linked == null || Linked.Value == die || Linked.Value == 0;
+        return Link == null || Link.Value == die || Link.Value == 0;
     }
 
     public abstract string ConditionText();

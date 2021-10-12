@@ -18,9 +18,9 @@ public abstract class Trait : ScriptableObject
     [SerializeField] float aiValue;
     public float AIValue { get { return aiValue; } }
     
-    public virtual void OnAttack(ref int damages, Character current, Character other) { }
-    public virtual void OnDefense(ref int damages, Character current, Character other) { }
+    public virtual void OnAttack(ref int damages, Character current, Character other, int stack) { }
+    public virtual void OnDefense(ref int damages, Character current, Character other, int stack) { }
 
-    public virtual void StartTurn(Character current) { }
-    public virtual void EndTurn(Character current) { }
+    public virtual void StartTurn(Character current, int stack) { }
+    public virtual void EndTurn(Character current, int stack) { }
 }

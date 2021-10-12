@@ -7,10 +7,7 @@ public class TraitsSheet
 {
     [SerializeField] Transform traitHolder;
     [SerializeField] TraitUI traitPrefab;
-
-    [SerializeField] Character chara;
-
-    //Dictionary<Trait, int> traits = new Dictionary<Trait, int>();
+    
     Dictionary<Trait, TraitUI> traits = new Dictionary<Trait, TraitUI>();
 
     public bool HasTrait(Trait trait) {
@@ -22,6 +19,17 @@ public class TraitsSheet
             return traits[trait].Amount;
         else
             return 0;
+    }
+
+    public Dictionary<Trait, int> ToSimpleDictionary
+    {
+        get
+        {
+            Dictionary<Trait, int> dict = new Dictionary<Trait, int>();
+            foreach (Trait t in traits.Keys)
+                dict.Add(t, traits[t].Amount);
+            return dict;
+        }
     }
 
     public void AddTrait(Trait trait, int amount)
@@ -71,26 +79,26 @@ public class TraitsSheet
     {
         List<Trait> t = new List<Trait>(traits.Keys);
         foreach (Trait trait in t)
-            trait.OnAttack(ref damages, current, other);
+            trait.OnAttack(ref damages, current, other, traits[trait].Amount);
     }
     public void OnDefense(ref int damages, Character current, Character other)
     {
         List<Trait> t = new List<Trait>(traits.Keys);
         foreach (Trait trait in t)
-            trait.OnDefense(ref damages, current, other);
+            trait.OnDefense(ref damages, current, other, traits[trait].Amount);
     }
 
     public void StartTurn(Character current)
     {
         List<Trait> t = new List<Trait>(traits.Keys);
         foreach (Trait trait in t)
-            trait.StartTurn(current);
+            trait.StartTurn(current, traits[trait].Amount);
     }
     public void EndTurn(Character current)
     {
         List<Trait> t = new List<Trait>(traits.Keys);
         foreach (Trait trait in t)
-            trait.EndTurn(current);
+            trait.EndTurn(current, traits[trait].Amount);
     }
     #endregion
 }

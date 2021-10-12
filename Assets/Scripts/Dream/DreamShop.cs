@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class DreamShop : MonoBehaviour
 {
-    [SerializeField] List<Ability> abilities;
+    [SerializeField] List<AbilityUI> abilities;
     [SerializeField] List<TMP_Text> prices;
     [SerializeField] TMP_Text maxArousalPrice;
     [SerializeField] TMP_Text maxArousalText;
@@ -20,38 +20,63 @@ public class DreamShop : MonoBehaviour
         gameObject.SetActive(true);
 
         if (this.data != data)
-        {
-            this.data = data;
-            List<AbilityData> aDatas = new List<AbilityData>(data.Abilities);
+            FirstLoad(data);
+        else
+            RefreshLoad();
 
-            //foreach(Ability abi in abilities)
-            for (int i = 0; i < abilities.Count; i++)
+        GameManager.Instance.DreamManager.CanMove = false;
+    }
+
+    void FirstLoad(ShopData data)
+    {
+        this.data = data;
+        List<AbilityData> aDatas = new List<AbilityData>(data.Abilities);
+        int abiCount;
+        if (data.MinAbilities == 0)
+            abiCount = data.MaxAbilities;
+        else
+            abiCount = Random.Range(data.MinAbilities, data.MaxAbilities + 1);
+
+        //foreach(Ability abi in abilities)
+        for (int i = 0; i < abilities.Count; i++)
+        {
+            if (aDatas.Count == 0 || i >= abiCount)
+                abilities[i].gameObject.SetActive(false);
+            else
             {
-                if (aDatas.Count == 0 || i >= data.MaxAbilities)
-                    abilities[i].gameObject.SetActive(false);
+                AbilityData aData = aDatas[Random.Range(0, aDatas.Count)];
+                aDatas.Remove(aData);
+
+                if (GameManager.Instance.PlayerManager.Abilities.Contains(aData))
+                {
+                    i--;
+                }
                 else
                 {
                     abilities[i].gameObject.SetActive(true);
-                    AbilityData aData = aDatas[Random.Range(0, aDatas.Count)];
-                    aDatas.Remove(aData);
-                    abilities[i].Init(aData);
+                    //abilities[i].Init(aData, null);
+                    new Ability(aData, abilities[i]);
                     prices[i].text = AbilityPrice(aData).ToString();
                 }
             }
-
-            maxArousalPrice.text = ArousalPrice().ToString();
-            maxArousalText.text = "+" + maxArousalIncrement + " Max Arousal";
-
-            maxArousalButton.gameObject.SetActive(true);
         }
 
-        GameManager.Instance.DreamManager.CanMove = false;
+        maxArousalPrice.text = ArousalPrice().ToString();
+        maxArousalText.text = "+" + maxArousalIncrement + " Max Arousal";
+
+        maxArousalButton.gameObject.SetActive(true);
+    }
+
+    public void RefreshLoad()
+    {
+        foreach(AbilityUI abi in abilities)
+            if (abi.isActiveAndEnabled && GameManager.Instance.PlayerManager.Abilities.Contains(abi.Data))
+                abi.gameObject.SetActive(false);
     }
 
     public void BuyAbility(int id)
     {
         AbilityData aData = abilities[id].Data;
-        Debug.Log(aData.Title);
 
         if (GameManager.Instance.PlayerManager.Crystals < AbilityPrice(aData))
         {

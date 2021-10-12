@@ -5,9 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Aroused", menuName = "Data/Trait/Aroused")]
 public class ArousedTrait : Trait
 {
-    public override void EndTurn(Character current)
+    public override void EndTurn(Character current, int stack)
     {
-        GameManager.Instance.BattleManager.InflictsDamage(current.Traits.TraitStack(this), true, true);
+        GameManager.Instance.BattleManager.InflictsDamage(stack, true, true);
         current.Traits.AddTrait(this, -1);
     }
 }

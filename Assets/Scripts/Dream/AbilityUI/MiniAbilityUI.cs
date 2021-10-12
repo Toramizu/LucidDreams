@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityUI : MonoBehaviour
+public class MiniAbilityUI : MonoBehaviour
 {
     [SerializeField] MiniAbility miniAbilityPrefab;
     [SerializeField] int minisStorageX = 5;
@@ -11,12 +11,14 @@ public class AbilityUI : MonoBehaviour
     [SerializeField] float miniX;
     [SerializeField] float miniY;
 
-    [SerializeField] Ability abilityPreview;
+    [SerializeField] AbilityUI abilityPreview;
     [SerializeField] Transform equipped;
     [SerializeField] Transform storage;
 
     List<MiniAbility> equippedAbi;
     List<MiniAbility> storedAbi;
+
+    AbilityData displayed;
     
     void Init()
     {
@@ -67,6 +69,7 @@ public class AbilityUI : MonoBehaviour
         }
 
         gameObject.SetActive(true);
+        DisplayAbility(null);
     }
 
     public void Close()
@@ -84,6 +87,18 @@ public class AbilityUI : MonoBehaviour
 
     public void DisplayAbility(AbilityData abi)
     {
-        abilityPreview.Init(abi);
+        if(abi == displayed || abi == null)
+        {
+            displayed = null;
+            abilityPreview.gameObject.SetActive(false);
+        }
+        else
+        {
+            displayed = abi;
+            abilityPreview.gameObject.SetActive(true);
+            new Ability(abi, abilityPreview);
+        }
+
+        //abilityPreview.Init(abi, null);
     }
 }

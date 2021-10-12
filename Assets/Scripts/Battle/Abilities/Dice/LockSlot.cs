@@ -27,8 +27,9 @@ public class LockSlot : MonoBehaviour, IDie//IDropHandler
     {
         if (die != null)
         {
-            ability.LockAbility(false);
-            die.gameObject.SetActive(false);
+            ability.Locked = false;
+            die.Hide();
+                //.gameObject.SetActive(false);
         }
     }
 }

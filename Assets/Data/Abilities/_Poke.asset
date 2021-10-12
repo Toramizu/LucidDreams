@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: _Poke
   m_EditorClassIdentifier: 
   title: Poke
-  description: Pokes for 1
+  description: Pokes for 1 _++
   conditions:
   - type: 0
     value: 0
@@ -21,11 +21,18 @@ MonoBehaviour:
   uses: 3
   equalDice: 0
   total: 0
+  totalAddBonus: 1
+  turnAddBonus: 0
   effects:
   - effect: 0
     bonus: 1
     usesDice: 0
+    usesCumulativeBonus: 1
     multiplier: 0
     stringValue: 
     targetsUser: 0
+    condition:
+      type: 0
+      value: 0
+      toggle: 0
   price: 0

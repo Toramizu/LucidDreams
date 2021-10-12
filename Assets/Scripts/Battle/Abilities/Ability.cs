@@ -4,92 +4,82 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-public class Ability : Hidable
+public class Ability// : Hidable
 {
-    [SerializeField] TMP_Text title;
-    [SerializeField] TMP_Text description;
+    AbilityUI abiUI;
 
-    [SerializeField] List<DieSlot> DiceSlots;
+    //[SerializeField] TMP_Text title;
+    //[SerializeField] TMP_Text description;
+
+    [SerializeField] List<DieSlot> DiceSlots = new List<DieSlot>();
     public List<DieSlot> Slots { get { return DiceSlots; } }
 
-    [SerializeField] TMP_Text countText;
+    //[SerializeField] TMP_Text countText;
 
     int? count;
     public int? Count {
         get {return count; }
-        set { count = value;
-            if(count == null)
-            {
-                countText.gameObject.SetActive(false);
-            }
-            else if (count <= 0)
-            {
-                countText.gameObject.SetActive(true);
-                countText.text = "0";
-            }
-            else
-            {
-                countText.gameObject.SetActive(true);
-                countText.text = value.ToString();
-            }
+        set {
+            count = value;
+            if (abiUI != null)
+                abiUI.SetCount(value);
         }
     }
 
-    LinkedValue link;
+    public LinkedValue Link { get; private set; }
 
     public AbilityData Data { get; private set; }
-    public int Uses { get; set; }
+    public int RemainingUses { get; set; }
     List<AbilityEffect> effects = new List<AbilityEffect>();
 
-    /*int locked;
-    public int Lock {
-        get { return locked; }
-        set {
-            locked = value;
+    public int Used { get; private set; }
 
-        }
-    }*/
-
-    [SerializeField] GameObject lockTransform;
-    [SerializeField] LockSlot lockSlot;
-    public LockSlot LockSlot { get { return lockSlot; } }
+    public LockSlot LockSlot { get { return abiUI.LockSlot; } }
     bool locked;
     public bool Locked {
         get { return locked; }
         set
         {
-            LockAbility(value);
+            locked = value;
+            abiUI.LockAbility(value);
         }
     }
 
-    protected override void Awake()
+    public Ability(AbilityData data, AbilityUI abiUI)
     {
-        base.Awake();
-        foreach (DieSlot slot in DiceSlots)
-            slot.Ability = this;
+        Init(data, abiUI);
+        /*Data = data;
+        this.abiUI = abiUI;
+
+        if(abiUI != null)
+            abiUI.Init(data, this);*/
     }
 
-    public void Init(AbilityData data)
-    {
-        this.Data = data;
-
-        if (data == null)
+    public bool IsActive {
+        get
         {
-            gameObject.SetActive(false);
-            return;
+            return abiUI != null && abiUI.isActiveAndEnabled;
         }
+    }
 
-        gameObject.SetActive(true);
+    public void Init(AbilityData data, AbilityUI abiUI)
+    {
+        Data = data;
 
-        title.text = data.Title;
-        description.text = GameManager.Instance.Parser.ParseDescription(data.Description);
-
+        this.abiUI = abiUI;
+        if (abiUI != null)
+            abiUI.Init(data, this);
+        
         if (data.EqualDice)
-            link = new LinkedValue();
+            Link = new LinkedValue();
         else
-            link = null;
+            Link = null;
 
-        for (int i = 0; i < DiceSlots.Count; i++)
+        DiceSlots.Clear();
+        for(int i = 0; i < data.Conditions.Count; i++)
+            DiceSlots.Add(new DieSlot(data.Conditions[i], abiUI.GetDieSlot(i), this));
+
+        /*for (int i = 0; i < DiceSlots.Count; i++)
         {
             if (i < data.Conditions.Count)
             {
@@ -99,7 +89,7 @@ public class Ability : Hidable
             }
             else
                 DiceSlots[i].gameObject.SetActive(false);
-        }
+        }*/
 
         if (data.Total <= 0)
             Count = null;
@@ -111,27 +101,28 @@ public class Ability : Hidable
             effects.Add(effect.ToEffect());
 
         Locked = false;
+        Used = 0;
 
         ResetAbility();
     }
 
     public void ResetAbility()
     {
-        Show();
+        abiUI.Show();
         if (Data.Uses == -1)
-            Uses = int.MaxValue;
+            RemainingUses = int.MaxValue;
         else
-            Uses = Data.Uses;
-        if (link != null)
+            RemainingUses = Data.Uses;
+        if (Link != null)
         {
-            link.Value = 0;
-            link.Count = 0;
+            Link.Value = 0;
+            Link.Count = 0;
         }
 
         if (Count <= 0)
             Count = Data.Total;
 
-        //Locked = false;
+        RefreshDescr();
     }
 
     public void Check()
@@ -140,7 +131,7 @@ public class Ability : Hidable
         {
             foreach (DieSlot slot in DiceSlots)
             {
-                if (slot.isActiveAndEnabled && !slot.Slotted)
+                if (slot.IsActive && !slot.Slotted)
                     return;
             }
             PlayAbility();
@@ -151,18 +142,13 @@ public class Ability : Hidable
                 if(slot.Slotted)
                 {
                     Count -= slot.SlottedDie.Value;
-                    slot.SlottedDie.gameObject.SetActive(false);
+                    slot.SlottedDie.Hide();
+                    //slot.SlottedDie.gameObject.SetActive(false);
                 }
 
             if(count <= 0)
                 PlayAbility();
         }
-    }
-
-    public void LockAbility(bool toggle)
-    {
-        locked = toggle;
-        lockTransform.SetActive(toggle);
     }
 
     void PlayAbility()
@@ -173,16 +159,29 @@ public class Ability : Hidable
             if (slot.SlottedDie != null)
             {
                 total += slot.Value;
-                slot.SlottedDie.gameObject.SetActive(false);
+                slot.SlottedDie.Hide();
+                //slot.SlottedDie.gameObject.SetActive(false);
             }
         }
 
         foreach (AbilityEffect effect in effects)
-            effect.CheckAndPlay(total);
+            effect.CheckAndPlay(total, this);
         
-        Uses--;
-        if (Uses <= 0)
-            Hide();
+        RemainingUses--;
+        Used++;
+
+        if (RemainingUses <= 0)
+            abiUI.Hide();
+        else
+            RefreshDescr();
+    }
+
+    public void RefreshDescr()
+    {
+        if(abiUI != null)
+            abiUI.SetDescription(
+                GameManager.Instance.Parser.ParseAbilityDescription(this, 
+                GameManager.Instance.BattleManager.GetCharacter(true)));
     }
 
     public /*List<RolledDie>*/ void TryFill(List<RolledDie> dice, Dictionary<RolledDie, IDie> toPlace) // TODO : Manage locked dice
@@ -237,7 +236,7 @@ public class Ability : Hidable
         float val = 0;
 
         foreach (AbilityEffect effect in effects)
-            val += effect.GetAIValue(dice, current);
+            effect.GetAIValue(dice, current, this);
 
         return val;
     }

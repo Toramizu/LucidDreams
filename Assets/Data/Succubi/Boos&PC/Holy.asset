@@ -20,5 +20,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fe8d9b4b5473d0640adf358963a8ae4c, type: 2}
   - {fileID: 11400000, guid: 30197cc929fecab47b5a4016ec71d15a, type: 2}
   dice: 4
-  maxArousal: 1
+  maxArousal: 33
   crystals: 5

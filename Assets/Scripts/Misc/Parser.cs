@@ -5,6 +5,7 @@ using UnityEngine;
 public class Parser : MonoBehaviour
 {
     [SerializeField] List<ParserItem> symbols;
+    [SerializeField] string abilityBonus = "_++";
 
     public string ParseDescription(string description)
     {
@@ -13,6 +14,16 @@ public class Parser : MonoBehaviour
 
         return description;
         //return description.Replace(dieReplacedSymbol, dieSymbol);
+    }
+
+    public string ParseAbilityDescription(Ability ability, Character chara)
+    {
+        string descr = ParseDescription(ability.Data.Description);
+
+        if (descr.Contains(abilityBonus))
+            descr = descr.Replace(abilityBonus, ability.Used.ToString());
+
+        return descr;
     }
 }
 

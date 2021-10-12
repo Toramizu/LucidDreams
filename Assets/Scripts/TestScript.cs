@@ -19,9 +19,14 @@ public class TestScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F9))
             Test9();
     }
-    
+
+    [SerializeField] AbilityData ad;
+    [SerializeField] AbilityData ad2;
+
     void Test1()
     {
+        GameManager.Instance.PlayerManager.LearnAbility(ad, 0);
+        GameManager.Instance.PlayerManager.LearnAbility(ad2, 0);
         //dmd.nodes = dd.Nodes;
         //dmd.start = dd.Start;
         Debug.Log("Done");
@@ -31,7 +36,7 @@ public class TestScript : MonoBehaviour
     void Test2()
     {
         //GameManager.Instance.BattleManager.R(1);
-        GameManager.Instance.BattleManager.Roll(3, false, null);
+        //Debug.Log(GameManager.Instance.BattleManager.GetCharacter(true).CumulativeBonus);
     }
 
     void Test3()
@@ -42,6 +47,7 @@ public class TestScript : MonoBehaviour
 
     void Test5()
     {
+        GameManager.Instance.PlayerManager.Crystals = 99;
     }
 
     [SerializeField] GameObject mapCreator;

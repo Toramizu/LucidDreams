@@ -5,20 +5,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Bondage", menuName = "Data/Trait/Bondage")]
 public class BondageTrait : Trait
 {
-    public override void StartTurn(Character current)
+    public override void StartTurn(Character current, int stack)
     {
-        int amount = current.Traits.TraitStack(this);
         List<Ability> abilities = new List<Ability>(current.Abilities);
 
-        while(amount > 0 && abilities.Count > 0)
+        while(stack > 0 && abilities.Count > 0)
         {
             Ability abi = abilities[Random.Range(0, abilities.Count)];
             abilities.Remove(abi);
 
-            if (abi.isActiveAndEnabled)
+            if (abi.IsActive)
             {
                 abi.Locked = true;
-                amount--;
+                stack--;
             }
         }
 

@@ -5,12 +5,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DieSlot : MonoBehaviour, IDie//IDropHandler
+public class DieSlot :  IDie//IDropHandler MonoBehaviour,
 {
-    [SerializeField] Image image;
+    DieSlotUI SlotUI;
+    /*[SerializeField] Image image;
     [SerializeField] List<Sprite> faces;
     [SerializeField] TMP_Text text;
-    [SerializeField] GameObject links;
+    [SerializeField] GameObject links;*/
 
     RolledDie slottedDie;
     public RolledDie SlottedDie {
@@ -19,18 +20,18 @@ public class DieSlot : MonoBehaviour, IDie//IDropHandler
         {
             slottedDie = value;
 
-            if(condition.Linked != null)
+            if(condition.Link != null)
             {
                 if(slottedDie == null)
                 {
-                    condition.Linked.Count--;
-                    if(condition.Linked.Count <= 0)
-                        condition.Linked.Value = 0;
+                    condition.Link.Count--;
+                    if(condition.Link.Count <= 0)
+                        condition.Link.Value = 0;
                 }
                 else
                 {
-                    condition.Linked.Value = slottedDie.Value;
-                    condition.Linked.Count++;
+                    condition.Link.Value = slottedDie.Value;
+                    condition.Link.Count++;
                 }
             }
         }
@@ -46,32 +47,71 @@ public class DieSlot : MonoBehaviour, IDie//IDropHandler
         }
     }
 
-    public Ability Ability { get; set; }
+    Ability ability;
 
     DiceCondition condition;
     public DiceCondition Condition {
         get { return condition; }
         set { SetCondition(value); }
     }
-    public bool IsActive { get { return isActiveAndEnabled; } }
-    public float X { get { return transform.position.x; } }
-    public float Y { get { return transform.position.y; } }
-
-    public LinkedValue Linked
+    public bool IsActive
     {
-        get { return condition.Linked; }
+        get {
+            return SlotUI && SlotUI.isActiveAndEnabled;
+        }
+    }
+    public float X
+    {
+        get
+        {
+            if (SlotUI)
+                return SlotUI.Pos.x;
+            else
+                return 0f;
+        }
+    }
+    public float Y
+    {
+        get
+        {
+            if (SlotUI)
+                return SlotUI.Pos.y;
+            else
+                return 0f;
+        }
+    }
+    /*public bool IsActive { get { return isActiveAndEnabled; } }
+    public float X { get { return transform.position.x; } }
+    public float Y { get { return transform.position.y; } }*/
+
+    public LinkedValue Link
+    {
+        get { return condition.Link; }
         set
         {
-            condition.Linked = value;
-            links.SetActive(value != null);
+            condition.Link = value;
+            //links.SetActive(value != null);
+            SlotUI.ShowLinks(value != null);
         }
+    }
+
+    public DieSlot() { }
+    public DieSlot(ConditionData condition, DieSlotUI slotUI, Ability ability)
+    {
+        this.ability = ability;
+        SlotUI = slotUI;
+        slotUI.Init(this);
+
+        SetCondition(condition.ToCondition());
+        Link = ability.Link;
     }
 
     public void SetCondition(DiceCondition cond)
     {
         condition = cond;
+        SlotUI.SetCondition(cond);
 
-        if (cond is EqualsDie)
+        /*if (cond is EqualsDie)
         {
             int val = ((EqualsDie)cond).Value;
             if (val <= faces.Count)
@@ -90,7 +130,7 @@ public class DieSlot : MonoBehaviour, IDie//IDropHandler
         {
             image.sprite = faces[0];
             text.text = cond.ConditionText();
-        }
+        }*/
     }
 
     public bool Check(int die)
@@ -98,7 +138,7 @@ public class DieSlot : MonoBehaviour, IDie//IDropHandler
         return condition.Check(die);
     }
 
-    public void OnDrop(PointerEventData eventData)
+    /*public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null && GameManager.Instance.BattleManager.PlayerTurn)
         {
@@ -106,7 +146,7 @@ public class DieSlot : MonoBehaviour, IDie//IDropHandler
             if(!die.Locked)
                 OnDrop(die);
         }
-    }
+    }*/
 
     public void OnDrop(RolledDie die)
     {
@@ -114,8 +154,8 @@ public class DieSlot : MonoBehaviour, IDie//IDropHandler
         {
             SlottedDie = die;
             die.CurrentSlot = this;
-            die.transform.position = transform.position;
-            Ability.Check();
+            //die.transform.position = SlotUI.Pos;
+            ability.Check();
         }
     }
 }

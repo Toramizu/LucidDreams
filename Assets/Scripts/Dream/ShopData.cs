@@ -8,6 +8,9 @@ public class ShopData
     [SerializeField] List<AbilityData> abilities;
     public List<AbilityData> Abilities { get { return abilities; } }
 
+    [SerializeField] int minAbilities;
+    public int MinAbilities { get { return minAbilities; } }
+
     [SerializeField] int maxAbilities;
     public int MaxAbilities { get { return maxAbilities; } }
 

@@ -22,7 +22,7 @@ public class AbilityData : ScriptableObject
 
     [SerializeField] int total;
     public int Total { get { return total; } }
-
+    
     [SerializeField] List<EffectData> effects;
     public List<EffectData> Effects { get { return effects; } }
 
@@ -78,9 +78,16 @@ public class EffectData
     public int Bonus { get { return bonus; } }
     [SerializeField] bool usesDice = true;
     public bool UsesDice { get { return usesDice; } }
+    [SerializeField] bool usesCumulativeBonus = true;
+    public bool UsesCumulativeBonus { get { return usesCumulativeBonus; } }
     [SerializeField] float multiplier = 1f;
     public float Multiplier { get { return multiplier; } }
     [SerializeField] string stringValue;
+    public string StringValue { get { return stringValue; } }
+    [SerializeField] bool boolValue1;
+    public bool BoolValue1 { get { return boolValue1; } }
+    [SerializeField] bool boolValue2;
+    public bool BoolValue2 { get { return boolValue2; } }
 
     [SerializeField] bool targetsUser;
     public bool TargetsUser { get { return targetsUser; } }
@@ -92,23 +99,21 @@ public class EffectData
         switch (effect)
         {
             case EffectsEnum.Trait:
-                return new TraitEffect(stringValue, bonus, usesDice, multiplier, targetsUser, condition.ToCondition());
-
+                return new TraitEffect(this);
+                
             case EffectsEnum.Roll:
-                return new RollDiceEffect(bonus, usesDice, multiplier, targetsUser, condition.ToCondition());
+                return new RollDiceEffect(this);
 
             case EffectsEnum.Give:
-                return new GiveDiceEffect(bonus, usesDice, multiplier, targetsUser, condition.ToCondition());
+                return new GiveDiceEffect(this);
 
-            case EffectsEnum.Deny:
-                return new DenyEffect(bonus, usesDice, multiplier, targetsUser, condition.ToCondition());
 
             case EffectsEnum.Unlock:
-                return new UnlockDiceEffect(bonus, usesDice, multiplier, targetsUser, condition.ToCondition());
-
+                return new UnlockDiceEffect(this);
+            
             case EffectsEnum.Damage:
             default:
-                return new DamageEffect(bonus, usesDice, multiplier, targetsUser, condition.ToCondition());
+                return new DamageEffect(this);
         }
     }
 }
@@ -121,4 +126,5 @@ public enum EffectsEnum
     Give,
     Unlock,
     Deny,
+    Cumul,
 }

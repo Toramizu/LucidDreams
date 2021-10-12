@@ -36,7 +36,7 @@ public class MiniAbility : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
         }
     }
 
-    public AbilityUI AbiUI { get; set; }
+    public MiniAbilityUI AbiUI { get; set; }
     public int EquipSlot { get; set; } = -1;
 
     private void Awake()
