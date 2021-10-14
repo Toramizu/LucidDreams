@@ -21,15 +21,15 @@ MonoBehaviour:
   uses: 3
   equalDice: 0
   total: 0
-  totalAddBonus: 1
-  turnAddBonus: 0
   effects:
   - effect: 0
     bonus: 1
     usesDice: 0
-    usesCumulativeBonus: 1
+    usesCumulativeBonus: 0
     multiplier: 0
     stringValue: 
+    boolValue1: 0
+    boolValue2: 0
     targetsUser: 0
     condition:
       type: 0

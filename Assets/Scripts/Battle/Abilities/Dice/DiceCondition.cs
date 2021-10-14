@@ -19,5 +19,11 @@ public class LinkedValue
 {
     public int Value { get; set; }
     public int Count { get; set; }
+
+    public LinkedValue() { }
+    public LinkedValue(LinkedValue l) {
+        Value = l.Value;
+        Count = l.Count;
+    }
 }
 

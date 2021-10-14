@@ -7,44 +7,31 @@ public class DamageEffect : AbilityEffect
     protected override float AIValue { get { return 10f; } }
 
     public DamageEffect() { }
-    /*public DamageEffect(int bonus, bool usesDice, bool usesCumulativeBonus, float mult, bool targetsUser, DiceCondition condition) 
-        : base(bonus, usesDice, usesCumulativeBonus, mult, targetsUser, condition)
-    { }*/
     public DamageEffect(EffectData data) : base(data)
     { }
 
-    public override void Play(int dice, Ability abi)
+    public override void Play(Character user, Character other, int dice, Ability abi)
     {
-        GameManager.Instance.BattleManager.InflictsDamage(Value(dice, abi), targetsUser, false);
+        if (targetsUser)
+            user.InflictDamage(
+                CalculateDamages(Value(dice, abi), user, user)
+                );
+        else
+            other.InflictDamage(
+                CalculateDamages(Value(dice, abi), user, other)
+                );
     }
 
-    public override void GetAIValue(int dice, AIData current, Ability abi)
+    int CalculateDamages(int amount, Character user, Character target)
     {
-        if (condition != null && !condition.Check(dice))
-            return ;
+        user.Traits.OnAttack(ref amount, user, target);
+        target.Traits.OnDefense(ref amount, target, user);
 
-        current.InflictDamage(Value(dice, abi), targetsUser);
+        return amount;
+    }
 
-        /*Character user = current.User;
-
-
-        Character target;
-        if (targetsUser)
-            target = current.User;
-        else
-            target = current.Target;
-
-        int amount = Value(dice, 0);
-
-        int total = GameManager.Instance.BattleManager.CalculateDamages(amount, user, target, false);
-
-
-        if (targetsUser)
-            current.UserHP -= total;
-        else
-            current.TargetHP -= total;
-
-
-        return AIValue * total;*/
+    public override AbilityEffect Clone()
+    {
+        return new DamageEffect();
     }
 }

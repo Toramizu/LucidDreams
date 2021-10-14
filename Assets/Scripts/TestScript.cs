@@ -25,12 +25,7 @@ public class TestScript : MonoBehaviour
 
     void Test1()
     {
-        GameManager.Instance.PlayerManager.LearnAbility(ad, 0);
-        GameManager.Instance.PlayerManager.LearnAbility(ad2, 0);
-        //dmd.nodes = dd.Nodes;
-        //dmd.start = dd.Start;
-        Debug.Log("Done");
-
+        //Debug.Log(GameManager.Instance.BattleManager.GetCharacter(true).Abilities[2].Count);
     }
 
     void Test2()

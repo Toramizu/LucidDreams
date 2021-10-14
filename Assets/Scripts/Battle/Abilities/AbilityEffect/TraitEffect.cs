@@ -9,45 +9,23 @@ public class TraitEffect : AbilityEffect
     protected override float AIValue { get { return trait.AIValue; } }
 
     public TraitEffect() { }
-    /*public TraitEffect(string trait, int bonus, bool usesDice, bool usesCumulativeBonus, float mult, bool targetsUser, DiceCondition condition)
-        : base(bonus, usesDice, usesCumulativeBonus, mult, targetsUser, condition)
-    {
-        this.trait = GameManager.Instance.Assets.Traits[trait];
-    }*/
     public TraitEffect(EffectData data) : base(data)
     {
-        this.trait = GameManager.Instance.Assets.Traits[data.StringValue];
+        trait = GameManager.Instance.Assets.Traits[data.StringValue];
     }
 
-    public override void Play(int dice, Ability abi)
+    public override void Play(Character user, Character other, int dice, Ability abi)
     {
-        GameManager.Instance.BattleManager.AddTrait(trait, Value(dice, abi), targetsUser);
+        if (targetsUser)
+            user.Traits.AddTrait(trait, Value(dice, abi));
+        else
+            other.Traits.AddTrait(trait, Value(dice, abi));
     }
 
-    public override void GetAIValue(int dice, AIData current, Ability abi)
+    public override AbilityEffect Clone()
     {
-        if (condition != null && !condition.Check(dice))
-            return;
-
-        int v = Value(dice, abi);
-        if (targetsUser)
-            current.User.ApplyTrait(trait, v);
-        else
-            current.Target.ApplyTrait(trait, v);
-
-        /*SimpleCharacter target;
-        if (targetsUser)
-            target = current.User;
-        else
-            target = current.Target;
-
-        
-        int v = Value(dice, 0);
-        int applied = target.Traits[trait];
-        if (v > trait.MaxStack - applied)
-            v = trait.MaxStack - applied;
-
-
-        //return AIValue * v;*/
+        TraitEffect e = new TraitEffect();
+        e.trait = trait;
+        return e;
     }
 }

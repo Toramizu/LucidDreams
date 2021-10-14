@@ -25,9 +25,10 @@ MonoBehaviour:
   - effect: 1
     bonus: 0
     usesDice: 1
+    usesCumulativeBonus: 0
     multiplier: 1
     stringValue: Sub
-    targetsUser: 0
+    targetsUser: 1
     condition:
       type: 0
       value: 0

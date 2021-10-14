@@ -43,18 +43,14 @@ public abstract class AbilityEffect
             amount += cumulative;
         return amount;
     }
+    
+    public abstract void Play(Character user, Character other, int dice, Ability abi);
 
-    public void CheckAndPlay(int dice, Ability abi)
+    public void CheckAndPlay(Character user, Character other, int dice, Ability abi)
     {
         if (condition == null || condition.Check(dice))
-            Play(dice, abi);
+            Play(user, other, dice, abi);
     }
 
-    public abstract void Play(int dice, Ability abi);
-
-    public virtual void GetAIValue(int dice, AIData current, Ability abi)
-    {
-        /*if (condition == null || condition.Check(dice))
-            current.AIValue += AIValue * Value(dice, 0);*/
-    }
+    public abstract AbilityEffect Clone();
 }

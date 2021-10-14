@@ -48,10 +48,12 @@ public class Character //: MonoBehaviour
         {
             CharaUI.LoadCharacter(data);
             Dice = new DiceHolder(CharaUI.Dice);
+            traits.TraitsUI = CharaUI.Traits;
         }
         else
         {
             Dice = new DiceHolder(null);
+            traits.TraitsUI = null;
         }
 
         Data = data;
@@ -111,7 +113,7 @@ public class Character //: MonoBehaviour
         }
     }
 
-    public virtual bool InflictDamage(int amount)
+    public void InflictDamage(int amount)
     {
         Arousal += amount;
         if (Arousal < 0)
@@ -119,9 +121,11 @@ public class Character //: MonoBehaviour
         else if (Arousal > MaxArousal)
             Arousal = MaxArousal;
 
-        CharaUI.FillGauge(Arousal, MaxArousal);
-
-        return Arousal >= MaxArousal;
+        if(CharaUI != null)
+        {
+            CharaUI.FillGauge(Arousal, MaxArousal);
+            GameManager.Instance.BattleManager.CheckBattleStatus();
+        }
     }
 
     public void OpenBorrowed()
@@ -133,7 +137,7 @@ public class Character //: MonoBehaviour
     public void StartTurn()
     {
         CharaUI.ToggleAbilities(true);
-        Dice.Roll(Rolls, true, null);
+        Dice.Roll(Rolls, null);
         Traits.StartTurn(this);
 
     }
@@ -149,9 +153,9 @@ public class Character //: MonoBehaviour
         Traits.EndTurn(this);
     }
 
-    public void Roll(int amount, bool reset, DiceCondition condition)
+    public void Roll(int amount, DiceCondition condition)
     {
-        Dice.Roll(amount, reset, condition);
+        Dice.Roll(amount, condition);
     }
 
     public void Give(int value)
@@ -175,13 +179,31 @@ public class Character //: MonoBehaviour
         CharaUI.ToggleAbilities(toggle);
     }
 
+    public Character Clone()
+    {
+        Character c = new Character();
+        c.Data = Data;
+        c.Arousal = Arousal;
+        c.MaxArousal = MaxArousal;
+        c.Abilities = new List<Ability>();
+        foreach (Ability a in Abilities)
+            c.Abilities.Add(a.Clone());
+
+        c.traits = traits.Clone();
+
+        c.Dice = Dice.Clone();
+
+        return c;
+    }
+
     #region Auto Play
 
     BattleAI ai = new BattleAI();
-
+    
     public void PlayTurn()
     {
-        List<DieToSlot> next = ai.FindNextAction(Abilities, Dice.RolledDice, this, GameManager.Instance.BattleManager.Other(this));
+        //List<DieToSlot> next = ai.FindNextAction(Abilities, Dice.RolledDice, this, GameManager.Instance.BattleManager.Other(this));
+        List<DieToSlot> next = ai.FindNextAction(this, GameManager.Instance.BattleManager.Other(this));
         CharaUI.PlayTurn(next);
         
         //StartCoroutine(AutoMoveDice(next));
@@ -262,5 +284,22 @@ public class Character //: MonoBehaviour
         PlaceNext();
         //OLD_PlaceNext();
     }*/
+
+    const float DMG_VALUE = 10;
+    const float KO_VALUE = 1000;
+
+    public float AIValue
+    {
+        get
+        {
+            float val = Arousal * DMG_VALUE;
+            if (Arousal > MaxArousal)
+                val += KO_VALUE;
+
+            val += traits.AIValue;
+
+            return val;
+        }
+    }
     #endregion
 } 

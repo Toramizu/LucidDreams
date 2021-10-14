@@ -17,8 +17,8 @@ MonoBehaviour:
   boss: {fileID: 11400000, guid: 97b8172e36efbd7449f406ad8214115c, type: 2}
   succubi:
   - {fileID: 11400000, guid: c4f39de445ce8c94ab5fa62ce253f1e2, type: 2}
-  - {fileID: 11400000, guid: 6b7b179b25898c24b8c8030813849184, type: 2}
-  - {fileID: 11400000, guid: 02446fdf63476a34baed4400d4d9e7c0, type: 2}
+  - {fileID: 11400000, guid: 02742c43c6eb3f24bac70338dedb2f02, type: 2}
+  - {fileID: 11400000, guid: 4ad0924941e84224aa6c6ab322eea649, type: 2}
   - {fileID: 11400000, guid: dc246bbad55ddc147b4ea5ffa3f140ea, type: 2}
   shop:
     abilities:

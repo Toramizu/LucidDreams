@@ -791,9 +791,7 @@ MonoBehaviour:
   - {fileID: 1328544990}
   - {fileID: 2073194852}
   dice: {fileID: 2069053380}
-  traits:
-    traitHolder: {fileID: 721262670}
-    traitPrefab: {fileID: 2724532600138904015, guid: fdb833f16647be249bbd19ef10d2d195, type: 3}
+  traits: {fileID: 721262672}
 --- !u!1 &52438696
 GameObject:
   m_ObjectHideFlags: 0
@@ -6737,6 +6735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 721262670}
   - component: {fileID: 721262671}
+  - component: {fileID: 721262672}
   m_Layer: 5
   m_Name: TraitsHolder
   m_TagString: Untagged
@@ -6787,6 +6786,19 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &721262672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721262669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94123b9ee2a6eab41b8beb1abbf59320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  traitPrefab: {fileID: 2724532600138904015, guid: fdb833f16647be249bbd19ef10d2d195, type: 3}
 --- !u!114 &733759267 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7922517016577087745, guid: 3198a34223716284f8134bb315583baf, type: 3}
@@ -13841,6 +13853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1501927397}
   - component: {fileID: 1501927398}
+  - component: {fileID: 1501927399}
   m_Layer: 5
   m_Name: TraitsHolder
   m_TagString: Untagged
@@ -13891,6 +13904,19 @@ MonoBehaviour:
   m_Spacing: {x: 5, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &1501927399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501927396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94123b9ee2a6eab41b8beb1abbf59320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  traitPrefab: {fileID: 2724532600138904015, guid: fdb833f16647be249bbd19ef10d2d195, type: 3}
 --- !u!1 &1529764839
 GameObject:
   m_ObjectHideFlags: 0
@@ -18057,9 +18083,7 @@ MonoBehaviour:
   - {fileID: 1605097914}
   - {fileID: 916785987}
   dice: {fileID: 1886672354}
-  traits:
-    traitHolder: {fileID: 1501927397}
-    traitPrefab: {fileID: 2724532600138904015, guid: fdb833f16647be249bbd19ef10d2d195, type: 3}
+  traits: {fileID: 1501927399}
 --- !u!1 &2055959558 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6931469702269140468, guid: 3198a34223716284f8134bb315583baf, type: 3}

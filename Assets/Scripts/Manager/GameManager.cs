@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
 
     public void NextDay()
     {
+        Debug.Log("It's a new day!");
         dayTmp.SetActive(true);
     }
 }

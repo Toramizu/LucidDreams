@@ -17,4 +17,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 7da88ea5eee88f5479a5567816701257, type: 3}
   reverseTrait: {fileID: 0}
   maxStack: 5
-  aiValue: 8
+  aiValue: -5

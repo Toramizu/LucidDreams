@@ -84,10 +84,6 @@ public class EffectData
     public float Multiplier { get { return multiplier; } }
     [SerializeField] string stringValue;
     public string StringValue { get { return stringValue; } }
-    [SerializeField] bool boolValue1;
-    public bool BoolValue1 { get { return boolValue1; } }
-    [SerializeField] bool boolValue2;
-    public bool BoolValue2 { get { return boolValue2; } }
 
     [SerializeField] bool targetsUser;
     public bool TargetsUser { get { return targetsUser; } }

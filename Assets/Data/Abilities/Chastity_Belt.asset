@@ -25,8 +25,11 @@ MonoBehaviour:
   - effect: 1
     bonus: 0
     usesDice: 1
+    usesCumulativeBonus: 0
     multiplier: 1
     stringValue: Chastity
+    boolValue1: 0
+    boolValue2: 0
     targetsUser: 0
     condition:
       type: 0

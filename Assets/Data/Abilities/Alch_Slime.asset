@@ -25,8 +25,11 @@ MonoBehaviour:
   - effect: 1
     bonus: 4
     usesDice: 0
+    usesCumulativeBonus: 0
     multiplier: 0
     stringValue: Sticky
+    boolValue1: 0
+    boolValue2: 0
     targetsUser: 0
     condition:
       type: 0

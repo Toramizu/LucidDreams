@@ -21,7 +21,6 @@ public class RolledDie// : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public GameObject GameObject { get { return DieUI.gameObject; } }
 
     public DieSlot CurrentSlot { get; set; }
-    public bool IsActive { get { return DieUI.isActiveAndEnabled; } }
     /*Vector3 position;
     public Vector3 Position
     {
@@ -54,9 +53,12 @@ public class RolledDie// : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         }
     }
 
-    public RolledDie(int value)
+    public int ID { get; set; }
+
+    public RolledDie(int value, int id)
     {
         this.value = value;
+        ID = id;
     }
 
     public void Add(int amount)
@@ -108,30 +110,8 @@ public class RolledDie// : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         DieUI.gameObject.SetActive(false);
     }
 
-    /*#region Drag & Drop
-    public void OnBeginDrag(PointerEventData eventData)
+    public RolledDie Clone()
     {
-        if (GameManager.Instance.BattleManager.PlayerTurn && !locked)
-        {
-            canvasGroup.blocksRaycasts = false;
-            if (CurrentSlot != null)
-            {
-                CurrentSlot.SlottedDie = null;
-                CurrentSlot = null;
-            }
-        }
+        return new RolledDie(value, ID);
     }
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        if (GameManager.Instance.BattleManager.PlayerTurn && !locked)
-            rTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        if (GameManager.Instance.BattleManager.PlayerTurn && !locked)
-            canvasGroup.blocksRaycasts = true;
-    }
-    #endregion*/
 }

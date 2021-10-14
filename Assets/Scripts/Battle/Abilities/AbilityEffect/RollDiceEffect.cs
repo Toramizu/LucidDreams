@@ -8,14 +8,22 @@ public class RollDiceEffect : AbilityEffect
     [SerializeField] int amount;
 
     public RollDiceEffect() { }
-    /*public RollDiceEffect(int bonus, bool usesDice, bool usesCumulativeBonus, float mult, bool targetsUser, DiceCondition condition)
-        : base(bonus, usesDice, usesCumulativeBonus, mult, targetsUser, condition)
-    { }*/
     public RollDiceEffect(EffectData data) : base(data)
     { }
-
-    public override void Play(int dice, Ability abi)
+    
+    public override void Play(Character user, Character other, int dice, Ability abi)
     {
-        GameManager.Instance.BattleManager.Roll(Value(dice, abi), false, rollCondition.ToCondition());
+        if(targetsUser)
+            user.Roll(Value(dice, abi), rollCondition.ToCondition());
+        else
+            other.Roll(Value(dice, abi), rollCondition.ToCondition());
+    }
+
+    public override AbilityEffect Clone()
+    {
+        RollDiceEffect e = new RollDiceEffect();
+        e.rollCondition = rollCondition;
+        e.amount = amount;
+        return e;
     }
 }

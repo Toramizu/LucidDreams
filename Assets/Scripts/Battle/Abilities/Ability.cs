@@ -45,14 +45,10 @@ public class Ability// : Hidable
         }
     }
 
+    public Ability() { }
     public Ability(AbilityData data, AbilityUI abiUI)
     {
         Init(data, abiUI);
-        /*Data = data;
-        this.abiUI = abiUI;
-
-        if(abiUI != null)
-            abiUI.Init(data, this);*/
     }
 
     public bool IsActive {
@@ -78,18 +74,6 @@ public class Ability// : Hidable
         DiceSlots.Clear();
         for(int i = 0; i < data.Conditions.Count; i++)
             DiceSlots.Add(new DieSlot(data.Conditions[i], abiUI.GetDieSlot(i), this));
-
-        /*for (int i = 0; i < DiceSlots.Count; i++)
-        {
-            if (i < data.Conditions.Count)
-            {
-                DiceSlots[i].gameObject.SetActive(true);
-                DiceSlots[i].SetCondition(data.Conditions[i].ToCondition()); ;
-                DiceSlots[i].Linked = link;
-            }
-            else
-                DiceSlots[i].gameObject.SetActive(false);
-        }*/
 
         if (data.Total <= 0)
             Count = null;
@@ -119,7 +103,7 @@ public class Ability// : Hidable
             Link.Count = 0;
         }
 
-        if (Count <= 0)
+        if (count != null && Count <= 0)
             Count = Data.Total;
 
         RefreshDescr();
@@ -147,7 +131,10 @@ public class Ability// : Hidable
                 }
 
             if(count <= 0)
+            {
                 PlayAbility();
+                Count = Data.Total;
+            }
         }
     }
 
@@ -164,16 +151,40 @@ public class Ability// : Hidable
             }
         }
 
-        foreach (AbilityEffect effect in effects)
+        PlayAbility(
+            GameManager.Instance.BattleManager.GetCharacter(true),
+            GameManager.Instance.BattleManager.GetCharacter(false),
+            total);
+        /*foreach (AbilityEffect effect in effects)
             effect.CheckAndPlay(total, this);
         
         RemainingUses--;
         Used++;
 
-        if (RemainingUses <= 0)
-            abiUI.Hide();
-        else
-            RefreshDescr();
+        if (abiUI != null)
+        {
+            if (RemainingUses <= 0)
+                abiUI.Hide();
+            else
+                RefreshDescr();
+        }*/
+    }
+
+    public void PlayAbility(Character user, Character other, int dice)
+    {
+        foreach (AbilityEffect effect in effects)
+            effect.CheckAndPlay(user, other, dice, this);
+
+        RemainingUses--;
+        Used++;
+
+        if (abiUI != null)
+        {
+            if (RemainingUses <= 0)
+                abiUI.Hide();
+            else
+                RefreshDescr();
+        }
     }
 
     public void RefreshDescr()
@@ -184,61 +195,23 @@ public class Ability// : Hidable
                 GameManager.Instance.BattleManager.GetCharacter(true)));
     }
 
-    public /*List<RolledDie>*/ void TryFill(List<RolledDie> dice, Dictionary<RolledDie, IDie> toPlace) // TODO : Manage locked dice
+    public Ability Clone()
     {
-        if (dice.Count == 0) return;
+        Ability a = new Ability();
+        a.Data = Data;
+        a.count = count;
 
-        //Keep dice fitting conditions
-        Dictionary<RolledDie, IDie> placed = new Dictionary<RolledDie, IDie>();
-        int? count = this.count;
+        if (a.Data.EqualDice)
+            Link = new LinkedValue();
+        else
+            Link = null;
 
-        foreach (IDie slot in DiceSlots)
-        {
-            if (slot.IsActive)
-            {
-                foreach (RolledDie die in dice)
-                {
-                    //If a die fits
-                    if (slot.Check(die.Value) && !placed.ContainsKey(die))
-                    {
-                        //Keep die & go to next slot
-                        placed.Add(die, slot);
+        a.Used = Used;
+        a.RemainingUses = RemainingUses;
 
-                        if(count != null)
-                        {
-                            count -= die.Value;
-                            if (count <= 0)
-                                break;
-                        }
-                        else
-                            break;
-                    }
-                    else
-                    {
-                        //If no die found, skip ability
-                        return; //dice;
-                    }
-                }
-            }
-        }
-
-
-        //Place die in slot & Remove placed dice from remaining
-        foreach(RolledDie die in placed.Keys)
-        {
-            toPlace.Add(die, placed[die]);
-            dice.Remove(die);
-        }
-    }
-
-    public float GetAIValue(int dice, AIData current)
-    {
-        float val = 0;
-
-        foreach (AbilityEffect effect in effects)
-            effect.GetAIValue(dice, current, this);
-
-        return val;
+        a.effects = effects;
+        a.DiceSlots = DiceSlots;
+        return a;
     }
 }
 

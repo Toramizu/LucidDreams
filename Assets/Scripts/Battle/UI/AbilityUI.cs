@@ -8,8 +8,6 @@ public class AbilityUI : Hidable
     [SerializeField] TMP_Text title;
     [SerializeField] TMP_Text description;
 
-    /*[SerializeField] List<DieSlot> DiceSlots;
-    public List<DieSlot> Slots { get { return DiceSlots; } }*/
     [SerializeField] List<DieSlotUI> dieSlots;
 
     [SerializeField] TMP_Text countText;
@@ -21,14 +19,6 @@ public class AbilityUI : Hidable
     public AbilityData Data { get; set; }
     Ability ability;
 
-
-    /*protected override void Awake()
-    {
-        base.Awake();
-        foreach (DieSlot slot in DiceSlots)
-            slot.Ability = ability;
-    }*/
-
     public void Init(AbilityData data, Ability ability)
     {
         gameObject.SetActive(true);
@@ -36,42 +26,12 @@ public class AbilityUI : Hidable
         title.text = data.Title;
         Data = data;
         this.ability = ability;
+        SetCount(data.Total);
 
         lockTransform.SetActive(false);
 
         foreach (DieSlotUI slot in dieSlots)
             slot.gameObject.SetActive(false);
-
-        /*if (data.EqualDice)
-            link = new LinkedValue();
-        else
-            link = null;
-
-        for (int i = 0; i < DiceSlots.Count; i++)
-        {
-            if (i < data.Conditions.Count)
-            {
-                DiceSlots[i].gameObject.SetActive(true);
-                DiceSlots[i].SetCondition(data.Conditions[i].ToCondition()); ;
-                DiceSlots[i].Linked = link;
-            }
-            else
-                DiceSlots[i].gameObject.SetActive(false);
-        }
-
-        if (data.Total <= 0)
-            Count = null;
-        else
-            Count = data.Total;
-
-        effects.Clear();
-        foreach (EffectData effect in data.Effects)
-            effects.Add(effect.ToEffect());
-
-        Locked = false;
-        Used = 0;
-
-        ResetAbility();*/
     }
 
     public void Remove()
@@ -105,6 +65,7 @@ public class AbilityUI : Hidable
         }
         else
         {
+            countText.text = count.ToString();
             countText.gameObject.SetActive(true);
         }
     }

@@ -25,7 +25,14 @@ MonoBehaviour:
   - effect: 0
     bonus: 10
     usesDice: 0
+    usesCumulativeBonus: 0
     multiplier: 0
     stringValue: 
+    boolValue1: 0
+    boolValue2: 0
     targetsUser: 0
+    condition:
+      type: 0
+      value: 0
+      toggle: 0
   price: 5

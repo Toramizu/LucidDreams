@@ -7,7 +7,8 @@ public class PheromonesTrait : Trait
 {
     public override void OnDefense(ref int damages, Character current, Character other, int stack)
     {
-        GameManager.Instance.BattleManager.InflictsDamage(stack, true, true);
+        //GameManager.Instance.BattleManager.InflictsDamage(stack, true, true);
+        other.InflictDamage(stack);
     }
 
     public override void StartTurn(Character current, int stack)

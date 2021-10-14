@@ -25,8 +25,11 @@ MonoBehaviour:
   - effect: 1
     bonus: 3
     usesDice: 0
+    usesCumulativeBonus: 0
     multiplier: 0
     stringValue: Bondage
+    boolValue1: 0
+    boolValue2: 0
     targetsUser: 0
     condition:
       type: 0

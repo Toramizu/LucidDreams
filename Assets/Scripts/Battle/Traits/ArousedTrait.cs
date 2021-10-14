@@ -7,7 +7,8 @@ public class ArousedTrait : Trait
 {
     public override void EndTurn(Character current, int stack)
     {
-        GameManager.Instance.BattleManager.InflictsDamage(stack, true, true);
+        //GameManager.Instance.BattleManager.InflictsDamage(stack, true, true);
+        current.InflictDamage(stack);
         current.Traits.AddTrait(this, -1);
     }
 }

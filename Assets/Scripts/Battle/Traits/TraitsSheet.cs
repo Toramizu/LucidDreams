@@ -5,100 +5,142 @@ using UnityEngine;
 [System.Serializable]
 public class TraitsSheet
 {
-    [SerializeField] Transform traitHolder;
+    public TraitsSheetUI TraitsUI { get; set; }
+
+    /*[SerializeField] Transform traitHolder;
     [SerializeField] TraitUI traitPrefab;
     
-    Dictionary<Trait, TraitUI> traits = new Dictionary<Trait, TraitUI>();
+    Dictionary<Trait, TraitUI> traits = new Dictionary<Trait, TraitUI>();*/
+    public Dictionary<Trait, int> Traits { get; private set; } = new Dictionary<Trait, int>();
 
     public bool HasTrait(Trait trait) {
-        return traits.ContainsKey(trait);
+        return Traits.ContainsKey(trait);
     }
     public int TraitStack(Trait trait)
     {
-        if (traits.ContainsKey(trait))
-            return traits[trait].Amount;
+        if (Traits.ContainsKey(trait))
+            return Traits[trait];
         else
             return 0;
     }
 
-    public Dictionary<Trait, int> ToSimpleDictionary
+    /*public Dictionary<Trait, int> Traits
     {
         get
         {
             Dictionary<Trait, int> dict = new Dictionary<Trait, int>();
-            foreach (Trait t in traits.Keys)
-                dict.Add(t, traits[t].Amount);
+            foreach (Trait t in Traits.Keys)
+                dict.Add(t, Traits[t].Amount);
             return dict;
         }
-    }
+    }*/
 
     public void AddTrait(Trait trait, int amount)
     {
-        if (traits.ContainsKey(trait))
-            traits[trait].Amount += amount;
+        if (Traits.ContainsKey(trait))
+            Traits[trait] += amount;
+        else
+            Traits.Add(trait, amount);
+
+        if (TraitsUI != null)
+            TraitsUI.AddTrait(trait, amount);
+
+        /*if (Traits.ContainsKey(trait))
+            Traits[trait].Amount += amount;
         else
             AddNewTrait(trait, amount);
 
-        if (traits[trait].Amount <= 0)
+        if (Traits[trait].Amount <= 0)
         {
-            if (traits[trait].Amount < 0 && trait.ReversrTrait != null)
-                AddTrait(trait.ReversrTrait, -traits[trait].Amount);
+            if (Traits[trait].Amount < 0 && trait.ReversrTrait != null)
+                AddTrait(trait.ReversrTrait, -Traits[trait].Amount);
 
             RemoveTrait(trait);
-        } else if (trait.MaxStack > 0 && traits[trait].Amount > trait.MaxStack)
+        } else if (trait.MaxStack > 0 && Traits[trait].Amount > trait.MaxStack)
         {
-            traits[trait].Amount = trait.MaxStack;
-        }
+            Traits[trait].Amount = trait.MaxStack;
+        }*/
     }
 
     public void RemoveTrait(Trait trait)
     {
-        MonoBehaviour.Destroy(traits[trait].gameObject);
-        traits.Remove(trait);
-    }
+        //MonoBehaviour.Destroy(Traits[trait].gameObject);
+        Traits.Remove(trait);
 
-    void AddNewTrait(Trait trait, int amount)
-    {
-        TraitUI t = MonoBehaviour.Instantiate(traitPrefab, traitHolder, false);
-        t.Init(trait, amount);
-
-        traits.Add(trait, t);
+        if (TraitsUI != null)
+            TraitsUI.RemoveTrait(trait);
     }
 
     public void Clear()
     {
-        foreach (TraitUI t in traits.Values)
+        Traits.Clear();
+
+        if (TraitsUI != null)
+            TraitsUI.Clear();
+    }
+
+    /*void AddNewTrait(Trait trait, int amount)
+    {
+        TraitUI t = MonoBehaviour.Instantiate(traitPrefab, traitHolder, false);
+        t.Init(trait, amount);
+
+        Traits.Add(trait, t);
+    }
+
+    public void Clear()
+    {
+        foreach (TraitUI t in Traits.Values)
             MonoBehaviour.Destroy(t.gameObject);
 
-        traits.Clear();
+        Traits.Clear();
+    }*/
+
+    public TraitsSheet Clone()
+    {
+        TraitsSheet t = new TraitsSheet();
+        t.Traits = new Dictionary<Trait, int>(Traits);
+        return t;
+    }
+
+    public float AIValue
+    {
+        get
+        {
+            float val = 0;
+
+            foreach (Trait t in Traits.Keys)
+                val += t.AIValue * Traits[t];
+
+            return val;
+        }
     }
 
     #region Events
 
     public void OnAttack(ref int damages, Character current, Character other)
     {
-        List<Trait> t = new List<Trait>(traits.Keys);
+        List<Trait> t = new List<Trait>(Traits.Keys);
         foreach (Trait trait in t)
-            trait.OnAttack(ref damages, current, other, traits[trait].Amount);
+            trait.OnAttack(ref damages, current, other, Traits[trait]);
     }
     public void OnDefense(ref int damages, Character current, Character other)
     {
-        List<Trait> t = new List<Trait>(traits.Keys);
+        List<Trait> t = new List<Trait>(Traits.Keys);
         foreach (Trait trait in t)
-            trait.OnDefense(ref damages, current, other, traits[trait].Amount);
+            trait.OnDefense(ref damages, current, other, Traits[trait]);
     }
 
     public void StartTurn(Character current)
     {
-        List<Trait> t = new List<Trait>(traits.Keys);
+        List<Trait> t = new List<Trait>(Traits.Keys);
         foreach (Trait trait in t)
-            trait.StartTurn(current, traits[trait].Amount);
+            trait.StartTurn(current, Traits[trait]);
     }
     public void EndTurn(Character current)
     {
-        List<Trait> t = new List<Trait>(traits.Keys);
+        List<Trait> t = new List<Trait>(Traits.Keys);
         foreach (Trait trait in t)
-            trait.EndTurn(current, traits[trait].Amount);
+            trait.EndTurn(current, Traits[trait]);
     }
     #endregion
 }

@@ -54,6 +54,8 @@ public class DieSlot :  IDie//IDropHandler MonoBehaviour,
         get { return condition; }
         set { SetCondition(value); }
     }
+    public int[] AcceptedValues { get { return condition.AcceptedValues; } }
+
     public bool IsActive
     {
         get {

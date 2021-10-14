@@ -25,8 +25,11 @@ MonoBehaviour:
   - effect: 0
     bonus: 0
     usesDice: 1
+    usesCumulativeBonus: 0
     multiplier: 1
     stringValue: 
+    boolValue1: 0
+    boolValue2: 0
     targetsUser: 0
     condition:
       type: 0
@@ -35,8 +38,11 @@ MonoBehaviour:
   - effect: 1
     bonus: 2
     usesDice: 1
+    usesCumulativeBonus: 0
     multiplier: 0
     stringValue: Aroused
+    boolValue1: 0
+    boolValue2: 0
     targetsUser: 0
     condition:
       type: 0

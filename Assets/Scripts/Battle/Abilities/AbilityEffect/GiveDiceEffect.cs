@@ -7,14 +7,21 @@ public class GiveDiceEffect : AbilityEffect
     [SerializeField] int amount;
     
     public GiveDiceEffect() { }
-    /*public GiveDiceEffect(int bonus, bool usesDice, bool usesCumulativeBonus, float mult, bool targetsUser, DiceCondition condition)
-        : base(bonus, usesDice, usesCumulativeBonus, mult, targetsUser, condition)
-    { }*/
     public GiveDiceEffect(EffectData data) : base(data)
     { }
 
-    public override void Play(int dice, Ability abi)
+    public override void Play(Character user, Character other, int dice, Ability abi)
     {
-        GameManager.Instance.BattleManager.Give(Value(dice, abi));
+        if (targetsUser)
+            user.Give(Value(dice, abi));
+        else
+            other.Give(Value(dice, abi));
+    }
+
+    public override AbilityEffect Clone()
+    {
+        GiveDiceEffect e = new GiveDiceEffect();
+        e.amount = amount;
+        return e;
     }
 }

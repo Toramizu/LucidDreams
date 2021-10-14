@@ -21,8 +21,9 @@ public class CharacterUI : MonoBehaviour
     [SerializeField] DiceHolderUI dice;
     public DiceHolderUI Dice { get { return dice; } }
 
-    [SerializeField] TraitsSheet traits;
-    public TraitsSheet Traits { get { return traits; } }
+    //[SerializeField] TraitsSheet traits;
+    [SerializeField] TraitsSheetUI traits;
+    public TraitsSheetUI Traits { get { return traits; } }
 
     private void Start()
     {

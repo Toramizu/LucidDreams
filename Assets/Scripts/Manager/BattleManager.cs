@@ -129,12 +129,12 @@ public class BattleManager : MonoBehaviour
             opponent.Traits.AddTrait(trait, amount);
     }
 
-    public void Roll(int amount, bool reset, DiceCondition condition)
+    public void Roll(int amount, DiceCondition condition)
     {
         if (PlayerTurn)
-            player.Roll(amount, reset, condition);
+            player.Roll(amount, condition);
         else
-            opponent.Roll(amount, reset, condition);
+            opponent.Roll(amount, condition);
     }
 
     public void Give(int value)
