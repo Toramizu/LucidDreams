@@ -65,18 +65,13 @@ public class Character //: MonoBehaviour
 
         Rolls = data.Dice;
         LoadAbilities(data.Abilities);
-        /*for(int i = 0; i < data.Abilities.Count; i++)
-        {
-            Abilities.Add(NewAbility(data.Abilities[i], i));
-        }*/
+    }
 
-        /*for (int i = 0; i < abilities.Count; i++)
-        {
-            if (i < data.Abilities.Count)
-                SetAbility(data.Abilities[i], i);
-            else
-                abilities[i].gameObject.SetActive(false);
-        }*/
+    public void Reset(List<AbilityData> abilities)
+    {
+        LoadAbilities(abilities);
+        traits.Clear();
+        Dice.ResetDice();
     }
 
     Ability NewAbility(AbilityData data, int slot)
@@ -97,16 +92,11 @@ public class Character //: MonoBehaviour
             if(aUI != null)
                 Abilities[slot].Init(data, CharaUI.AbilityUI(slot));
         }
-
-
-        /*if (slot < abilities.Count)
-            abilities[slot].Init(data, CharaUI.AbilityUI(slot));*/
     }
 
     public void LoadAbilities(List<AbilityData> abis)
     {
-        /*for (int i = 0; i < abis.Count && i < Abilities.Count; i++)
-            SetAbility(abis[i], i);*/
+        Abilities.Clear();
         for (int i = 0; i < abis.Count; i++)
         {
             Abilities.Add(NewAbility(abis[i], i));

@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class BattleAI
 {
-    const int AI_SAMPLE = 10;//000;
+    const int AI_SAMPLE = 10000;
 
     public List<DieToSlot> FindNextAction(Character user, Character other)
     {
@@ -25,8 +25,8 @@ public class BattleAI
 
     void RandomTry(AITry aiTry)
     {
-        List<Ability> abis = (List<Ability>)aiTry.User.Abilities;
-        List<RolledDie> dice = (List<RolledDie>)aiTry.User.Dice.RolledDice;
+        List<Ability> abis = aiTry.User.Abilities;
+        List<RolledDie> dice = aiTry.User.Dice.RolledDice;
 
         while(abis.Count > 0 && dice.Count > 0)
         {

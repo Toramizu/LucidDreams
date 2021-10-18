@@ -7,10 +7,6 @@ public class TraitsSheet
 {
     public TraitsSheetUI TraitsUI { get; set; }
 
-    /*[SerializeField] Transform traitHolder;
-    [SerializeField] TraitUI traitPrefab;
-    
-    Dictionary<Trait, TraitUI> traits = new Dictionary<Trait, TraitUI>();*/
     public Dictionary<Trait, int> Traits { get; private set; } = new Dictionary<Trait, int>();
 
     public bool HasTrait(Trait trait) {
@@ -24,17 +20,6 @@ public class TraitsSheet
             return 0;
     }
 
-    /*public Dictionary<Trait, int> Traits
-    {
-        get
-        {
-            Dictionary<Trait, int> dict = new Dictionary<Trait, int>();
-            foreach (Trait t in Traits.Keys)
-                dict.Add(t, Traits[t].Amount);
-            return dict;
-        }
-    }*/
-
     public void AddTrait(Trait trait, int amount)
     {
         if (Traits.ContainsKey(trait))
@@ -43,28 +28,11 @@ public class TraitsSheet
             Traits.Add(trait, amount);
 
         if (TraitsUI != null)
-            TraitsUI.AddTrait(trait, amount);
-
-        /*if (Traits.ContainsKey(trait))
-            Traits[trait].Amount += amount;
-        else
-            AddNewTrait(trait, amount);
-
-        if (Traits[trait].Amount <= 0)
-        {
-            if (Traits[trait].Amount < 0 && trait.ReversrTrait != null)
-                AddTrait(trait.ReversrTrait, -Traits[trait].Amount);
-
-            RemoveTrait(trait);
-        } else if (trait.MaxStack > 0 && Traits[trait].Amount > trait.MaxStack)
-        {
-            Traits[trait].Amount = trait.MaxStack;
-        }*/
+            TraitsUI.AddTrait(trait, Traits[trait]);
     }
 
     public void RemoveTrait(Trait trait)
     {
-        //MonoBehaviour.Destroy(Traits[trait].gameObject);
         Traits.Remove(trait);
 
         if (TraitsUI != null)
@@ -78,22 +46,6 @@ public class TraitsSheet
         if (TraitsUI != null)
             TraitsUI.Clear();
     }
-
-    /*void AddNewTrait(Trait trait, int amount)
-    {
-        TraitUI t = MonoBehaviour.Instantiate(traitPrefab, traitHolder, false);
-        t.Init(trait, amount);
-
-        Traits.Add(trait, t);
-    }
-
-    public void Clear()
-    {
-        foreach (TraitUI t in Traits.Values)
-            MonoBehaviour.Destroy(t.gameObject);
-
-        Traits.Clear();
-    }*/
 
     public TraitsSheet Clone()
     {

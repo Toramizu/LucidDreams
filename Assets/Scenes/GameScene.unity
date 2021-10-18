@@ -773,10 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15d426acd44f8b45899a7faa3586134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chara:
-    traits:
-      traitHolder: {fileID: 721262670}
-      traitPrefab: {fileID: 2724532600138904015, guid: fdb833f16647be249bbd19ef10d2d195, type: 3}
+  chara: {}
   characterImage: {fileID: 886570032}
   defaultImage: {fileID: 21300000, guid: 8bb6a899a13aa6844933429e53856d09, type: 3}
   characterName: {fileID: 1194168413}
@@ -2532,10 +2529,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 44.75
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -6264,16 +6261,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7332531, g: 0.972549, b: 0.49803922, a: 1}
+  m_Color: {r: 0.70449203, g: 0.9622642, b: 0.51290494, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -10937,10 +10934,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 44.75
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -18065,10 +18062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15d426acd44f8b45899a7faa3586134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chara:
-    traits:
-      traitHolder: {fileID: 1501927397}
-      traitPrefab: {fileID: 2724532600138904015, guid: fdb833f16647be249bbd19ef10d2d195, type: 3}
+  chara: {}
   characterImage: {fileID: 1443954682}
   defaultImage: {fileID: 21300000, guid: 8bb6a899a13aa6844933429e53856d09, type: 3}
   characterName: {fileID: 215346371}

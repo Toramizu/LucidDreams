@@ -21,6 +21,9 @@ public class AbilityUI : Hidable
 
     public void Init(AbilityData data, Ability ability)
     {
+        if (data == null)
+            return;
+
         gameObject.SetActive(true);
 
         title.text = data.Title;

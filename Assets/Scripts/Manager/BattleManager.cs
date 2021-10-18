@@ -33,7 +33,7 @@ public class BattleManager : MonoBehaviour
     {
         gameObject.SetActive(true);
         opponent.LoadCharacter(oData);
-        player.LoadAbilities(pAbis);
+        player.Reset(pAbis);
         PlayerTurn = false;
         NextRound();
     }
