@@ -212,8 +212,8 @@ public class MapMaker : MonoBehaviour, GridManager
         }
 
 
-        AssetDatabase.CreateAsset(data, "Assets/Data/Dream/Maps/" + data.ID + ".asset");
-        AssetDatabase.SaveAssets();
+        //AssetDatabase.CreateAsset(data, "Assets/Data/Dream/Maps/" + data.ID + ".asset");
+        //AssetDatabase.SaveAssets();
     }
 
     public void Load()

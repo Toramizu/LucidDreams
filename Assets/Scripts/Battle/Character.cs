@@ -97,9 +97,14 @@ public class Character //: MonoBehaviour
     public void LoadAbilities(List<AbilityData> abis)
     {
         Abilities.Clear();
+        if (CharaUI != null)
+            CharaUI.ClearAbilities();
+
         for (int i = 0; i < abis.Count; i++)
         {
-            Abilities.Add(NewAbility(abis[i], i));
+            if(abis[i] != null)
+                Abilities.Add(NewAbility(abis[i], i));
+
         }
     }
 
@@ -292,4 +297,13 @@ public class Character //: MonoBehaviour
         }
     }
     #endregion
-} 
+
+    #region Cheats
+    public void FullHeal()
+    {
+        Arousal = 0;
+        MaxArousal = Data.MaxArousal;
+        CharaUI.FillGauge(Arousal, MaxArousal);
+    }
+    #endregion
+}

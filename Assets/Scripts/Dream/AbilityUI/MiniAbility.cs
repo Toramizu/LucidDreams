@@ -5,14 +5,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MiniAbility : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class MiniAbility : Window, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     [SerializeField] TMP_Text text;
 
     [SerializeField] Image background;
     [SerializeField] float alpha;
     [SerializeField] Canvas canvas;
-    CanvasGroup canvasGroup;
+    
     RectTransform rTransform;
 
     AbilityData ability;
@@ -39,9 +39,9 @@ public class MiniAbility : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
     public MiniAbilityUI AbiUI { get; set; }
     public int EquipSlot { get; set; } = -1;
 
-    private void Awake()
+    protected override void Awake()
     {
-        canvasGroup = GetComponent<CanvasGroup>();
+        base.Awake();
         rTransform = GetComponent<RectTransform>();
     }
 
@@ -101,6 +101,7 @@ public class MiniAbility : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
 
             if (abi != null && abi.Ability != null && abi != this)
             {
+                Debug.Log(abi.Ability + " - " + Ability);
                 AbilityData tmp = Ability;
                 Ability = abi.Ability;
                 abi.Ability = tmp;

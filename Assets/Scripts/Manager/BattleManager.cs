@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleManager : MonoBehaviour
+public class BattleManager : Window
 {
     [SerializeField] CharacterUI opponentUI;
     Character opponent { get { return opponentUI.Character; } }
@@ -38,16 +38,6 @@ public class BattleManager : MonoBehaviour
         NextRound();
     }
 
-    public void Open()
-    {
-        gameObject.SetActive(true);
-    }
-
-    public void Close()
-    {
-        gameObject.SetActive(false);
-    }
-
     public void RefreshDescr()
     {
         //foreach (Ability abi in GetCharacter(true).Abilities)
@@ -56,9 +46,19 @@ public class BattleManager : MonoBehaviour
 
     public void CheckBattleStatus()
     {
-        if(opponent.Finished)
-            endPanel.Victory(opponent.Crystals, opponent.Data);
+        if (opponent.Finished)
+            EndBattle(true);
+        //endPanel.Victory(opponent.Crystals, opponent.Data);
         else if (player.Finished)
+            EndBattle(false);
+        //GameManager.Instance.NextDay();
+    }
+
+    public void EndBattle(bool victory)
+    {
+        if (victory)
+            endPanel.Victory(opponent.Crystals, opponent.Data);
+        else
             GameManager.Instance.NextDay();
     }
 
@@ -179,4 +179,11 @@ public class BattleManager : MonoBehaviour
     {
         tooltip.Open(trait);
     }
+
+    #region Cheats
+    public void FullHeal()
+    {
+        player.FullHeal();
+    }
+    #endregion
 }

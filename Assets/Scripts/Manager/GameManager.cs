@@ -6,11 +6,6 @@ public class GameManager : MonoBehaviour
 {
     #region Start
     public static GameManager Instance { get; set; }
-
-    private void Start()
-    {
-        Instance = this;
-    }
     #endregion
 
     [SerializeField] PlayerManager playerManager;
@@ -31,24 +26,24 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] CharacterData pData;
     [SerializeField] DreamData dData;
-    [SerializeField] GameObject dayTmp;
+    [SerializeField] Window dayTmp;
 
-    private void Awake()
+    private void Start()
     {
-        battleManager.Open();
-        dreamManager.Open();
-        dayTmp.gameObject.SetActive(true);
+        Instance = this;
+        dayTmp.Open();
     }
 
     public void StartGame()
     {
         StartDream(dData, pData);
-        dayTmp.SetActive(false);
+        dayTmp.Close();
     }
 
     public void StartBattle(CharacterData opponent)
     {
         dreamManager.Close();
+        battleManager.Open();
         battleManager.StartBattle(opponent, playerManager.Abilities);
     }
 
@@ -61,7 +56,8 @@ public class GameManager : MonoBehaviour
     public void EndBattle(int crystals, AbilityData newAbility)
     {
         playerManager.Crystals += crystals;
-        playerManager.LearnAbility(newAbility, 0);
+        if(newAbility != null)
+            playerManager.LearnAbility(newAbility, 0);
 
         battleManager.Close();
         dreamManager.Open();
@@ -70,6 +66,6 @@ public class GameManager : MonoBehaviour
     public void NextDay()
     {
         Debug.Log("It's a new day!");
-        dayTmp.SetActive(true);
+        dayTmp.Open();
     }
 }

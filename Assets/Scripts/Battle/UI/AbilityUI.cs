@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class AbilityUI : Hidable
+public class AbilityUI : Window
 {
     [SerializeField] TMP_Text title;
     [SerializeField] TMP_Text description;

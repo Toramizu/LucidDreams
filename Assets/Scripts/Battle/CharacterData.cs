@@ -8,8 +8,8 @@ public class CharacterData : ScriptableObject
     [SerializeField] protected string sName;
     public string Name
     {
-        get { return name; }
-        set { name = value; }
+        get { return sName; }
+        set { sName = value; }
     }
     [SerializeField] protected Sprite image;
     public Sprite Image

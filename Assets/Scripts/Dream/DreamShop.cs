@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DreamShop : MonoBehaviour
+public class DreamShop : Window
 {
     [SerializeField] List<AbilityUI> abilities;
     [SerializeField] List<TMP_Text> prices;
@@ -17,7 +17,7 @@ public class DreamShop : MonoBehaviour
     
     public void InitShop(ShopData data)
     {
-        gameObject.SetActive(true);
+        Open();
 
         if (this.data != data)
             FirstLoad(data);
@@ -85,7 +85,7 @@ public class DreamShop : MonoBehaviour
         else
         {
             GameManager.Instance.PlayerManager.LearnAbility(aData, AbilityPrice(aData));
-            abilities[id].Hide();
+            abilities[id].Close();
         }
     }
 
@@ -112,9 +112,9 @@ public class DreamShop : MonoBehaviour
         return (int)maxArousalIncrement * data.ArousalMod;
     }
 
-    public void Close()
+    public override void Close()
     {
-        gameObject.SetActive(false);
+        base.Close();
         GameManager.Instance.DreamManager.CanMove = true;
     }
 }

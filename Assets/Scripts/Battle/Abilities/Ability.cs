@@ -92,7 +92,7 @@ public class Ability// : Hidable
 
     public void ResetAbility()
     {
-        abiUI.Show();
+        abiUI.Open();
         if (Data.Uses == -1)
             RemainingUses = int.MaxValue;
         else
@@ -181,7 +181,7 @@ public class Ability// : Hidable
         if (abiUI != null)
         {
             if (RemainingUses <= 0)
-                abiUI.Hide();
+                abiUI.Close();
             else
                 RefreshDescr();
         }

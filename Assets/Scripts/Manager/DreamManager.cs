@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DreamManager : MonoBehaviour, GridManager
+public class DreamManager : Window, GridManager
 {
-    [SerializeField] DreamGrid grid;
     [SerializeField] NodePanel nodePanel;
 
     [SerializeField] TMP_Text crystals;
@@ -17,21 +16,15 @@ public class DreamManager : MonoBehaviour, GridManager
     public bool CanMove { get; set; }
 
     DreamNode currentNode;
-
-    private void Start()
+    public override void Open()
     {
-        grid.Init(this);
-    }
-
-    public void Open()
-    {
-        gameObject.SetActive(true);
+        base.Open();
         CanMove = true;
     }
 
-    public void Close()
+    public override void Close()
     {
-        gameObject.SetActive(false);
+        base.Close();
         CanMove = false;
     }
 
@@ -112,107 +105,13 @@ public class DreamManager : MonoBehaviour, GridManager
             shops[Random.Range(0, shops.Count)].SetShop(data.Shop);
         }
     }
-
-    public void OLD_ContinueDream(DreamData data)
-    {
-        ClearDream();
-        DreamMapData map = data.Maps[Random.Range(0, data.Maps.Count)];
-
-        Dictionary<NodeContent, List<DreamNode>> nodeEvents = new Dictionary<NodeContent, List<DreamNode>>();
-        foreach (DreamNodeData nData in map.Nodes)
-        {
-            grid.SetNode(nData);
-
-            if (!nodeEvents.ContainsKey(nData.Content))
-                nodeEvents.Add(nData.Content, new List<DreamNode>());
-            nodeEvents[nData.Content].Add(grid[nData.Coo]);
-        }
-
-        currentNode = null;
-        OLD_FillNodes(data, nodeEvents);
-
-        if(currentNode == null)
-        {
-            Debug.Log("No starting node for map " + map.ID);
-        }
-        //currentNode = grid[map.Start];
-        currentNode.PlacePlayer(playerToken);
-        //playerToken = Instantiate(tokenPrefab, transform);
-
-        crystals.text = "0";
-        CanMove = true;
-    }
-
-    void OLD_FillNodes(DreamData data, Dictionary<NodeContent, List<DreamNode>> nodeEvents)
-    {
-        if (nodeEvents.ContainsKey(NodeContent.Exit) && nodeEvents[NodeContent.Exit].Count > 0)
-        {
-            List<DreamData> nexts = new List<DreamData>(data.Nexts);
-            List<DreamNode> nodes = new List<DreamNode>(nodeEvents[NodeContent.Exit]);
-
-            while(nexts.Count > 0 && nodes.Count > 0)
-            {
-                DreamData next = nexts[Random.Range(0, nexts.Count)];
-                nexts.Remove(next);
-                DreamNode node = nodes[Random.Range(0, nodes.Count)];
-                nodes.Remove(node);
-
-                node.SetExit(next);
-            }
-
-            //nodeEvents[NodeContent.Exit][Random.Range(0, nodeEvents[NodeContent.Exit].Count)].SetExit(data.Boss, data.);
-        }
-
-        if (nodeEvents.ContainsKey(NodeContent.Start) && nodeEvents[NodeContent.Start].Count > 0)
-        {
-            currentNode = nodeEvents[NodeContent.Start][Random.Range(0, nodeEvents[NodeContent.Start].Count)];
-        }
-
-
-        if (nodeEvents.ContainsKey(NodeContent.Boss) && nodeEvents[NodeContent.Boss].Count > 0)
-        {
-            nodeEvents[NodeContent.Boss][Random.Range(0, nodeEvents[NodeContent.Boss].Count)].SetCharacter(data.Boss, true);
-        }
-
-        if (nodeEvents.ContainsKey(NodeContent.Succubus) && nodeEvents[NodeContent.Succubus].Count > 0)
-        {
-            List<CharacterData> succubi = new List<CharacterData>(data.Succubi);
-            List<DreamNode> nodes = new List<DreamNode>(nodeEvents[NodeContent.Succubus]);
-
-            for(int i = 0; i < data.SuccubiCount && succubi.Count > 0; i++)
-            {
-                CharacterData rSucc = succubi[Random.Range(0, succubi.Count)];
-                succubi.Remove(rSucc);
-                DreamNode node = nodes[Random.Range(0, nodes.Count)];
-                node.SetCharacter(rSucc, false);
-                nodes.Remove(node);
-            }
-        }
-
-        if (nodeEvents.ContainsKey(NodeContent.Shop) && nodeEvents[NodeContent.Shop].Count > 0)
-        {
-            nodeEvents[NodeContent.Shop][Random.Range(0, nodeEvents[NodeContent.Shop].Count)].SetShop(data.Shop);
-        }
-
-        /*if (nodeEvents.ContainsKey(NodeContent.Exit) && nodeEvents[NodeContent.Exit].Count > 0)
-        {
-
-        }*/
-    }
-
-    void ClearDream()
-    {
-        grid.Clear();
-    }
-    
+        
     public void Clicked(DreamNode node)
     {
         if (CanMove)
         {
+            //iTween.Stop(playerToken.gameObject);
             StartMove(Pathfinder.FindPath(currentNode, node));
-            /*List<PathNode> path = Pathfinder.FindPath(currentNode, node);
-            currentNode = node;
-            node.MoveTo(playerToken);*/
         }
     }
     public void OpenShop(ShopData data)
@@ -226,22 +125,34 @@ public class DreamManager : MonoBehaviour, GridManager
     void StartMove(List<PathNode> path)
     {
         if (path == null)
+            path = new List<PathNode>() { currentNode };
+
+        this.path = new Queue<PathNode>(path);
+        CheckAndMove(currentNode);
+
+        /*if (path == null)
+        {
+            
             currentNode.OnEnter();
+        }
         else
         {
             this.path = new Queue<PathNode>(path);
-            CheckAndMove();
-        }
+            CheckAndMove(currentNode);
+        }*/
     }
 
-    void CheckAndMove()
+    void CheckAndMove(DreamNode current)
     {
-        if (path == null || path.Count == 0 || currentNode.PathStop)
+        currentNode = current;
+        if (path == null || path.Count == 0 || current.PathStop)
+        {
             currentNode.OnEnter();
+        }
         else
         {
-            currentNode = (DreamNode)path.Dequeue();
-            MoveTo(currentNode);
+            //currentNode = (DreamNode)path.Dequeue();
+            MoveTo((DreamNode)path.Dequeue());
         }
     }
 
@@ -253,6 +164,7 @@ public class DreamManager : MonoBehaviour, GridManager
             "time", .8f,
             "easeType", iTween.EaseType.easeOutSine,
             "onComplete", "CheckAndMove",
+            "oncompleteparams", node,
             "onCompleteTarget", gameObject
             ));
     }

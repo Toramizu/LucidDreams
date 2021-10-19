@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class EndPanel : MonoBehaviour
+public class EndPanel : Window
 {
-    [SerializeField] GameObject victory;
+    [SerializeField] Window victory;
     [SerializeField] TMP_Text victoryText;
     [SerializeField] TMP_Text newAbilityText;
     [SerializeField] List<AbilityStolenFlavourText> newAbilitySynonym = new List<AbilityStolenFlavourText>();
@@ -17,8 +17,8 @@ public class EndPanel : MonoBehaviour
     
     public void Victory(int crystals, CharacterData opponent)
     {
-        gameObject.SetActive(true);
-        victory.SetActive(true);
+        Open();
+        victory.Open();
 
         this.crystals = crystals;
         victoryText.text = "+" + crystals;
@@ -57,13 +57,8 @@ public class EndPanel : MonoBehaviour
     public void VictoryClose()
     {
         GameManager.Instance.EndBattle(crystals, ability);
+        victory.Close();
         Close();
-    }
-
-    void Close()
-    {
-        gameObject.SetActive(false);
-        victory.SetActive(false);
     }
 }
 

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TraitTooltip : MonoBehaviour
+public class TraitTooltip : Window
 {
     [SerializeField] Image icon;
     [SerializeField] TMP_Text title;
@@ -12,6 +12,7 @@ public class TraitTooltip : MonoBehaviour
 
     public void Open(Trait trait)
     {
+        Open();
         if (trait == null)
         {
             Close();
@@ -23,10 +24,5 @@ public class TraitTooltip : MonoBehaviour
             title.text = trait.ID;
             description.text = trait.Description;
         }
-    }
-
-    public void Close()
-    {
-        gameObject.SetActive(false);
     }
 }

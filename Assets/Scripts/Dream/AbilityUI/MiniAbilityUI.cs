@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiniAbilityUI : MonoBehaviour
+public class MiniAbilityUI : Window
 {
     [SerializeField] MiniAbility miniAbilityPrefab;
     [SerializeField] int minisStorageX = 5;
@@ -28,11 +28,11 @@ public class MiniAbilityUI : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
             MiniAbility slot = Instantiate(miniAbilityPrefab, equipped, false);
+            slot.Open();
             equippedAbi.Add(slot);
             slot.EquipSlot = i;
             slot.DefaultPosition = new Vector3(miniX * (i % 2), -miniY * (i / 2), 0);
             slot.AbiUI = this;
-            slot.gameObject.SetActive(true);
         }
 
         for (int i = 0; i < minisStorageX * minisStorageY; i++)
@@ -41,12 +41,13 @@ public class MiniAbilityUI : MonoBehaviour
             storedAbi.Add(slot);
             slot.DefaultPosition = new Vector3(miniX * (i % minisStorageX), -miniY * (i / minisStorageX), 0);
             slot.AbiUI = this;
-            slot.gameObject.SetActive(true);
+            slot.Open();
         }
     }
 
-    public void Open()
+    public override void Open()
     {
+        base.Open();
         if (equippedAbi == null)
             Init();
 
@@ -68,12 +69,12 @@ public class MiniAbilityUI : MonoBehaviour
                 abi.Ability = null;
         }
 
-        gameObject.SetActive(true);
         DisplayAbility(null);
     }
 
-    public void Close()
+    public override void Close()
     {
+        base.Close();
         List<AbilityData> abis = new List<AbilityData>();
         foreach (MiniAbility mAbi in equippedAbi)
             abis.Add(mAbi.Ability);
@@ -81,8 +82,6 @@ public class MiniAbilityUI : MonoBehaviour
         foreach (MiniAbility mAbi in storedAbi)
             abis.Add(mAbi.Ability);
         GameManager.Instance.PlayerManager.Abilities = abis;
-
-        gameObject.SetActive(false);
     }
 
     public void DisplayAbility(AbilityData abi)
@@ -90,12 +89,12 @@ public class MiniAbilityUI : MonoBehaviour
         if(abi == displayed || abi == null)
         {
             displayed = null;
-            abilityPreview.gameObject.SetActive(false);
+            abilityPreview.Close();
         }
         else
         {
             displayed = abi;
-            abilityPreview.gameObject.SetActive(true);
+            abilityPreview.Open();
             new Ability(abi, abilityPreview);
         }
 

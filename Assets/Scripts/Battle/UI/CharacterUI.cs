@@ -60,6 +60,12 @@ public class CharacterUI : MonoBehaviour
             return null;
     }
 
+    public void ClearAbilities()
+    {
+        foreach (AbilityUI abi in abilitiesUI)
+            abi.Remove();
+    }
+
     public void ToggleAbilities(bool toggle)
     {
         abilityPanel.gameObject.SetActive(toggle);

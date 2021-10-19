@@ -15,6 +15,10 @@ public class TestScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F5))
             Test5();
+        if (Input.GetKeyDown(KeyCode.F6))
+            Test6();
+        if (Input.GetKeyDown(KeyCode.F7))
+            Test7();
 
         if (Input.GetKeyDown(KeyCode.F9))
             Test9();
@@ -22,10 +26,11 @@ public class TestScript : MonoBehaviour
 
     [SerializeField] AbilityData ad;
     [SerializeField] AbilityData ad2;
-
+    
     void Test1()
     {
-        //Debug.Log(GameManager.Instance.BattleManager.GetCharacter(true).Abilities[2].Count);
+        Debug.Log(Application.persistentDataPath);
+        System.Diagnostics.Process.Start(Application.persistentDataPath);
     }
 
     void Test2()
@@ -45,10 +50,20 @@ public class TestScript : MonoBehaviour
         GameManager.Instance.PlayerManager.Crystals = 99;
     }
 
-    [SerializeField] GameObject mapCreator;
+    void Test6()
+    {
+        GameManager.Instance.BattleManager.FullHeal();
+    }
+
+    void Test7()
+    {
+        GameManager.Instance.BattleManager.EndBattle(true);
+    }
+
+    [SerializeField] Window mapCreator;
 
     void Test9()
     {
-        mapCreator.SetActive(!mapCreator.activeInHierarchy);
+        mapCreator.Toggle();
     }
 }
