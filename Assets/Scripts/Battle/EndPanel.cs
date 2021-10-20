@@ -11,6 +11,10 @@ public class EndPanel : Window
     [SerializeField] List<AbilityStolenFlavourText> newAbilitySynonym = new List<AbilityStolenFlavourText>();
     [SerializeField] AbilityUI abilityPanel;
 
+    [SerializeField] Window loss;
+    [SerializeField] TMP_Text lossText;
+    [SerializeField] List<string> wakeUpText;
+
     int crystals;
     CharacterData opponent;
     AbilityData ability;
@@ -19,6 +23,7 @@ public class EndPanel : Window
     {
         Open();
         victory.Open();
+        loss.Close();
 
         this.crystals = crystals;
         victoryText.text = "+" + crystals;
@@ -28,6 +33,15 @@ public class EndPanel : Window
         newAbilityText.text = newAbilitySynonym[Random.Range(0, newAbilitySynonym.Count)].BuildText(ability.Title);
         new Ability(ability, abilityPanel);
         //abilityPanel.Init(ability, null);
+    }
+
+    public void Loss()
+    {
+        Open();
+        victory.Close();
+        loss.Open();
+
+        lossText.text = wakeUpText[Random.Range(0, wakeUpText.Count)];
     }
 
     void NewAbility(List<AbilityData> abilities)

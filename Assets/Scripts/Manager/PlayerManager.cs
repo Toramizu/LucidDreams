@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] CharacterUI playerUI;
     Character player { get { return playerUI.Character; } }
     [SerializeField] TMP_Text crystalsText;
+    [SerializeField] SimpleGauge dreamGauge;
 
     List<AbilityData> abilities;
     public List<AbilityData> Abilities {
@@ -42,6 +43,12 @@ public class PlayerManager : MonoBehaviour
     {
         crystals -= cost;
         player.MaxArousal += amount;
-        player.Arousal = player.MaxArousal;
+        player.Arousal = 0;
+        UpdateGauge();
+    }
+
+    public void UpdateGauge()
+    {
+        dreamGauge.Fill(player.Arousal, player.MaxArousal);
     }
 }

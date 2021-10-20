@@ -50,7 +50,8 @@ public class GameManager : MonoBehaviour
     public void StartDream(DreamData data, CharacterData pcData)
     {
         dreamManager.StartDream(data, pcData);
-        battleManager.Close();
+        playerManager.UpdateGauge();
+        //battleManager.Close();
     }
 
     public void EndBattle(int crystals, AbilityData newAbility)
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour
         playerManager.Crystals += crystals;
         if(newAbility != null)
             playerManager.LearnAbility(newAbility, 0);
+        playerManager.UpdateGauge();
 
         battleManager.Close();
         dreamManager.Open();

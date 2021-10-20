@@ -59,7 +59,7 @@ public class BattleManager : Window
         if (victory)
             endPanel.Victory(opponent.Crystals, opponent.Data);
         else
-            GameManager.Instance.NextDay();
+            endPanel.Loss();
     }
 
     public void NextRound()
