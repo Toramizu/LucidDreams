@@ -7,6 +7,13 @@ public class OptionsMenu : Window
 {
     [SerializeField] TMP_Dropdown windowMode;
 
+    private void Start()
+    {
+        int wm = PlayerPrefs.GetInt("windowMode");
+        ChangeWindowMode(wm);
+        windowMode.value = wm;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -29,6 +36,9 @@ public class OptionsMenu : Window
                 Screen.SetResolution(1920, 1080, FullScreenMode.FullScreenWindow);
                 break;
         }
+
+        PlayerPrefs.SetInt("windowMode", mode);
+        PlayerPrefs.Save();
     }
 
     public void OpenLogDir()

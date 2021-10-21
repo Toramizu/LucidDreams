@@ -44,14 +44,21 @@ public class BattleManager : Window
           //  abi.RefreshDescr();
     }
 
-    public void CheckBattleStatus()
+    public bool CheckBattleStatus()
     {
         if (opponent.Finished)
+        {
             EndBattle(true);
+            return true;
+        }
         //endPanel.Victory(opponent.Crystals, opponent.Data);
         else if (player.Finished)
+        {
             EndBattle(false);
+            return true;
+        }
         //GameManager.Instance.NextDay();
+        return false;
     }
 
     public void EndBattle(bool victory)
@@ -107,7 +114,7 @@ public class BattleManager : Window
         int total = CalculateDamages(amount, user, target, ignoreTraits);
 
         target.InflictDamage(total);
-        CheckBattleStatus();
+        //CheckBattleStatus();
     }
 
     public int CalculateDamages(int amount, Character user, Character target, bool ignoreTraits)

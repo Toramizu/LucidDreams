@@ -12,7 +12,7 @@ public class DieSlotUI : MonoBehaviour, IDropHandler
     [SerializeField] TMP_Text text;
     [SerializeField] GameObject links;
 
-    DieSlot slot;
+    IDie slot;
 
     /*RolledDie slottedDie;
     public RolledDie SlottedDie
@@ -42,7 +42,7 @@ public class DieSlotUI : MonoBehaviour, IDropHandler
     public bool IsActive { get { return isActiveAndEnabled; } }
     public Vector3 Pos { get { return transform.position; } }
 
-    public void Init(DieSlot slot)
+    public void Init(IDie slot)
     {
         gameObject.SetActive(true);
         this.slot = slot;
@@ -85,6 +85,7 @@ public class DieSlotUI : MonoBehaviour, IDropHandler
             RolledDieUI die = eventData.pointerDrag.GetComponent<RolledDieUI>();
             if (!die.Locked)
                 slot.OnDrop(die.Die);
+            GameManager.Instance.BattleManager.CheckBattleStatus();
         }
     }
 }

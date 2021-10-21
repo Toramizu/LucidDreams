@@ -93,6 +93,9 @@ public class CharacterUI : MonoBehaviour
 
     void PlaceNext()
     {
+        if (GameManager.Instance.BattleManager.CheckBattleStatus())
+            return;
+
         if (slots.Count == 0)
         {
             StartCoroutine(WaitEndTurn());

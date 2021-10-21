@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DElf_Dance
   m_EditorClassIdentifier: 
   title: Seductive dance
-  description: Dance for 2
+  description: Dance for 2 + _++, increased each use
   conditions:
   - type: 2
     value: 0
@@ -25,24 +25,9 @@ MonoBehaviour:
   - effect: 0
     bonus: 2
     usesDice: 0
-    usesCumulativeBonus: 0
+    usesCumulativeBonus: 1
     multiplier: 1
     stringValue: 
-    boolValue1: 0
-    boolValue2: 0
-    targetsUser: 0
-    condition:
-      type: 0
-      value: 0
-      toggle: 0
-  - effect: 6
-    bonus: 2
-    usesDice: 0
-    usesCumulativeBonus: 0
-    multiplier: 1
-    stringValue: 
-    boolValue1: 0
-    boolValue2: 0
     targetsUser: 0
     condition:
       type: 0

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Ability// : Hidable
 {
-    AbilityUI abiUI;
+    public AbilityUI AbiUI { get; private set; }
 
     //[SerializeField] TMP_Text title;
     //[SerializeField] TMP_Text description;
@@ -21,8 +21,8 @@ public class Ability// : Hidable
         get {return count; }
         set {
             count = value;
-            if (abiUI != null)
-                abiUI.SetCount(value);
+            if (AbiUI != null)
+                AbiUI.SetCount(value);
         }
     }
 
@@ -34,14 +34,14 @@ public class Ability// : Hidable
 
     public int Used { get; private set; }
 
-    public LockSlot LockSlot { get { return abiUI.LockSlot; } }
+    public LockSlot LockSlot { get; private set; }
     bool locked;
     public bool Locked {
         get { return locked; }
         set
         {
             locked = value;
-            abiUI.LockAbility(value);
+            AbiUI.LockAbility(value);
         }
     }
 
@@ -54,7 +54,7 @@ public class Ability// : Hidable
     public bool IsActive {
         get
         {
-            return abiUI != null && abiUI.isActiveAndEnabled;
+            return AbiUI != null && AbiUI.isActiveAndEnabled;
         }
     }
 
@@ -62,7 +62,7 @@ public class Ability// : Hidable
     {
         Data = data;
 
-        this.abiUI = abiUI;
+        this.AbiUI = abiUI;
         if (abiUI != null)
             abiUI.Init(data, this);
         
@@ -75,6 +75,8 @@ public class Ability// : Hidable
         for(int i = 0; i < data.Conditions.Count; i++)
             DiceSlots.Add(new DieSlot(data.Conditions[i], abiUI.GetDieSlot(i), this));
 
+        LockSlot = new LockSlot(this);
+        
         if (data.Total <= 0)
             Count = null;
         else
@@ -92,7 +94,7 @@ public class Ability// : Hidable
 
     public void ResetAbility()
     {
-        abiUI.Open();
+        AbiUI.Open();
         if (Data.Uses == -1)
             RemainingUses = int.MaxValue;
         else
@@ -106,7 +108,7 @@ public class Ability// : Hidable
         if (count != null && Count <= 0)
             Count = Data.Total;
 
-        RefreshDescr();
+        RefreshDescription();
     }
 
     public void Check()
@@ -155,19 +157,9 @@ public class Ability// : Hidable
             GameManager.Instance.BattleManager.GetCharacter(true),
             GameManager.Instance.BattleManager.GetCharacter(false),
             total);
-        /*foreach (AbilityEffect effect in effects)
-            effect.CheckAndPlay(total, this);
-        
-        RemainingUses--;
-        Used++;
 
-        if (abiUI != null)
-        {
-            if (RemainingUses <= 0)
-                abiUI.Hide();
-            else
-                RefreshDescr();
-        }*/
+        if (AbiUI != null)
+            RefreshDescription();
     }
 
     public void PlayAbility(Character user, Character other, int dice)
@@ -178,19 +170,19 @@ public class Ability// : Hidable
         RemainingUses--;
         Used++;
 
-        if (abiUI != null)
+        if (AbiUI != null)
         {
             if (RemainingUses <= 0)
-                abiUI.Close();
+                AbiUI.Close();
             else
-                RefreshDescr();
+                RefreshDescription();
         }
     }
 
-    public void RefreshDescr()
+    public void RefreshDescription()
     {
-        if(abiUI != null)
-            abiUI.SetDescription(
+        if(AbiUI != null)
+            AbiUI.SetDescription(
                 GameManager.Instance.Parser.ParseAbilityDescription(this, 
                 GameManager.Instance.BattleManager.GetCharacter(true)));
     }
@@ -209,8 +201,11 @@ public class Ability// : Hidable
         a.Used = Used;
         a.RemainingUses = RemainingUses;
 
+
         a.effects = effects;
         a.DiceSlots = DiceSlots;
+        a.locked = locked;
+        a.LockSlot = LockSlot;
         return a;
     }
 }

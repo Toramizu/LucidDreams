@@ -5,13 +5,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DieSlot :  IDie//IDropHandler MonoBehaviour,
+public class DieSlot :  IDie
 {
     DieSlotUI SlotUI;
-    /*[SerializeField] Image image;
-    [SerializeField] List<Sprite> faces;
-    [SerializeField] TMP_Text text;
-    [SerializeField] GameObject links;*/
 
     RolledDie slottedDie;
     public RolledDie SlottedDie {
@@ -82,9 +78,6 @@ public class DieSlot :  IDie//IDropHandler MonoBehaviour,
                 return 0f;
         }
     }
-    /*public bool IsActive { get { return isActiveAndEnabled; } }
-    public float X { get { return transform.position.x; } }
-    public float Y { get { return transform.position.y; } }*/
 
     public LinkedValue Link
     {
@@ -112,44 +105,13 @@ public class DieSlot :  IDie//IDropHandler MonoBehaviour,
     {
         condition = cond;
         SlotUI.SetCondition(cond);
-
-        /*if (cond is EqualsDie)
-        {
-            int val = ((EqualsDie)cond).Value;
-            if (val <= faces.Count)
-            {
-                image.sprite = faces[val];
-                text.text = "";
-            }
-            else
-            {
-                image.sprite = faces[0];
-                text.text = cond.ConditionText();
-            }
-
-        }
-        else
-        {
-            image.sprite = faces[0];
-            text.text = cond.ConditionText();
-        }*/
     }
 
     public bool Check(int die)
     {
         return condition.Check(die);
     }
-
-    /*public void OnDrop(PointerEventData eventData)
-    {
-        if (eventData.pointerDrag != null && GameManager.Instance.BattleManager.PlayerTurn)
-        {
-            RolledDie die = eventData.pointerDrag.GetComponent<RolledDie>();
-            if(!die.Locked)
-                OnDrop(die);
-        }
-    }*/
-
+    
     public void OnDrop(RolledDie die)
     {
         if (die != null && condition.Check(die.Value))

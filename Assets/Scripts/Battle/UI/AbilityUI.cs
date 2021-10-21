@@ -13,8 +13,10 @@ public class AbilityUI : Window
     [SerializeField] TMP_Text countText;
 
     [SerializeField] GameObject lockTransform;
-    [SerializeField] LockSlot lockSlot;
-    public LockSlot LockSlot { get { return lockSlot; } }
+    [SerializeField] DieSlotUI lockSlot;
+    public DieSlotUI LockSlot { get { return lockSlot; } }
+    /*[SerializeField] LockSlot lockSlot;
+    public LockSlot LockSlot { get { return lockSlot; } }*/
 
     public AbilityData Data { get; set; }
     Ability ability;

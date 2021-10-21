@@ -24,13 +24,11 @@ public class TestScript : MonoBehaviour
             Test9();
     }
 
-    [SerializeField] AbilityData ad;
-    [SerializeField] AbilityData ad2;
+    [SerializeField] Trait locked;
     
     void Test1()
     {
-        Debug.Log(Application.persistentDataPath);
-        System.Diagnostics.Process.Start(Application.persistentDataPath);
+        GameManager.Instance.BattleManager.GetCharacter(true).Traits.AddTrait(locked, 1);
     }
 
     void Test2()

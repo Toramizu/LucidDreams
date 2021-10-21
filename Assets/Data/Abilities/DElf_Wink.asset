@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93417b2c1c2f1243a5b0d3af9c0940b, type: 3}
   m_Name: DElf_Wink
   m_EditorClassIdentifier: 
-  title: Wink on rythm
-  description: Gives _++ arousal, increased with dancing and reset after use
+  title: Pose
+  description: Strike a pose
   conditions:
-  - type: 0
+  - type: 2
     value: 0
-    toggle: 0
+    toggle: 1
   uses: 0
   equalDice: 0
   total: 0
@@ -28,8 +28,6 @@ MonoBehaviour:
     usesCumulativeBonus: 0
     multiplier: 0
     stringValue: 
-    boolValue1: 0
-    boolValue2: 0
     targetsUser: 0
     condition:
       type: 0
@@ -41,8 +39,6 @@ MonoBehaviour:
     usesCumulativeBonus: 0
     multiplier: 0
     stringValue: 
-    boolValue1: 0
-    boolValue2: 1
     targetsUser: 0
     condition:
       type: 0
