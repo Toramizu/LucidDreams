@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameAssets assets;
     public GameAssets Assets { get { return assets; } }
 
+    [SerializeField] SoundManager sound;
+    public SoundManager Sound { get { return sound; } }
+
 
     [SerializeField] CharacterData pData;
     [SerializeField] DreamData dData;

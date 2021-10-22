@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MiniAbility : Window, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class MiniAbility : Window, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     [SerializeField] TMP_Text text;
 
@@ -71,7 +71,7 @@ public class MiniAbility : Window, IPointerDownHandler, IBeginDragHandler, IDrag
 
     #region Drag & Drop
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
         AbiUI.DisplayAbility(ability);
     }
@@ -101,7 +101,6 @@ public class MiniAbility : Window, IPointerDownHandler, IBeginDragHandler, IDrag
 
             if (abi != null && abi.Ability != null && abi != this)
             {
-                Debug.Log(abi.Ability + " - " + Ability);
                 AbilityData tmp = Ability;
                 Ability = abi.Ability;
                 abi.Ability = tmp;

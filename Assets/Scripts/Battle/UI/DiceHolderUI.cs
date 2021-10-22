@@ -27,6 +27,8 @@ public class DiceHolderUI : MonoBehaviour
             dieUI.Position = new Vector3(-x, -y, 0);
         else
             dieUI.Position = new Vector3(x, y, 0);
+
+        GameManager.Instance.Sound.DiceRoll();
     }
 
     public void ResetDice()

@@ -86,6 +86,7 @@ public class DieSlotUI : MonoBehaviour, IDropHandler
             if (!die.Locked)
                 slot.OnDrop(die.Die);
             GameManager.Instance.BattleManager.CheckBattleStatus();
+            GameManager.Instance.Sound.PlaceDice();
         }
     }
 }
