@@ -67,14 +67,27 @@ public class DreamManager : Window, GridManager
             List<DreamNode> exits = new List<DreamNode>(nodes[NodeContent.Exit]);
             List<DreamData> nexts = new List<DreamData>(data.Nexts);
 
-            while (nexts.Count > 0 && exits.Count > 0)
+            if (nexts.Count == 0)
             {
-                DreamData next = nexts[Random.Range(0, nexts.Count)];
-                nexts.Remove(next);
-                DreamNode node = exits[Random.Range(0, exits.Count)];
-                exits.Remove(node);
+                while (nexts.Count > 0 && exits.Count > 0)
+                {
+                    DreamNode node = exits[Random.Range(0, exits.Count)];
+                    exits.Remove(node);
 
-                node.SetExit(next);
+                    node.SetExit(null);
+                }
+            }
+            else
+            {
+                while (nexts.Count > 0 && exits.Count > 0)
+                {
+                    DreamData next = nexts[Random.Range(0, nexts.Count)];
+                    nexts.Remove(next);
+                    DreamNode node = exits[Random.Range(0, exits.Count)];
+                    exits.Remove(node);
+
+                    node.SetExit(next);
+                }
             }
         }
 
@@ -103,6 +116,12 @@ public class DreamManager : Window, GridManager
         {
             List<DreamNode> shops = nodes[NodeContent.Shop];
             shops[Random.Range(0, shops.Count)].SetShop(data.Shop);
+        }
+
+        if (nodes.ContainsKey(NodeContent.Meditation))
+        {
+            List<DreamNode> medit = nodes[NodeContent.Meditation];
+            medit[Random.Range(0, medit.Count)].SetMeditation();
         }
     }
         

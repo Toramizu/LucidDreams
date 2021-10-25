@@ -9,9 +9,31 @@ using UnityEngine.UI;
 public class Character //: MonoBehaviour
 {
     public CharacterUI CharaUI { get; set; }
-    
-    public int Arousal { get; set; }
-    public int MaxArousal { get; set; }
+
+    int arousal;
+    public int Arousal {
+        get { return arousal; }
+        set
+        {
+            if (value < 0)
+                arousal = 0;
+            else
+                arousal = value;
+
+            if (CharaUI != null)
+                CharaUI.FillGauge(arousal, maxArousal);
+        }
+    }
+    int maxArousal;
+    public int MaxArousal {
+        get { return maxArousal; }
+        set
+        {
+            maxArousal = value;
+            if(CharaUI != null)
+                CharaUI.FillGauge(arousal, maxArousal);
+        }
+    }
     public bool Finished { get { return Arousal >= MaxArousal; } }
     public int Missing { get { return MaxArousal - Arousal; } }
     
@@ -302,7 +324,7 @@ public class Character //: MonoBehaviour
     public void FullHeal()
     {
         Arousal = 0;
-        MaxArousal = Data.MaxArousal;
+        //MaxArousal = Data.MaxArousal;
         CharaUI.FillGauge(Arousal, MaxArousal);
     }
     #endregion

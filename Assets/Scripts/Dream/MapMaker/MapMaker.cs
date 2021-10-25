@@ -167,6 +167,16 @@ public class MapMaker : MonoBehaviour, GridManager
             contentType = null;
     }
 
+    public void SetMedit(bool toggle)
+    {
+        if (selected) ResetSelection();
+
+        if (toggle)
+            contentType = NodeContent.Meditation;
+        else
+            contentType = null;
+    }
+
     public void SetStart(bool toggle)
     {
         if (selected) ResetSelection();

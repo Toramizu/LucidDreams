@@ -57,4 +57,5 @@ public enum NodeContent
     Start,
     Exit,
     Shop,
+    Meditation,
 }

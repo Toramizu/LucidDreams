@@ -14,9 +14,9 @@ public class ShopData
     [SerializeField] int maxAbilities;
     public int MaxAbilities { get { return maxAbilities; } }
 
-    [SerializeField] int arousalMod = 1;
-    public int ArousalMod { get { return arousalMod; } }
+    [SerializeField] int incrementCost = 1;
+    public int IncrementCost  { get { return incrementCost; } }
 
-    [SerializeField] int abilityMod = 1;
-    public int AbilityMod { get { return abilityMod; } }
+    [SerializeField] float abilityMod = 1;
+    public float AbilityMod { get { return abilityMod; } }
 }

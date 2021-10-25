@@ -7,6 +7,7 @@ public class AbilityUI : Window
 {
     [SerializeField] TMP_Text title;
     [SerializeField] TMP_Text description;
+    [SerializeField] TMP_Text uses;
 
     [SerializeField] List<DieSlotUI> dieSlots;
 
@@ -37,6 +38,8 @@ public class AbilityUI : Window
 
         foreach (DieSlotUI slot in dieSlots)
             slot.gameObject.SetActive(false);
+
+        SetUses(data.Uses);
     }
 
     public void Remove()
@@ -55,6 +58,19 @@ public class AbilityUI : Window
     public void SetDescription(string description)
     {
         this.description.text = description;
+    }
+
+    public void SetUses(int remaining)
+    {
+        if(remaining > 1)
+        {
+            uses.gameObject.SetActive(true);
+            uses.text = "X" + remaining;
+        }
+        else
+        {
+            uses.gameObject.SetActive(false);
+        }
     }
 
     public void SetCount(int? count)

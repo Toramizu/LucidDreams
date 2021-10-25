@@ -18,20 +18,15 @@ MonoBehaviour:
   succubi:
   - {fileID: 11400000, guid: 6b7b179b25898c24b8c8030813849184, type: 2}
   - {fileID: 11400000, guid: 02446fdf63476a34baed4400d4d9e7c0, type: 2}
+  - {fileID: 11400000, guid: 4ad0924941e84224aa6c6ab322eea649, type: 2}
   shop:
     abilities:
-    - {fileID: 11400000, guid: 9a29abacb7ed7e64f84a43c942c56a69, type: 2}
-    - {fileID: 11400000, guid: e11b189e582dcd24b8ef68bb29289395, type: 2}
-    - {fileID: 11400000, guid: e8964e6f3bf96124ebf1fc5fb0f37df6, type: 2}
-    - {fileID: 11400000, guid: b1d7bd3e759c985479a69bd80e165d1c, type: 2}
-    - {fileID: 11400000, guid: 2dc805fd4bd3cb2499dbaa1006655476, type: 2}
-    - {fileID: 11400000, guid: d7da1f4042bc49d4a93e906d87cb52cc, type: 2}
-    - {fileID: 11400000, guid: 89bbc570626779f41a243df9e718d66c, type: 2}
-    - {fileID: 11400000, guid: b4bf2568f65cc8f48997e5cf686240b8, type: 2}
-    - {fileID: 11400000, guid: 0ba81dee84c1ace4f91b0db821fe74de, type: 2}
+    - {fileID: 11400000, guid: 7f193c7dc7d2ceb488f2c25d85603777, type: 2}
+    - {fileID: 11400000, guid: 10b73eb6ee0eabc4d9ec356d7de5943c, type: 2}
+    - {fileID: 11400000, guid: b04d7057459cc4e4c80fef5faf855df9, type: 2}
     minAbilities: 0
     maxAbilities: 2
-    arousalMod: 1
+    incrementCost: 5
     abilityMod: 1
   maps:
   - {fileID: 11400000, guid: c73b622d907c8d94a93b926883761e08, type: 2}

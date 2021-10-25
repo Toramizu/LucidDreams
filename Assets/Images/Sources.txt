@@ -41,3 +41,8 @@ Dice :
 https://opengameart.org/content/2-dice-roll-29-throws
 Click (Dice) :
 https://opengameart.org/content/ui-sfx-pack-2-sample
+
+
+Fonts :
+Parisienne :
+https://fonts.google.com/specimen/Parisienne?preview.text=Blissfull%20Dreams&preview.text_type=custom#standard-styles

@@ -5,14 +5,16 @@ using UnityEngine;
 public class RollDiceEffect : AbilityEffect
 {
     [SerializeField] ConditionData rollCondition;
-    [SerializeField] int amount;
 
     public RollDiceEffect() { }
     public RollDiceEffect(EffectData data) : base(data)
-    { }
+    {
+        //data.Condition is for conditional effects
+    }
     
     public override void Play(Character user, Character other, int dice, Ability abi)
     {
+        Debug.Log("Playing? " + dice);
         if(targetsUser)
             user.Roll(Value(dice, abi), rollCondition.ToCondition());
         else
@@ -23,7 +25,6 @@ public class RollDiceEffect : AbilityEffect
     {
         RollDiceEffect e = new RollDiceEffect();
         e.rollCondition = rollCondition;
-        e.amount = amount;
         return e;
     }
 }

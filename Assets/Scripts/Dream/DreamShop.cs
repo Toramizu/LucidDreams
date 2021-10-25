@@ -11,7 +11,7 @@ public class DreamShop : Window
     [SerializeField] TMP_Text maxArousalPrice;
     [SerializeField] TMP_Text maxArousalText;
     [SerializeField] int maxArousalIncrement = 5;
-    [SerializeField] Button maxArousalButton;
+    [SerializeField] Transform incrementPanel;
 
     ShopData data;
     
@@ -36,6 +36,8 @@ public class DreamShop : Window
             abiCount = data.MaxAbilities;
         else
             abiCount = Random.Range(data.MinAbilities, data.MaxAbilities + 1);
+
+        maxArousalIncrement = GameManager.Instance.PlayerManager.HealthIncrement;
 
         //foreach(Ability abi in abilities)
         for (int i = 0; i < abilities.Count; i++)
@@ -64,7 +66,7 @@ public class DreamShop : Window
         maxArousalPrice.text = ArousalPrice().ToString();
         maxArousalText.text = "+" + maxArousalIncrement + " Max Arousal";
 
-        maxArousalButton.gameObject.SetActive(true);
+        incrementPanel.gameObject.SetActive(true);
     }
 
     public void RefreshLoad()
@@ -98,18 +100,31 @@ public class DreamShop : Window
         else
         {
             GameManager.Instance.PlayerManager.IncreaseMaxArousal(maxArousalIncrement, ArousalPrice());
-            maxArousalButton.gameObject.SetActive(false);
+            incrementPanel.gameObject.SetActive(false);
+        }
+    }
+
+    public void BuyDie()
+    {
+        if (GameManager.Instance.PlayerManager.Crystals < ArousalPrice())
+        {
+            Debug.Log("Not enough crystals");
+        }
+        else
+        {
+            GameManager.Instance.PlayerManager.AddDie(1, ArousalPrice());
+            incrementPanel.gameObject.SetActive(false);
         }
     }
 
     int AbilityPrice(AbilityData abi)
     {
-        return (int)abi.Price * data.AbilityMod;
+        return (int)(abi.Price * data.AbilityMod);
     }
 
     int ArousalPrice()
     {
-        return (int)maxArousalIncrement * data.ArousalMod;
+        return data.IncrementCost ;
     }
 
     public override void Close()

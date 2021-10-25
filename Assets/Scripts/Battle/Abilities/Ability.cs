@@ -4,17 +4,12 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-public class Ability// : Hidable
+public class Ability
 {
     public AbilityUI AbiUI { get; private set; }
 
-    //[SerializeField] TMP_Text title;
-    //[SerializeField] TMP_Text description;
-
     [SerializeField] List<DieSlot> DiceSlots = new List<DieSlot>();
     public List<DieSlot> Slots { get { return DiceSlots; } }
-
-    //[SerializeField] TMP_Text countText;
 
     int? count;
     public int? Count {
@@ -182,9 +177,12 @@ public class Ability// : Hidable
     public void RefreshDescription()
     {
         if(AbiUI != null)
+        {
             AbiUI.SetDescription(
-                GameManager.Instance.Parser.ParseAbilityDescription(this, 
+                GameManager.Instance.Parser.ParseAbilityDescription(this,
                 GameManager.Instance.BattleManager.GetCharacter(true)));
+            AbiUI.SetUses(RemainingUses);
+        }
     }
 
     public Ability Clone()

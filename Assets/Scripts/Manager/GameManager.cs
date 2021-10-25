@@ -40,13 +40,13 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         StartDream(dData, pData);
-        dayTmp.Close();
+        dayTmp.FadeOut();
     }
 
     public void StartBattle(CharacterData opponent)
     {
-        dreamManager.Close();
-        battleManager.Open();
+        dreamManager.FadeOut();
+        battleManager.FadeIn();
         battleManager.StartBattle(opponent, playerManager.Abilities);
     }
 
@@ -64,13 +64,18 @@ public class GameManager : MonoBehaviour
             playerManager.LearnAbility(newAbility, 0);
         playerManager.UpdateGauge();
 
-        battleManager.Close();
-        dreamManager.Open();
+        battleManager.FadeOut();
+        dreamManager.FadeIn();
+    }
+
+    public void EndDream()
+    {
+
     }
 
     public void NextDay()
     {
         Debug.Log("It's a new day!");
-        dayTmp.Open();
+        dayTmp.FadeIn();
     }
 }

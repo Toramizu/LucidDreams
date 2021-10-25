@@ -34,14 +34,31 @@ public class DiceHolder
     {
         for(int i = 0; i < amount; i++)
         {
-            int roll = Random.Range(MIN_ROLL, MAX_ROLL_PLUS_ONE);
+            int roll;
+            if(condition == null)
+                roll = Random.Range(MIN_ROLL, MAX_ROLL_PLUS_ONE);
+            else
+            {
+                foreach (int a in condition.AcceptedValues)
+                    Debug.Log(a);
+                List<int> v = new List<int>(condition.AcceptedValues);
+                v.Remove(0);
+
+                if (v.Count == 0)
+                    roll = 0;
+                else
+                    roll = v[Random.Range(0, v.Count)];
+
+            }
+
+            /*int roll = Random.Range(MIN_ROLL, MAX_ROLL_PLUS_ONE);
 
             int safety = 0;
             while(condition != null && condition.Check(roll) && safety < 100)
             {
                 roll = Random.Range(MIN_ROLL, MAX_ROLL_PLUS_ONE);
                 safety++;
-            }
+            }*/
 
             Give(roll);
         }

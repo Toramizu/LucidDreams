@@ -12,7 +12,9 @@ public class DreamNode : MonoBehaviour, PathNode
     [SerializeField] Vector3 rightPos;
 
     [SerializeField] protected Image image;
-    [SerializeField] Image nextMapImage;
+    [SerializeField] Image infoImage;
+    [SerializeField] Sprite nextMapSprite;
+    [SerializeField] Sprite meditSprite;
 
     //public List<NodeLink> CellLinks { get; set; } = new List<NodeLink>();
     //public List<DreamNode> Neighbours { get; set; } = new List<DreamNode>();
@@ -23,6 +25,7 @@ public class DreamNode : MonoBehaviour, PathNode
 
     CharacterData cData;
     ShopData sData;
+    bool exit;
     DreamData next;
 
     NodeContent type;
@@ -53,7 +56,7 @@ public class DreamNode : MonoBehaviour, PathNode
         this.coo = coo;
         rightToken.gameObject.SetActive(false);
         rightToken.transform.position = transform.position + rightPos;
-        nextMapImage.gameObject.SetActive(false);
+        infoImage.gameObject.SetActive(false);
     }
 
     public void Init(Vector3 position, GridManager manager)
@@ -62,7 +65,7 @@ public class DreamNode : MonoBehaviour, PathNode
         transform.localPosition = position;
         rightToken.gameObject.SetActive(false);
         rightToken.transform.position = transform.position + rightPos;
-        nextMapImage.gameObject.SetActive(false);
+        infoImage.gameObject.SetActive(false);
     }
 
     public void Init()
@@ -74,7 +77,7 @@ public class DreamNode : MonoBehaviour, PathNode
     {
         image.enabled = toggle;
         GetComponent<Button>().enabled = toggle;
-        nextMapImage.gameObject.SetActive(false);
+        infoImage.gameObject.SetActive(false);
     }
 
     public virtual void OnClick()
@@ -85,6 +88,31 @@ public class DreamNode : MonoBehaviour, PathNode
 
     public void OnEnter()
     {
+        switch (type)
+        {
+            case NodeContent.Succubus:
+            case NodeContent.Boss:
+                if (cData != null)
+                {
+                    GameManager.Instance.StartBattle(cData);
+                    rightToken.transform.localScale = new Vector3(.5f, .5f, .5f);
+                    cData = null;
+                }
+                break;
+            case NodeContent.Shop:
+                GameManager.Instance.DreamManager.OpenShop(sData);
+                break;
+            case NodeContent.Exit:
+                if (next == null)
+                    GameManager.Instance.EndDream();
+                else
+                    GameManager.Instance.DreamManager.ContinueDream(next);
+                break;
+            case NodeContent.Meditation:
+                Debug.Log("Meditate...");
+                break;
+        }
+
         //Debug.Log(coo);
         if(cData != null)
         {
@@ -98,9 +126,12 @@ public class DreamNode : MonoBehaviour, PathNode
         else if(sData != null)
         {
             GameManager.Instance.DreamManager.OpenShop(sData);
-        } else if(next != null)
+        } else if(exit)
         {
-            GameManager.Instance.DreamManager.ContinueDream(next);
+            if (next == null)
+                GameManager.Instance.EndDream();
+            else
+                GameManager.Instance.DreamManager.ContinueDream(next);
         }
     }
 
@@ -131,9 +162,18 @@ public class DreamNode : MonoBehaviour, PathNode
 
     public void SetExit(DreamData next)
     {
+        exit = true;
         this.next = next;
-        nextMapImage.gameObject.SetActive(true);
+        infoImage.gameObject.SetActive(true);
+        infoImage.sprite = nextMapSprite;
         SetType(NodeContent.Exit);
+    }
+
+    public void SetMeditation()
+    {
+        infoImage.gameObject.SetActive(true);
+        infoImage.sprite = meditSprite;
+        SetType(NodeContent.Meditation);
     }
 
     public void SetType(NodeContent type)
@@ -169,6 +209,10 @@ public class DreamNode : MonoBehaviour, PathNode
 
             case NodeContent.Exit:
                 image.color = Color.gray;
+                break;
+
+            case NodeContent.Meditation:
+                image.color = new Color32(184, 233, 134, 255);
                 break;
         }
     }

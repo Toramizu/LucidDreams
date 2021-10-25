@@ -154,7 +154,10 @@ MonoBehaviour:
   leftPos: {x: -30, y: 30, z: 0}
   rightPos: {x: 30, y: 30, z: 0}
   image: {fileID: 454122981155901283}
-  nextMapImage: {fileID: 8797571563635314931}
+  infoImage: {fileID: 8797571563635314931}
+  nextMapSprite: {fileID: 21300000, guid: 010f621c8f72f6148a33fbacace9cc61, type: 3}
+  meditSprite: {fileID: 21300000, guid: 852ef381434174c46a41aa8796322fca, type: 3}
+  neighbours: []
 --- !u!1 &3231176582245001284
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +170,7 @@ GameObject:
   - component: {fileID: 7441840109618768514}
   - component: {fileID: 8797571563635314931}
   m_Layer: 5
-  m_Name: Exit Image
+  m_Name: Info Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
