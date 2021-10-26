@@ -10,55 +10,49 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 001940ae7d3a74c4284026ebf3690de7, type: 3}
-  m_Name: DreamMap2
+  m_Name: DreamMap2 1
   m_EditorClassIdentifier: 
   id: DreamMap2
   nodes:
   - coo:
       x: 0
       y: 0
-    position: {x: 540, y: -299, z: 0}
+    position: {x: 503, y: -303, z: 0}
     content: 4
+    nodeLinks: 09000000
+  - coo:
+      x: 0
+      y: 0
+    position: {x: 0, y: 307, z: 0}
+    content: 1
+    nodeLinks: 010000000200000007000000
+  - coo:
+      x: 0
+      y: 0
+    position: {x: 511, y: 70, z: 0}
+    content: 2
+    nodeLinks: 06000000070000000800000009000000
+  - coo:
+      x: 0
+      y: 0
+    position: {x: -544, y: 91, z: 0}
+    content: 0
+    nodeLinks: 00000000010000000400000005000000
+  - coo:
+      x: 0
+      y: 0
+    position: {x: -572, y: -298, z: 0}
+    content: 3
     nodeLinks: 00000000
   - coo:
       x: 0
       y: 0
-    position: {x: -10, y: 201, z: 0}
+    position: {x: -10, y: -158, z: 0}
     content: 1
-    nodeLinks: 010000000200000003000000
+    nodeLinks: 030000000400000008000000
   - coo:
       x: 0
       y: 0
-    position: {x: 540, y: 101, z: 0}
-    content: 2
-    nodeLinks: 030000000400000000000000
-  - coo:
-      x: 0
-      y: 0
-    position: {x: -560, y: 101, z: 0}
-    content: 0
-    nodeLinks: 050000000100000006000000
-  - coo:
-      x: 0
-      y: 0
-    position: {x: -560, y: -299, z: 0}
-    content: 3
-    nodeLinks: 05000000
-  - coo:
-      x: 0
-      y: 0
-    position: {x: -10, y: 1, z: 0}
-    content: 1
-    nodeLinks: 060000000400000007000000
-  - coo:
-      x: 0
-      y: 0
-    position: {x: -10, y: 351, z: 0}
+    position: {x: -3, y: 97, z: 0}
     content: 5
-    nodeLinks: 02000000
-  - coo:
-      x: 0
-      y: 0
-    position: {x: -10, y: -149, z: 0}
-    content: 6
-    nodeLinks: 07000000
+    nodeLinks: 02000000030000000500000006000000

@@ -50,9 +50,25 @@ public class NodeMaker : DreamNode, IBeginDragHandler, IDragHandler, IEndDragHan
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        transform.position = RoundPosition(transform.position);
+
         held = false;
         canvasGroup.blocksRaycasts = true;
         foreach (NodeLink link in CellLinks)
             link.SetAllDirty();
+    }
+
+    Vector3 RoundPosition(Vector3 pos)
+    {
+        Vector3 nPos = new Vector3();
+        nPos.x = RoundToX(pos.x, 50);
+        nPos.y = RoundToX(pos.y, 50);
+        nPos.z = RoundToX(pos.z, 50);
+        return nPos;
+    }
+
+    int RoundToX(float f, int toRound)
+    {
+        return ((int)(f + (toRound/2)) / toRound) * toRound;
     }
 }

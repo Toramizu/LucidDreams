@@ -4878,7 +4878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   locked: {fileID: 11400000, guid: d0ce6147de8903e40adf3384ca1b66b4, type: 2}
-  mapCreator: {fileID: 0}
+  mapCreator: {fileID: 1537273204}
 --- !u!114 &344300347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12645,6 +12645,7 @@ MonoBehaviour:
   nodePanel: {fileID: 1932013412}
   crystals: {fileID: 1325934924}
   shop: {fileID: 1098196078}
+  medit: {fileID: 1387129894}
   playerToken: {fileID: 481224902}
 --- !u!114 &1005484012
 MonoBehaviour:
@@ -13133,6 +13134,17 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1080718246 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7669652062398226743, guid: 618eb0e432df4b54991f2da67d087d14, type: 3}
+  m_PrefabInstance: {fileID: 1533942625}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1085971649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17154,7 +17166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8264385, g: 1, b: 0.7122642, a: 0.392}
+  m_Color: {r: 0.8264385, g: 1, b: 0.7122642, a: 0.7490196}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -17206,6 +17218,8 @@ MonoBehaviour:
   quote: {fileID: 582566276}
   meditationQuotes:
   - You find a quiet place, free of temptations.
+  - A motherly succubus doing some yoga beckons you to join her.
+  - This place looks like the town's park.
 --- !u!1 &1403756301
 GameObject:
   m_ObjectHideFlags: 0
@@ -19722,6 +19736,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1537273200}
     m_Modifications:
+    - target: {fileID: 4677617559639623184, guid: 618eb0e432df4b54991f2da67d087d14, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7669652062398226736, guid: 618eb0e432df4b54991f2da67d087d14, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -19846,6 +19864,18 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 68253005}
+    - target: {fileID: 7669652062398226739, guid: 618eb0e432df4b54991f2da67d087d14, type: 3}
+      propertyPath: infoImage
+      value: 
+      objectReference: {fileID: 1080718246}
+    - target: {fileID: 7669652062398226739, guid: 618eb0e432df4b54991f2da67d087d14, type: 3}
+      propertyPath: meditSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 852ef381434174c46a41aa8796322fca, type: 3}
+    - target: {fileID: 7669652062398226739, guid: 618eb0e432df4b54991f2da67d087d14, type: 3}
+      propertyPath: nextMapSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 010f621c8f72f6148a33fbacace9cc61, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 618eb0e432df4b54991f2da67d087d14, type: 3}
 --- !u!1 &1534058951

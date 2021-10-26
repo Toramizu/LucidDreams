@@ -10,6 +10,7 @@ public class DreamManager : Window, GridManager
     [SerializeField] TMP_Text crystals;
 
     [SerializeField] DreamShop shop;
+    [SerializeField] MeditationPanel medit;
 
     [SerializeField] DreamToken playerToken;
 
@@ -35,6 +36,7 @@ public class DreamManager : Window, GridManager
 
         ContinueDream(data);
 
+        medit.CanMeditate = true;
         playerToken.SetCharacter(cData);
     }
 
@@ -136,6 +138,11 @@ public class DreamManager : Window, GridManager
     public void OpenShop(ShopData data)
     {
         shop.InitShop(data);
+    }
+
+    public void Meditate()
+    {
+        medit.Open();
     }
 
     #region Movement

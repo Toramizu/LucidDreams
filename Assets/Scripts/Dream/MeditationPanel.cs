@@ -24,5 +24,6 @@ public class MeditationPanel : Window
     {
         if (CanMeditate)
             GameManager.Instance.PlayerManager.Meditate();
+        Close();
     }
 }

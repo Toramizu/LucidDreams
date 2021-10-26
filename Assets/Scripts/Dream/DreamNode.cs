@@ -109,7 +109,7 @@ public class DreamNode : MonoBehaviour, PathNode
                     GameManager.Instance.DreamManager.ContinueDream(next);
                 break;
             case NodeContent.Meditation:
-                Debug.Log("Meditate...");
+                GameManager.Instance.DreamManager.Meditate();
                 break;
         }
 
