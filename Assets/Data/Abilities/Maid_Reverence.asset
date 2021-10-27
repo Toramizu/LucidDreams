@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Maid_Reverence
   m_EditorClassIdentifier: 
   title: Reverence
-  description: Show your inferiority and 1 _Sub
+  description: Show your inferiority and gain 2 _Sub
   conditions:
   - type: 0
     value: 0
@@ -23,13 +23,11 @@ MonoBehaviour:
   total: 0
   effects:
   - effect: 1
-    bonus: 1
+    bonus: 2
     usesDice: 0
     usesCumulativeBonus: 0
     multiplier: 0
     stringValue: Sub
-    boolValue1: 0
-    boolValue2: 0
     targetsUser: 1
     condition:
       type: 0

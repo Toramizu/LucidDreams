@@ -31,7 +31,8 @@ public class BattleManager : Window
     
     public void StartBattle(CharacterData oData, List<AbilityData> pAbis)
     {
-        gameObject.SetActive(true);
+        Open();
+        endPanel.Close();
         opponent.LoadCharacter(oData);
         player.Reset(pAbis);
         PlayerTurn = false;

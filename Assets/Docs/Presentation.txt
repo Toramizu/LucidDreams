@@ -26,6 +26,7 @@ What I need help for :
 - Idea for succubi / Art to "borrow" / Abilities
 
 What next? :
+- 1st, Meditation events : for now, when you get to a meditation spot, you simply restore all your Arousal, but there will be events added where you might need to sacrifice something to be allowed to meditate.
 - Implement the story
 - During the day, you'll be able to meet new people and find new playable succubi
 - Implement progression, where you develop relationships with the people to empower their succubus

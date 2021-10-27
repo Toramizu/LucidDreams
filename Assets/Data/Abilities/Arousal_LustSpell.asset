@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Arousal_LustSpell
   m_EditorClassIdentifier: 
   title: Lust Spell
-  description: Arouse for _Die and gives 2 _Aro
+  description: Arouse for _Die/2 and gives 2 _Aro
   conditions:
   - type: 2
     value: 0
@@ -26,10 +26,8 @@ MonoBehaviour:
     bonus: 0
     usesDice: 1
     usesCumulativeBonus: 0
-    multiplier: 1
+    multiplier: 0.5
     stringValue: 
-    boolValue1: 0
-    boolValue2: 0
     targetsUser: 0
     condition:
       type: 0
@@ -41,8 +39,6 @@ MonoBehaviour:
     usesCumulativeBonus: 0
     multiplier: 0
     stringValue: Aroused
-    boolValue1: 0
-    boolValue2: 0
     targetsUser: 0
     condition:
       type: 0
