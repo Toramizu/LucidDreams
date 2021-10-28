@@ -12,7 +12,9 @@ public class StickyTrait : Trait
         for(int i = 0; i < stack && dice.Count > 0; i++)
         {
             RolledDie die = dice[Random.Range(0, dice.Count)];
-            die.Value--;
+            if (die.Value > 1)
+                die.Value--;
+            else i++;
             dice.Remove(die);
         }
 

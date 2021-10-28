@@ -15,10 +15,16 @@ public class RollDiceEffect : AbilityEffect
     public override void Play(Character user, Character other, int dice, Ability abi)
     {
         Debug.Log("Playing? " + dice);
-        if(targetsUser)
-            user.Roll(Value(dice, abi), rollCondition.ToCondition());
+        DiceCondition cond;
+        if (rollCondition == null)
+            cond = null;
         else
-            other.Roll(Value(dice, abi), rollCondition.ToCondition());
+            cond = rollCondition.ToCondition();
+
+        if (targetsUser)
+            user.Roll(Value(dice, abi), cond);
+        else
+            other.Roll(Value(dice, abi), cond);
     }
 
     public override AbilityEffect Clone()

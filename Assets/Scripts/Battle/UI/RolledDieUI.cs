@@ -16,7 +16,10 @@ public class RolledDieUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     RectTransform rTransform;
     CanvasGroup canvasGroup;
 
-    public DieSlot CurrentSlot { get; set; }
+    public DieSlot CurrentSlot {
+        get { return Die.CurrentSlot; }
+        set { Die.CurrentSlot = value; }
+    }
 
     Vector3 position;
     public Vector3 Position

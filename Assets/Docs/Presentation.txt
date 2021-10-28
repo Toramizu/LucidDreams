@@ -1,5 +1,5 @@
 Blissful Sleep is a game I've been working on for a few weeks.
-I am currently using "borrowed" art for it, but I might ask for donations later to commission an artist to have a consistent style.
+I am currently using "borrowed" art for it, but I might ask for donations later to commission an artist to have a single style.
 
 The game is based in a techno-magic universe (like Final Fantasy)
 All succubi are hermaphrodites, or futas, as is the main character. Others will mainly be females with a few futas. I am quite awkward at writing mens, so I'll skip that for now, maybe later...
@@ -17,8 +17,16 @@ The scenes with succubi will happen if they win a fight, or you can choose to ha
 With the day characters, you will have to progress in their relation before they are willing to have sex. Those relations will change based on choices during their progression and some other factors.
 
 Fetishes :
-- Mandatory : Futanari, Monster Girls, Dom/Sub, Romance
+- Mandatory : Futanari, Monster Girls
+	Soon : Dom/Sub, Romance
 - Optional : None for now
+- Maybe : Incest (depending on where I fund it), Cuckold (avoiding it part of the gameplay, seen as a bad path), Stealing, Sharing, Impregnation/Pregnancy
+
+Dev Cheats :
+F5 : +99 Crystals
+F6 : Roll 1 more die
+F7 : Full heal
+F8 : Automatic win
 
 What I need help for :
 - Bug hunting
@@ -27,6 +35,7 @@ What I need help for :
 
 What next? :
 - 1st, Meditation events : for now, when you get to a meditation spot, you simply restore all your Arousal, but there will be events added where you might need to sacrifice something to be allowed to meditate.
+- Win/Loose scenes with the succubi, text and lasting consequences
 - Implement the story
 - During the day, you'll be able to meet new people and find new playable succubi
 - Implement progression, where you develop relationships with the people to empower their succubus
@@ -34,3 +43,6 @@ What next? :
 
 Why "borrowed" art, not stolen?
 I consider that I borrow it without consent rather than steal it mainly because I clearly say it's not mine and most of it have a direct link to the original, available on the purple "borrower" on the images.
+
+Known Bugs :
+- If you manage to give dice to the AI, they won't know what to do with them and might crash

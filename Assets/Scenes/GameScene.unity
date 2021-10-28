@@ -4933,7 +4933,7 @@ MonoBehaviour:
   - replaced: _Aro
     replacer: <sprite name="Aroused">
   - replaced: _Bon
-    replacer: <sprite name="Boundage">
+    replacer: <sprite name="Bondage">
   - replaced: _Cha
     replacer: <sprite name="Chastity">
   - replaced: _Unf
@@ -17166,7 +17166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8264385, g: 1, b: 0.7122642, a: 0.7490196}
+  m_Color: {r: 0.85488427, g: 0.9433962, b: 0.7965468, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

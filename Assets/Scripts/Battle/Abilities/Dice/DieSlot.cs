@@ -85,7 +85,6 @@ public class DieSlot :  IDie
         set
         {
             condition.Link = value;
-            //links.SetActive(value != null);
             SlotUI.ShowLinks(value != null);
         }
     }
@@ -118,7 +117,6 @@ public class DieSlot :  IDie
         {
             SlottedDie = die;
             die.CurrentSlot = this;
-            //die.transform.position = SlotUI.Pos;
             ability.Check();
         }
     }

@@ -18,7 +18,7 @@ MonoBehaviour:
   - type: 2
     value: 0
     toggle: 1
-  uses: 10
+  uses: 2
   equalDice: 0
   total: 0
   effects:

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Spider_Kiss
   m_EditorClassIdentifier: 
   title: Spider Kiss
-  description: Slow kiss 1 _Aro
+  description: Slow kiss 1 + _++ _Aro, deeper each time
   conditions:
   - type: 0
     value: 0
@@ -25,11 +25,9 @@ MonoBehaviour:
   - effect: 1
     bonus: 1
     usesDice: 0
-    usesCumulativeBonus: 0
-    multiplier: 0
+    usesCumulativeBonus: 1
+    multiplier: 1
     stringValue: Aroused
-    boolValue1: 0
-    boolValue2: 0
     targetsUser: 0
     condition:
       type: 0

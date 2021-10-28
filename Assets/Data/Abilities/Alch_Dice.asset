@@ -18,7 +18,7 @@ MonoBehaviour:
   - type: 1
     value: 2
     toggle: 0
-  uses: 2
+  uses: 1
   equalDice: 0
   total: 0
   effects:
@@ -28,7 +28,7 @@ MonoBehaviour:
     usesCumulativeBonus: 0
     multiplier: 0
     stringValue: 
-    targetsUser: 0
+    targetsUser: 1
     condition:
       type: 0
       value: 0

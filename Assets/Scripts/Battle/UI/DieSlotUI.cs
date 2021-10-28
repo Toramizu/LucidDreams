@@ -75,7 +75,7 @@ public class DieSlotUI : MonoBehaviour, IDropHandler
 
     public void ShowLinks(bool toggle)
     {
-
+        links.gameObject.SetActive(toggle);
     }
 
     public void OnDrop(PointerEventData eventData)

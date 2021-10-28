@@ -13,22 +13,22 @@ MonoBehaviour:
   m_Name: Alch_StoneSkin
   m_EditorClassIdentifier: 
   title: StoneSkin
-  description: Transform skin to stone
+  description: Transform skin to stone for the next 2 attacks
   conditions:
   - type: 1
     value: 1
     toggle: 0
-  uses: 2
+  uses: 1
   equalDice: 0
   total: 0
   effects:
   - effect: 1
-    bonus: 1
+    bonus: 2
     usesDice: 0
     usesCumulativeBonus: 0
     multiplier: 0
     stringValue: Unfeeling
-    targetsUser: 0
+    targetsUser: 1
     condition:
       type: 0
       value: 0

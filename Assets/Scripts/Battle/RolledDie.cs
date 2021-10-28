@@ -4,34 +4,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class RolledDie// : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class RolledDie
 {
     public RolledDieUI DieUI { get; set; }
     const int D_MAX = 6;
 
-    /*[SerializeField] Image image;
-    [SerializeField] List<Sprite> dieFaces;
-    [SerializeField] Sprite lockSprite;
-
-    [SerializeField] Canvas canvas;
-
-    RectTransform rTransform;
-    CanvasGroup canvasGroup;*/
 
     public GameObject GameObject { get { return DieUI.gameObject; } }
 
     public DieSlot CurrentSlot { get; set; }
-    /*Vector3 position;
-    public Vector3 Position
-    {
-        get { return position; }
-        set
-        {
-            position = value;
-            transform.localPosition = value;
-        }
-    }*/
-
+   
     [SerializeField] int value;
     public int Value
     {
@@ -71,14 +53,12 @@ public class RolledDie// : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         if (locked)
             DieUI.Lock();
-        //image.sprite = lockSprite;
         else if (value > D_MAX)
             SplitDie();
         else if (value <= 0)
             EmptyDie();
         else
             DieUI.ShowFace(value);
-            //image.sprite = dieFaces[value];
     }
 
     void SplitDie()
@@ -102,7 +82,6 @@ public class RolledDie// : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void ResetPosition()
     {
         DieUI.ResetPosition();
-        //transform.localPosition = position;
     }
 
     public void Hide()

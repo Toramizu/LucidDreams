@@ -19,7 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a875ca0e3be56c148b68f83c998efe1c, type: 2}
   - {fileID: 11400000, guid: 406a71a70fbc56f42af12d66dd2de863, type: 2}
   - {fileID: 11400000, guid: 680cbe67a99d08845825adceb91228b1, type: 2}
-  - {fileID: 11400000, guid: a875ca0e3be56c148b68f83c998efe1c, type: 2}
+  - {fileID: 11400000, guid: 3905f14e1ac87d640b1168db43ac3498, type: 2}
   - {fileID: 11400000, guid: 76f1a747c7c764943bc40d85dd31058f, type: 2}
   - {fileID: 11400000, guid: 0034cb586e0593747bda8000b9238111, type: 2}
   dice: 1

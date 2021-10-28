@@ -19,10 +19,13 @@ public class TestScript : MonoBehaviour
             Test6();
         if (Input.GetKeyDown(KeyCode.F7))
             Test7();
+        if (Input.GetKeyDown(KeyCode.F8))
+            Test8();
 
         if (Input.GetKeyDown(KeyCode.F9))
             Test9();
     }
+
 
     [SerializeField] Trait locked;
     
@@ -50,10 +53,15 @@ public class TestScript : MonoBehaviour
 
     void Test6()
     {
-        GameManager.Instance.BattleManager.FullHeal();
+        GameManager.Instance.BattleManager.Roll(1, null);
     }
 
     void Test7()
+    {
+        GameManager.Instance.BattleManager.FullHeal();
+    }
+
+    void Test8()
     {
         GameManager.Instance.BattleManager.EndBattle(true);
     }

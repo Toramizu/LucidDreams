@@ -47,7 +47,6 @@ public class DreamManager : Window, GridManager
         Dictionary<NodeContent, List<DreamNode>> nodes = nodePanel.AddNodes(map.Nodes, this);
         FillNodes(nodes, map, data);
 
-        crystals.text = "0";
         CanMove = true;
     }
 
