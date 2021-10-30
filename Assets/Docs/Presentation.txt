@@ -1,3 +1,5 @@
+https://www.dropbox.com/sh/h9j10w3d9lqsscu/AADOe5pUyaKsHx9F28-nbSg0a?dl=0
+
 Blissful Sleep is a game I've been working on for a few weeks.
 I am currently using "borrowed" art for it, but I might ask for donations later to commission an artist to have a single style.
 
@@ -29,9 +31,9 @@ F7 : Full heal
 F8 : Automatic win
 
 What I need help for :
-- Bug hunting
-- Opinions
-- Idea for succubi / Art to "borrow" / Abilities
+- Bug hunting & Typos
+- Opinions & suggestions
+- Idea for succubi, Abilities & Art to "borrow"
 
 What next? :
 - 1st, Meditation events : for now, when you get to a meditation spot, you simply restore all your Arousal, but there will be events added where you might need to sacrifice something to be allowed to meditate.

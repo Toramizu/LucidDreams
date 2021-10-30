@@ -27,17 +27,18 @@ public class TestScript : MonoBehaviour
     }
 
 
-    [SerializeField] Trait locked;
-    
+    [SerializeField] DialogueUI dialUI;
+    [SerializeField] DialogueData dData;
+    [SerializeField] DialogueData dData2;
+
     void Test1()
     {
-        GameManager.Instance.BattleManager.GetCharacter(true).Traits.AddTrait(locked, 1);
+        dialUI.Open(dData);
     }
 
     void Test2()
     {
-        //GameManager.Instance.BattleManager.R(1);
-        //Debug.Log(GameManager.Instance.BattleManager.GetCharacter(true).CumulativeBonus);
+        dialUI.Open(dData2);
     }
 
     void Test3()
