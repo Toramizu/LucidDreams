@@ -4,5 +4,6 @@ using UnityEngine;
 
 public abstract class DialogueElement : ScriptableObject
 {
-    public abstract void Play(DialogueUI dialUI);
+    //Return true if auto-play next element
+    public abstract bool Play(DialogueUI dialUI);
 }

@@ -8,9 +8,10 @@ public class DialogueChoices : DialogueElement
     [SerializeField] string choiceTitle;
     [SerializeField] List<DialogueChoice> choices;
 
-    public override void Play(DialogueUI dialUI)
+    public override bool Play(DialogueUI dialUI)
     {
         dialUI.Play(choiceTitle, choices);
+        return false;
     }
 }
 

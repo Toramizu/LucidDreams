@@ -41,10 +41,10 @@ public class TestScript : MonoBehaviour
         dialUI.Open(dData2);
     }
 
+    int i = 0;
     void Test3()
     {
-        //GameManager.Instance.BattleManager.R(1);
-        GameManager.Instance.BattleManager.Give(0);
+        GameManager.Instance.Notify("Test text : " + ++i);
     }
 
     void Test5()

@@ -5,9 +5,9 @@ using UnityEngine;
 public class BattleManager : Window
 {
     [SerializeField] CharacterUI opponentUI;
-    Character opponent { get { return opponentUI.Character; } }
+    public Character Opponent { get { return opponentUI.Character; } }
     [SerializeField] CharacterUI playerUI;
-    Character player { get { return playerUI.Character; } }
+    public Character Player { get { return playerUI.Character; } }
 
     [SerializeField] EndPanel endPanel;
     [SerializeField] TraitTooltip tooltip;
@@ -16,25 +16,25 @@ public class BattleManager : Window
     public Character GetCharacter(bool current)
     {
             if (PlayerTurn == current)
-                return player;
+                return Player;
             else
-                return opponent;
+                return Opponent;
     }
 
     public Character Other(Character current)
     {
-        if (current == opponent)
-            return player;
+        if (current == Opponent)
+            return Player;
         else
-            return opponent;
+            return Opponent;
     }
     
     public void StartBattle(CharacterData oData, List<AbilityData> pAbis)
     {
         Open();
         endPanel.Close();
-        opponent.LoadCharacter(oData);
-        player.Reset(pAbis);
+        Opponent.LoadCharacter(oData);
+        Player.Reset(pAbis);
         PlayerTurn = false;
         NextRound();
     }
@@ -47,13 +47,13 @@ public class BattleManager : Window
 
     public bool CheckBattleStatus()
     {
-        if (opponent.Finished)
+        if (Opponent.Finished)
         {
             EndBattle(true);
             return true;
         }
         //endPanel.Victory(opponent.Crystals, opponent.Data);
-        else if (player.Finished)
+        else if (Player.Finished)
         {
             EndBattle(false);
             return true;
@@ -65,7 +65,7 @@ public class BattleManager : Window
     public void EndBattle(bool victory)
     {
         if (victory)
-            endPanel.Victory(opponent.Crystals, opponent.Data);
+            endPanel.Victory(Opponent.Crystals, Opponent.Data);
         else
             endPanel.Loss();
     }
@@ -78,9 +78,9 @@ public class BattleManager : Window
         }
         else
         {
-            opponent.EndTurn();
+            Opponent.EndTurn();
             PlayerTurn = true;
-            player.StartTurn();
+            Player.StartTurn();
         }
     }
 
@@ -88,11 +88,11 @@ public class BattleManager : Window
     {
         if (PlayerTurn)
         {
-            player.EndTurn();
+            Player.EndTurn();
             PlayerTurn = false;
-            opponent.StartTurn();
+            Opponent.StartTurn();
 
-            opponent.PlayTurn();
+            Opponent.PlayTurn();
         }
 
         //NextRound();
@@ -102,15 +102,15 @@ public class BattleManager : Window
     {
         Character user;
         if (PlayerTurn)
-            user = player;
+            user = Player;
         else
-            user = opponent;
+            user = Opponent;
 
         Character target;
         if (PlayerTurn == targetsCurrent)
-            target = player;
+            target = Player;
         else
-            target = opponent;
+            target = Opponent;
 
         int total = CalculateDamages(amount, user, target, ignoreTraits);
 
@@ -132,55 +132,55 @@ public class BattleManager : Window
     public void AddTrait(Trait trait, int amount, bool targetsUser)
     {
         if (PlayerTurn == targetsUser)
-            player.Traits.AddTrait(trait, amount);
+            Player.Traits.AddTrait(trait, amount);
         else
-            opponent.Traits.AddTrait(trait, amount);
+            Opponent.Traits.AddTrait(trait, amount);
     }
 
     public void Roll(int amount, DiceCondition condition)
     {
         if (PlayerTurn)
-            player.Roll(amount, condition);
+            Player.Roll(amount, condition);
         else
-            opponent.Roll(amount, condition);
+            Opponent.Roll(amount, condition);
     }
 
     public void Give(int value)
     {
         if (PlayerTurn)
-            player.Give(value);
+            Player.Give(value);
         else
-            opponent.Give(value);
+            Opponent.Give(value);
     }
 
     public void ResetDicePosition()
     {
-        player.ResetDicePosition();
+        Player.ResetDicePosition();
     }
 
     public void ToggleOpponentAbilities(bool toggle)
     {
         if (PlayerTurn)
         {
-            player.ToggleAbilities(!toggle);
-            opponent.ToggleAbilities(toggle);
+            Player.ToggleAbilities(!toggle);
+            Opponent.ToggleAbilities(toggle);
         }
     }
 
     public DiceHolder RolledDice()
     {
         if (PlayerTurn)
-            return player.Dice;
+            return Player.Dice;
         else
-            return opponent.Dice;
+            return Opponent.Dice;
     }
 
     public List<Ability> Abilities(bool current)
     {
         if (PlayerTurn && current)
-            return player.Abilities;
+            return Player.Abilities;
         else
-            return opponent.Abilities;
+            return Opponent.Abilities;
     }
 
     public void ShowTooltip(Trait trait)
@@ -191,7 +191,7 @@ public class BattleManager : Window
     #region Cheats
     public void FullHeal()
     {
-        player.FullHeal();
+        Player.FullHeal();
     }
     #endregion
 }

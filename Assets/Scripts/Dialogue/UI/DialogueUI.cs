@@ -52,7 +52,10 @@ public class DialogueUI : Window
     void Next()
     {
         if (elements.Count > 0)
-            elements.Dequeue().Play(this);
+        {
+            if (elements.Dequeue().Play(this))
+                Next();
+        }
         else
             Close();
     }

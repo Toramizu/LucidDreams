@@ -8,9 +8,10 @@ public class DialogueLines : DialogueElement
     [SerializeField] List<DialogueLine> lines;
     public List<DialogueLine> Lines { get { return lines; } }
 
-    public override void Play(DialogueUI dialUI)
+    public override bool Play(DialogueUI dialUI)
     {
         dialUI.Play(lines);
+        return false;
     }
 }
 

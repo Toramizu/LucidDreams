@@ -26,15 +26,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] SoundManager sound;
     public SoundManager Sound { get { return sound; } }
 
+    [SerializeField] NotificationsUI notifs;
+
 
     [SerializeField] CharacterData pData;
     [SerializeField] DreamData dData;
     [SerializeField] Window dayTmp;
 
+    public GameStatus Status { get; private set; }
+
     private void Start()
     {
         Instance = this;
         dayTmp.Open();
+        Status = GameStatus.Day;
     }
 
     public void StartGame()
@@ -48,6 +53,7 @@ public class GameManager : MonoBehaviour
         dreamManager.FadeOut();
         battleManager.FadeIn();
         battleManager.StartBattle(opponent, playerManager.Abilities);
+        Status = GameStatus.Battle;
     }
 
     public void StartDream(DreamData data, CharacterData pcData)
@@ -55,6 +61,7 @@ public class GameManager : MonoBehaviour
         dreamManager.StartDream(data, pcData);
         playerManager.UpdateGauge();
         //battleManager.Close();
+        Status = GameStatus.Dream;
     }
 
     public void EndBattle(int crystals, AbilityData newAbility)
@@ -77,5 +84,18 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("It's a new day!");
         dayTmp.FadeIn();
+        Status = GameStatus.Day;
     }
+
+    public void Notify(string text)
+    {
+        notifs.Notify(text);
+    }
+}
+
+public enum GameStatus
+{
+    Day,
+    Dream,
+    Battle,
 }
