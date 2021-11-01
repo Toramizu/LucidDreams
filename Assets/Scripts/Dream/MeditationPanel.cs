@@ -7,17 +7,21 @@ public class MeditationPanel : Window
 {
     [SerializeField] TMP_Text quote;
 
-    [SerializeField] List<string> meditationQuotes;
+    //[SerializeField] List<string> meditationQuotes;
+    [SerializeField] List<DialogueData> meditations;
 
     public bool CanMeditate { get; set; }
 
     public override void Open()
     {
         base.Open();
-        if (CanMeditate)
+        DialogueData med = meditations[Random.Range(0, meditations.Count)];
+        GameManager.Instance.StartDialogue(med);
+
+        /*if (CanMeditate)
             quote.text = meditationQuotes[Random.Range(0, meditationQuotes.Count)];
         else
-            quote.text = "You already took a rest here, it became too dangerous to rest again...";
+            quote.text = "You already took a rest here, it became too dangerous to rest again...";*/
     }
 
     public void Meditate()

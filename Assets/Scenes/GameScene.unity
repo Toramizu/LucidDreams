@@ -5013,6 +5013,7 @@ MonoBehaviour:
   assets: {fileID: 344300350}
   sound: {fileID: 688161630}
   notifs: {fileID: 1907565935}
+  dialogue: {fileID: 36872521}
   pData: {fileID: 11400000, guid: 4c7258395ae56264dbfac4d448e41021, type: 2}
   dData: {fileID: 11400000, guid: 9a7e3f7eb2c10554883976dfeabdfbd8, type: 2}
   dayTmp: {fileID: 677436408}
@@ -6908,7 +6909,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 85.095, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &545357684
@@ -13283,7 +13284,8 @@ MonoBehaviour:
   nodePanel: {fileID: 1932013412}
   crystals: {fileID: 1325934924}
   shop: {fileID: 1098196078}
-  medit: {fileID: 1387129894}
+  meditations:
+  - {fileID: 11400000, guid: 69834ade0b80d9343b969cd7e6526a45, type: 2}
   playerToken: {fileID: 481224902}
 --- !u!114 &1005484012
 MonoBehaviour:
@@ -13771,7 +13773,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 10, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1049813903
@@ -18262,10 +18264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quote: {fileID: 582566276}
-  meditationQuotes:
-  - You find a quiet place, free of temptations.
-  - A motherly succubus doing some yoga beckons you to join her.
-  - This place looks like the town's park.
+  meditations: []
 --- !u!1 &1403756301
 GameObject:
   m_ObjectHideFlags: 0
@@ -28506,7 +28505,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 10, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2076924351

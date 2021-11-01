@@ -32,3 +32,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: eefb043694b9c684eb6e1de12b646c9a, type: 2}
   nexts:
   - {fileID: 11400000, guid: 9a7e3f7eb2c10554883976dfeabdfbd8, type: 2}
+  meditations:
+  - {fileID: 11400000, guid: 69834ade0b80d9343b969cd7e6526a45, type: 2}

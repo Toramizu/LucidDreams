@@ -96,7 +96,7 @@ public class DreamNode : MonoBehaviour, PathNode
                 {
                     GameManager.Instance.StartBattle(cData);
                     rightToken.transform.localScale = new Vector3(.5f, .5f, .5f);
-                    cData = null;
+                    type = NodeContent.None;
                 }
                 break;
             case NodeContent.Shop:
@@ -110,6 +110,8 @@ public class DreamNode : MonoBehaviour, PathNode
                 break;
             case NodeContent.Meditation:
                 GameManager.Instance.DreamManager.Meditate();
+                infoImage.transform.localScale = new Vector3(.5f, .5f, .5f);
+                //type = NodeContent.None;
                 break;
         }
 

@@ -25,6 +25,9 @@ public class DreamData : ScriptableObject
 
     [SerializeField] List<DreamData> nexts;
     public List<DreamData> Nexts { get { return nexts; } }
+
+    [SerializeField] List<DialogueData> meditations;
+    public List<DialogueData> Meditations { get { return meditations; } }
 }
 
 [System.Serializable]

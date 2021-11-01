@@ -38,7 +38,7 @@ public class DialogueUI : Window
         Next();
     }
 
-    void AddInFront(List<DialogueElement> newElements)
+    public void AddInFront(List<DialogueElement> newElements)
     {
         Queue<DialogueElement> elems = new Queue<DialogueElement>(newElements);
 

@@ -26,7 +26,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] SoundManager sound;
     public SoundManager Sound { get { return sound; } }
 
+    public Flags Flags { get; private set; } = new Flags();
+
     [SerializeField] NotificationsUI notifs;
+    [SerializeField] DialogueUI dialogue;
 
 
     [SerializeField] CharacterData pData;
@@ -87,8 +90,14 @@ public class GameManager : MonoBehaviour
         Status = GameStatus.Day;
     }
 
+    public void StartDialogue(DialogueData dial)
+    {
+        dialogue.Open(dial);
+    }
+
     public void Notify(string text)
     {
+        text = parser.ParseDescription(text, Flags.Strings);
         notifs.Notify(text);
     }
 }

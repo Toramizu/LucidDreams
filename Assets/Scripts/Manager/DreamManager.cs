@@ -10,7 +10,8 @@ public class DreamManager : Window, GridManager
     [SerializeField] TMP_Text crystals;
 
     [SerializeField] DreamShop shop;
-    [SerializeField] MeditationPanel medit;
+    //[SerializeField] MeditationPanel medit;
+    [SerializeField] List<DialogueData> meditations;
 
     [SerializeField] DreamToken playerToken;
 
@@ -36,7 +37,8 @@ public class DreamManager : Window, GridManager
 
         ContinueDream(data);
 
-        medit.CanMeditate = true;
+        //meditations = data.Meditations;
+        //medit.CanMeditate = true;
         playerToken.SetCharacter(cData);
     }
 
@@ -141,7 +143,9 @@ public class DreamManager : Window, GridManager
 
     public void Meditate()
     {
-        medit.Open();
+        DialogueData med = meditations[Random.Range(0, meditations.Count)];
+        GameManager.Instance.StartDialogue(med);
+        //medit.Open();
     }
 
     #region Movement
