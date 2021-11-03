@@ -44,4 +44,15 @@ public class DiceHolderUI : MonoBehaviour
         foreach (RolledDieUI die in RolledDice)
             die.ResetPosition();
     }
+
+    public RolledDie GetDieByID(int id)
+    {
+        foreach (RolledDieUI die in RolledDice)
+        {
+            if (die.Die.ID == id)
+                return die.Die;
+        }
+
+        return null;
+    }
 }

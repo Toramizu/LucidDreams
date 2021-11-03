@@ -27,18 +27,16 @@ public class TestScript : MonoBehaviour
     }
 
 
-    [SerializeField] DialogueUI dialUI;
-    [SerializeField] DialogueData dData;
-    [SerializeField] DialogueData dData2;
+    [SerializeField] CharacterData cData;
 
     void Test1()
     {
-        dialUI.Open(dData);
+        GameManager.Instance.StartBattle(cData);
     }
 
     void Test2()
     {
-        dialUI.Open(dData2);
+
     }
 
     int i = 0;

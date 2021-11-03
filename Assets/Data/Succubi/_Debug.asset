@@ -12,18 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef64e80cc15a1b4389e18feaf752153, type: 3}
   m_Name: _Debug
   m_EditorClassIdentifier: 
-  sName: Player
+  sName: Debug
   image: {fileID: 0}
   source: 
   abilities:
-  - {fileID: 11400000, guid: 9a29abacb7ed7e64f84a43c942c56a69, type: 2}
-  - {fileID: 11400000, guid: e11b189e582dcd24b8ef68bb29289395, type: 2}
-  - {fileID: 11400000, guid: 01c81933a34865240b8490f11cd645b7, type: 2}
+  - {fileID: 11400000, guid: ec92035f3e8d4d44ba4bb8dadb061014, type: 2}
   - {fileID: 11400000, guid: dc8625a7b3171bc47b429f3c07deb326, type: 2}
-  - {fileID: 11400000, guid: d7da1f4042bc49d4a93e906d87cb52cc, type: 2}
-  - {fileID: 11400000, guid: 0ba81dee84c1ace4f91b0db821fe74de, type: 2}
-  - {fileID: 11400000, guid: 89bbc570626779f41a243df9e718d66c, type: 2}
-  - {fileID: 11400000, guid: b4bf2568f65cc8f48997e5cf686240b8, type: 2}
-  dice: 3
-  maxArousal: 30
+  dice: 1
+  maxArousal: 100
   crystals: 5

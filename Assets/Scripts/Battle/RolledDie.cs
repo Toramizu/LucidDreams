@@ -40,6 +40,7 @@ public class RolledDie
     public RolledDie(int value, int id)
     {
         this.value = value;
+        //ParseValue();
         ID = id;
     }
 
@@ -57,21 +58,23 @@ public class RolledDie
             SplitDie();
         else if (value <= 0)
             EmptyDie();
-        else
+        else if(DieUI != null)
             DieUI.ShowFace(value);
     }
 
     void SplitDie()
     {
-        GameManager.Instance.BattleManager.Give(value - D_MAX + 1);
-        Value = D_MAX - 1;
+        if(Value > D_MAX)
+            GameManager.Instance.BattleManager.Give(value - D_MAX);
+        Value = D_MAX;
     }
 
 
     void EmptyDie()
     {
         value = 0;
-        DieUI.ShowFace(0);
+        if (DieUI != null)
+            DieUI.ShowFace(0);
     }
 
     public void SlotDie(DieSlotUI slot)

@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d93417b2c1c2f1243a5b0d3af9c0940b, type: 3}
-  m_Name: _Poke
+  m_Name: Sport_SweetSweat
   m_EditorClassIdentifier: 
-  title: Poke
-  description: Pokes for 1 _++
+  title: Sweet Sweat
+  description: Use your built up sweat to gain _Phe
   conditions:
-  - type: 1
-    value: 1
-    toggle: 0
-  uses: 3
-  equalDice: 1
+  - type: 3
+    value: 3
+    toggle: 1
+  uses: 1
+  equalDice: 0
   total: 0
   effects:
-  - effect: 0
-    bonus: 1
-    usesDice: 0
+  - effect: 1
+    bonus: 0
+    usesDice: 1
     usesCumulativeBonus: 0
-    multiplier: 0
-    stringValue: 
+    multiplier: 1
+    stringValue: Pheromones
     targetsUser: 0
     condition:
       type: 0

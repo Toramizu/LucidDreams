@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     [SerializeField] CharacterUI playerUI;
-    Character player { get { return playerUI.Character; } }
+    public Character Player { get { return playerUI.Character; } }
     [SerializeField] TMP_Text crystalsText;
     [SerializeField] SimpleGauge dreamGauge;
     [SerializeField] TMP_Text diceText;
@@ -28,12 +28,12 @@ public class PlayerManager : MonoBehaviour
 
     public int HealthIncrement
     {
-        get { return player.Data.MaxArousal / 2; }
+        get { return Player.Data.MaxArousal / 2; }
     }
 
     public void SetPlayer(CharacterData data)
     {
-        player.LoadCharacter(data);
+        Player.LoadCharacter(data);
         Abilities = data.Abilities;
         //EquipedAbilities = data.Abilities;
         diceText.text = data.Dice.ToString();
@@ -48,21 +48,21 @@ public class PlayerManager : MonoBehaviour
 
     public void Meditate()
     {
-        player.Arousal = 0;
+        Player.Arousal = 0;
         UpdateGauge();
     }
 
     public void ReduceArousal(int amount, int cost)
     {
         Crystals -= cost;
-        player.Arousal -= amount;
+        Player.Arousal -= amount;
         UpdateGauge();
     }
 
     public void IncreaseMaxArousal(int amount, int cost)
     {
         Crystals -= cost;
-        player.MaxArousal += amount;
+        Player.MaxArousal += amount;
             //amount;
         //player.Arousal = 0;
         UpdateGauge();
@@ -71,12 +71,12 @@ public class PlayerManager : MonoBehaviour
     public void AddDie(int amount, int cost)
     {
         Crystals -= cost;
-        player.Rolls++;
-        diceText.text = player.Rolls.ToString();
+        Player.Rolls++;
+        diceText.text = Player.Rolls.ToString();
     }
 
     public void UpdateGauge()
     {
-        dreamGauge.Fill(player.Arousal, player.MaxArousal);
+        dreamGauge.Fill(Player.Arousal, Player.MaxArousal);
     }
 }

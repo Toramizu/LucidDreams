@@ -12,6 +12,7 @@ public class DreamManager : Window, GridManager
     [SerializeField] DreamShop shop;
     //[SerializeField] MeditationPanel medit;
     [SerializeField] List<DialogueData> meditations;
+    List<DialogueData> dreamMeditations;
 
     [SerializeField] DreamToken playerToken;
 
@@ -37,7 +38,7 @@ public class DreamManager : Window, GridManager
 
         ContinueDream(data);
 
-        //meditations = data.Meditations;
+        dreamMeditations = data.Meditations;
         //medit.CanMeditate = true;
         playerToken.SetCharacter(cData);
     }
@@ -143,7 +144,9 @@ public class DreamManager : Window, GridManager
 
     public void Meditate()
     {
-        DialogueData med = meditations[Random.Range(0, meditations.Count)];
+        List<DialogueData> meds = new List<DialogueData>(meditations);
+        meds.AddRange(dreamMeditations);
+        DialogueData med = meds[Random.Range(0, meds.Count)];
         GameManager.Instance.StartDialogue(med);
         //medit.Open();
     }

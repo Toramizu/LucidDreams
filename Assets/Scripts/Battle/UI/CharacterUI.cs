@@ -106,6 +106,12 @@ public class CharacterUI : MonoBehaviour
             currentDie = dts.Die;
             currentSlot = dts.Slot;
 
+            if (currentDie.DieUI == null)
+            {
+                int i = currentDie.Value;
+                currentDie = dice.GetDieByID(currentDie.ID);
+            }
+
             iTween.MoveTo(currentDie.GameObject, iTween.Hash(
                 "x", currentSlot.X,
                 "y", currentSlot.Y,

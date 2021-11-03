@@ -100,6 +100,9 @@ public class Ability
             Link.Count = 0;
         }
 
+        if (locked)
+            Locked = false;
+
         if (count != null && Count <= 0)
             Count = Data.Total;
 

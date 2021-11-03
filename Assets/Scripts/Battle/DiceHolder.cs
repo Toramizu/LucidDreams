@@ -8,9 +8,12 @@ public class DiceHolder
     DiceHolderUI holderUI;
 
     const int MIN_ROLL = 1;
-    const int MAX_ROLL_PLUS_ONE = 7;
+    const int MAX_ROLL = 6;
+    const int MAX_ROLL_PLUS_ONE = MAX_ROLL + 1;
 
     int diceCount;
+    Queue<int> diceQueue;
+    const int DICE_QUEUE_COUNT = 100;
     
     public List<RolledDie> RolledDice { get; private set; } = new List<RolledDie>();
     public List<int> SimpleDiceList
@@ -28,15 +31,22 @@ public class DiceHolder
     public DiceHolder(DiceHolderUI holderUI)
     {
         this.holderUI = holderUI;
+        diceQueue = new Queue<int>();
+        for (int i = 0; i < DICE_QUEUE_COUNT; i++)
+            diceQueue.Enqueue(Random.Range(MIN_ROLL, MAX_ROLL_PLUS_ONE));
     }
 
     public void Roll(int amount, DiceCondition condition)
     {
-        for(int i = 0; i < amount; i++)
+        for (int i = 0; i < amount; i++)
         {
             int roll;
             if(condition == null)
-                roll = Random.Range(MIN_ROLL, MAX_ROLL_PLUS_ONE);
+            {
+                roll = diceQueue.Dequeue();
+                diceQueue.Enqueue(Random.Range(MIN_ROLL, MAX_ROLL_PLUS_ONE));
+                //Random.Range(MIN_ROLL, MAX_ROLL_PLUS_ONE);
+            }
             else
             {
                 foreach (int a in condition.AcceptedValues)
@@ -59,22 +69,29 @@ public class DiceHolder
                 roll = Random.Range(MIN_ROLL, MAX_ROLL_PLUS_ONE);
                 safety++;
             }*/
-
             Give(roll);
         }
     }
 
     public void Give(int value)
     {
+        if(value > MAX_ROLL)
+        {
+            Give(value - MAX_ROLL);
+            value = MAX_ROLL;
+        }
+
         RolledDie die = new RolledDie(value, diceCount++);
         RolledDice.Add(die);
-        holderUI.PlaceDie(die);
+        if(holderUI != null)
+            holderUI.PlaceDie(die);
     }
     
     public void ResetDice()
     {
         RolledDice.Clear();
-        holderUI.ResetDice();
+        if (holderUI != null)
+            holderUI.ResetDice();
         diceCount = 0;
     }
 
@@ -87,6 +104,8 @@ public class DiceHolder
     {
         DiceHolder d = new DiceHolder();
         d.RolledDice = new List<RolledDie>(RolledDice);
+        d.diceCount = diceCount;
+        d.diceQueue = new Queue<int>(diceQueue);
         /*d.RolledDice = new List<RolledDie>();
         foreach (RolledDie die in RolledDice)
             d.RolledDice.Add(die.Clone());*/

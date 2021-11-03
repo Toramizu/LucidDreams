@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee2be333eb2a10c4cbce5783fbcff922, type: 3}
-  m_Name: AoN_Pass
+  m_Name: Bed_Pass
   m_EditorClassIdentifier: 
   lines:
-  - line: After meditating for a while, you sense a lustful presence looking at you.
-      You cut it short, but managed to calm down decently.
+  - line: You fall asleep rather quickly, but are often awoken by the succubus' grabby
+      hands. You managed to rest a bit but have to leave as she becomes more insistent.
     speaker: 
     speakerPosition: 0
     removeSpeaker: 0

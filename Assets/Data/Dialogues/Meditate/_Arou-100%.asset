@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee2be333eb2a10c4cbce5783fbcff922, type: 3}
-  m_Name: AoN_Failed
+  m_Script: {fileID: 11500000, guid: 695e028d4d823d44e9a43ac92a23a650, type: 3}
+  m_Name: _Arou-100%
   m_EditorClassIdentifier: 
-  lines:
-  - line: You are too on your guard to manage to calm down...
-    speaker: 
-    speakerPosition: 0
-    removeSpeaker: 0
+  percentile: -1
+  toOpponent: 0

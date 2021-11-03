@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5210b2e214a3e44b938936e3e900698, type: 3}
+  m_Name: Bed_Roll
+  m_EditorClassIdentifier: 
+  dice: 2
+  flagBonus: 
+  flagMalus: 
+  rolls:
+  - value: 110
+    shownName: Critical pass
+    elements:
+    - {fileID: 11400000, guid: 1b6458c8b2da4a24388344bbd333ea33, type: 2}
+    - {fileID: 11400000, guid: c55935332a2069a46b885adfb30dfff0, type: 2}
+  - value: 70
+    shownName: Pass
+    elements:
+    - {fileID: 11400000, guid: 1ab6bcee6cab2644fa29addf8f8f93f2, type: 2}
+    - {fileID: 11400000, guid: 1602ccba4513f7a46bbb787aac51c996, type: 2}
+  - value: 40
+    shownName: Fail
+    elements:
+    - {fileID: 11400000, guid: 74abf81854bb7314799e2a124c046fa2, type: 2}
+  - value: 0
+    shownName: Critical Fail
+    elements:
+    - {fileID: 11400000, guid: 80d1533ca7f08414b9a569b365e7bee8, type: 2}
+    - {fileID: 11400000, guid: 8bade32916c7a5f408744e6618a729d5, type: 2}

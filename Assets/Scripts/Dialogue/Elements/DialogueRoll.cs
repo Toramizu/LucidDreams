@@ -6,53 +6,46 @@ using UnityEngine;
 public class DialogueRoll : DialogueElement
 {
     [SerializeField] int dice = 2;
-    [SerializeField] string shownName = "Fail";
     [SerializeField] string flagBonus;
+    [SerializeField] string flagMalus;
 
-    [SerializeField] List<DialogueElement> ifLess;
-    [SerializeField] List<RollValue> values;
+    [SerializeField] List<RollValue> rolls;
 
     public override bool Play(DialogueUI dialUI)
     {
-        string text;
-        int total;
-        if (GameManager.Instance.Flags.HasFlag(flagBonus))
+        string text = "";
+        int total = 0;
+        if (flagBonus != "" && GameManager.Instance.Flags.HasFlag(flagBonus))
         {
-            total = GameManager.Instance.Flags.GetFlag(flagBonus);
-            text = "(" + total + ") + ";
-        }
-        else
-        {
-            text = "";
-            total = 0;
+            int bonus = GameManager.Instance.Flags.GetFlag(flagBonus);
+            total += bonus;
+            text += "(" + bonus + ") + ";
         }
 
-        for(int i = 0; i < dice; i++)
+        if (flagMalus != "" && GameManager.Instance.Flags.HasFlag(flagMalus))
+        {
+            int bonus = GameManager.Instance.Flags.GetFlag(flagMalus);
+            total -= bonus;
+            text += "(" + -bonus + ") + ";
+        }
+
+        for (int i = 0; i < dice; i++)
         {
             int r = Random.Range(1, 7);
             total += r;
-            if (i > 0)
+            if (text != "")
                 text += "+ ";
             text += "_" + r + " ";
         }
 
-        bool found = false;
-        foreach(RollValue val in values)
+        foreach(RollValue val in rolls)
         {
-            if(val.Value >= total)
+            if (total >= val.Value)
             {
-                text += ">= " + total + " => "+ val.ShownName;
-                found = true;
+                text += "= " + total + " => " + val.ShownName;
                 dialUI.AddInFront(val.Elements);
                 break;
             }
-        }
-
-        if(!found)
-        {
-            dialUI.AddInFront(ifLess);
-            text += "< " + total + " => " + shownName;
-            dialUI.AddInFront(ifLess);
         }
 
         GameManager.Instance.Notify(text);
