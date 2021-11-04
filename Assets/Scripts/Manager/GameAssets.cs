@@ -35,7 +35,7 @@ public class GameAssets : MonoBehaviour
 
         Succubi = new Dictionary<string, CharacterData>();
         foreach (CharacterData succu in succubi)
-            Succubi.Add(succu.Name, succu);
+            Succubi.Add(succu.SName, succu);
 
         Traits = new Dictionary<string, Trait>();
         foreach (Trait trait in traits)

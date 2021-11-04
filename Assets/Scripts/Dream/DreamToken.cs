@@ -15,7 +15,7 @@ public class DreamToken : MonoBehaviour
         if (chara.Image == null)
             image.sprite = defaultImage;
         else
-            image.sprite = chara.Image;
+            image.sprite = chara.Image.Image;
     }
 
     public void SetShop()

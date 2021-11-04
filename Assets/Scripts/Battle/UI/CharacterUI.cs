@@ -10,6 +10,7 @@ public class CharacterUI : MonoBehaviour
     public Character Character { get { return chara; } }
 
     [SerializeField] Image characterImage;
+    [SerializeField] ImageUI characterImage2;
     [SerializeField] Sprite defaultImage;
     [SerializeField] TMP_Text characterName;
     [SerializeField] SimpleGauge gauge;
@@ -32,16 +33,18 @@ public class CharacterUI : MonoBehaviour
 
     public void LoadCharacter(CharacterData data)
     {
-        if (data.Image == null)
+        characterImage2.Init(data.Image);
+
+        /*if (data.Image == null)
             characterImage.sprite = defaultImage;
         else
-            characterImage.sprite = data.Image;
+            characterImage.sprite = data.Image;*/
 
-        characterName.text = data.Name;
+        characterName.text = data.SName;
 
         traits.Clear();
 
-        borrowed.gameObject.SetActive(data.Source != null && data.Source != "");
+        //borrowed.gameObject.SetActive(data.Source != null && data.Source != "");
 
         foreach (AbilityUI abi in abilitiesUI)
             abi.Remove();

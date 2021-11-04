@@ -27,11 +27,10 @@ public class TestScript : MonoBehaviour
     }
 
 
-    [SerializeField] CharacterData cData;
+    [SerializeField] List<CharacterData> datas;
 
     void Test1()
     {
-        GameManager.Instance.StartBattle(cData);
     }
 
     void Test2()

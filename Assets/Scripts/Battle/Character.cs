@@ -147,8 +147,8 @@ public class Character //: MonoBehaviour
 
     public void OpenBorrowed()
     {
-        if (Data.Source != null && Data.Source != "")
-            Application.OpenURL(Data.Source);
+        /*if (Data.Source != null && Data.Source != "")
+            Application.OpenURL(Data.Source);*/
     }
 
     public void StartTurn()

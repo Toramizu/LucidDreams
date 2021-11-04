@@ -6,29 +6,27 @@ using UnityEngine;
 public class CharacterData : ScriptableObject
 {
     [SerializeField] protected string sName;
-    public string Name
+    public string SName
     {
         get { return sName; }
         set { sName = value; }
     }
     [SerializeField] protected Sprite image;
-    public Sprite Image
+    /*public Sprite Image
     {
         get { return image; }
         set { image = value; }
-    }
-    /*[SerializeField] protected int maxArousal;
-    public int MaxArousal
-    {
-        get { return maxArousal; }
-        set { maxArousal = value; }
     }*/
     [SerializeField] protected string source;
-    public string Source
+    /*public string Source
     {
         get { return source; }
         set { source = value; }
-    }
+    }*/
+
+    [SerializeField] ImageSet images;
+    public ImageSet Images { get { return images; } }
+    public ImageData Image { get { return images.Default; } }
 
     [SerializeField] List<AbilityData> abilities;
     public List<AbilityData> Abilities { get { return abilities; } set { abilities = value; } }

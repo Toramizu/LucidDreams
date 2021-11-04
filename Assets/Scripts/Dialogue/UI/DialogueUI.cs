@@ -17,6 +17,8 @@ public class DialogueUI : Window
     [SerializeField] DialogueSpeakerUI leftSpeaker;
     [SerializeField] DialogueSpeakerUI rightSpeaker;
 
+    [SerializeField] Window hidable;
+
     #region Dialogue
     DialogueData currentDialogue;
     Queue<DialogueElement> elements;
@@ -24,6 +26,7 @@ public class DialogueUI : Window
     public void Open(DialogueData data)
     {
         Open();
+        hidable.Open();
         currentDialogue = data;
         AddInFront(data.Elements);
 
