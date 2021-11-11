@@ -15,6 +15,11 @@ MonoBehaviour:
   sName: Horse Cocked Succubus
   image: {fileID: 21300000, guid: f8e251822b47f8e41a3adcd0cc2ba0ec, type: 3}
   source: http://www.hentai-foundry.com/pictures/user/HexAni/685988/Futa-Demon-Lady
+  images:
+    images:
+    - id: 
+      image: {fileID: 21300000, guid: f8e251822b47f8e41a3adcd0cc2ba0ec, type: 3}
+      source: http://www.hentai-foundry.com/pictures/user/HexAni/685988/Futa-Demon-Lady
   abilities:
   - {fileID: 11400000, guid: 0ba81dee84c1ace4f91b0db821fe74de, type: 2}
   dice: 2

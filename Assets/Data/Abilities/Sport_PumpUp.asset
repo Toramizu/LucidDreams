@@ -31,7 +31,7 @@ MonoBehaviour:
     usesCumulativeBonus: 0
     multiplier: 1
     stringValue: 
-    targetsUser: 0
+    targetsUser: 1
     condition:
       type: 0
       value: 0

@@ -18,6 +18,7 @@ public class CharacterUI : MonoBehaviour
 
     [SerializeField] Transform abilityPanel;
     [SerializeField] List<AbilityUI> abilitiesUI;
+    public int AbilityCount { get { return abilitiesUI.Count; } }
 
     [SerializeField] DiceHolderUI dice;
     public DiceHolderUI Dice { get { return dice; } }

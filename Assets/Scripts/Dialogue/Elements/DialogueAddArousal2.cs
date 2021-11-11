@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewArousal", menuName = "Data/Dialogue/Arousal2")]
 public class DialogueAddArousal2 : DialogueElement
 {
-    [SerializeField] float percentile;
+    [SerializeField] float proportion;
     [SerializeField] bool toOpponent;
 
     public override bool Play(DialogueUI dialUI)
@@ -16,7 +16,7 @@ public class DialogueAddArousal2 : DialogueElement
             case GameStatus.Battle:
                 if (toOpponent)
                 {
-                    int amount = (int)(GameManager.Instance.BattleManager.Opponent.MaxArousal * percentile);
+                    int amount = GameManager.Instance.BattleManager.Opponent.InflictDamageProportion(proportion);
                     GameManager.Instance.BattleManager.Opponent.InflictDamage(amount);
                     if (amount >= 0)
                         GameManager.Instance.Notify("Opponent gained " + amount + " arousal");
@@ -25,7 +25,7 @@ public class DialogueAddArousal2 : DialogueElement
                 }
                 else
                 {
-                    int amount = (int)(GameManager.Instance.BattleManager.Player.MaxArousal * percentile);
+                    int amount = GameManager.Instance.BattleManager.Player.InflictDamageProportion(proportion);
                     GameManager.Instance.BattleManager.Player.InflictDamage(amount);
                     if (amount >= 0)
                         GameManager.Instance.Notify("Gained " + amount + " arousal");
@@ -35,8 +35,7 @@ public class DialogueAddArousal2 : DialogueElement
                 }
                 break;
             case GameStatus.Dream:
-                int pAmount = (int)(GameManager.Instance.PlayerManager.Player.MaxArousal * percentile);
-                GameManager.Instance.PlayerManager.ReduceArousal(-pAmount, 0);
+                int pAmount = GameManager.Instance.PlayerManager.InflictDamageProportion(proportion);
                 if (pAmount >= 0)
                     GameManager.Instance.Notify("Gained " + pAmount + " arousal");
                 else

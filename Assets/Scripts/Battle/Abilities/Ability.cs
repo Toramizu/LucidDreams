@@ -147,7 +147,7 @@ public class Ability
             {
                 total += slot.Value;
                 slot.SlottedDie.Hide();
-                //slot.SlottedDie.gameObject.SetActive(false);
+                slot.SlottedDie = null;
             }
         }
 

@@ -59,6 +59,11 @@ public class PlayerManager : MonoBehaviour
         UpdateGauge();
     }
 
+    public int InflictDamageProportion(float proportion)
+    {
+        return Player.InflictDamageProportion(proportion);
+    }
+
     public void IncreaseMaxArousal(int amount, int cost)
     {
         Crystals -= cost;

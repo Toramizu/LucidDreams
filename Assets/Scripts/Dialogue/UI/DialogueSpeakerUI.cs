@@ -4,21 +4,22 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DialogueSpeakerUI : MonoBehaviour
+public class DialogueSpeakerUI : ImageUI
 {
-    [SerializeField] Image image;
+    [SerializeField] Image textBackground;
 
     public bool Focus
     {
         set
         {
-            Color c = image.color;
+            Color c = textBackground.color;
 
             if (value)
                 c.a = 1f;
             else
                 c.a = .5f;
 
+            textBackground.color = c;
             image.color = c;
         }
     }
@@ -42,8 +43,21 @@ public class DialogueSpeakerUI : MonoBehaviour
         }
     }
 
-    public void Toggle(bool toggle)
+    CharacterData cData;
+    public CharacterData Data
     {
+        get { return cData; }
+        set
+        {
+            cData = value;
+            Text = cData.SName;
+            Init(cData.Image);
+        }
+    }
+
+    public override void Toggle(bool toggle)
+    {
+        base.Toggle(toggle);
         gameObject.SetActive(toggle);
     }
 }

@@ -66,18 +66,40 @@ public class BattleAI
         }
 
         int total = 0;
-
-        foreach (DieSlot slot in abi.Slots)
+        if (abi.Count == null)
         {
-            List<RolledDie> okDice = currentDice.Where(d => slot.AcceptedValues.Contains(d.Value)).ToList();
+            foreach (DieSlot slot in abi.Slots)
+            {
+                List<RolledDie> okDice = currentDice.Where(d => slot.AcceptedValues.Contains(d.Value)).ToList();
 
-            if (okDice.Count == 0)
-                return null;
+                if (okDice.Count == 0)
+                    return null;
 
-            RolledDie die = okDice[Random.Range(0, okDice.Count)];
-            placed.Add(new DieToSlot(die, slot));
-            currentDice.Remove(die);
-            total += die.Value;
+                RolledDie die = okDice[Random.Range(0, okDice.Count)];
+                placed.Add(new DieToSlot(die, slot));
+                currentDice.Remove(die);
+                total += die.Value;
+            }
+        }
+        else
+        {
+            List<DieSlot> slots = new List<DieSlot>(abi.Slots);
+            while (abi.Count > total && slots.Count > 0)
+            {
+                DieSlot slot = slots[0];
+
+                List<RolledDie> okDice = currentDice.Where(d => slot.AcceptedValues.Contains(d.Value)).ToList();
+
+                if (okDice.Count == 0)
+                    slots.Remove(slot);
+                else
+                {
+                    RolledDie die = okDice[Random.Range(0, okDice.Count)];
+                    placed.Add(new DieToSlot(die, slot));
+                    currentDice.Remove(die);
+                    total += die.Value;
+                }
+            }
         }
         /*if (abi.Count == null)
         {

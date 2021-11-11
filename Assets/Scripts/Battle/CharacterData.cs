@@ -11,18 +11,6 @@ public class CharacterData : ScriptableObject
         get { return sName; }
         set { sName = value; }
     }
-    [SerializeField] protected Sprite image;
-    /*public Sprite Image
-    {
-        get { return image; }
-        set { image = value; }
-    }*/
-    [SerializeField] protected string source;
-    /*public string Source
-    {
-        get { return source; }
-        set { source = value; }
-    }*/
 
     [SerializeField] ImageSet images;
     public ImageSet Images { get { return images; } }

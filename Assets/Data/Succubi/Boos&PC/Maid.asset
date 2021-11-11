@@ -15,6 +15,11 @@ MonoBehaviour:
   sName: Maid
   image: {fileID: 21300000, guid: 0105e4cde02390d48af35cc674552bd6, type: 3}
   source: http://www.hentai-foundry.com/pictures/user/BBC-Chan/785590/Maid-Alphina
+  images:
+    images:
+    - id: 
+      image: {fileID: 21300000, guid: 0105e4cde02390d48af35cc674552bd6, type: 3}
+      source: http://www.hentai-foundry.com/pictures/user/BBC-Chan/785590/Maid-Alphina
   abilities:
   - {fileID: 11400000, guid: 72a449947d6d71a4b9aceafa46a4cb47, type: 2}
   - {fileID: 11400000, guid: 1ef0508d28cef7b48b904b38d037192a, type: 2}

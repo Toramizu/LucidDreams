@@ -15,6 +15,11 @@ MonoBehaviour:
   sName: Alchemist
   image: {fileID: 21300000, guid: a48c330057c27c74cafd65272f2a64fe, type: 3}
   source: ' http://www.hentai-foundry.com/pictures/user/VincentCC/702170/Ciera-and-Transmorphic-Tinture'
+  images:
+    images:
+    - id: 
+      image: {fileID: 21300000, guid: a48c330057c27c74cafd65272f2a64fe, type: 3}
+      source: ' http://www.hentai-foundry.com/pictures/user/VincentCC/702170/Ciera-and-Transmorphic-Tinture'
   abilities:
   - {fileID: 11400000, guid: a875ca0e3be56c148b68f83c998efe1c, type: 2}
   - {fileID: 11400000, guid: 406a71a70fbc56f42af12d66dd2de863, type: 2}

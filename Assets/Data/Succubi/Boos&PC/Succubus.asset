@@ -15,6 +15,11 @@ MonoBehaviour:
   sName: Horse Cock Succubus
   image: {fileID: 21300000, guid: 5791e2734193d6042ad2ec70c2bc8f36, type: 3}
   source: http://www.hentai-foundry.com/pictures/user/Shadowboxer/889370/Succubus-Pauline-Futa
+  images:
+    images:
+    - id: 
+      image: {fileID: 21300000, guid: 5791e2734193d6042ad2ec70c2bc8f36, type: 3}
+      source: http://www.hentai-foundry.com/pictures/user/Shadowboxer/889370/Succubus-Pauline-Futa
   abilities:
   - {fileID: 11400000, guid: 9a29abacb7ed7e64f84a43c942c56a69, type: 2}
   dice: 3

@@ -38,7 +38,6 @@ public class DreamManager : Window, GridManager
 
         ContinueDream(data);
 
-        dreamMeditations = data.Meditations;
         //medit.CanMeditate = true;
         playerToken.SetCharacter(cData);
     }
@@ -50,6 +49,7 @@ public class DreamManager : Window, GridManager
         Dictionary<NodeContent, List<DreamNode>> nodes = nodePanel.AddNodes(map.Nodes, this);
         FillNodes(nodes, map, data);
 
+        dreamMeditations = data.Meditations;
         CanMove = true;
     }
 

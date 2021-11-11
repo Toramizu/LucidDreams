@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd536d0cadf185498f565352c7aeede, type: 3}
   m_Name: Park_Battle
   m_EditorClassIdentifier: 
-  opponent: {fileID: 11400000, guid: dc246bbad55ddc147b4ea5ffa3f140ea, type: 2}
+  opponent: {fileID: 11400000, guid: 44efc11ae333cdf429c4aa2b369da39a, type: 2}

@@ -25,6 +25,13 @@ public class DialogueUI : Window
 
     public void Open(DialogueData data)
     {
+        if(data == null)
+        {
+            Close();
+            Debug.Log("No dialogue...");
+            return;
+        }
+
         Open();
         hidable.Open();
         currentDialogue = data;
@@ -33,8 +40,11 @@ public class DialogueUI : Window
         dialoguePanel.SetActive(false);
 
         Dialogue = "";
-        leftSpeaker.Toggle(false);
+        //leftSpeaker.Toggle(false);
+        leftSpeaker.Data = GameManager.Instance.PlayerManager.Player.Data;
+        leftSpeaker.Focus = false;
         rightSpeaker.Toggle(false);
+        centerImage.Toggle(false);
 
         choicesPanel.SetActive(false);
 
@@ -113,8 +123,9 @@ public class DialogueUI : Window
                     }
                     else
                     {
-                        if (line.Speaker != null && line.Speaker != "")
-                            leftSpeaker.Text = line.Speaker;
+                        if (line.Speaker != null)
+                            leftSpeaker.Data = line.Speaker;
+                            //leftSpeaker.Text = line.Speaker;
 
                         leftSpeaker.Focus = true;
                         rightSpeaker.Focus = false;
@@ -127,8 +138,8 @@ public class DialogueUI : Window
                     }
                     else
                     {
-                        if (line.Speaker != null && line.Speaker != "")
-                            rightSpeaker.Text = line.Speaker;
+                        if (line.Speaker != null)
+                            rightSpeaker.Data = line.Speaker;
 
                         rightSpeaker.Focus = true;
                         leftSpeaker.Focus = false;
@@ -184,6 +195,39 @@ public class DialogueUI : Window
         choicesPanel.SetActive(false);
 
         Next();
+    }
+    #endregion
+
+    #region Images
+    [SerializeField] ImageUI centerImage;
+
+    [SerializeField] Vector2 centerMaxSize;
+
+    public void CenterImage(ImageData image)
+    {
+        Open();
+
+        centerImage.Init(image);
+
+        int w = image.Image.texture.width;
+        int h = image.Image.texture.height;
+
+        float ratio = centerMaxSize.x / centerMaxSize.y;
+        //Debug.Log(w + " / " + h + " = " + ratio + " => " + w * ratio + " & " + h * ratio);
+
+        if (w  > h * ratio)
+            ratio = w / centerMaxSize.x;
+        else
+            ratio = h / centerMaxSize.y;
+
+        Vector2 v = new Vector2(
+            w / ratio,
+            h / ratio
+            );
+
+        //Debug.Log(w + " / " + h + " = " + ratio + " => " + v);
+
+        centerImage.RectTransform.sizeDelta = v;
     }
     #endregion
 }

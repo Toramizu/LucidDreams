@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695e028d4d823d44e9a43ac92a23a650, type: 3}
   m_Name: _Arou10%
   m_EditorClassIdentifier: 
-  percentile: 0.1
+  proportion: 0.1
   toOpponent: 0

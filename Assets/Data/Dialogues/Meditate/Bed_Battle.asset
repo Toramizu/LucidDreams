@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd536d0cadf185498f565352c7aeede, type: 3}
   m_Name: Bed_Battle
   m_EditorClassIdentifier: 
-  opponent: {fileID: 11400000, guid: dc246bbad55ddc147b4ea5ffa3f140ea, type: 2}
+  opponent: {fileID: 11400000, guid: 8513a49e839c9614db373fc203863e4d, type: 2}

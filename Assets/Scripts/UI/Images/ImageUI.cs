@@ -6,13 +6,16 @@ using UnityEngine.UI;
 public class ImageUI : MonoBehaviour
 {
     [SerializeField] Button borrowed;
-    [SerializeField] Image image;
+    [SerializeField] protected Image image;
     [SerializeField] Sprite defaultImage;
+
+    public RectTransform RectTransform { get { return image.rectTransform; } }
 
     ImageData data;
 
     public void Init(ImageData data)
     {
+        Toggle(true);
         this.data = data;
 
         if (data == null || data.Image == null)
@@ -28,5 +31,10 @@ public class ImageUI : MonoBehaviour
     {
         if (data.Source != null && data.Source != "")
             Application.OpenURL(data.Source);
+    }
+
+    public virtual void Toggle(bool toggle)
+    {
+        image.gameObject.SetActive(toggle);
     }
 }

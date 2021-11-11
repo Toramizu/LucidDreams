@@ -15,6 +15,11 @@ MonoBehaviour:
   sName: Dark Elf
   image: {fileID: 21300000, guid: d67540fc5e75153408d16f4349d483eb, type: 3}
   source: http://www.hentai-foundry.com/pictures/user/ArcaneNSFW/884947/Dark-Elf-OC
+  images:
+    images:
+    - id: 
+      image: {fileID: 21300000, guid: d67540fc5e75153408d16f4349d483eb, type: 3}
+      source: http://www.hentai-foundry.com/pictures/user/ArcaneNSFW/884947/Dark-Elf-OC
   abilities:
   - {fileID: 11400000, guid: e602600c3a79cab4dba9e84fe943419c, type: 2}
   - {fileID: 11400000, guid: ca319f13bf9da214eaa8e55e27ca3561, type: 2}

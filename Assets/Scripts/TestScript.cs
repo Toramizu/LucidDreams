@@ -26,22 +26,29 @@ public class TestScript : MonoBehaviour
             Test9();
     }
 
-
-    [SerializeField] List<CharacterData> datas;
-
+    [SerializeField] Sprite s;
     void Test1()
     {
+        GameManager.Instance.DayManager.Open();
+        InteractionData d = new InteractionData();
+        d.ID = "Test";
+        d.Text = "Test Interaction";
+        d.Icon = s;
+        GameManager.Instance.DayManager.AddInteraction(null, d);
     }
-
+    int i;
     void Test2()
     {
-
+        i++;
+        InteractionData d = new InteractionData();
+        d.ID = "Test" + i;
+        d.Text = "Test " + i;
+        d.Icon = s;
+        GameManager.Instance.DayManager.AddInteraction("Test", d);
     }
 
-    int i = 0;
     void Test3()
     {
-        GameManager.Instance.Notify("Test text : " + ++i);
     }
 
     void Test5()

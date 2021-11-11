@@ -122,11 +122,10 @@ public class Character //: MonoBehaviour
         if (CharaUI != null)
             CharaUI.ClearAbilities();
 
-        for (int i = 0; i < abis.Count; i++)
+        for (int i = 0; i < abis.Count && i < CharaUI.AbilityCount; i++)
         {
             if(abis[i] != null)
                 Abilities.Add(NewAbility(abis[i], i));
-
         }
     }
 
@@ -138,11 +137,22 @@ public class Character //: MonoBehaviour
         else if (Arousal > MaxArousal)
             Arousal = MaxArousal;
 
-        if(CharaUI != null)
+        if (CharaUI != null)
         {
             CharaUI.FillGauge(Arousal, MaxArousal);
             GameManager.Instance.BattleManager.CheckBattleStatus();
         }
+    }
+
+    public int InflictDamageProportion(float proportion)
+    {
+        int amount = (int)(maxArousal * proportion);
+        if (amount < arousal)
+            amount = arousal;
+
+        InflictDamage(amount);
+
+        return amount;
     }
 
     public void OpenBorrowed()
@@ -156,7 +166,6 @@ public class Character //: MonoBehaviour
         CharaUI.ToggleAbilities(true);
         Dice.Roll(Rolls, null);
         Traits.StartTurn(this);
-
     }
 
     public void EndTurn()

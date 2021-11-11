@@ -15,6 +15,11 @@ MonoBehaviour:
   sName: Arousing Succubus
   image: {fileID: 21300000, guid: 29cef9c201442284f88190fc3f869939, type: 3}
   source: ' http://www.hentai-foundry.com/pictures/user/TrueLolzor/935004/Futanari-Succubus'
+  images:
+    images:
+    - id: 
+      image: {fileID: 21300000, guid: 29cef9c201442284f88190fc3f869939, type: 3}
+      source: ' http://www.hentai-foundry.com/pictures/user/TrueLolzor/935004/Futanari-Succubus'
   abilities:
   - {fileID: 11400000, guid: 8166dfd518640624e820390d2966cc39, type: 2}
   dice: 2

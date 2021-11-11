@@ -15,6 +15,11 @@ MonoBehaviour:
   sName: Sporty
   image: {fileID: 21300000, guid: 16876bba383869041a404244d53965f7, type: 3}
   source: http://www.hentai-foundry.com/pictures/user/KarasuH/536460/Sport-Futa-02
+  images:
+    images:
+    - id: 
+      image: {fileID: 21300000, guid: 16876bba383869041a404244d53965f7, type: 3}
+      source: http://www.hentai-foundry.com/pictures/user/KarasuH/536460/Sport-Futa-02
   abilities:
   - {fileID: 11400000, guid: 9d0247bbca282444dae3f09d7c986d50, type: 2}
   - {fileID: 11400000, guid: ada676e32bfbefa41a264fc1812ba785, type: 2}

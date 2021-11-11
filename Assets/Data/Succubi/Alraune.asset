@@ -15,6 +15,11 @@ MonoBehaviour:
   sName: Alraune
   image: {fileID: 21300000, guid: 6f27e0da36b017041947969fd8729985, type: 3}
   source: ' http://www.hentai-foundry.com/pictures/user/FlannaganTheRed/911596/Alraune-CPE'
+  images:
+    images:
+    - id: 
+      image: {fileID: 21300000, guid: 6f27e0da36b017041947969fd8729985, type: 3}
+      source: ' http://www.hentai-foundry.com/pictures/user/FlannaganTheRed/911596/Alraune-CPE'
   abilities:
   - {fileID: 11400000, guid: 7d1b4bd644d3eb74b9f681e48e6d4a61, type: 2}
   - {fileID: 11400000, guid: 35f6aac254a14574bbd9a815d8e05c42, type: 2}
