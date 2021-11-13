@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SubInteractionButton : InteractionButton
+public class SubInteractionButton : InteractionButton, IPointerEnterHandler, IPointerExitHandler
 {
     MainInteractionButton mainInteraction;
 
@@ -16,16 +16,16 @@ public class SubInteractionButton : InteractionButton
     public void Rotate(Vector3 angle)
     {
         transform.localEulerAngles = angle;
-        background.transform.localEulerAngles = new Vector3();
+        background.transform.eulerAngles = new Vector3();
     }
 
-    public override void OnPointerEnter(PointerEventData eventData)
+    public void OnPointerEnter(PointerEventData eventData)
     {
         if(mainInteraction != null)
             mainInteraction.Text = data.Text;
     }
 
-    public override void OnPointerExit(PointerEventData eventData)
+    public void OnPointerExit(PointerEventData eventData)
     {
         if (mainInteraction != null)
             mainInteraction.Text = null;

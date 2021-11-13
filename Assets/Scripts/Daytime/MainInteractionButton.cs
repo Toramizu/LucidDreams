@@ -13,12 +13,9 @@ public class MainInteractionButton : InteractionButton
         set
         {
             if(value == null)
-                text.gameObject.SetActive(false);
+                text.text = data.Text;
             else
-            {
-                text.gameObject.SetActive(true);
                 text.text = value;
-            }
         }
     }
 
@@ -28,12 +25,12 @@ public class MainInteractionButton : InteractionButton
 
     public override void Init(InteractionData data)
     {
+        base.Init(data);
+
         if (data != null)
             transform.localPosition = data.Position;
 
         Text = null;
-
-        base.Init(data);
     }
 
     public void AddSub(InteractionData data)
@@ -54,15 +51,5 @@ public class MainInteractionButton : InteractionButton
             sub.Rotate(new Vector3(0, 0, current));
             current -= iconGap;
         }
-    }
-
-    public override void OnPointerEnter(PointerEventData eventData)
-    {
-        Text = data.Text;
-    }
-
-    public override void OnPointerExit(PointerEventData eventData)
-    {
-        Text = null;
     }
 }

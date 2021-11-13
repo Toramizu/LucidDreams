@@ -7,10 +7,24 @@ public class DayManager : Window
     [SerializeField] Clock clock;
     [SerializeField] MainInteractionButton interactPrefab;
 
+    [SerializeField] List<InteractionData> mainInteractions;
+
     Dictionary<string, MainInteractionButton> interactions = new Dictionary<string, MainInteractionButton>();
+
+    public override void Open()
+    {
+        base.Open();
+
+        foreach (InteractionData inter in mainInteractions)
+            if (inter.Check)
+                AddInteraction(null, inter);
+    }
 
     public void AddInteraction(string main, InteractionData data)
     {
+        if (!data.Check)
+            return;
+
         if(main == null || !interactions.ContainsKey(main))
         {
             MainInteractionButton inter;

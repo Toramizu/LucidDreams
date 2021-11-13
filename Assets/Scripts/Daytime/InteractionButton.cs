@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class InteractionButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public abstract class InteractionButton : MonoBehaviour
 {
     [SerializeField] protected Image background;
     [SerializeField] Image icon;
@@ -26,8 +26,4 @@ public abstract class InteractionButton : MonoBehaviour, IPointerEnterHandler, I
     {
         data.OnClick();
     }
-
-    public abstract void OnPointerEnter(PointerEventData eventData);
-
-    public abstract void OnPointerExit(PointerEventData eventData);
 }

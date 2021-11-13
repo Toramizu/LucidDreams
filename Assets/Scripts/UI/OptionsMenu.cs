@@ -13,6 +13,7 @@ public class OptionsMenu : Window
     [SerializeField] TMP_InputField seInput;
     [SerializeField] Slider seSlider;
 
+    [SerializeField] Window credits;
     bool playTestSounds = false;
 
     private void Start()
@@ -96,6 +97,11 @@ public class OptionsMenu : Window
     public void OpenLogDir()
     {
         System.Diagnostics.Process.Start(Application.persistentDataPath);
+    }
+
+    public void OpenCredits()
+    {
+        credits.Open();
     }
 
     public void CloseGame()
