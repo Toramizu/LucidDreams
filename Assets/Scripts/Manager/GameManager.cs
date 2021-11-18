@@ -35,8 +35,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] DialogueUI dialogue;
 
 
-    [SerializeField] CharacterData pData;
-    [SerializeField] DreamData dData;
+    [SerializeField] SuccubusData defaultSuccubus;
+    [SerializeField] DreamData defaultDream;
     [SerializeField] Window dayTmp;
 
     public GameStatus Status { get; private set; }
@@ -50,11 +50,11 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        StartDream(dData, pData);
+        StartDream(null, null);
         dayTmp.FadeOut();
     }
 
-    public void StartBattle(CharacterData opponent)
+    public void StartBattle(SuccubusData opponent)
     {
         dreamManager.FadeOut();
         battleManager.FadeIn();
@@ -62,9 +62,14 @@ public class GameManager : MonoBehaviour
         Status = GameStatus.Battle;
     }
 
-    public void StartDream(DreamData data, CharacterData pcData)
+    public void StartDream(DreamData dData, SuccubusData pcData)
     {
-        dreamManager.StartDream(data, pcData);
+        if (dData == null)
+            dData = defaultDream;
+        if (pcData == null)
+            pcData = defaultSuccubus;
+
+        dreamManager.StartDream(dData, pcData);
         playerManager.UpdateGauge();
         //battleManager.Close();
         Status = GameStatus.Dream;

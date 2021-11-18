@@ -4,10 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterUI : MonoBehaviour
+public class SuccubusUI : MonoBehaviour
 {
-    [SerializeField] Character chara = new Character();
-    public Character Character { get { return chara; } }
+    [SerializeField] Succubus chara = new Succubus();
+    public Succubus Character { get { return chara; } }
 
     [SerializeField] Image characterImage;
     [SerializeField] ImageUI characterImage2;
@@ -29,10 +29,10 @@ public class CharacterUI : MonoBehaviour
 
     private void Start()
     {
-        chara.CharaUI = this;
+        chara.SuccubUI = this;
     }
 
-    public void LoadCharacter(CharacterData data)
+    public void LoadCharacter(SuccubusData data)
     {
         characterImage2.Init(data.Image);
 

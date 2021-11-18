@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Sticky", menuName = "Data/Trait/Sticky")]
 public class StickyTrait : Trait
 {
-    public override void StartTurn(Character current, int stack)
+    public override void StartTurn(Succubus current, int stack)
     {
         List<RolledDie> dice = new List<RolledDie>(current.Dice.RolledDice);
 

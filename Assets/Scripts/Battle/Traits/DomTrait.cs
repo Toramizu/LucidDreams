@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Dominant", menuName = "Data/Trait/Dominant", order = 5)]
 public class DomTrait : Trait
 {
-    public override void OnAttack(ref int damages, Character current, Character other, int stack)
+    public override void OnAttack(ref int damages, Succubus current, Succubus other, int stack)
     {
         if (damages <= 0)   //No effect on healing
             return;
@@ -13,7 +13,7 @@ public class DomTrait : Trait
         damages += stack;
     }
 
-    public override void EndTurn(Character current, int stack)
+    public override void EndTurn(Succubus current, int stack)
     {
         current.Traits.RemoveTrait(this);
     }

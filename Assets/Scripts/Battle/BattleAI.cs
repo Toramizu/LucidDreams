@@ -8,7 +8,7 @@ public class BattleAI
 {
     const int AI_SAMPLE = 10000;
 
-    public List<DieToSlot> FindNextAction(Character user, Character other)
+    public List<DieToSlot> FindNextAction(Succubus user, Succubus other)
     {
         AITry bestTry = null;
 
@@ -162,8 +162,8 @@ public class DieToSlot
 class AITry
 {
     public int I { get; set; }
-    public Character User { get; set; }
-    public Character Other { get; set; }
+    public Succubus User { get; set; }
+    public Succubus Other { get; set; }
     public List<DieToSlot> Plays { get; set; }
     float? aiValue = null;
     public float AIValue
@@ -177,7 +177,7 @@ class AITry
         }
     }
 
-    public AITry(Character user, Character other)
+    public AITry(Succubus user, Succubus other)
     {
         User = user.Clone();
         Other = other.Clone();

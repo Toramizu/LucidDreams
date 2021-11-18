@@ -77,26 +77,26 @@ public class TraitsSheet
 
     #region Events
 
-    public void OnAttack(ref int damages, Character current, Character other)
+    public void OnAttack(ref int damages, Succubus current, Succubus other)
     {
         List<Trait> t = new List<Trait>(Traits.Keys);
         foreach (Trait trait in t)
             trait.OnAttack(ref damages, current, other, Traits[trait]);
     }
-    public void OnDefense(ref int damages, Character current, Character other)
+    public void OnDefense(ref int damages, Succubus current, Succubus other)
     {
         List<Trait> t = new List<Trait>(Traits.Keys);
         foreach (Trait trait in t)
             trait.OnDefense(ref damages, current, other, Traits[trait]);
     }
 
-    public void StartTurn(Character current)
+    public void StartTurn(Succubus current)
     {
         List<Trait> t = new List<Trait>(Traits.Keys);
         foreach (Trait trait in t)
             trait.StartTurn(current, Traits[trait]);
     }
-    public void EndTurn(Character current)
+    public void EndTurn(Succubus current)
     {
         List<Trait> t = new List<Trait>(Traits.Keys);
         foreach (Trait trait in t)

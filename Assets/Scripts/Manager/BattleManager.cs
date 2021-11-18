@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class BattleManager : Window
 {
-    [SerializeField] CharacterUI opponentUI;
-    public Character Opponent { get { return opponentUI.Character; } }
-    [SerializeField] CharacterUI playerUI;
-    public Character Player { get { return playerUI.Character; } }
+    [SerializeField] SuccubusUI opponentUI;
+    public Succubus Opponent { get { return opponentUI.Character; } }
+    [SerializeField] SuccubusUI playerUI;
+    public Succubus Player { get { return playerUI.Character; } }
 
     [SerializeField] EndPanel endPanel;
     [SerializeField] TraitTooltip tooltip;
 
     public bool PlayerTurn { get; private set; }
-    public Character GetCharacter(bool current)
+    public Succubus GetCharacter(bool current)
     {
             if (PlayerTurn == current)
                 return Player;
@@ -21,7 +21,7 @@ public class BattleManager : Window
                 return Opponent;
     }
 
-    public Character Other(Character current)
+    public Succubus Other(Succubus current)
     {
         if (current == Opponent)
             return Player;
@@ -29,7 +29,7 @@ public class BattleManager : Window
             return Opponent;
     }
     
-    public void StartBattle(CharacterData oData, List<AbilityData> pAbis)
+    public void StartBattle(SuccubusData oData, List<AbilityData> pAbis)
     {
         Open();
         endPanel.Close();
@@ -100,13 +100,13 @@ public class BattleManager : Window
 
     public void InflictsDamage(int amount, bool targetsCurrent, bool ignoreTraits)
     {
-        Character user;
+        Succubus user;
         if (PlayerTurn)
             user = Player;
         else
             user = Opponent;
 
-        Character target;
+        Succubus target;
         if (PlayerTurn == targetsCurrent)
             target = Player;
         else
@@ -118,7 +118,7 @@ public class BattleManager : Window
         //CheckBattleStatus();
     }
 
-    public int CalculateDamages(int amount, Character user, Character target, bool ignoreTraits)
+    public int CalculateDamages(int amount, Succubus user, Succubus target, bool ignoreTraits)
     {
         if (!ignoreTraits)
         {

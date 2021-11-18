@@ -12,7 +12,7 @@ public class RollDiceEffect : AbilityEffect
         //data.Condition is for conditional effects
     }
     
-    public override void Play(Character user, Character other, int dice, Ability abi)
+    public override void Play(Succubus user, Succubus other, int dice, Ability abi)
     {
         DiceCondition cond;
         if (rollCondition == null)

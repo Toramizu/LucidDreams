@@ -14,7 +14,7 @@ public class TraitEffect : AbilityEffect
         trait = GameManager.Instance.Assets.Traits[data.StringValue];
     }
 
-    public override void Play(Character user, Character other, int dice, Ability abi)
+    public override void Play(Succubus user, Succubus other, int dice, Ability abi)
     {
         if (targetsUser)
             user.Traits.AddTrait(trait, Value(dice, abi));

@@ -43,8 +43,8 @@ public class DialogueSpeakerUI : ImageUI
         }
     }
 
-    CharacterData cData;
-    public CharacterData Data
+    SuccubusData cData;
+    public SuccubusData Data
     {
         get { return cData; }
         set

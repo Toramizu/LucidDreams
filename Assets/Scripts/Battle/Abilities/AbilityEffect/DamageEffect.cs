@@ -10,7 +10,7 @@ public class DamageEffect : AbilityEffect
     public DamageEffect(EffectData data) : base(data)
     { }
 
-    public override void Play(Character user, Character other, int dice, Ability abi)
+    public override void Play(Succubus user, Succubus other, int dice, Ability abi)
     {
         if (targetsUser)
             user.InflictDamage(
@@ -22,7 +22,7 @@ public class DamageEffect : AbilityEffect
                 );
     }
 
-    int CalculateDamages(int amount, Character user, Character target)
+    int CalculateDamages(int amount, Succubus user, Succubus target)
     {
         user.Traits.OnAttack(ref amount, user, target);
         target.Traits.OnDefense(ref amount, target, user);

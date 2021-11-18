@@ -160,7 +160,7 @@ public class Ability
             RefreshDescription();
     }
 
-    public void PlayAbility(Character user, Character other, int dice)
+    public void PlayAbility(Succubus user, Succubus other, int dice)
     {
         foreach (AbilityEffect effect in effects)
             effect.CheckAndPlay(user, other, dice, this);

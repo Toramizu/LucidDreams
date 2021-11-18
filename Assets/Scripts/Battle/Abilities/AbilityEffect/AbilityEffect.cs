@@ -44,9 +44,9 @@ public abstract class AbilityEffect
         return amount;
     }
     
-    public abstract void Play(Character user, Character other, int dice, Ability abi);
+    public abstract void Play(Succubus user, Succubus other, int dice, Ability abi);
 
-    public void CheckAndPlay(Character user, Character other, int dice, Ability abi)
+    public void CheckAndPlay(Succubus user, Succubus other, int dice, Ability abi)
     {
         if (condition == null || condition.Check(dice))
             Play(user, other, dice, abi);

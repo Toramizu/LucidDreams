@@ -10,7 +10,7 @@ public class DreamToken : MonoBehaviour
 
     [SerializeField] Sprite shopImage;
     
-    public void SetCharacter(CharacterData chara)
+    public void SetCharacter(SuccubusData chara)
     {
         if (chara.Image == null)
             image.sprite = defaultImage;

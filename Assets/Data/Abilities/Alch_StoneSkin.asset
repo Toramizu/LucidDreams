@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93417b2c1c2f1243a5b0d3af9c0940b, type: 3}
   m_Name: Alch_StoneSkin
   m_EditorClassIdentifier: 
-  title: StoneSkin
-  description: Transform skin to stone for the next 2 attacks
+  title: Frost Potion
+  description: Freeze yourself for 2 _Fre
   conditions:
   - type: 1
     value: 1

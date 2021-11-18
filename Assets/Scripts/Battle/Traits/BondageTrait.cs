@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Bondage", menuName = "Data/Trait/Bondage")]
 public class BondageTrait : Trait
 {
-    public override void StartTurn(Character current, int stack)
+    public override void StartTurn(Succubus current, int stack)
     {
         List<Ability> abilities = new List<Ability>(current.Abilities);
 

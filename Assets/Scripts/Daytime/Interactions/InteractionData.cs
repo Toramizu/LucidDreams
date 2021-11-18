@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class InteractionData : ScriptableObject
+public abstract class InteractionData : ScriptableObject
 {
     [SerializeField] string id;
     public string ID { get { return id; } }
@@ -13,21 +13,13 @@ public class InteractionData : ScriptableObject
     public string Text { get { return text; } }
 
     [SerializeField] Condition condition;
-    //public Condition Condition { get { return condition; } }
-    //[SerializeField] DialogueData dialogue;
-    [SerializeField] List<InteractionEventData> events;
 
     public bool Check { get { return condition == null || condition.Check; } }
 
     [SerializeField] Color background;
     public Color Background { get { return background; } }
-    [SerializeField] Sprite icon;
-    public Sprite Icon { get { return icon; } set { icon = value; } }
+    [SerializeField] protected Sprite icon;
+    public virtual Sprite Icon { get { return icon; } }
 
-    public void OnClick()
-    {
-        List<InteractionEventData> evnts = events.Where(e => e.Check).ToList();
-
-        evnts[Random.Range(0, evnts.Count)].Play();
-    }
+    public abstract void OnClick();
 }

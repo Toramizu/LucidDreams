@@ -11,11 +11,11 @@ public class DreamData : ScriptableObject
     [SerializeField] int succubiCount;
     public int SuccubiCount { get { return succubiCount; } }
 
-    [SerializeField] CharacterData boss;
-    public CharacterData Boss { get { return boss; } }
+    [SerializeField] SuccubusData boss;
+    public SuccubusData Boss { get { return boss; } }
 
-    [SerializeField] List<CharacterData> succubi;
-    public List<CharacterData> Succubi { get { return succubi; } }
+    [SerializeField] List<SuccubusData> succubi;
+    public List<SuccubusData> Succubi { get { return succubi; } }
     
     [SerializeField] ShopData shop;
     public ShopData Shop { get { return shop; } }

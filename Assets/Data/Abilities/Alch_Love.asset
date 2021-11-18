@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93417b2c1c2f1243a5b0d3af9c0940b, type: 3}
   m_Name: Alch_Love
   m_EditorClassIdentifier: 
-  title: Love Potion
+  title: Fire Potion
   description: Make them fall in love for 5 _Aro
   conditions:
   - type: 1

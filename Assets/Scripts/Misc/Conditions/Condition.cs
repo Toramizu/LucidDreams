@@ -11,11 +11,20 @@ public class Condition
     [SerializeField] bool compareString;
     [SerializeField] Comparator comparator;
 
+    [SerializeField] bool charaCheck;
+    [SerializeField] int accustomed;
+    [SerializeField] int love;
+
     public virtual bool Check
     {
         get
         {
-            if (compareString)
+            if (charaCheck)
+            {
+                Debug.Log("Chara condition not done...");
+                return false;
+            }
+            else if (compareString)
             {
                 string s = GameManager.Instance.Flags.GetString(flag);
                 switch (comparator)

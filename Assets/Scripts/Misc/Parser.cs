@@ -19,7 +19,7 @@ public class Parser : MonoBehaviour
         //return description.Replace(dieReplacedSymbol, dieSymbol);
     }
 
-    public string ParseAbilityDescription(Ability ability, Character chara, Dictionary<string, string> strings)
+    public string ParseAbilityDescription(Ability ability, Succubus chara, Dictionary<string, string> strings)
     {
         string descr = ParseDescription(ability.Data.Description, strings);
 

@@ -14,8 +14,8 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    [SerializeField] CharacterUI playerUI;
-    public Character Player { get { return playerUI.Character; } }
+    [SerializeField] SuccubusUI playerUI;
+    public Succubus Player { get { return playerUI.Character; } }
     [SerializeField] TMP_Text crystalsText;
     [SerializeField] SimpleGauge dreamGauge;
     [SerializeField] TMP_Text diceText;
@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
         get { return Player.Data.MaxArousal / 2; }
     }
 
-    public void SetPlayer(CharacterData data)
+    public void SetPlayer(SuccubusData data)
     {
         Player.LoadCharacter(data);
         Abilities = data.Abilities;

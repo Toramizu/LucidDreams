@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewSuccubus", menuName = "Data/Succubus", order = 1)]
-public class CharacterData : ScriptableObject
+public class SuccubusData : ScriptableObject
 {
     [SerializeField] protected string sName;
     public string SName

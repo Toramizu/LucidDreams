@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewBattle", menuName = "Data/Dialogue/Battle")]
 public class DialogueBattle : DialogueElement
 {
-    [SerializeField] CharacterData opponent;
+    [SerializeField] SuccubusData opponent;
 
     public override bool Play(DialogueUI dialUI)
     {

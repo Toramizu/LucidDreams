@@ -31,7 +31,7 @@ public class DreamManager : Window, GridManager
         CanMove = false;
     }
 
-    public void StartDream(DreamData data, CharacterData cData)
+    public void StartDream(DreamData data, SuccubusData cData)
     {
         Open();
         GameManager.Instance.PlayerManager.SetPlayer(cData);
@@ -98,11 +98,11 @@ public class DreamManager : Window, GridManager
         if (nodes.ContainsKey(NodeContent.Succubus))
         {
             List<DreamNode> succubi = new List<DreamNode>(nodes[NodeContent.Succubus]);
-            List<CharacterData> opponents = new List<CharacterData>(data.Succubi);
+            List<SuccubusData> opponents = new List<SuccubusData>(data.Succubi);
 
             for (int i = 0; i < data.SuccubiCount && succubi.Count > 0 && opponents.Count > 0; i++)
             {
-                CharacterData rSucc = opponents[Random.Range(0, opponents.Count)];
+                SuccubusData rSucc = opponents[Random.Range(0, opponents.Count)];
                 opponents.Remove(rSucc);
                 DreamNode node = succubi[Random.Range(0, succubi.Count)];
                 succubi.Remove(node);

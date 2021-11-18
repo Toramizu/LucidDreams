@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Unfeeling", menuName = "Data/Trait/Unfeeling")]
-public class UnfeelingTrait : Trait
+[CreateAssetMenu(fileName = "Frigid", menuName = "Data/Trait/Frigid")]
+public class FrigidTrait : Trait
 {
-    public override void OnDefense(ref int damages, Character current, Character other, int stack)
+    public override void OnDefense(ref int damages, Succubus current, Succubus other, int stack)
     {
         if (damages <= 0)   //No effect on healing
             return;
@@ -14,7 +14,7 @@ public class UnfeelingTrait : Trait
         current.Traits.AddTrait(this, -1);
     }
 
-    public override void StartTurn(Character current, int stack)
+    public override void StartTurn(Succubus current, int stack)
     {
         current.Traits.RemoveTrait(this);
     }

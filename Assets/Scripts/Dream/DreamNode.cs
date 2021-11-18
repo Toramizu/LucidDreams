@@ -23,7 +23,7 @@ public class DreamNode : MonoBehaviour, PathNode
 
     protected GridManager manager;
 
-    CharacterData cData;
+    SuccubusData cData;
     ShopData sData;
     bool exit;
     DreamData next;
@@ -142,7 +142,7 @@ public class DreamNode : MonoBehaviour, PathNode
         token.transform.position = transform.position + leftPos;
     }
 
-    public void SetCharacter(CharacterData data, bool boss)
+    public void SetCharacter(SuccubusData data, bool boss)
     {
         cData = data;
         rightToken.gameObject.SetActive(true);

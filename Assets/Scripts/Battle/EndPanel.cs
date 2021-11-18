@@ -16,10 +16,10 @@ public class EndPanel : Window
     [SerializeField] List<string> wakeUpText;
 
     int crystals;
-    CharacterData opponent;
+    SuccubusData opponent;
     AbilityData ability;
     
-    public void Victory(int crystals, CharacterData opponent)
+    public void Victory(int crystals, SuccubusData opponent)
     {
         Open();
         victory.Open();

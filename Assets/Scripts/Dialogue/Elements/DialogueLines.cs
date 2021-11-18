@@ -20,8 +20,8 @@ public class DialogueLine
 {
     [SerializeField] string line;
     public string Line { get { return line; } }
-    [SerializeField] CharacterData speaker;
-    public CharacterData Speaker { get { return speaker; } }
+    [SerializeField] SuccubusData speaker;
+    public SuccubusData Speaker { get { return speaker; } }
     /*[SerializeField] string speaker;
     public string Speaker { get { return speaker; } }*/
     [SerializeField] SpeakerPos speakerPosition;

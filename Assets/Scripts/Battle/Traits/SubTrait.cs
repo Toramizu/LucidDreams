@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "submissive", menuName = "Data/Trait/Submissive")]
 public class SubTrait : Trait
 {
-    public override void OnDefense(ref int damages, Character current, Character other, int stack)
+    public override void OnDefense(ref int damages, Succubus current, Succubus other, int stack)
     {
         if (damages <= 0)   //No effect on healing
             return;

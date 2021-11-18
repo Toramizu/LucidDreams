@@ -6,9 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-public class Character //: MonoBehaviour
+public class Succubus //: MonoBehaviour
 {
-    public CharacterUI CharaUI { get; set; }
+    public SuccubusUI SuccubUI { get; set; }
 
     int arousal;
     public int Arousal {
@@ -20,8 +20,8 @@ public class Character //: MonoBehaviour
             else
                 arousal = value;
 
-            if (CharaUI != null)
-                CharaUI.FillGauge(arousal, maxArousal);
+            if (SuccubUI != null)
+                SuccubUI.FillGauge(arousal, maxArousal);
         }
     }
     int maxArousal;
@@ -30,14 +30,14 @@ public class Character //: MonoBehaviour
         set
         {
             maxArousal = value;
-            if(CharaUI != null)
-                CharaUI.FillGauge(arousal, maxArousal);
+            if(SuccubUI != null)
+                SuccubUI.FillGauge(arousal, maxArousal);
         }
     }
     public bool Finished { get { return Arousal >= MaxArousal; } }
     public int Missing { get { return MaxArousal - Arousal; } }
     
-    public CharacterData Data { get; private set; }
+    public SuccubusData Data { get; private set; }
     public int Crystals { get { return Data.Crystals; } }
 
     //[SerializeField] Transform abilityPanel;
@@ -64,13 +64,13 @@ public class Character //: MonoBehaviour
         }
     }
 
-    public void LoadCharacter(CharacterData data)
+    public void LoadCharacter(SuccubusData data)
     {
-        if (CharaUI != null)
+        if (SuccubUI != null)
         {
-            CharaUI.LoadCharacter(data);
-            Dice = new DiceHolder(CharaUI.Dice);
-            traits.TraitsUI = CharaUI.Traits;
+            SuccubUI.LoadCharacter(data);
+            Dice = new DiceHolder(SuccubUI.Dice);
+            traits.TraitsUI = SuccubUI.Traits;
         }
         else
         {
@@ -81,7 +81,7 @@ public class Character //: MonoBehaviour
         Data = data;
         Arousal = 0;
         MaxArousal = data.MaxArousal;
-        CharaUI.FillGauge(Arousal, MaxArousal);
+        SuccubUI.FillGauge(Arousal, MaxArousal);
 
         traits.Clear();
 
@@ -99,8 +99,8 @@ public class Character //: MonoBehaviour
     Ability NewAbility(AbilityData data, int slot)
     {
         AbilityUI aUI;
-        if (CharaUI != null)
-            aUI = CharaUI.AbilityUI(slot);
+        if (SuccubUI != null)
+            aUI = SuccubUI.AbilityUI(slot);
         else
             aUI = null;
         return new Ability(data, aUI);
@@ -108,21 +108,21 @@ public class Character //: MonoBehaviour
 
     public void SetAbility(AbilityData data, int slot)
     {
-        if(CharaUI != null)
+        if(SuccubUI != null)
         {
-            AbilityUI aUI = CharaUI.AbilityUI(slot);
+            AbilityUI aUI = SuccubUI.AbilityUI(slot);
             if(aUI != null)
-                Abilities[slot].Init(data, CharaUI.AbilityUI(slot));
+                Abilities[slot].Init(data, SuccubUI.AbilityUI(slot));
         }
     }
 
     public void LoadAbilities(List<AbilityData> abis)
     {
         Abilities.Clear();
-        if (CharaUI != null)
-            CharaUI.ClearAbilities();
+        if (SuccubUI != null)
+            SuccubUI.ClearAbilities();
 
-        for (int i = 0; i < abis.Count && i < CharaUI.AbilityCount; i++)
+        for (int i = 0; i < abis.Count && i < SuccubUI.AbilityCount; i++)
         {
             if(abis[i] != null)
                 Abilities.Add(NewAbility(abis[i], i));
@@ -137,9 +137,9 @@ public class Character //: MonoBehaviour
         else if (Arousal > MaxArousal)
             Arousal = MaxArousal;
 
-        if (CharaUI != null)
+        if (SuccubUI != null)
         {
-            CharaUI.FillGauge(Arousal, MaxArousal);
+            SuccubUI.FillGauge(Arousal, MaxArousal);
             GameManager.Instance.BattleManager.CheckBattleStatus();
         }
     }
@@ -163,7 +163,7 @@ public class Character //: MonoBehaviour
 
     public void StartTurn()
     {
-        CharaUI.ToggleAbilities(true);
+        SuccubUI.ToggleAbilities(true);
         Dice.Roll(Rolls, null);
         Traits.StartTurn(this);
     }
@@ -175,7 +175,7 @@ public class Character //: MonoBehaviour
                 abi.ResetAbility();
 
         ResetDice();
-        CharaUI.ToggleAbilities(false);
+        SuccubUI.ToggleAbilities(false);
         Traits.EndTurn(this);
     }
 
@@ -202,12 +202,12 @@ public class Character //: MonoBehaviour
 
     public void ToggleAbilities(bool toggle)
     {
-        CharaUI.ToggleAbilities(toggle);
+        SuccubUI.ToggleAbilities(toggle);
     }
 
-    public Character Clone()
+    public Succubus Clone()
     {
-        Character c = new Character();
+        Succubus c = new Succubus();
         c.Data = Data;
         c.Arousal = Arousal;
         c.MaxArousal = MaxArousal;
@@ -230,7 +230,7 @@ public class Character //: MonoBehaviour
     {
         //List<DieToSlot> next = ai.FindNextAction(Abilities, Dice.RolledDice, this, GameManager.Instance.BattleManager.Other(this));
         List<DieToSlot> next = ai.FindNextAction(this, GameManager.Instance.BattleManager.Other(this));
-        CharaUI.PlayTurn(next);
+        SuccubUI.PlayTurn(next);
         
         //StartCoroutine(AutoMoveDice(next));
     }
@@ -334,7 +334,7 @@ public class Character //: MonoBehaviour
     {
         Arousal = 0;
         //MaxArousal = Data.MaxArousal;
-        CharaUI.FillGauge(Arousal, MaxArousal);
+        SuccubUI.FillGauge(Arousal, MaxArousal);
     }
     #endregion
 }

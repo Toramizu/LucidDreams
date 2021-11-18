@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Alch_Dice
   m_EditorClassIdentifier: 
   title: Dice potion
-  description: Create 2 dice from thin air.
+  description: Create 2 _Die from thin air.
   conditions:
   - type: 1
     value: 2
