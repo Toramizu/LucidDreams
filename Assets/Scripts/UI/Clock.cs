@@ -8,8 +8,8 @@ public class Clock : MonoBehaviour
     [SerializeField] Image image;
     [SerializeField] List<Sprite> timeImages;
 
-    TimeSlot currentTime;
-    public TimeSlot Time
+    int currentTime;
+    public int Time
     {
         get { return currentTime; }
         set
@@ -18,22 +18,23 @@ public class Clock : MonoBehaviour
 
             ParseTime();
 
-            image.sprite = timeImages[(int)currentTime];
+            image.sprite = timeImages[currentTime];
         }
     }
 
     void ParseTime()
     {
-        if((int) currentTime > timeImages.Count)
+        if(currentTime >= timeImages.Count)
         {
-            int c = (int)currentTime;
-            currentTime = (TimeSlot)(c % timeImages.Count);
+            int c = currentTime;
+            currentTime = c % timeImages.Count;
         }
     }
 
-    public void AdvanceTime()
+    public int AdvanceTime()
     {
         Time++;
+        return currentTime;
     }
 }
 

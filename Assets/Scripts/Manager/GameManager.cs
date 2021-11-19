@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static DialogueUI;
 
 public class GameManager : MonoBehaviour
 {
@@ -50,8 +51,9 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        StartDream(null, null);
         dayTmp.FadeOut();
+        dayManager.Open(0);
+        //StartDream(null, null);
     }
 
     public void StartBattle(SuccubusData opponent)
@@ -64,6 +66,8 @@ public class GameManager : MonoBehaviour
 
     public void StartDream(DreamData dData, SuccubusData pcData)
     {
+        dayManager.FadeOut();
+
         if (dData == null)
             dData = defaultDream;
         if (pcData == null)
@@ -88,7 +92,8 @@ public class GameManager : MonoBehaviour
 
     public void EndDream()
     {
-
+        dreamManager.FadeOut();
+        dayManager.Open();
     }
 
     public void NextDay()
@@ -98,9 +103,9 @@ public class GameManager : MonoBehaviour
         Status = GameStatus.Day;
     }
 
-    public void StartDialogue(DialogueData dial)
+    public void StartDialogue(DialogueData dial, DialogueAction action)
     {
-        dialogue.Open(dial);
+        dialogue.Open(dial, action);
     }
 
     public void Notify(string text)

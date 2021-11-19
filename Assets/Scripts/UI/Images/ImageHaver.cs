@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public abstract class ImageHaver : ScriptableObject
+{
+    public abstract string Name { get; }
+
+    [SerializeField] ImageSet images;
+    public ImageSet Images { get { return images; } }
+    public ImageData Image { get { return images.Default; } }
+}
 [System.Serializable]
 public class ImageSet
 {

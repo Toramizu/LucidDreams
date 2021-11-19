@@ -147,7 +147,7 @@ public class DreamManager : Window, GridManager
         List<DialogueData> meds = new List<DialogueData>(meditations);
         meds.AddRange(dreamMeditations);
         DialogueData med = meds[Random.Range(0, meds.Count)];
-        GameManager.Instance.StartDialogue(med);
+        GameManager.Instance.StartDialogue(med, null);
         //medit.Open();
     }
 

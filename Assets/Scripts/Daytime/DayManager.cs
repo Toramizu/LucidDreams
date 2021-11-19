@@ -1,21 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DayManager : Window
 {
     [SerializeField] Clock clock;
+
+    [SerializeField] Image backgroundImage;
+    [SerializeField] List<Sprite> backgrounds;
+
     [SerializeField] MainInteractionButton interactPrefab;
 
-    [SerializeField] List<InteractionData> mainInteractions;
+    [SerializeField] List<DayTimeSlot> mainInteractions;
 
     Dictionary<string, MainInteractionButton> interactions = new Dictionary<string, MainInteractionButton>();
 
-    public override void Open()
+    public void Open(int time)
     {
-        base.Open();
+        clock.Time = time;
+        AddInteractions();
+        backgroundImage.sprite = backgrounds[0];
+        FadeIn();
+    }
 
-        foreach (InteractionData inter in mainInteractions)
+    void AddInteractions()
+    {
+        foreach(MainInteractionButton inter in interactions.Values)
+            Destroy(inter.gameObject);
+
+        interactions.Clear();
+
+        foreach (InteractionData inter in mainInteractions[clock.Time].Interactions)
             if (inter.Check)
                 AddInteraction(null, inter);
     }
@@ -44,4 +60,18 @@ public class DayManager : Window
             interactions[main].AddSub(data);
         }
     }
+
+    public void AdvanceTime()
+    {
+        int t = clock.AdvanceTime();
+        backgroundImage.sprite = backgrounds[t];
+        AddInteractions();
+    }
+}
+
+[System.Serializable]
+public class DayTimeSlot
+{
+    [SerializeField] List<InteractionData> interactions;
+    public List<InteractionData> Interactions { get { return interactions; } }
 }

@@ -41,7 +41,7 @@ public class SuccubusUI : MonoBehaviour
         else
             characterImage.sprite = data.Image;*/
 
-        characterName.text = data.SName;
+        characterName.text = data.Name;
 
         traits.Clear();
 

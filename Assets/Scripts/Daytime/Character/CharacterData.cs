@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewCharacter", menuName = "Data/Character")]
-public class CharacterData : ScriptableObject
+public class CharacterData : ImageHaver
 {
     [SerializeField] string id;
     public string ID { get { return id; } }
     [SerializeField] string cName;
-    public string CName { get { return cName; } }
+    public override string Name { get { return cName; } }
 
-    [SerializeField] ImageSet images;
+    /*[SerializeField] ImageSet images;
     public ImageSet Images { get { return images; } }
+    public ImageData Image { get { return images.Default; } }*/
     [SerializeField] Sprite icon;
     public Sprite Icon { get { return icon; } }
 

@@ -19,6 +19,7 @@ public abstract class InteractionButton : MonoBehaviour
         {
             background.color = data.Background;
             icon.sprite = data.Icon;
+            icon.color = data.IconColor;
         }
     }
 

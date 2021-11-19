@@ -3,18 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewSuccubus", menuName = "Data/Succubus", order = 1)]
-public class SuccubusData : ScriptableObject
+public class SuccubusData : ImageHaver
 {
     [SerializeField] protected string sName;
-    public string SName
-    {
-        get { return sName; }
-        set { sName = value; }
-    }
+    public override string Name { get { return sName; } }
 
-    [SerializeField] ImageSet images;
+    /*[SerializeField] ImageSet images;
     public ImageSet Images { get { return images; } }
-    public ImageData Image { get { return images.Default; } }
+    public ImageData Image { get { return images.Default; } }*/
 
     [SerializeField] List<AbilityData> abilities;
     public List<AbilityData> Abilities { get { return abilities; } set { abilities = value; } }

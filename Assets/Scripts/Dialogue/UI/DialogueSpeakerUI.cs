@@ -43,15 +43,23 @@ public class DialogueSpeakerUI : ImageUI
         }
     }
 
-    SuccubusData cData;
-    public SuccubusData Data
+    ImageHaver cData;
+    public ImageHaver Data
     {
         get { return cData; }
         set
         {
             cData = value;
-            Text = cData.SName;
-            Init(cData.Image);
+            if (value == null)
+            {
+                Toggle(false);
+            }
+            else
+            {
+                Toggle(true);
+                Text = cData.Name;
+                Init(cData.Image);
+            }
         }
     }
 

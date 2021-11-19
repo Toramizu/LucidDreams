@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static DialogueUI;
 
 [CreateAssetMenu(fileName = "NewDialogueInteraction", menuName = "Data/Interaction/Dialogue")]
 public class DialogueInteractionData : InteractionData
@@ -12,7 +13,7 @@ public class DialogueInteractionData : InteractionData
     {
         List<InteractionDialogue> evnts = events.Where(e => e.Check).ToList();
 
-        evnts[Random.Range(0, evnts.Count)].Play();
+        evnts[Random.Range(0, evnts.Count)].Play(AdvanceTime);
     }
 }
 
@@ -27,8 +28,8 @@ public class InteractionDialogue
     [SerializeField] DialogueData dialogue;
     public DialogueData Dialogue { get { return dialogue; } }
 
-    public void Play()
+    public void Play(DialogueAction action)
     {
-        GameManager.Instance.StartDialogue(dialogue);
+        GameManager.Instance.StartDialogue(dialogue, action);
     }
 }

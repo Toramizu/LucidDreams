@@ -16,10 +16,17 @@ public abstract class InteractionData : ScriptableObject
 
     public bool Check { get { return condition == null || condition.Check; } }
 
-    [SerializeField] Color background;
+    [SerializeField] Color background = new Color(.6f, .6f, .6f);
     public Color Background { get { return background; } }
     [SerializeField] protected Sprite icon;
     public virtual Sprite Icon { get { return icon; } }
+    [SerializeField] Color iconColor = Color.white;
+    public Color IconColor { get { return iconColor; } }
 
     public abstract void OnClick();
+
+    public void AdvanceTime()
+    {
+        GameManager.Instance.DayManager.AdvanceTime();
+    }
 }

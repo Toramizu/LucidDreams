@@ -16,7 +16,7 @@ public class MeditationPanel : Window
     {
         base.Open();
         DialogueData med = meditations[Random.Range(0, meditations.Count)];
-        GameManager.Instance.StartDialogue(med);
+        GameManager.Instance.StartDialogue(med, null);
 
         /*if (CanMeditate)
             quote.text = meditationQuotes[Random.Range(0, meditationQuotes.Count)];

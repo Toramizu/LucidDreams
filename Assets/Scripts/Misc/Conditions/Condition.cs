@@ -38,6 +38,9 @@ public class Condition
             }
             else
             {
+                if (flag == "")
+                    return true;
+
                 int f = GameManager.Instance.Flags.GetFlag(flag);
                 switch (comparator)
                 {

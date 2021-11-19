@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619006186f0916c4289ed4f021f35d91, type: 3}
+  m_Name: Sis_Dream
+  m_EditorClassIdentifier: 
+  id: SisDream
+  position: {x: -100, y: 0}
+  text: Big Sister
+  condition:
+    flag: 
+    value: 0
+    sValue: 
+    compareString: 0
+    comparator: 0
+    charaCheck: 0
+    accustomed: 0
+    love: 0
+  background: {r: 0.1774869, g: 0, b: 1, a: 1}
+  icon: {fileID: 0}
+  iconColor: {r: 1, g: 1, b: 1, a: 1}
+  character: {fileID: 11400000, guid: 57d788ec22ee5774eaa3b886b8298bc8, type: 2}
+  dream: {fileID: 0}

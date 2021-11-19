@@ -22,17 +22,20 @@ public class DialogueUI : Window
     #region Dialogue
     DialogueData currentDialogue;
     Queue<DialogueElement> elements;
+    DialogueAction action;
 
-    public void Open(DialogueData data)
+    public void Open(DialogueData data, DialogueAction action)
     {
         if(data == null)
         {
             Close();
             Debug.Log("No dialogue...");
+            action();
             return;
         }
 
-        Open();
+        this.action = action;
+        FadeIn();
         hidable.Open();
         currentDialogue = data;
         AddInFront(data.Elements);
@@ -70,7 +73,10 @@ public class DialogueUI : Window
                 Next();
         }
         else
+        {
             Close();
+            action();
+        }
     }
 
     #endregion
@@ -125,7 +131,7 @@ public class DialogueUI : Window
                     {
                         if (line.Speaker != null)
                             leftSpeaker.Data = line.Speaker;
-                            //leftSpeaker.Text = line.Speaker;
+                        //leftSpeaker.Text = line.Speaker;
 
                         leftSpeaker.Focus = true;
                         rightSpeaker.Focus = false;
@@ -148,7 +154,7 @@ public class DialogueUI : Window
             }
 
             if (line.Line != null && line.Line != "")
-                Dialogue = line.Line;
+                Dialogue = line.Line.Replace("\\n", "\n");
             else
                 PlayLine();
         }
@@ -230,4 +236,6 @@ public class DialogueUI : Window
         centerImage.RectTransform.sizeDelta = v;
     }
     #endregion
+
+    public delegate void DialogueAction();
 }
