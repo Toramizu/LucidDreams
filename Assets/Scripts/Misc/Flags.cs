@@ -9,6 +9,8 @@ public class Flags
 
     public bool HasFlag(string flag)
     {
+        if (flag == null)
+            return false;
         return flags.ContainsKey(flag);
     }
 

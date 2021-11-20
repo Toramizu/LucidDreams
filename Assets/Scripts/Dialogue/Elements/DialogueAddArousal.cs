@@ -1,42 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Xml.Serialization;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewArousal", menuName = "Data/Dialogue/Arousal")]
 public class DialogueAddArousal : DialogueElement
 {
-    [SerializeField] int amount;
-    [SerializeField] bool toOpponent;
+    [XmlAttribute("Amount")]
+    public int Amount { get; set; }
+    [XmlAttribute("ToOpponent"), DefaultValue(false)]
+    public bool ToOpponent { get; set; }
 
     public override bool Play(DialogueUI dialUI)
     {
         switch (GameManager.Instance.Status)
         {
             case GameStatus.Battle:
-                if (toOpponent)
+                if (ToOpponent)
                 {
-                    GameManager.Instance.BattleManager.Opponent.InflictDamage(amount);
-                    if (amount >= 0)
-                        GameManager.Instance.Notify("Opponent gained " + amount + " arousal");
+                    GameManager.Instance.BattleManager.Opponent.InflictDamage(Amount);
+                    if (Amount >= 0)
+                        GameManager.Instance.Notify("Opponent gained " + Amount + " arousal");
                     else
-                        GameManager.Instance.Notify("Opponent lost " + -amount + " arousal");
+                        GameManager.Instance.Notify("Opponent lost " + -Amount + " arousal");
                 }
                 else
                 {
-                    GameManager.Instance.BattleManager.Player.InflictDamage(amount);
-                    if (amount >= 0)
-                        GameManager.Instance.Notify("Gained " + amount + " arousal");
+                    GameManager.Instance.BattleManager.Player.InflictDamage(Amount);
+                    if (Amount >= 0)
+                        GameManager.Instance.Notify("Gained " + Amount + " arousal");
                     else
-                        GameManager.Instance.Notify("Lost " + -amount + " arousal");
+                        GameManager.Instance.Notify("Lost " + -Amount + " arousal");
 
                 }
                 break;
             case GameStatus.Dream:
-                GameManager.Instance.PlayerManager.ReduceArousal(-amount, 0);
-                if (amount >= 0)
-                    GameManager.Instance.Notify("Gained " + amount + " arousal");
+                GameManager.Instance.PlayerManager.ReduceArousal(-Amount, 0);
+                if (Amount >= 0)
+                    GameManager.Instance.Notify("Gained " + Amount + " arousal");
                 else
-                    GameManager.Instance.Notify("Lost " + -amount + " arousal");
+                    GameManager.Instance.Notify("Lost " + -Amount + " arousal");
                 break;
         }
         return true;

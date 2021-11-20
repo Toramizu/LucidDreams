@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewLines", menuName = "Data/Dialogue/Lines")]
 public class DialogueLines : DialogueElement
 {
-    [SerializeField] List<DialogueLine> lines;
+    [XmlElement("Line")]
+    [SerializeField] public List<DialogueLine> lines;
+    [XmlIgnore]
     public List<DialogueLine> Lines { get { return lines; } }
 
     public override bool Play(DialogueUI dialUI)
@@ -13,21 +15,6 @@ public class DialogueLines : DialogueElement
         dialUI.Play(lines);
         return false;
     }
-}
-
-[System.Serializable]
-public class DialogueLine
-{
-    [SerializeField] string line;
-    public string Line { get { return line; } }
-    [SerializeField] ImageHaver speaker;
-    public ImageHaver Speaker { get { return speaker; } }
-    /*[SerializeField] string speaker;
-    public string Speaker { get { return speaker; } }*/
-    [SerializeField] SpeakerPos speakerPosition;
-    public SpeakerPos SpeakerPosition { get { return speakerPosition; } }
-    [SerializeField] bool removeSpeaker;
-    public bool RemoveSpeaker { get { return removeSpeaker; } }
 }
 
 public enum SpeakerPos

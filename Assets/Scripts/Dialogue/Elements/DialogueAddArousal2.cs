@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewArousal", menuName = "Data/Dialogue/Arousal2")]
 public class DialogueAddArousal2 : DialogueElement
 {
-    [SerializeField] float proportion;
-    [SerializeField] bool toOpponent;
+    [XmlAttribute("Proportion")]
+    public float Proportion { get; set; }
+    [XmlAttribute("ToOpponent")]
+    public bool ToOpponent { get; set; }
 
     public override bool Play(DialogueUI dialUI)
     {
@@ -14,9 +16,9 @@ public class DialogueAddArousal2 : DialogueElement
         switch (GameManager.Instance.Status)
         {
             case GameStatus.Battle:
-                if (toOpponent)
+                if (ToOpponent)
                 {
-                    int amount = GameManager.Instance.BattleManager.Opponent.InflictDamageProportion(proportion);
+                    int amount = GameManager.Instance.BattleManager.Opponent.InflictDamageProportion(Proportion);
                     GameManager.Instance.BattleManager.Opponent.InflictDamage(amount);
                     if (amount >= 0)
                         GameManager.Instance.Notify("Opponent gained " + amount + " arousal");
@@ -25,7 +27,7 @@ public class DialogueAddArousal2 : DialogueElement
                 }
                 else
                 {
-                    int amount = GameManager.Instance.BattleManager.Player.InflictDamageProportion(proportion);
+                    int amount = GameManager.Instance.BattleManager.Player.InflictDamageProportion(Proportion);
                     GameManager.Instance.BattleManager.Player.InflictDamage(amount);
                     if (amount >= 0)
                         GameManager.Instance.Notify("Gained " + amount + " arousal");
@@ -35,7 +37,7 @@ public class DialogueAddArousal2 : DialogueElement
                 }
                 break;
             case GameStatus.Dream:
-                int pAmount = GameManager.Instance.PlayerManager.InflictDamageProportion(proportion);
+                int pAmount = GameManager.Instance.PlayerManager.InflictDamageProportion(Proportion);
                 if (pAmount >= 0)
                     GameManager.Instance.Notify("Gained " + pAmount + " arousal");
                 else

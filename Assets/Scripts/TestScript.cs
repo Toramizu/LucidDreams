@@ -26,12 +26,20 @@ public class TestScript : MonoBehaviour
             Test9();
     }
 
+    [SerializeField] List<DialogueData> dials;
     void Test1()
     {
-
+        DialogueData d =AssetDB.Instance.Dialogues["M_Bed"];
+        GameManager.Instance.StartDialogue(d, null);
+        Debug.Log("Done");
     }
     void Test2()
     {
+        DialogueData d = new DialogueData();
+        d.ID = "Bed";
+        AssetDB.Instance.Dialogues["Bed"] = d;
+        AssetDB.Instance.SaveDialogues();
+        Debug.Log("Done");
     }
 
     void Test3()

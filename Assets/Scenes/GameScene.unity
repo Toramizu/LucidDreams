@@ -6243,6 +6243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2329f67e01b795e48ae6af1af8b01ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dials:
+  - {fileID: 11400000, guid: c76e505413b80214db9bd4f12d8453ce, type: 2}
+  - {fileID: 11400000, guid: 69834ade0b80d9343b969cd7e6526a45, type: 2}
   mapCreator: {fileID: 1537273204}
 --- !u!114 &344300347
 MonoBehaviour:
@@ -8642,7 +8645,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 85.095, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &545357684
@@ -16039,7 +16042,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 10, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1049813903
@@ -17114,7 +17117,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 848930756}
   m_HandleRect: {fileID: 848930755}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -23504,7 +23507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -23537,7 +23540,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 36872521}
         m_TargetAssemblyTypeName: DialogueUI, Assembly-CSharp
-        m_MethodName: PlayLine
+        m_MethodName: Next
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -34435,7 +34438,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 10, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2076924351

@@ -1,12 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml.Serialization;
 using UnityEngine;
 
-public static class XmlManager
+public class XmlManager
 {
     public static string contentPath = Application.dataPath + @"/../Xml/";
     public static string ext = ".xml";
     public static string modListPath = contentPath + "ModList" + ext;
+
+    #region Dialogues
+    static string dialoguesPath = contentPath + "Dialogues" + ext;
+    static string dialoguesFile = "/Dialogues" + ext;
+
+    public void SaveDialogues(List<DialogueData> data)
+    {
+        XmlSerializer ser = new XmlSerializer(typeof(DialogueXml));
+        TextWriter writer = new StreamWriter(dialoguesPath);
+
+        ser.Serialize(writer, new DialogueXml(data));
+        writer.Close();
+    }
+
+    public List<DialogueData> LoadDialogues()
+    {
+        XmlSerializer ser = new XmlSerializer(typeof(DialogueXml));
+        FileStream fs = new FileStream(dialoguesPath, FileMode.Open);
+        return ((DialogueXml)ser.Deserialize(fs)).Dialogues;
+    }
+    #endregion
     /*#region Loading
 
     public static void LoadXml()
@@ -792,4 +815,13 @@ public class ModData
     public string ID { get; set; }
     [XmlAttribute("Load")]
     public bool Load { get; set; }*/
+}
+
+public class DialogueXml
+{
+    [XmlElement("Dialogue")]
+    public List<DialogueData> Dialogues { get; set; }
+
+    public DialogueXml() { Dialogues = new List<DialogueData>(); }
+    public DialogueXml(List<DialogueData> dialogues) { Dialogues = dialogues; }
 }

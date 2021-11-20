@@ -65,7 +65,7 @@ public class DialogueUI : Window
         elements = elems;
     }
 
-    void Next()
+    public void Next()
     {
         if (elements.Count > 0)
         {
@@ -75,7 +75,7 @@ public class DialogueUI : Window
         else
         {
             Close();
-            action();
+            action?.Invoke();
         }
     }
 
@@ -107,57 +107,75 @@ public class DialogueUI : Window
         {
             DialogueLine line = lines.Dequeue();
 
-            switch (line.SpeakerPosition)
-            {
-                case SpeakerPos.None:
-                default:
-                    if (line.RemoveSpeaker)
-                    {
-                        leftSpeaker.Toggle(false);
-                        rightSpeaker.Toggle(false);
-                    }
-                    else
-                    {
-                        leftSpeaker.Focus = false;
-                        rightSpeaker.Focus = false;
-                    }
-                    break;
-                case SpeakerPos.Left:
-                    if (line.RemoveSpeaker)
-                    {
-                        leftSpeaker.Toggle(false);
-                    }
-                    else
-                    {
-                        if (line.Speaker != null)
-                            leftSpeaker.Data = line.Speaker;
-                        //leftSpeaker.Text = line.Speaker;
-
-                        leftSpeaker.Focus = true;
-                        rightSpeaker.Focus = false;
-                    }
-                    break;
-                case SpeakerPos.Right:
-                    if (line.RemoveSpeaker)
-                    {
-                        rightSpeaker.Toggle(false);
-                    }
-                    else
-                    {
-                        if (line.Speaker != null)
-                            rightSpeaker.Data = line.Speaker;
-
-                        rightSpeaker.Focus = true;
-                        leftSpeaker.Focus = false;
-                    }
-                    break;
-            }
+            
 
             if (line.Line != null && line.Line != "")
                 Dialogue = line.Line.Replace("\\n", "\n");
             else
                 PlayLine();
         }
+    }
+
+    public void PlayLine(DialogueLine line)
+    {
+        /*if(line == null) 
+        {
+            lines = null;
+            Next();
+            return;
+        }*/
+        dialoguePanel.SetActive(true);
+        Dialogue = line.Line;
+
+        /*switch (line.SpeakerPosition)
+        {
+            case SpeakerPos.None:
+            default:
+                if (line.RemoveSpeaker)
+                {
+                    leftSpeaker.Toggle(false);
+                    rightSpeaker.Toggle(false);
+                }
+                else
+                {
+                    leftSpeaker.Focus = false;
+                    rightSpeaker.Focus = false;
+                }
+                break;
+            case SpeakerPos.Left:
+                if (line.RemoveSpeaker)
+                {
+                    leftSpeaker.Toggle(false);
+                }
+                else
+                {
+                    if (line.Speaker != null)
+                        leftSpeaker.Data = line.Speaker;
+                    //leftSpeaker.Text = line.Speaker;
+
+                    leftSpeaker.Focus = true;
+                    rightSpeaker.Focus = false;
+                }
+                break;
+            case SpeakerPos.Right:
+                if (line.RemoveSpeaker)
+                {
+                    rightSpeaker.Toggle(false);
+                }
+                else
+                {
+                    if (line.Speaker != null)
+                        rightSpeaker.Data = line.Speaker;
+
+                    rightSpeaker.Focus = true;
+                    leftSpeaker.Focus = false;
+                }
+                break;
+            }
+        if (line.Line != null && line.Line != "")
+            Dialogue = line.Line.Replace("\\n", "\n");
+        else
+            PlayLine();*/
     }
     #endregion
 

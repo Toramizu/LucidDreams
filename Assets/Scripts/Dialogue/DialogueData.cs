@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewDialogue", menuName = "Data/Dialogue/Dialogue")]
-public class DialogueData : ScriptableObject
+public class DialogueData : XmlAsset
 {
-    [SerializeField] string id;
-    public string ID { get { return id; } }
+    [XmlAttribute("ID")]
+    public string ID { get; set; }
 
-    [SerializeField] List<DialogueElement> elements;
-    public List<DialogueElement> Elements { get { return elements; } }
+    [XmlElement("Choices", typeof(DialogueChoices))]
+    [XmlElement("Battle", typeof(DialogueBattle))]
+    [XmlElement("ArousalFlat", typeof(DialogueAddArousal))]
+    [XmlElement("Arousal", typeof(DialogueAddArousal2))]
+    [XmlElement("Line", typeof(DialogueLine))]
+    //[XmlElement("Condition", typeof(DialogueCondition))]
+    [XmlElement("Roll", typeof(DialogueRoll))]
+    public List<DialogueElement> Elements { get; set; }
 }

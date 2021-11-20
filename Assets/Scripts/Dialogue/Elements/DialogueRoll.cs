@@ -1,35 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Xml.Serialization;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewRoll", menuName = "Data/Dialogue/Roll")]
 public class DialogueRoll : DialogueElement
 {
-    [SerializeField] int dice = 2;
-    [SerializeField] string flagBonus;
-    [SerializeField] string flagMalus;
+    [XmlAttribute("Dice"), DefaultValue(2)]
+    public int Dice { get; set; } = 2;
+    [XmlAttribute("Bonus")]
+    public string FlagBonus { get; set; }
+    [XmlAttribute("Malus")]
+    public string FlagMalus { get; set; }
 
-    [SerializeField] List<RollValue> rolls;
+    [XmlElement("Result")]
+    public List<RollValue> Rolls { get; set; }
 
     public override bool Play(DialogueUI dialUI)
     {
         string text = "";
         int total = 0;
-        if (flagBonus != "" && GameManager.Instance.Flags.HasFlag(flagBonus))
+        if (FlagBonus != null && GameManager.Instance.Flags.HasFlag(FlagBonus))
         {
-            int bonus = GameManager.Instance.Flags.GetFlag(flagBonus);
+            int bonus = GameManager.Instance.Flags.GetFlag(FlagBonus);
             total += bonus;
             text += "(" + bonus + ") + ";
         }
 
-        if (flagMalus != "" && GameManager.Instance.Flags.HasFlag(flagMalus))
+        if (FlagMalus != null && GameManager.Instance.Flags.HasFlag(FlagMalus))
         {
-            int bonus = GameManager.Instance.Flags.GetFlag(flagMalus);
+            int bonus = GameManager.Instance.Flags.GetFlag(FlagMalus);
             total -= bonus;
             text += "(" + -bonus + ") + ";
         }
 
-        for (int i = 0; i < dice; i++)
+        for (int i = 0; i < Dice; i++)
         {
             int r = Random.Range(1, 7);
             total += r;
@@ -38,7 +43,7 @@ public class DialogueRoll : DialogueElement
             text += "_" + r + " ";
         }
 
-        foreach(RollValue val in rolls)
+        foreach(RollValue val in Rolls)
         {
             if (total >= val.Value)
             {
@@ -57,10 +62,18 @@ public class DialogueRoll : DialogueElement
 [System.Serializable]
 public class RollValue
 {
-    [SerializeField] int value;
-    public int Value { get { return value; } }
-    [SerializeField] string shownName = "Passed";
-    public string ShownName { get { return shownName; } }
-    [SerializeField] List<DialogueElement> elements;
-    public List<DialogueElement> Elements { get { return elements; } }
+    [XmlAttribute("Value")]
+    public int Value { get; set; }
+    [XmlAttribute("Shown")]
+    public string ShownName { get; set; }
+
+    [XmlElement("Choices", typeof(DialogueChoices))]
+    [XmlElement("Battle", typeof(DialogueBattle))]
+    [XmlElement("ArousalFlat", typeof(DialogueAddArousal))]
+    [XmlElement("Arousal", typeof(DialogueAddArousal2))]
+    [XmlElement("Lines", typeof(DialogueLines))]
+    [XmlElement("Line", typeof(DialogueLine))]
+    //[XmlElement("Condition", typeof(DialogueCondition))]
+    [XmlElement("Roll", typeof(DialogueRoll))]
+    public List<DialogueElement> Elements { get; set; }
 }
