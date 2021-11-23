@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Condition
+public abstract class Condition
 {
-    [SerializeField] string flag;
+    /*[SerializeField] string flag;
     [SerializeField] int value;
     [SerializeField] string sValue;
     [SerializeField] bool compareString;
@@ -13,9 +13,10 @@ public class Condition
 
     [SerializeField] bool charaCheck;
     [SerializeField] int accustomed;
-    [SerializeField] int love;
+    [SerializeField] int love;*/
 
-    public virtual bool Check
+    public abstract bool Check { get; }
+    /*public virtual bool Check
     {
         get
         {
@@ -60,7 +61,7 @@ public class Condition
                 }
             }
         }
-    }
+    }*/
 }
 
 public enum Comparator

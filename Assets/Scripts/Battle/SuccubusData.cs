@@ -1,31 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewSuccubus", menuName = "Data/Succubus", order = 1)]
-public class SuccubusData : ImageHaver
+public class SuccubusData : ImageHaver, XmlAsset
 {
-    [SerializeField] protected string sName;
-    public override string Name { get { return sName; } }
+    [XmlAttribute("ID")]
+    public string ID { get; set; }
+    [XmlIgnore]
+    public override string Name { get { return ID; }set { ID = value; } }
 
-    /*[SerializeField] ImageSet images;
-    public ImageSet Images { get { return images; } }
-    public ImageData Image { get { return images.Default; } }*/
+    [XmlIgnore]
+    public List<AbilityData> Abilities
+        {
+        get {
+            List<AbilityData> abis = new List<AbilityData>();
+            foreach (string s in _Abilities)
+                abis.Add(AssetDB.Instance.Abilities[s]);
+            return abis;
+        }
+    }
+    [XmlElement("Ability")]
+    public List<string> _Abilities { get; set; }
 
-    [SerializeField] List<AbilityData> abilities;
-    public List<AbilityData> Abilities { get { return abilities; } set { abilities = value; } }
+    [XmlAttribute("Dice")]
+    public int Dice { get; set; }
+    [XmlAttribute("MaxArousal")]
+    public int MaxArousal { get; set; }
 
-    /*[SerializeField] int rolls = 3;
-    public int Rolls { get { return rolls; } set { rolls = value; } }*/
-
-    /*[SerializeField] List<CharacterLevel> levels;
-    public List<CharacterLevel> Level { get{ return levels; } }*/
-
-    [SerializeField] int dice;
-    public int Dice { get { return dice; } }
-    [SerializeField] int maxArousal;
-    public int MaxArousal { get { return maxArousal; } }
-
-    [SerializeField] int crystals;
-    public int Crystals { get { return crystals; } }
+    [XmlAttribute("Crystals")]
+    public int Crystals { get; set; }
 }

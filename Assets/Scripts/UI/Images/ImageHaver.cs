@@ -1,22 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Serialization;
 using UnityEngine;
 
-public abstract class ImageHaver : ScriptableObject
+public abstract class ImageHaver
 {
-    public abstract string Name { get; }
+    [XmlIgnore]
+    public abstract string Name { get; set; }
 
-    [SerializeField] ImageSet images;
-    public ImageSet Images { get { return images; } }
-    public ImageData Image { get { return images.Default; } }
+    [XmlElement("Images")]
+    public ImageSet Images { get; set; }
+    [XmlIgnore]
+    public ImageData Image { get { return Images.Default; } }
 }
+
 [System.Serializable]
 public class ImageSet
 {
-    [SerializeField] List<ImageData> images;
 
+    [XmlIgnore]
     Dictionary<string, ImageData> imagesDict;
+    [XmlElement("Image")]
+    public List<ImageData> Images { get; set; }
 
+    [XmlIgnore]
     public ImageData this[string id]
     {
         get
@@ -30,6 +38,7 @@ public class ImageSet
         }
     }
 
+    [XmlIgnore]
     public ImageData Default
     {
         get
@@ -43,12 +52,12 @@ public class ImageSet
         }
     }
 
-    public void Add(ImageData d) { images.Add(d); }
+    public void Add(ImageData d) { Images.Add(d); }
 
     void Init()
     {
         imagesDict = new Dictionary<string, ImageData>();
-        foreach (ImageData i in images)
+        foreach (ImageData i in Images)
             imagesDict.Add(i.ID, i);
     }
 }

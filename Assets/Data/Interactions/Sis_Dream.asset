@@ -15,17 +15,8 @@ MonoBehaviour:
   id: SisDream
   position: {x: -100, y: 0}
   text: Big Sister
-  condition:
-    flag: 
-    value: 0
-    sValue: 
-    compareString: 0
-    comparator: 0
-    charaCheck: 0
-    accustomed: 0
-    love: 0
   background: {r: 0.1774869, g: 0, b: 1, a: 1}
   icon: {fileID: 0}
   iconColor: {r: 1, g: 1, b: 1, a: 1}
-  character: {fileID: 11400000, guid: 57d788ec22ee5774eaa3b886b8298bc8, type: 2}
+  character: BigSis
   dream: {fileID: 0}

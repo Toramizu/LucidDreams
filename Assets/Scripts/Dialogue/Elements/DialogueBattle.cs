@@ -12,11 +12,11 @@ public class DialogueBattle : DialogueElement
     {
         get {
             if(opponent == null)
-                return GameManager.Instance.Assets.Succubi[_Opponent];
+                return AssetDB.Instance.Succubi[_Opponent];
             return opponent;
         }
         set {
-            _Opponent = value.Name;
+            _Opponent = value.ID;
         }
     }
     [XmlAttribute("Opponent")]

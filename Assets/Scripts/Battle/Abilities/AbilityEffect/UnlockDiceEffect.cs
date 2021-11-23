@@ -28,11 +28,11 @@ public class UnlockDiceEffect : AbilityEffect
             }
 
             if (i > 0)
-                user.Traits.AddTrait(GameManager.Instance.Assets.Traits["Chastity"], -i);
+                user.Traits.AddTrait(AssetDB.Instance.Traits["Chastity"], -i);
         }
         else
         {
-            other.Traits.AddTrait(GameManager.Instance.Assets.Traits["Chastity"], -Value(dice, abi));
+            other.Traits.AddTrait(AssetDB.Instance.Traits["Chastity"], -Value(dice, abi));
         }
     }
 

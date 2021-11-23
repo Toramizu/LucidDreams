@@ -8,9 +8,9 @@ public class Coordinate
     const int BIG_INT = 1000;
 
     [SerializeField] int x;
-    public int X { get { return x; } }
+    public int X { get { return x; } set { x = value; } }
     [SerializeField] int y;
-    public int Y { get { return y; } }
+    public int Y { get { return y; } set { y = value; } }
 
     public Coordinate() { }
     public Coordinate(int x, int y) { this.x = x; this.y = y; }

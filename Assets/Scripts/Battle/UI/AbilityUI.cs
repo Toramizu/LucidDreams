@@ -29,7 +29,7 @@ public class AbilityUI : Window
 
         gameObject.SetActive(true);
 
-        title.text = data.Title;
+        title.text = data.ID;
         Data = data;
         this.ability = ability;
         SetCount(data.Total);

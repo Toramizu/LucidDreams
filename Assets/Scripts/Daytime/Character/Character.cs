@@ -9,28 +9,62 @@ public class Character
 
     CharacterData data;
 
+    List<Relationship> relationships;
     List<int> relationPoints = new List<int>(3);
+    List<int> relationStage = new List<int>(3);
+    const int POINTS_PER_STAGE = 100;
 
     public Character() { }
     public Character(CharacterData data) {
         //TODO : Load saved characters
         this.data = data;
-        relationPoints = new List<int>() { 0, 0, 0 };
+        relationships = new List<Relationship>();
+        foreach (RelationshipData rd in data.Relationships)
+            relationships.Add(new Relationship(rd));
     }
 
-    public InteractionData GetInteraction()
+    public void PlayInteraction()
     {
-        List<RelationData> rd = data.RelationEvents;
-        for (int i = 0; i < relationPoints.Count && i < rd.Count; i++)
-            if (rd[i].RelationEvents.Count > relationPoints[i] && rd[i].RelationEvents[relationPoints[i]].Check)
-                return rd[i].RelationEvents[relationPoints[i]];
+        bool found = false;
+        foreach (Relationship rela in relationships)
+        {
+            found = rela.PlayInteraction();
+            if (found)
+                return;
+        }
 
-        List<InteractionData> evnts = data.DefaultEvents.Where(e => e.Check).ToList();
+        List<InteractionDialogue> evnts = data.DefaultEvents.Where(e => e.Check).ToList();
+
+        if (evnts.Count >= 0)
+            evnts[Random.Range(0, evnts.Count)].Play(null);
+    }
+
+    /*public InteractionDialogue GetInteraction()
+    {
+        InteractionDialogue evnt = null;
+        foreach (Relationship rela in relationships)
+        {
+            evnt = rela.CheckInteraction();
+            if (evnt != null)
+                return evnt;
+        }
+
+        List<InteractionDialogue> evnts = data.DefaultEvents.Where(e => e.Check).ToList();
 
         if (evnts.Count == 0)
             return null;
         else
             return evnts[Random.Range(0, evnts.Count)];
+    }*/
+
+    public void AddRelationPoints(int relation, int points)
+    {
+        relationships[relation].Points += points;
+
+        if (points > 0)
+            GameManager.Instance.Notify(data.ID + " +" + points + " " + relationships[relation].Name);
+        else if (points < 0)
+            GameManager.Instance.Notify(data.ID + " -" + (-points) + " " + relationships[relation].Name);
     }
 }
 

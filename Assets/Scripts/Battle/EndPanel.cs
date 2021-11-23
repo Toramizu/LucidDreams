@@ -30,7 +30,7 @@ public class EndPanel : Window
 
         this.opponent = opponent;
         ability = opponent.Abilities[Random.Range(0, opponent.Abilities.Count)];
-        newAbilityText.text = newAbilitySynonym[Random.Range(0, newAbilitySynonym.Count)].BuildText(ability.Title);
+        newAbilityText.text = newAbilitySynonym[Random.Range(0, newAbilitySynonym.Count)].BuildText(ability.ID);
         new Ability(ability, abilityPanel);
         //abilityPanel.Init(ability, null);
     }
@@ -62,7 +62,7 @@ public class EndPanel : Window
             {
                 newAbilityText.gameObject.SetActive(true);
                 abilityPanel.gameObject.SetActive(true);
-                newAbilityText.text = newAbilitySynonym[Random.Range(0, newAbilitySynonym.Count)].BuildText(ability.Title);
+                newAbilityText.text = newAbilitySynonym[Random.Range(0, newAbilitySynonym.Count)].BuildText(ability.ID);
                 abilityPanel.Init(ability, null);
             }
         }

@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class FlagCondition : Condition
 {
-    [SerializeField] string flag;
-    [SerializeField] int value;
-    [SerializeField] Comparator comparator;
+    [XmlAttribute("Flag")]
+    string flag;
+    [XmlAttribute("Comparator")]
+    Comparator comparator;
+    [XmlAttribute("Value")]
+    int value;
 
     public override bool Check
     {

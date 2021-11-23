@@ -4,26 +4,28 @@
 		<Line>You enter a gigantic bedroom and see a bed in it's center. The figure sleeping inside waves at you to join her.</Line>
 		<Choices Title="Do you join her?">
 			<Choice Text="Have a nap">
-				<Roll Value="11" Shown="Critical Pass">
-					<Line>As you lay under the covers, the succubus puts her arm around your neck, but doesn't do anything more. You fall asleep listening to her calm breathing.</Line>
-					<Line>You are awaken by a kiss on your forehead. Plus, she brought you pancakes for breakfast.</Line>
-					<Line>After a great nap and meal, she waves you goodbye as you leave.</Line>
-					<Arousal Proportion="-1"/>
-				</Roll>
-				<Roll Value="7" Shown="Pass">
-					<Line>You climb on the bed and quickly start to doze off.</Line>
-					<Line>Unfortunately for you, the succubus has wandering hands in her sleep. You managed to rest, but leave before she becomes more insistent.</Line>
-					<Arousal Proportion="-0.5"/>
-				</Roll>
-				<Roll Value="4" Shown="Fail">
-					<Line>You try to sleep, but you can't manage to stay calm next to the succubus.</Line>
-					<Line>After turning, putting the cover on, then off and a sigh, she gets up and asks you to let her sleep.</Line>
-					<Line>Not wanting to annoy her, you leave the room.</Line>
-				</Roll>
-				<Roll Value="0" Shown="Critical Fail">
-					<Line>As soon as your head touches the pillow, you fell in a deep sleep.</Line>
-					<Line>But you didn't manage to rest for long before waking up to the succubus towering over you, hunger in her eyes...</Line>
-					<Battle Opponent="Sleeping"/>
+				<Roll>
+					<Result Value="11" Shown="Critical Pass">
+						<Line>As you lay under the covers, the succubus puts her arm around your neck, but doesn't do anything more. You fall asleep listening to her calm breathing.</Line>
+						<Line>You are awaken by a kiss on your forehead. Plus, she brought you pancakes for breakfast.</Line>
+						<Line>After a great nap and meal, she waves you goodbye as you leave.</Line>
+						<Arousal Proportion="-1"/>
+					</Result>
+					<Result Value="7" Shown="Pass">
+						<Line>You climb on the bed and quickly start to doze off.</Line>
+						<Line>Unfortunately for you, the succubus has wandering hands in her sleep. You managed to rest, but leave before she becomes more insistent.</Line>
+						<Arousal Proportion="-0.5"/>
+					</Result>
+					<Result Value="4" Shown="Fail">
+						<Line>You try to sleep, but you can't manage to stay calm next to the succubus.</Line>
+						<Line>After turning, putting the cover on, then off and a sigh, she gets up and asks you to let her sleep.</Line>
+						<Line>Not wanting to annoy her, you leave the room.</Line>
+					</Result>
+					<Result Value="0" Shown="Critical Fail">
+						<Line>As soon as your head touches the pillow, you fell in a deep sleep.</Line>
+						<Line>But you didn't manage to rest for long before waking up to the succubus towering over you, hunger in her eyes...</Line>
+						<Battle Opponent="Sleeping"/>
+					</Result>
 				</Roll>
 			</Choice>
 			<Choice Text="Leave her alone">
@@ -72,6 +74,7 @@
 		<Line>You walk around town for a few hours. It's a good exercise.</Line>
 	</Dialogue>
 	<Dialogue ID="C_CF_Default1">
-		<Line>Hey, nice to see you again.</Line>
+		<Speaker Speaker="ChildFriend"/>
+		<Line Focus="Left">Hey, nice to see you again.</Line>
 	</Dialogue>
 </DialogueXml>

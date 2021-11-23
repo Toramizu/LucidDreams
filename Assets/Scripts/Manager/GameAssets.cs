@@ -5,28 +5,39 @@ using UnityEngine;
 public class GameAssets : MonoBehaviour
 {
     [SerializeField] List<AbilityData> abilities;
-    public Dictionary<string, AbilityData> Abilities { get; private set; }
+    //public Dictionary<string, AbilityData> Abilities { get; private set; }
 
     [SerializeField] List<DreamData> dreams;
-    public Dictionary<string, DreamData> Dreams { get; private set; }
+    //public Dictionary<string, DreamData> Dreams { get; private set; }
 
-    [SerializeField] List<DreamMapData> maps;
-    public Dictionary<string, DreamMapData> Maps { get; private set; }
+    //[SerializeField] List<DreamMapData> maps;
+    //public Dictionary<string, DreamMapData> Maps { get; private set; }
 
-    [SerializeField] List<SuccubusData> succubi;
-    public Dictionary<string, SuccubusData> Succubi { get; private set; }
+    //[SerializeField] List<SuccubusData> succubi;
+    //public Dictionary<string, SuccubusData> Succubi { get; private set; }
 
     [SerializeField] List<Trait> traits;
-    public Dictionary<string, Trait> Traits { get; private set; }
+    //public Dictionary<string, Trait> Traits { get; private set; }
 
-    [SerializeField] List<CharacterData> charactersData;
-    public Dictionary<string, CharacterData> CharacterDatas { get; private set; }
+    //[SerializeField] List<CharacterData> charactersData;
+    //public Dictionary<string, CharacterData> CharacterDatas { get; private set; }
+
+    [SerializeField] List<Sprite> sprites;
     
     void Start()
     {
-        Abilities = new Dictionary<string, AbilityData>();
+        AssetDB.Instance.InitAbilities(abilities);
+        AssetDB.Instance.InitDreams(dreams);
+        //AssetDB.Instance.InitDreamMaps(maps);
+        //AssetDB.Instance.InitSuccubi(succubi);
+        AssetDB.Instance.InitTraits(traits);
+        //AssetDB.Instance.InitCharacters(charactersData);
+
+        AssetDB.Instance.Sprites.AddRange(sprites);
+
+        /*Abilities = new Dictionary<string, AbilityData>();
         foreach (AbilityData abi in abilities)
-            Abilities.Add(abi.Title, abi);
+            Abilities.Add(abi.ID, abi);
 
         Dreams = new Dictionary<string, DreamData>();
         foreach (DreamData dream in dreams)
@@ -38,7 +49,7 @@ public class GameAssets : MonoBehaviour
 
         Succubi = new Dictionary<string, SuccubusData>();
         foreach (SuccubusData succu in succubi)
-            Succubi.Add(succu.Name, succu);
+            Succubi.Add(succu.ID, succu);
 
         Traits = new Dictionary<string, Trait>();
         foreach (Trait trait in traits)
@@ -46,7 +57,7 @@ public class GameAssets : MonoBehaviour
 
         CharacterDatas = new Dictionary<string, CharacterData>();
         foreach (CharacterData chara in charactersData)
-            CharacterDatas.Add(chara.ID, chara);
+            CharacterDatas.Add(chara.ID, chara);*/
     }
 
 
@@ -57,13 +68,13 @@ public class GameAssets : MonoBehaviour
     {
         if (!Characters.ContainsKey(id))
         {
-            if (!CharacterDatas.ContainsKey(id))
+            if (!AssetDB.Instance.Characters.ContainsID(id))
             {
                 Debug.LogError("Character " + id + " not found");
                 return null;
             }
 
-            Character chara = new Character(CharacterDatas[id]);
+            Character chara = new Character(AssetDB.Instance.Characters[id]);
             Characters.Add(id, chara);
             return chara;
         }

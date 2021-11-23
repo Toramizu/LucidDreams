@@ -21,6 +21,9 @@ public class DialogueSpeakerUI : ImageUI
 
             textBackground.color = c;
             image.color = c;
+
+            if (true)
+                image.transform.SetSiblingIndex(0);
         }
     }
 
@@ -31,7 +34,7 @@ public class DialogueSpeakerUI : ImageUI
         get { return text.text; }
         set
         {
-            if (value == null)
+            if (value == null || value == "")
             {
                 Toggle(false);
             }
@@ -67,5 +70,28 @@ public class DialogueSpeakerUI : ImageUI
     {
         base.Toggle(toggle);
         gameObject.SetActive(toggle);
+    }
+
+    public void SetSpeaker(DialogueSpeaker speaker)
+    {
+        if (speaker == null || (speaker.Speaker == null && speaker.Displayed == null && speaker.ImageID == null))
+            Toggle(false);
+
+        if (speaker.Speaker != null && speaker.Speaker != "")
+        {
+            cData = AssetDB.Instance.Characters[speaker.Speaker];
+
+            if (speaker.Displayed == null)
+                Text = cData.Name;
+            else
+                Text = speaker.Displayed;
+
+            Init(cData.Image);
+        }
+
+        if(speaker.ImageID == "")
+            base.Toggle(false);
+        else if(speaker.ImageID != null)
+            Init(cData.Images[speaker.ImageID]);
     }
 }

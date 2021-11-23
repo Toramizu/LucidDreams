@@ -29,21 +29,20 @@ public class TestScript : MonoBehaviour
     [SerializeField] List<DialogueData> dials;
     void Test1()
     {
-        DialogueData d =AssetDB.Instance.Dialogues["M_Bed"];
-        GameManager.Instance.StartDialogue(d, null);
         Debug.Log("Done");
     }
+
     void Test2()
     {
-        DialogueData d = new DialogueData();
-        d.ID = "Bed";
-        AssetDB.Instance.Dialogues["Bed"] = d;
-        AssetDB.Instance.SaveDialogues();
-        Debug.Log("Done");
+        SuccubusData sd = AssetDB.Instance.Succubi["Holy"];
+        Debug.Log(sd.ID + " - " + sd.MaxArousal);
     }
 
     void Test3()
     {
+        DialogueData d = AssetDB.Instance.Dialogues["M_Bed"];
+        GameManager.Instance.StartDialogue(d, null);
+        Debug.Log("Done");
     }
 
     void Test5()

@@ -11,7 +11,7 @@ public class TraitEffect : AbilityEffect
     public TraitEffect() { }
     public TraitEffect(EffectData data) : base(data)
     {
-        trait = GameManager.Instance.Assets.Traits[data.StringValue];
+        trait = AssetDB.Instance.Traits[data.StringValue];
     }
 
     public override void Play(Succubus user, Succubus other, int dice, Ability abi)

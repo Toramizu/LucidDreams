@@ -73,6 +73,7 @@ public class RollValue
     [XmlElement("Arousal", typeof(DialogueAddArousal2))]
     [XmlElement("Lines", typeof(DialogueLines))]
     [XmlElement("Line", typeof(DialogueLine))]
+    [XmlElement("Speaker", typeof(DialogueSpeaker))]
     //[XmlElement("Condition", typeof(DialogueCondition))]
     [XmlElement("Roll", typeof(DialogueRoll))]
     public List<DialogueElement> Elements { get; set; }

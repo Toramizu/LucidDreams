@@ -5,8 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewDreamInteraction", menuName = "Data/Interaction/Dream")]
 public class DreamInteractionData : InteractionData
 {
-    [SerializeField] CharacterData character;
-    public CharacterData Character { get { return character; } }
+    [SerializeField] string character;
+    /*[SerializeField] CharacterData character;
+    public CharacterData Character { get { return character; } }*/
 
     [SerializeField] DreamData dream;
     public DreamData Dream { get { return dream; } }
@@ -16,7 +17,7 @@ public class DreamInteractionData : InteractionData
         get
         {
             if (icon == null)
-                return character.Icon;
+                return AssetDB.Instance.Characters[character].Icon;
             else
                 return icon;
         }
@@ -24,6 +25,6 @@ public class DreamInteractionData : InteractionData
 
     public override void OnClick()
     {
-        GameManager.Instance.StartDream(dream, character.Succubus);
+        GameManager.Instance.StartDream(dream, AssetDB.Instance.Characters[character].Succubus);
     }
 }

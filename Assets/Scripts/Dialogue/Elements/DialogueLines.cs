@@ -16,10 +16,3 @@ public class DialogueLines : DialogueElement
         return false;
     }
 }
-
-public enum SpeakerPos
-{
-    None,
-    Left,
-    Right
-}

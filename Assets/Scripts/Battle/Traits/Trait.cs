@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Trait : ScriptableObject
+public abstract class Trait : ScriptableObject, XmlAsset
 {
     [SerializeField] string id;
     public string ID { get { return id; } }

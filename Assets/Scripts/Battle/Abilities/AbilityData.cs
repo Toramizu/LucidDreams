@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewAbility", menuName = "Data/Ability", order = 2)]
-public class AbilityData : ScriptableObject
+public class AbilityData : ScriptableObject, XmlAsset
 {
     [SerializeField] string title;
-    public string Title { get { return title; } }
+    public string ID { get { return title; } }
 
     [SerializeField] string description;
     public string Description { get { return description; } }

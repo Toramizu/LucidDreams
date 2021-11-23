@@ -15,16 +15,7 @@ MonoBehaviour:
   id: ChildhoodFriend
   position: {x: 100, y: 0}
   text: Childhood Friend
-  condition:
-    flag: 
-    value: 0
-    sValue: 
-    compareString: 0
-    comparator: 0
-    charaCheck: 0
-    accustomed: 0
-    love: 0
   background: {r: 0.6, g: 0.6, b: 0.6, a: 1}
   icon: {fileID: 0}
   iconColor: {r: 1, g: 1, b: 1, a: 1}
-  character: {fileID: 11400000, guid: 584f14ee58e8f8c4091e3e8938feaa13, type: 2}
+  character: ChildFriend

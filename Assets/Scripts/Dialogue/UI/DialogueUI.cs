@@ -15,7 +15,10 @@ public class DialogueUI : Window
     }
 
     [SerializeField] DialogueSpeakerUI leftSpeaker;
+    [SerializeField] DialogueSpeakerUI left2Speaker;
     [SerializeField] DialogueSpeakerUI rightSpeaker;
+    [SerializeField] DialogueSpeakerUI right2Speaker;
+
 
     [SerializeField] Window hidable;
 
@@ -47,6 +50,8 @@ public class DialogueUI : Window
         leftSpeaker.Data = GameManager.Instance.PlayerManager.Player.Data;
         leftSpeaker.Focus = false;
         rightSpeaker.Toggle(false);
+        left2Speaker.Toggle(false);
+        right2Speaker.Toggle(false);
         centerImage.Toggle(false);
 
         choicesPanel.SetActive(false);
@@ -118,65 +123,53 @@ public class DialogueUI : Window
 
     public void PlayLine(DialogueLine line)
     {
-        /*if(line == null) 
-        {
-            lines = null;
-            Next();
-            return;
-        }*/
         dialoguePanel.SetActive(true);
         Dialogue = line.Line;
 
-        /*switch (line.SpeakerPosition)
+        if(line.Focus != SpeakerPos.NoChange)
         {
-            case SpeakerPos.None:
-            default:
-                if (line.RemoveSpeaker)
-                {
-                    leftSpeaker.Toggle(false);
-                    rightSpeaker.Toggle(false);
-                }
-                else
-                {
-                    leftSpeaker.Focus = false;
-                    rightSpeaker.Focus = false;
-                }
-                break;
-            case SpeakerPos.Left:
-                if (line.RemoveSpeaker)
-                {
-                    leftSpeaker.Toggle(false);
-                }
-                else
-                {
-                    if (line.Speaker != null)
-                        leftSpeaker.Data = line.Speaker;
-                    //leftSpeaker.Text = line.Speaker;
+            leftSpeaker.Focus = false;
+            left2Speaker.Focus = false;
+            rightSpeaker.Focus = false;
+            right2Speaker.Focus = false;
 
+            switch (line.Focus)
+            {
+                case SpeakerPos.Left:
                     leftSpeaker.Focus = true;
-                    rightSpeaker.Focus = false;
-                }
+                    break;
+                case SpeakerPos.Left2:
+                    left2Speaker.Focus = true;
+                    break;
+                case SpeakerPos.Right:
+                    rightSpeaker.Focus = true;
+                    break;
+                case SpeakerPos.Right2:
+                    right2Speaker.Focus = true;
+                    break;
+            }
+        }
+    }
+
+    public void SetSpeaker(DialogueSpeaker speaker)
+    {
+        switch (speaker.SpeakerPosition)
+        {
+            case SpeakerPos.Left:
+                leftSpeaker.SetSpeaker(speaker);
+                break;
+            case SpeakerPos.Left2:
+                left2Speaker.SetSpeaker(speaker);
                 break;
             case SpeakerPos.Right:
-                if (line.RemoveSpeaker)
-                {
-                    rightSpeaker.Toggle(false);
-                }
-                else
-                {
-                    if (line.Speaker != null)
-                        rightSpeaker.Data = line.Speaker;
-
-                    rightSpeaker.Focus = true;
-                    leftSpeaker.Focus = false;
-                }
+                rightSpeaker.SetSpeaker(speaker);
                 break;
-            }
-        if (line.Line != null && line.Line != "")
-            Dialogue = line.Line.Replace("\\n", "\n");
-        else
-            PlayLine();*/
-    }
+            case SpeakerPos.Right2:
+                right2Speaker.SetSpeaker(speaker);
+                break;
+        }
+}
+
     #endregion
 
     #region Choices

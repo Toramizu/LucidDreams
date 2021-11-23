@@ -1,28 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewCharacter", menuName = "Data/Character")]
-public class CharacterData : ImageHaver
+public class CharacterData : ImageHaver, XmlAsset
 {
-    [SerializeField] string id;
-    public string ID { get { return id; } }
-    [SerializeField] string cName;
-    public override string Name { get { return cName; } }
+    [XmlAttribute("ID")]
+    public string ID { get; set; }
+    [XmlAttribute("DisplayName")]
+    public override string Name { get; set; }
 
-    /*[SerializeField] ImageSet images;
-    public ImageSet Images { get { return images; } }
-    public ImageData Image { get { return images.Default; } }*/
-    [SerializeField] Sprite icon;
-    public Sprite Icon { get { return icon; } }
+    [XmlIgnore]
+    public Sprite Icon { get { return AssetDB.Instance.Sprites[_Icon]; } }
+    [XmlAttribute("Icon")]
+    public string _Icon { get; set; }
 
-    [SerializeField] SuccubusData succubus;
-    public SuccubusData Succubus { get { return succubus; } }
+    [XmlAttribute("Succubus")]
+    public string _Succubus { get; set; }
+    [XmlIgnore]
+    public SuccubusData Succubus { get { return AssetDB.Instance.Succubi[_Succubus]; } }
 
-    [SerializeField] List<InteractionData> defaultEvents;
-    public List<InteractionData> DefaultEvents { get { return defaultEvents; } }
+    [XmlIgnore]
+    [SerializeField] List<InteractionDialogue> defaultEvents;
+    [XmlIgnore]
+    public List<InteractionDialogue> DefaultEvents { get { return defaultEvents; } }
+    [XmlIgnore]
     [SerializeField] List<RelationData> relationEvents;
+    [XmlIgnore]
     public List<RelationData> RelationEvents { get { return relationEvents; } }
+
+    [XmlIgnore]
+    [SerializeField] List<RelationshipData> relationShips;
+    [XmlIgnore]
+    public List<RelationshipData> Relationships { get { return relationShips; } }
 }
 
 [System.Serializable]

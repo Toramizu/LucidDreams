@@ -204,7 +204,7 @@ public class MapMaker : MonoBehaviour, GridManager
     {
         Debug.Log("Saving " + mapName.text);
 
-        DreamMapData data = (DreamMapData)ScriptableObject.CreateInstance("DreamMapData");
+        DreamMapData data = new DreamMapData();// (DreamMapData)ScriptableObject.CreateInstance("DreamMapData");
         //DreamMapData data = new DreamMapData();
         data.ID = mapName.text;
         data.Nodes = new List<DreamNodeData>();
@@ -221,7 +221,8 @@ public class MapMaker : MonoBehaviour, GridManager
                 nData.NodeLinks.Add(linksID[link]);
         }
 
-
+        AssetDB.Instance.DreamMaps.Add(data);
+        AssetDB.Instance.DreamMaps.SaveToXml();
         //AssetDatabase.CreateAsset(data, "Assets/Data/Dream/Maps/" + data.ID + ".asset");
         //AssetDatabase.SaveAssets();
     }
@@ -230,11 +231,11 @@ public class MapMaker : MonoBehaviour, GridManager
     {
         string map = mapName.text;
 
-        if (GameManager.Instance.Assets.Maps.ContainsKey(map))
+        if (AssetDB.Instance.DreamMaps.ContainsID(map))
         {
             Debug.Log("Loading " + map + "...");
             Clear();
-            DreamMapData data = GameManager.Instance.Assets.Maps[map];
+            DreamMapData data = AssetDB.Instance.DreamMaps[map];
             Dictionary<int, NodeLink> links = new Dictionary<int, NodeLink>();
 
             foreach (DreamNodeData node in data.Nodes)

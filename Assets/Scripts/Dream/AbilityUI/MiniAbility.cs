@@ -62,7 +62,7 @@ public class MiniAbility : Window, IPointerClickHandler, IBeginDragHandler, IDra
         }
         else
         {
-            text.text = abi.Title;
+            text.text = abi.ID;
             Color c = background.color;
             c.a = alpha;
             background.color = c;

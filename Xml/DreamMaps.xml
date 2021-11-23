@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDreamMapData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <DreamMapData ID="DreamMap1">
+    <name>DreamMap1</name>
+    <hideFlags>None</hideFlags>
+    <Node X="-10" Y="1" Content="None">
+      <Position>
+        <x>-10</x>
+        <y>1</y>
+        <z>0</z>
+      </Position>
+      <Link>0</Link>
+      <Link>1</Link>
+      <Link>2</Link>
+      <Link>3</Link>
+    </Node>
+    <Node X="-10" Y="-349" Content="Start">
+      <Position>
+        <x>-10</x>
+        <y>-349</y>
+        <z>0</z>
+      </Position>
+      <Link>0</Link>
+    </Node>
+    <Node X="290" Y="101" Content="Succubus">
+      <Position>
+        <x>290</x>
+        <y>101</y>
+        <z>0</z>
+      </Position>
+      <Link>4</Link>
+      <Link>2</Link>
+    </Node>
+    <Node X="-310" Y="101" Content="Succubus">
+      <Position>
+        <x>-310</x>
+        <y>101</y>
+        <z>0</z>
+      </Position>
+      <Link>1</Link>
+      <Link>5</Link>
+    </Node>
+    <Node X="390" Y="301" Content="Exit">
+      <Position>
+        <x>390</x>
+        <y>301</y>
+        <z>0</z>
+      </Position>
+      <Link>4</Link>
+    </Node>
+    <Node X="-10" Y="301" Content="Shop">
+      <Position>
+        <x>-10</x>
+        <y>301</y>
+        <z>0</z>
+      </Position>
+      <Link>3</Link>
+    </Node>
+    <Node X="-410" Y="301" Content="Meditation">
+      <Position>
+        <x>-410</x>
+        <y>301</y>
+        <z>0</z>
+      </Position>
+      <Link>5</Link>
+    </Node>
+  </DreamMapData>
+  <DreamMapData ID="DreamMap2">
+    <name>DreamMap2</name>
+    <hideFlags>None</hideFlags>
+    <Node X="540" Y="-299" Content="Exit">
+      <Position>
+        <x>540</x>
+        <y>-299</y>
+        <z>0</z>
+      </Position>
+      <Link>0</Link>
+    </Node>
+    <Node X="-10" Y="201" Content="Succubus">
+      <Position>
+        <x>-10</x>
+        <y>201</y>
+        <z>0</z>
+      </Position>
+      <Link>1</Link>
+      <Link>2</Link>
+      <Link>3</Link>
+    </Node>
+    <Node X="540" Y="101" Content="Boss">
+      <Position>
+        <x>540</x>
+        <y>101</y>
+        <z>0</z>
+      </Position>
+      <Link>3</Link>
+      <Link>4</Link>
+      <Link>0</Link>
+    </Node>
+    <Node X="-560" Y="101" Content="None">
+      <Position>
+        <x>-560</x>
+        <y>101</y>
+        <z>0</z>
+      </Position>
+      <Link>5</Link>
+      <Link>1</Link>
+      <Link>6</Link>
+    </Node>
+    <Node X="-560" Y="-299" Content="Start">
+      <Position>
+        <x>-560</x>
+        <y>-299</y>
+        <z>0</z>
+      </Position>
+      <Link>5</Link>
+    </Node>
+    <Node X="-10" Y="1" Content="Succubus">
+      <Position>
+        <x>-10</x>
+        <y>1</y>
+        <z>0</z>
+      </Position>
+      <Link>6</Link>
+      <Link>4</Link>
+      <Link>7</Link>
+    </Node>
+    <Node X="-10" Y="351" Content="Shop">
+      <Position>
+        <x>-10</x>
+        <y>351</y>
+        <z>0</z>
+      </Position>
+      <Link>2</Link>
+    </Node>
+    <Node X="-10" Y="-149" Content="Meditation">
+      <Position>
+        <x>-10</x>
+        <y>-149</y>
+        <z>0</z>
+      </Position>
+      <Link>7</Link>
+    </Node>
+  </DreamMapData>
+</ArrayOfDreamMapData>
