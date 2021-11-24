@@ -29,6 +29,7 @@ public class TestScript : MonoBehaviour
     [SerializeField] List<DialogueData> dials;
     void Test1()
     {
+        AssetDB.Instance.Dreams.SaveToXml();
         Debug.Log("Done");
     }
 

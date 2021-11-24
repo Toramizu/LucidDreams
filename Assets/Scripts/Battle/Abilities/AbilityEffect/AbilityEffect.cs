@@ -1,29 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public abstract class AbilityEffect
 {
-    protected int bonus;
-    protected bool usesDice;
-    protected bool usesCumulativeBonus;
-    protected float multiplier = 1;
+    [XmlAttribute("Bonus")]
+    public int Bonus { get; set; }
+    [XmlAttribute("DiceMult"), DefaultValue(0f)]
+    public float DiceMultiplier { get; set; }
+    [XmlAttribute("UsesCumulativeBonus")]
+    public bool UsesCumulativeBonus { get; set; }
 
-    protected DiceCondition condition;
+    [XmlIgnore]
+    public DiceCondition Condition { get; set; }
+    [XmlElement("Condition")]
+    public DiceCondition _Condition {
+        get
+        {
+            if (Condition is AnyDie)
+                return null;
+            else
+                return Condition;
+        }
+        set
+        {
+            if (value == null)
+                Condition = new AnyDie();
+            else
+                Condition = value;
+        }
+    }
 
-    protected virtual float AIValue { get { return 0f; } }
-
-    [SerializeField] protected bool targetsUser;
+    [XmlAttribute("TargetsUser")]
+    public bool TargetsUser { get; set; }
 
     public AbilityEffect() { }
     public AbilityEffect(EffectData data)
     {
-        bonus = data.Bonus;
-        usesDice = data.UsesDice;
-        usesCumulativeBonus = data.UsesCumulativeBonus;
-        multiplier = data.Multiplier;
-        targetsUser = data.TargetsUser;
-        condition = data.Condition.ToCondition();
+        Bonus = data.Bonus;
+        if (data.UsesDice)
+        {
+            if (data.Multiplier == 0)
+                DiceMultiplier = 1f;
+            else
+                DiceMultiplier = data.Multiplier;
+        }
+        else
+            DiceMultiplier = 0f;
+        //UsesDice = data.UsesDice;
+        UsesCumulativeBonus = data.UsesCumulativeBonus;
+        
+        TargetsUser = data.TargetsUser;
+        Condition = data.Condition.ToCondition();
     }
 
     protected int Value(int dice, Ability abi)
@@ -33,13 +63,11 @@ public abstract class AbilityEffect
 
     protected int Value(int dice, int cumulative)
     {
-        if (usesDice && multiplier == 0)
-            multiplier = 1;
+        /*if (UsesDice && DiceMultiplier == 0)
+            DiceMultiplier = 1;*/
 
-        int amount = bonus;
-        if (usesDice)
-            amount += (int)(dice * multiplier);
-        if (usesCumulativeBonus)
+        int amount = Bonus + (int)(dice * DiceMultiplier);
+        if (UsesCumulativeBonus)
             amount += cumulative;
         return amount;
     }
@@ -48,7 +76,7 @@ public abstract class AbilityEffect
 
     public void CheckAndPlay(Succubus user, Succubus other, int dice, Ability abi)
     {
-        if (condition == null || condition.Check(dice))
+        if (Condition == null || Condition.Check(dice))
             Play(user, other, dice, abi);
     }
 

@@ -3,62 +3,65 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewDream", menuName = "Data/Dream", order = 3)]
-public class DreamData : ScriptableObject, XmlAsset
+public class DreamData : XmlAsset
 {
-    [XmlIgnore]
-    [SerializeField] string id;
     [XmlAttribute("ID")]
-    public string ID { get { return id; } set { id = value; } }
+    public string ID { get; set; }
+
+    [XmlAttribute("SuccubiCount")]
+    public int SuccubiCount { get; set; }
 
     [XmlIgnore]
-    [SerializeField] int succubiCount;
-    [XmlIgnore]
-    public int SuccubiCount { get { return succubiCount; } }
+    public SuccubusData Boss { get { return AssetDB.Instance.Succubi[_Boss]; } }
+    [XmlAttribute("Boss")]
+    public string _Boss { get; set; }
 
-    [XmlIgnore]
-    [SerializeField] SuccubusData boss;
-    [XmlIgnore]
-    public SuccubusData Boss { get { return boss; } }
-
-    [XmlIgnore]
-    [SerializeField] List<string> succubi;
     [XmlIgnore]
     public List<SuccubusData> Succubi {
         get {
             List<SuccubusData> s = new List<SuccubusData>();
-            foreach (string suc in succubi)
+            foreach (string suc in _Succubi)
                 s.Add(AssetDB.Instance.Succubi[suc]);
             return s;
         }
     }
+    [XmlElement("Succubus")]
+    public List<string> _Succubi { get; set; }
+
+    [XmlElement("Shop")]
+    public ShopData Shop { get; set; }
 
     [XmlIgnore]
-    [SerializeField] ShopData shop;
-    [XmlIgnore]
-    public ShopData Shop { get { return shop; } }
+    public DreamMapData Map { get { return AssetDB.Instance.DreamMaps[_Map]; } }
+    [XmlAttribute("Map")]
+    public string _Map { get; set; }
+
 
     [XmlIgnore]
-    [SerializeField] List<string> maps;
-    [XmlIgnore]
-    public List<DreamMapData> Maps {
-        get {
-            List<DreamMapData> data = new List<DreamMapData>();
-            foreach (string map in maps)
-                data.Add(AssetDB.Instance.DreamMaps[map]);
-
-            return data;
+    public List<DreamData> Nexts
+    {
+        get
+        {
+            List<DreamData> d = new List<DreamData>();
+            foreach (string dream in _Nexts)
+                d.Add(AssetDB.Instance.Dreams[dream]);
+            return d;
         }
     }
-
-
-    [XmlIgnore]
-    [SerializeField] List<DreamData> nexts;
-    [XmlIgnore]
-    public List<DreamData> Nexts { get { return nexts; } }
+    [XmlElement("Next")]
+    public List<string> _Nexts { get; set; }
 
     [XmlIgnore]
-    [SerializeField] List<DialogueData> meditations;
-    [XmlIgnore]
-    public List<DialogueData> Meditations { get { return meditations; } }
+    public List<DialogueData> Meditations
+    {
+        get
+        {
+            List<DialogueData> m = new List<DialogueData>();
+            foreach (string medit in _Meditations)
+                m.Add(AssetDB.Instance.Dialogues[medit]);
+            return m;
+        }
+    }
+    [XmlElement("Event")]
+    public List<string> _Meditations { get; set; }
 }

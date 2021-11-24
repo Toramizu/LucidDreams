@@ -6487,43 +6487,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418fd2cb77613474994218fef0f01157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilities:
-  - {fileID: 11400000, guid: ec92035f3e8d4d44ba4bb8dadb061014, type: 2}
-  - {fileID: 11400000, guid: b926871c508eb2d40b0c32fdbee90621, type: 2}
-  - {fileID: 11400000, guid: dc8625a7b3171bc47b429f3c07deb326, type: 2}
-  - {fileID: 11400000, guid: 20d269697206c7142904f90be4224125, type: 2}
-  - {fileID: 11400000, guid: 0034cb586e0593747bda8000b9238111, type: 2}
-  - {fileID: 11400000, guid: 406a71a70fbc56f42af12d66dd2de863, type: 2}
-  - {fileID: 11400000, guid: 76f1a747c7c764943bc40d85dd31058f, type: 2}
-  - {fileID: 11400000, guid: 3905f14e1ac87d640b1168db43ac3498, type: 2}
-  - {fileID: 11400000, guid: a875ca0e3be56c148b68f83c998efe1c, type: 2}
-  - {fileID: 11400000, guid: 680cbe67a99d08845825adceb91228b1, type: 2}
-  - {fileID: 11400000, guid: 7d1b4bd644d3eb74b9f681e48e6d4a61, type: 2}
-  - {fileID: 11400000, guid: 35f6aac254a14574bbd9a815d8e05c42, type: 2}
-  - {fileID: 11400000, guid: 8166dfd518640624e820390d2966cc39, type: 2}
-  - {fileID: 11400000, guid: b1d7bd3e759c985479a69bd80e165d1c, type: 2}
-  - {fileID: 11400000, guid: e602600c3a79cab4dba9e84fe943419c, type: 2}
-  - {fileID: 11400000, guid: 9a29abacb7ed7e64f84a43c942c56a69, type: 2}
-  - {fileID: 11400000, guid: fe8d9b4b5473d0640adf358963a8ae4c, type: 2}
-  - {fileID: 11400000, guid: 0cb5470ef4f989247abdc4c85b7388eb, type: 2}
-  - {fileID: 11400000, guid: 30197cc929fecab47b5a4016ec71d15a, type: 2}
-  - {fileID: 11400000, guid: 0ba81dee84c1ace4f91b0db821fe74de, type: 2}
-  - {fileID: 11400000, guid: 72a449947d6d71a4b9aceafa46a4cb47, type: 2}
-  - {fileID: 11400000, guid: 1ef0508d28cef7b48b904b38d037192a, type: 2}
-  - {fileID: 11400000, guid: 7f193c7dc7d2ceb488f2c25d85603777, type: 2}
-  - {fileID: 11400000, guid: 7f193c7dc7d2ceb488f2c25d85603777, type: 2}
-  - {fileID: 11400000, guid: b04d7057459cc4e4c80fef5faf855df9, type: 2}
-  - {fileID: 11400000, guid: 10b73eb6ee0eabc4d9ec356d7de5943c, type: 2}
-  - {fileID: 11400000, guid: c03a7bc8d9ecd834295c1a3568368ec4, type: 2}
-  - {fileID: 11400000, guid: 937c802e2d7fb8642b9697b21454ff0e, type: 2}
-  - {fileID: 11400000, guid: fa9aeb583b65ed34bb574ab11fbe5435, type: 2}
-  - {fileID: 11400000, guid: aa860c130769a8340a8151b67c28472b, type: 2}
-  - {fileID: 11400000, guid: ba6ceb27438170746a3c9deff163e585, type: 2}
-  - {fileID: 11400000, guid: 7c25d53b74d7af448b3e1aaad513cbdd, type: 2}
-  - {fileID: 11400000, guid: ada676e32bfbefa41a264fc1812ba785, type: 2}
-  - {fileID: 11400000, guid: 9d0247bbca282444dae3f09d7c986d50, type: 2}
-  - {fileID: 11400000, guid: 5ed11558d3d1f78418738ada095df699, type: 2}
-  dreams: []
+  dreams:
+  - {fileID: 11400000, guid: 9a7e3f7eb2c10554883976dfeabdfbd8, type: 2}
+  - {fileID: 11400000, guid: 1d471242214c3174b88f92bfd7a164fa, type: 2}
   traits:
   - {fileID: 11400000, guid: 40f1157b268952141b03f9fb7a58076b, type: 2}
   - {fileID: 11400000, guid: d0ce6147de8903e40adf3384ca1b66b4, type: 2}

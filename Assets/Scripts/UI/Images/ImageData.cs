@@ -9,7 +9,7 @@ public class ImageData
     [XmlAttribute("ID")]
     public string ID { get; set; }
     [XmlIgnore]
-    public Sprite Image { get { return AssetDB.Instance.Sprites[_Image]; } }
+    public Sprite Image { get { return AssetDB.Instance.Images[_Image]; } }
     [XmlAttribute("ImageID")]
     public string _Image { get; set; }
     [XmlAttribute("Source")]

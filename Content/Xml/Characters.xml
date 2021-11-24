@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCharacterData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CharacterData ID="ChildFriend" DisplayName="Childhood Friend" Icon="CF_T" Succubus="Holy">
+    <Images>
+      <Image ID="" ImageID="ChFriend" Source="https://kisekaejade.com/" />
+    </Images>
+  </CharacterData>
+  <CharacterData ID="BigSis" DisplayName="Big Sis" Icon="BS_T" Succubus="Maid">
+    <Images>
+      <Image ID="" ImageID="BigSis" Source="https://kisekaejade.com/" />
+    </Images>
+  </CharacterData>
+</ArrayOfCharacterData>

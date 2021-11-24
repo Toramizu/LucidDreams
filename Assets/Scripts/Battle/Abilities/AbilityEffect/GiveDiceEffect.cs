@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GiveDiceEffect : AbilityEffect
-{
-    [SerializeField] int amount;
-    
+{    
     public GiveDiceEffect() { }
     public GiveDiceEffect(EffectData data) : base(data)
     { }
 
     public override void Play(Succubus user, Succubus other, int dice, Ability abi)
     {
-        if (targetsUser)
+        if (TargetsUser)
             user.Give(Value(dice, abi));
         else
             other.Give(Value(dice, abi));
@@ -21,7 +19,6 @@ public class GiveDiceEffect : AbilityEffect
     public override AbilityEffect Clone()
     {
         GiveDiceEffect e = new GiveDiceEffect();
-        e.amount = amount;
         return e;
     }
 }

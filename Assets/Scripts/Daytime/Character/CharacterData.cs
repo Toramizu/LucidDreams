@@ -11,7 +11,9 @@ public class CharacterData : ImageHaver, XmlAsset
     public override string Name { get; set; }
 
     [XmlIgnore]
-    public Sprite Icon { get { return AssetDB.Instance.Sprites[_Icon]; } }
+    public Sprite Icon { get {
+            Debug.Log(_Icon);
+            return AssetDB.Instance.Images[_Icon]; } }
     [XmlAttribute("Icon")]
     public string _Icon { get; set; }
 
@@ -21,16 +23,16 @@ public class CharacterData : ImageHaver, XmlAsset
     public SuccubusData Succubus { get { return AssetDB.Instance.Succubi[_Succubus]; } }
 
     [XmlIgnore]
-    [SerializeField] List<InteractionDialogue> defaultEvents;
+    [SerializeField] List<InteractionDialogue> defaultEvents = new List<InteractionDialogue>();
     [XmlIgnore]
     public List<InteractionDialogue> DefaultEvents { get { return defaultEvents; } }
     [XmlIgnore]
-    [SerializeField] List<RelationData> relationEvents;
+    [SerializeField] List<RelationData> relationEvents = new List<RelationData>();
     [XmlIgnore]
     public List<RelationData> RelationEvents { get { return relationEvents; } }
 
     [XmlIgnore]
-    [SerializeField] List<RelationshipData> relationShips;
+    [SerializeField] List<RelationshipData> relationShips = new List<RelationshipData>();
     [XmlIgnore]
     public List<RelationshipData> Relationships { get { return relationShips; } }
 }

@@ -67,8 +67,8 @@ public class Ability
             Link = null;
 
         DiceSlots.Clear();
-        for(int i = 0; i < data.Conditions.Count; i++)
-            DiceSlots.Add(new DieSlot(data.Conditions[i], abiUI.GetDieSlot(i), this));
+        for(int i = 0; i < data.Slots.Count; i++)
+            DiceSlots.Add(new DieSlot(data.Slots[i], abiUI.GetDieSlot(i), this));
 
         LockSlot = new LockSlot(this);
         
@@ -78,8 +78,8 @@ public class Ability
             Count = data.Total;
 
         effects.Clear();
-        foreach (EffectData effect in data.Effects)
-            effects.Add(effect.ToEffect());
+        foreach (AbilityEffect effect in data.Effects)
+            effects.Add(effect);
 
         Locked = false;
         Used = 0;

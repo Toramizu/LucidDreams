@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Character
+public class Character : XmlAsset
 {
     public string ID { get { return data.ID; } }
 

@@ -9,15 +9,15 @@ public class DreamInteractionData : InteractionData
     /*[SerializeField] CharacterData character;
     public CharacterData Character { get { return character; } }*/
 
-    [SerializeField] DreamData dream;
-    public DreamData Dream { get { return dream; } }
+    [SerializeField] string dream;
+    public DreamData Dream { get { return AssetDB.Instance.Dreams[dream]; } }
 
     public override Sprite Icon
     {
         get
         {
             if (icon == null)
-                return AssetDB.Instance.Characters[character].Icon;
+                return AssetDB.Instance.CharacterDatas[character].Icon;
             else
                 return icon;
         }
@@ -25,6 +25,6 @@ public class DreamInteractionData : InteractionData
 
     public override void OnClick()
     {
-        GameManager.Instance.StartDream(dream, AssetDB.Instance.Characters[character].Succubus);
+        GameManager.Instance.StartDream(Dream, AssetDB.Instance.CharacterDatas[character].Succubus);
     }
 }

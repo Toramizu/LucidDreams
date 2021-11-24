@@ -1,22 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Xml.Serialization;
 using UnityEngine;
 
 [System.Serializable]
 public class ShopData
 {
-    [SerializeField] List<AbilityData> abilities;
-    public List<AbilityData> Abilities { get { return abilities; } }
+    [XmlAttribute("MinAbis"), DefaultValue(1)]
+    public int MinAbilities { get; set; }
 
-    [SerializeField] int minAbilities;
-    public int MinAbilities { get { return minAbilities; } }
+    [XmlAttribute("MaxAbis"), DefaultValue(1)]
+    public int MaxAbilities { get; set; }
 
-    [SerializeField] int maxAbilities;
-    public int MaxAbilities { get { return maxAbilities; } }
+    [XmlAttribute("IncrementCost"), DefaultValue(5)]
+    public int IncrementCost { get; set; }
 
-    [SerializeField] int incrementCost = 1;
-    public int IncrementCost  { get { return incrementCost; } }
-
-    [SerializeField] float abilityMod = 1;
-    public float AbilityMod { get { return abilityMod; } }
+    [XmlAttribute("AbilityCostMod"), DefaultValue(1f)]
+    public float AbilityMod { get; set; }
 }

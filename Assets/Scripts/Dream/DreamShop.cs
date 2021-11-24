@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,22 +16,25 @@ public class DreamShop : Window
 
     ShopData data;
     
-    public void InitShop(ShopData data)
+    public void InitShop(ShopData data, List<SuccubusData> succubusAbilities)
     {
         Open();
 
         if (this.data != data)
-            FirstLoad(data);
+            FirstLoad(data, succubusAbilities);
         else
             RefreshLoad();
 
         GameManager.Instance.DreamManager.CanMove = false;
     }
 
-    void FirstLoad(ShopData data)
+    void FirstLoad(ShopData data, List<SuccubusData> succubusAbilities)
     {
         this.data = data;
-        List<AbilityData> aDatas = new List<AbilityData>(data.Abilities);
+        //List<AbilityData> aDatas = new List<AbilityData>(data.Abilities);
+        List<AbilityData> aDatas = AssetDB.Instance.Abilities.ToList().Where(e => e.ShopAbility).ToList();
+        foreach (SuccubusData succ in succubusAbilities)
+            aDatas.Add(succ.Abilities[Random.Range(0, succ._Abilities.Count)]);
         int abiCount;
         if (data.MinAbilities == 0)
             abiCount = data.MaxAbilities;

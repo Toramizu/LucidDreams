@@ -90,13 +90,13 @@ public class DieSlot :  IDie
     }
 
     public DieSlot() { }
-    public DieSlot(ConditionData condition, DieSlotUI slotUI, Ability ability)
+    public DieSlot(DiceCondition condition, DieSlotUI slotUI, Ability ability)
     {
         this.ability = ability;
         SlotUI = slotUI;
         slotUI.Init(this);
 
-        SetCondition(condition.ToCondition());
+        SetCondition(condition);
         Link = ability.Link;
     }
 

@@ -79,7 +79,7 @@ public class DialogueSpeakerUI : ImageUI
 
         if (speaker.Speaker != null && speaker.Speaker != "")
         {
-            cData = AssetDB.Instance.Characters[speaker.Speaker];
+            cData = AssetDB.Instance.CharacterDatas[speaker.Speaker];
 
             if (speaker.Displayed == null)
                 Text = cData.Name;

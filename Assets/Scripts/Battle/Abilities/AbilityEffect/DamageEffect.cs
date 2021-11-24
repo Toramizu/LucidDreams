@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class DamageEffect : AbilityEffect
 {
-    protected override float AIValue { get { return 10f; } }
-
     public DamageEffect() { }
     public DamageEffect(EffectData data) : base(data)
     { }
 
     public override void Play(Succubus user, Succubus other, int dice, Ability abi)
     {
-        if (targetsUser)
+        if (TargetsUser)
             user.InflictDamage(
                 CalculateDamages(Value(dice, abi), user, user)
                 );

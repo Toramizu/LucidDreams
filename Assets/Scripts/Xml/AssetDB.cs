@@ -20,16 +20,19 @@ public class AssetDB
         }
     }
 
-    XmlManager xml;
-
     public AssetDB()
     {
-        xml = new XmlManager();
+        Images = new SpriteDB();
+        Images.LoadImages();
 
-        Sprites = new SpriteDB();
+        Abilities = new XmlDB<AbilityData>("Abilities");
+        Abilities.LoadFromXml();
 
         Dialogues = new XmlDB<DialogueData>("Dialogues");
         Dialogues.LoadFromXml();
+
+        Dreams = new XmlDB<DreamData>("Dreams");
+        Dreams.LoadFromXml();
 
         DreamMaps = new XmlDB<DreamMapData>("DreamMaps");
         DreamMaps.LoadFromXml();
@@ -37,46 +40,33 @@ public class AssetDB
         Succubi = new XmlDB<SuccubusData>("Succubi");
         Succubi.LoadFromXml();
 
-        Characters = new XmlDB<CharacterData>("Characters");
-        Characters.LoadFromXml();
-    }
-    #region Scriptable Objects & Sprites
-    public XmlDB<AbilityData> Abilities { get; private set; }
-    public void InitAbilities(List<AbilityData> lst)
-    {
-        Abilities = new XmlDB<AbilityData>("Abilities");
-        Abilities.AddRange(lst);
-    }
-    public XmlDB<DreamData> Dreams { get; private set; }
-    public void InitDreams(List<DreamData> lst)
-    {
-        Dreams = new XmlDB<DreamData>("Dreams");
-        Dreams.AddRange(lst);
-    }
-    public XmlDB<SuccubusData> Succubi { get; private set; }
-    public void InitSuccubi(List<SuccubusData> lst)
-    {
-        Succubi = new XmlDB<SuccubusData>("Succubi");
-        Succubi.AddRange(lst);
-    }
-    public XmlDB<Trait> Traits { get; private set; }
-    public void InitTraits(List<Trait> lst)
-    {
+        CharacterDatas = new XmlDB<CharacterData>("Characters");
+        CharacterDatas.LoadFromXml();
+        Characters = new XmlDB<Character>("Characters");
+        LoadCharacters();
+
         Traits = new XmlDB<Trait>("Traits");
-        Traits.AddRange(lst);
-    }
-    public XmlDB<CharacterData> Characters { get; private set; }
-    public void InitCharacters(List<CharacterData> lst)
-    {
-        Characters = new XmlDB<CharacterData>("Characters");
-        Characters.AddRange(lst);
+        Traits.AddRange(GameManager.Instance.Assets.Traits);
     }
 
-    public SpriteDB Sprites { get; set; }
-    #endregion
+    public SpriteDB Images { get; private set; }
 
+    public XmlDB<AbilityData> Abilities { get; private set; }
+    public XmlDB<CharacterData> CharacterDatas { get; private set; }
     public XmlDB<DialogueData> Dialogues { get; private set; }
+    public XmlDB<DreamData> Dreams { get; private set; }
     public XmlDB<DreamMapData> DreamMaps { get; private set; }
+    public XmlDB<SuccubusData> Succubi { get; private set; }
+
+    public XmlDB<Trait> Traits { get; private set; }
+
+    public XmlDB<Character> Characters { get; private set; }
+    void LoadCharacters()
+    {
+        //ToDo : Load from save
+        foreach (CharacterData data in CharacterDatas.ToList())
+            Characters.Add(new Character(data));
+    }
 }
 
 public class XmlDB<T> where T : XmlAsset
@@ -148,16 +138,25 @@ public class XmlDB<T> where T : XmlAsset
 
     public void LoadFromXml()
     {
-        List<T> data;
         try
         {
-            data = LoadXml();
+            LoadDirXml(contentPath);
+            string[] dirs = Directory.GetDirectories(contentPath);
+            foreach (string dir in dirs)
+                LoadDirXml(dir);
         }
         catch (Exception e)
         {
             throw new Exception("Error loading " + classId + " : " + e.Message);
         }
-        //List<T> data = LoadXml();
+    }
+
+    void LoadDirXml(string path)
+    {
+        List<T> data;
+
+        data = LoadXml(path);
+
         if (assets == null)
             assets = new Dictionary<string, T>();
 
@@ -165,23 +164,26 @@ public class XmlDB<T> where T : XmlAsset
             assets[d.ID] = d;
     }
 
-    static string contentPath = Application.dataPath + @"/../Xml/";
+    static string contentPath = Application.dataPath + @"/../Content/Xml/";
     static string ext = ".xml";
-    string dialoguesPath { get { return contentPath + classId + ext; } }
+    string fileName { get { return classId + ext; } }
 
     void SaveXml(List<T> data)
     {
         XmlSerializer ser = new XmlSerializer(typeof(List<T>));
-        TextWriter writer = new StreamWriter(dialoguesPath);
+        TextWriter writer = new StreamWriter(contentPath + fileName);
 
         ser.Serialize(writer, data);
         writer.Close();
     }
 
-    List<T> LoadXml()
+    List<T> LoadXml(string path)
     {
+        if (!File.Exists(path + fileName))
+            return null;
+
         XmlSerializer ser = new XmlSerializer(typeof(List<T>));
-        FileStream fs = new FileStream(dialoguesPath, FileMode.Open);
+        FileStream fs = new FileStream(path + fileName, FileMode.Open);
         return (List<T>)ser.Deserialize(fs);
     }
     #endregion
@@ -194,6 +196,9 @@ public interface XmlAsset
 
 public class SpriteDB
 {
+    static string imagesPath = Application.dataPath + @"/../Content/Images/";
+    static List<string> imgExts = new List<string>() { ".png", ".jpg" };
+
     Dictionary<string, Sprite> sprites;
 
     public Sprite this[string id]
@@ -212,5 +217,39 @@ public class SpriteDB
         this.sprites = new Dictionary<string, Sprite>();
         foreach (Sprite s in sprites)
             this.sprites.Add(s.name, s);
+    }
+
+    public void LoadImages()
+    {
+        try
+        {
+            AddRange(GetSprites(imagesPath));
+            string[] dirs = Directory.GetDirectories(imagesPath);
+            foreach (string dir in dirs)
+                AddRange(GetSprites(dir));
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Error loading Images : " + e.Message);
+        }
+    }
+
+    List<Sprite> GetSprites(string path)
+    {
+        List<Sprite> icons = new List<Sprite>();
+        DirectoryInfo d = new DirectoryInfo(path);
+
+        foreach (string ext in imgExts)
+            foreach (FileInfo file in d.GetFiles("*" + ext))
+            {
+                Texture2D texture = new Texture2D(64, 64, TextureFormat.ARGB32, false);
+                texture.LoadImage(File.ReadAllBytes((file.FullName)));
+
+                Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+                sprite.name = Path.GetFileNameWithoutExtension(file.Name);
+                icons.Add(sprite);
+            }
+
+        return icons;
     }
 }

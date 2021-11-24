@@ -14,7 +14,7 @@ public class CharacterInteractionData : InteractionData
     {
         get {
             if (icon == null)
-                return AssetDB.Instance.Characters[character].Icon;
+                return AssetDB.Instance.CharacterDatas[character].Icon;
             else
                 return icon;
         }
@@ -26,7 +26,7 @@ public class CharacterInteractionData : InteractionData
         /*InteractionDialogue inter = GameManager.Instance.Assets.GetCharacter(character.ID).GetInteraction();
         inter.Play();*/
 
-
-        GameManager.Instance.Assets.GetCharacter(character).PlayInteraction();
+        AssetDB.Instance.Characters[character].PlayInteraction();
+        //GameManager.Instance.Assets.GetCharacter(character).PlayInteraction();
     }
 }

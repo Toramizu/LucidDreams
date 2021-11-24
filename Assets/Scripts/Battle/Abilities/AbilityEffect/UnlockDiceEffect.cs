@@ -10,7 +10,7 @@ public class UnlockDiceEffect : AbilityEffect
     
     public override void Play(Succubus user, Succubus other, int dice, Ability abi)
     {
-        if (targetsUser)
+        if (TargetsUser)
         {
             List<RolledDie> rolled = new List<RolledDie>(user.Dice.RolledDice);
 

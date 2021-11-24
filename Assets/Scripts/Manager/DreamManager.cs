@@ -13,6 +13,7 @@ public class DreamManager : Window, GridManager
     //[SerializeField] MeditationPanel medit;
     [SerializeField] List<DialogueData> meditations;
     List<DialogueData> dreamMeditations;
+    List<SuccubusData> remainingSuccubi;
 
     [SerializeField] DreamToken playerToken;
 
@@ -44,7 +45,7 @@ public class DreamManager : Window, GridManager
 
     public void ContinueDream(DreamData data)
     {
-        DreamMapData map = data.Maps[Random.Range(0, data.Maps.Count)];
+        DreamMapData map = data.Map;
 
         Dictionary<NodeContent, List<DreamNode>> nodes = nodePanel.AddNodes(map.Nodes, this);
         FillNodes(nodes, map, data);
@@ -98,12 +99,12 @@ public class DreamManager : Window, GridManager
         if (nodes.ContainsKey(NodeContent.Succubus))
         {
             List<DreamNode> succubi = new List<DreamNode>(nodes[NodeContent.Succubus]);
-            List<SuccubusData> opponents = new List<SuccubusData>(data.Succubi);
+            remainingSuccubi = new List<SuccubusData>(data.Succubi);
 
-            for (int i = 0; i < data.SuccubiCount && succubi.Count > 0 && opponents.Count > 0; i++)
+            for (int i = 0; i < data.SuccubiCount && succubi.Count > 0 && remainingSuccubi.Count > 0; i++)
             {
-                SuccubusData rSucc = opponents[Random.Range(0, opponents.Count)];
-                opponents.Remove(rSucc);
+                SuccubusData rSucc = remainingSuccubi[Random.Range(0, remainingSuccubi.Count)];
+                remainingSuccubi.Remove(rSucc);
                 DreamNode node = succubi[Random.Range(0, succubi.Count)];
                 succubi.Remove(node);
                 node.SetCharacter(rSucc, false);
@@ -139,7 +140,7 @@ public class DreamManager : Window, GridManager
     }
     public void OpenShop(ShopData data)
     {
-        shop.InitShop(data);
+        shop.InitShop(data, remainingSuccubi);
     }
 
     public void Meditate()

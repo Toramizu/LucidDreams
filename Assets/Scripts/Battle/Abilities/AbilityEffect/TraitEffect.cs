@@ -1,31 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class TraitEffect : AbilityEffect
 {
-    Trait trait;
-
-    protected override float AIValue { get { return trait.AIValue; } }
+    [XmlIgnore]
+    public Trait Trait {
+        get { return AssetDB.Instance.Traits[_Trait]; }
+        set { _Trait = value.ID; }
+    }
+    [XmlAttribute("Trait")]
+    public string _Trait { get; set; }
 
     public TraitEffect() { }
     public TraitEffect(EffectData data) : base(data)
     {
-        trait = AssetDB.Instance.Traits[data.StringValue];
+        _Trait = data.StringValue;
     }
 
     public override void Play(Succubus user, Succubus other, int dice, Ability abi)
     {
-        if (targetsUser)
-            user.Traits.AddTrait(trait, Value(dice, abi));
+        if (TargetsUser)
+            user.Traits.AddTrait(Trait, Value(dice, abi));
         else
-            other.Traits.AddTrait(trait, Value(dice, abi));
+            other.Traits.AddTrait(Trait, Value(dice, abi));
     }
 
     public override AbilityEffect Clone()
     {
         TraitEffect e = new TraitEffect();
-        e.trait = trait;
+        e.Trait = Trait;
         return e;
     }
 }

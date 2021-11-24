@@ -1,33 +1,76 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Xml.Serialization;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewAbility", menuName = "Data/Ability", order = 2)]
-public class AbilityData : ScriptableObject, XmlAsset
+public class AbilityData : XmlAsset
 {
-    [SerializeField] string title;
-    public string ID { get { return title; } }
+    [XmlAttribute("ID")]
+    public string ID { get; set; }
 
-    [SerializeField] string description;
-    public string Description { get { return description; } }
+    [XmlElement("Description")]
+    public string Description { get; set; }
 
-    [SerializeField] List<ConditionData> conditions;
-    public List<ConditionData> Conditions { get { return conditions; } }
+    [XmlIgnore]
+    public List<DiceCondition> Slots { get { return _Slots.Conditions; } }
+    [XmlElement("Slots")]
+    public AbilityConditions _Slots { get; set; }
 
-    [SerializeField] int uses;
-    public int Uses { get { return uses; } }
+    [XmlAttribute("Uses"), DefaultValue(1)]
+    public int Uses { get; set; }
 
-    [SerializeField] bool equalDice;
-    public bool EqualDice { get { return equalDice; } }
+    [XmlAttribute("EqualDice"), DefaultValue(false)]
+    public bool EqualDice { get; set; }
 
-    [SerializeField] int total;
-    public int Total { get { return total; } }
-    
-    [SerializeField] List<EffectData> effects;
-    public List<EffectData> Effects { get { return effects; } }
+    [XmlAttribute("Total"), DefaultValue(0)]
+    public int Total { get; set; }
 
-    [SerializeField] int price;
-    public int Price { get { return price; } }
+    [XmlIgnore]
+    public List<AbilityEffect> Effects { get { return _Effects.Effects; } }
+    [XmlElement("Effects")]
+    public AbilityEffects _Effects { get; set; }
+
+    [XmlAttribute("Price")]
+    public int Price { get; set; }
+
+    [XmlAttribute("Shop"), DefaultValue(false)]
+    public bool ShopAbility { get; set; }
+}
+
+public class AbilityConditions
+{
+    [XmlElement("Any", typeof(AnyDie))]
+    [XmlElement("Equals", typeof(EqualsDie))]
+    [XmlElement("MinMax", typeof(MinMaxDie))]
+    [XmlElement("EvenOdd", typeof(EvenOddDie))]
+    public List<DiceCondition> Conditions { get; set; }
+
+    public AbilityConditions() { }
+    public AbilityConditions(List<ConditionData> conds)
+    {
+        Conditions = new List<DiceCondition>();
+        foreach (ConditionData c in conds)
+            Conditions.Add(c.ToCondition());
+    }
+}
+
+public class AbilityEffects
+{
+    [XmlElement("Roll", typeof(RollDiceEffect))]
+    [XmlElement("Trait", typeof(TraitEffect))]
+    [XmlElement("UnlockDice", typeof(UnlockDiceEffect))]
+    [XmlElement("Damage", typeof(DamageEffect))]
+    [XmlElement("Give", typeof(GiveDiceEffect))]
+    public List<AbilityEffect> Effects { get; set; }
+
+    public AbilityEffects() { }
+    public AbilityEffects(List<EffectData> effects)
+    {
+        Effects = new List<AbilityEffect>();
+        foreach (EffectData c in effects)
+            Effects.Add(c.ToEffect());
+    }
 }
 
 [System.Serializable]

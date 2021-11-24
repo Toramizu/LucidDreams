@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class RollDiceEffect : AbilityEffect
 {
-    [SerializeField] ConditionData rollCondition;
+    [XmlIgnore]
+    ConditionData rollCondition;
 
     public RollDiceEffect() { }
     public RollDiceEffect(EffectData data) : base(data)
@@ -20,7 +22,7 @@ public class RollDiceEffect : AbilityEffect
         else
             cond = rollCondition.ToCondition();
 
-        if (targetsUser)
+        if (TargetsUser)
             user.Roll(Value(dice, abi), cond);
         else
             other.Roll(Value(dice, abi), cond);
