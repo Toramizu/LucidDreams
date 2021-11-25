@@ -6,11 +6,14 @@ using UnityEngine.UI;
 public class DayManager : Window
 {
     [SerializeField] Clock clock;
+    public int Time { get { return clock.Time; } }
 
     [SerializeField] Image backgroundImage;
     [SerializeField] List<Sprite> backgrounds;
 
     [SerializeField] MainInteractionButton interactPrefab;
+    [SerializeField] MainInteractionButton mainInteractPrefab;
+    [SerializeField] SubInteractionButton subInteractPrefab;
 
     [SerializeField] List<DayTimeSlot> mainInteractions;
 
@@ -19,24 +22,41 @@ public class DayManager : Window
     public void Open(int time)
     {
         clock.Time = time;
-        AddInteractions();
+        AddLocation();
         backgroundImage.sprite = backgrounds[0];
         FadeIn();
     }
 
-    void AddInteractions()
+    void AddLocation()
     {
-        foreach(MainInteractionButton inter in interactions.Values)
-            Destroy(inter.gameObject);
+        Clear();
 
-        interactions.Clear();
+        Dictionary<string, List<LocationData>> notPlaced = new Dictionary<string, List<LocationData>>();
+        foreach (LocationData location in AssetDB.Instance.Locations.ToList())
+            if (location.Check)
+            {
+                if (location.Parent == null)
+                {
+                    AddLocation(null, location);
+                    foreach (LocationData loc in notPlaced[location.ID])
+                        AddLocation(location.ID, loc);
+                }
+                else if (interactions.ContainsKey(location.Parent))
+                {
+                    AddLocation(location.Parent, location);
+                }
+                else
+                {
+                    if (!notPlaced.ContainsKey(location.Parent))
+                        notPlaced.Add(location.Parent, new List<LocationData>());
 
-        foreach (InteractionData inter in mainInteractions[clock.Time].Interactions)
-            if (inter.Check)
-                AddInteraction(null, inter);
+                    notPlaced[location.Parent].Add(location);
+                }
+
+            }
     }
 
-    public void AddInteraction(string main, InteractionData data)
+    public void AddLocation(string main, LocationData data)
     {
         if (!data.Check)
             return;
@@ -61,11 +81,19 @@ public class DayManager : Window
         }
     }
 
-    public void AdvanceTime()
+    public void Clear()
     {
-        int t = clock.AdvanceTime();
+        foreach (MainInteractionButton inter in interactions.Values)
+            Destroy(inter.gameObject);
+
+        interactions.Clear();
+    }
+
+    public void AdvanceTime(int amount)
+    {
+        int t = clock.AdvanceTime(amount);
         backgroundImage.sprite = backgrounds[t];
-        AddInteractions();
+        AddLocation();
     }
 }
 

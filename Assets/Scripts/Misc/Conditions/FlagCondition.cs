@@ -36,3 +36,13 @@ public class FlagCondition : Condition
         }
     }
 }
+
+public enum Comparator
+{
+    Equal,
+    Different,
+    Smaller,
+    SmallerOrEqual,
+    BiggerOrEqual,
+    Bigger
+}

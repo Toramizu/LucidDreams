@@ -27,6 +27,6 @@ public abstract class InteractionData : ScriptableObject
 
     public void AdvanceTime()
     {
-        GameManager.Instance.DayManager.AdvanceTime();
+        GameManager.Instance.DayManager.AdvanceTime(1);
     }
 }

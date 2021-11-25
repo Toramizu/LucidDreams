@@ -9,15 +9,15 @@ public abstract class InteractionButton : MonoBehaviour
     [SerializeField] protected Image background;
     [SerializeField] Image icon;
 
-    protected InteractionData data;
+    protected InteractionEvent data;
 
-    public virtual void Init(InteractionData data)
+    public virtual void Init(InteractionEvent data)
     {
         this.data = data;
 
         if (data != null)
         {
-            background.color = data.Background;
+            background.color = data.BackgroundColor;
             icon.sprite = data.Icon;
             icon.color = data.IconColor;
         }
@@ -25,6 +25,7 @@ public abstract class InteractionButton : MonoBehaviour
 
     public void OnClick()
     {
-        data.OnClick();
+        data.Play();
     }
 }
+delegate void GameAction();

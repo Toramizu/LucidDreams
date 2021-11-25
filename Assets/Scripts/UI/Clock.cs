@@ -36,6 +36,12 @@ public class Clock : MonoBehaviour
         Time++;
         return currentTime;
     }
+
+    public int AdvanceTime(int amount)
+    {
+        Time += amount;
+        return currentTime;
+    }
 }
 
 public enum TimeSlot

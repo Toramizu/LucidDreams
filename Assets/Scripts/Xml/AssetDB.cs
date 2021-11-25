@@ -40,6 +40,9 @@ public class AssetDB
         Succubi = new XmlDB<SuccubusData>("Succubi");
         Succubi.LoadFromXml();
 
+        Locations = new XmlDB<LocationData>("Locations");
+        Locations.LoadFromXml();
+
         CharacterDatas = new XmlDB<CharacterData>("Characters");
         CharacterDatas.LoadFromXml();
         Characters = new XmlDB<Character>("Characters");
@@ -56,6 +59,7 @@ public class AssetDB
     public XmlDB<DialogueData> Dialogues { get; private set; }
     public XmlDB<DreamData> Dreams { get; private set; }
     public XmlDB<DreamMapData> DreamMaps { get; private set; }
+    public XmlDB<LocationData> Locations { get; private set; }
     public XmlDB<SuccubusData> Succubi { get; private set; }
 
     public XmlDB<Trait> Traits { get; private set; }

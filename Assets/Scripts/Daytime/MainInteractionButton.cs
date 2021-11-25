@@ -13,7 +13,7 @@ public class MainInteractionButton : InteractionButton
         set
         {
             if(value == null)
-                text.text = data.Text;
+                text.text = data.Name;
             else
                 text.text = value;
         }
@@ -23,7 +23,7 @@ public class MainInteractionButton : InteractionButton
     List<SubInteractionButton> subs = new List<SubInteractionButton>();
     [SerializeField] float iconGap;
 
-    public override void Init(InteractionData data)
+    public override void Init(InteractionEvent data)
     {
         base.Init(data);
 
@@ -33,7 +33,7 @@ public class MainInteractionButton : InteractionButton
         Text = null;
     }
 
-    public void AddSub(InteractionData data)
+    public void AddSub(InteractionEvent data)
     {
         SubInteractionButton s = Instantiate(subPrefab, transform, false);
         subs.Add(s);

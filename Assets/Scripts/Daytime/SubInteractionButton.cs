@@ -7,7 +7,7 @@ public class SubInteractionButton : InteractionButton, IPointerEnterHandler, IPo
 {
     MainInteractionButton mainInteraction;
 
-    public void Init(InteractionData data, MainInteractionButton main)
+    public void Init(InteractionEvent data, MainInteractionButton main)
     {
         mainInteraction = main;
         Init(data);
@@ -22,7 +22,7 @@ public class SubInteractionButton : InteractionButton, IPointerEnterHandler, IPo
     public void OnPointerEnter(PointerEventData eventData)
     {
         if(mainInteraction != null)
-            mainInteraction.Text = data.Text;
+            mainInteraction.Text = data.Name;
     }
 
     public void OnPointerExit(PointerEventData eventData)
