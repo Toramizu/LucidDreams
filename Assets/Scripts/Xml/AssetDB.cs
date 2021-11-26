@@ -188,7 +188,9 @@ public class XmlDB<T> where T : XmlAsset
 
         XmlSerializer ser = new XmlSerializer(typeof(List<T>));
         FileStream fs = new FileStream(path + fileName, FileMode.Open);
-        return (List<T>)ser.Deserialize(fs);
+        List<T> assets = (List<T>)ser.Deserialize(fs);
+        fs.Close();
+        return assets;
     }
     #endregion
 }
@@ -203,22 +205,26 @@ public class SpriteDB
     static string imagesPath = Application.dataPath + @"/../Content/Images/";
     static List<string> imgExts = new List<string>() { ".png", ".jpg" };
 
-    Dictionary<string, Sprite> sprites;
+    Dictionary<string, Sprite> sprites = new Dictionary<string, Sprite>();
 
     public Sprite this[string id]
     {
         get
         {
-            if (sprites.ContainsKey(id))
+            if (id != null && sprites.ContainsKey(id))
                 return sprites[id];
             else
                 return null;
         }
     }
 
+    public int Count
+    {
+        get { return sprites.Count; }
+    }
+
     public void AddRange(List<Sprite> sprites)
     {
-        this.sprites = new Dictionary<string, Sprite>();
         foreach (Sprite s in sprites)
             this.sprites.Add(s.name, s);
     }
@@ -243,16 +249,15 @@ public class SpriteDB
         List<Sprite> icons = new List<Sprite>();
         DirectoryInfo d = new DirectoryInfo(path);
 
-        foreach (string ext in imgExts)
-            foreach (FileInfo file in d.GetFiles("*" + ext))
-            {
-                Texture2D texture = new Texture2D(64, 64, TextureFormat.ARGB32, false);
-                texture.LoadImage(File.ReadAllBytes((file.FullName)));
+        foreach (FileInfo file in d.GetFiles())
+        {
+            Texture2D texture = new Texture2D(64, 64, TextureFormat.ARGB32, false);
+            texture.LoadImage(File.ReadAllBytes((file.FullName)));
 
-                Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-                sprite.name = Path.GetFileNameWithoutExtension(file.Name);
-                icons.Add(sprite);
-            }
+            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            sprite.name = Path.GetFileNameWithoutExtension(file.Name);
+            icons.Add(sprite);
+        }
 
         return icons;
     }

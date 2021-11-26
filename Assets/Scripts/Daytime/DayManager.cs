@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,23 +15,26 @@ public class DayManager : Window
     [SerializeField] MainInteractionButton interactPrefab;
     [SerializeField] MainInteractionButton mainInteractPrefab;
     [SerializeField] SubInteractionButton subInteractPrefab;
-
-    [SerializeField] List<DayTimeSlot> mainInteractions;
-
+    
     Dictionary<string, MainInteractionButton> interactions = new Dictionary<string, MainInteractionButton>();
 
     public void Open(int time)
     {
         clock.Time = time;
-        AddLocation();
+        FillLocations();
         backgroundImage.sprite = backgrounds[0];
         FadeIn();
     }
 
-    void AddLocation()
+    public void FillLocations()
     {
         Clear();
+        AddLocations();
+        AddCharacters();
+    }
 
+    void AddLocations()
+    {
         Dictionary<string, List<LocationData>> notPlaced = new Dictionary<string, List<LocationData>>();
         foreach (LocationData location in AssetDB.Instance.Locations.ToList())
             if (location.Check)
@@ -38,8 +42,9 @@ public class DayManager : Window
                 if (location.Parent == null)
                 {
                     AddLocation(null, location);
-                    foreach (LocationData loc in notPlaced[location.ID])
-                        AddLocation(location.ID, loc);
+                    if (notPlaced.ContainsKey(location.ID))
+                        foreach (LocationData loc in notPlaced[location.ID])
+                            AddLocation(location.ID, loc);
                 }
                 else if (interactions.ContainsKey(location.Parent))
                 {
@@ -54,6 +59,28 @@ public class DayManager : Window
                 }
 
             }
+    }
+
+    void AddCharacters()
+    {
+        List<Character> charas = AssetDB.Instance.Characters.ToList().Where(c=> c.Check).ToList();
+        int time = clock.Time;
+
+        foreach (Character chara in charas)
+        {
+            string location = null;
+            foreach (CharacterLocation loc in chara.Locations)
+                if (loc.Time == time)
+                    location = loc.Locations[Random.Range(0, loc.Locations.Count)];
+
+            if (location != null && interactions.ContainsKey(location))
+                AddCharacter(location, chara);
+        }
+    }
+
+    void AddCharacter(string location, Character chara)
+    {
+
     }
 
     public void AddLocation(string main, LocationData data)
@@ -93,13 +120,6 @@ public class DayManager : Window
     {
         int t = clock.AdvanceTime(amount);
         backgroundImage.sprite = backgrounds[t];
-        AddLocation();
+        FillLocations();
     }
-}
-
-[System.Serializable]
-public class DayTimeSlot
-{
-    [SerializeField] List<InteractionData> interactions;
-    public List<InteractionData> Interactions { get { return interactions; } }
 }

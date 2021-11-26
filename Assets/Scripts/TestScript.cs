@@ -29,14 +29,20 @@ public class TestScript : MonoBehaviour
     [SerializeField] List<DialogueData> dials;
     void Test1()
     {
-        AssetDB.Instance.Dreams.SaveToXml();
+        CharacterData cf = AssetDB.Instance.CharacterDatas["ChildFriend"];
+
+        cf.Events = new List<ConditionalDialogue>();
+        ConditionalDialogue dial = new ConditionalDialogue();
+        dial._Dialogue = "C_CF_Default1";
+        cf.Events.Add(dial);
+
+        AssetDB.Instance.CharacterDatas.SaveToXml();
         Debug.Log("Done");
     }
 
     void Test2()
     {
-        SuccubusData sd = AssetDB.Instance.Succubi["Holy"];
-        Debug.Log(sd.ID + " - " + sd.MaxArousal);
+        Debug.Log(AssetDB.Instance.Images.Count);
     }
 
     void Test3()

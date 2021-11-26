@@ -43,6 +43,11 @@ public class DreamManager : Window, GridManager
         playerToken.SetCharacter(cData);
     }
 
+    public void WakeUp()
+    {
+        GameManager.Instance.EndDream();
+    }
+
     public void ContinueDream(DreamData data)
     {
         DreamMapData map = data.Map;

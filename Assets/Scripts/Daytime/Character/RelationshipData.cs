@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
 
-[System.Serializable]
 public class RelationshipData
 {
     [XmlAttribute("Name")]
     public string RelationName { get; set; }
 
     [XmlIgnore]
-    public Sprite icon;
+    public Sprite Icon { get { return AssetDB.Instance.Images[_Icon]; } }
+    [XmlAttribute("Icon")]
+    public string _Icon { get; set; }
 
     [XmlElement("Event")]
-    public List<InteractionDialogue> RelationEvents { get; set; }
+    public List<ConditionalDialogue> RelationEvents { get; set; }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static DialogueUI;
 
 public class Character : XmlAsset
 {
@@ -14,6 +15,10 @@ public class Character : XmlAsset
     List<int> relationStage = new List<int>(3);
     const int POINTS_PER_STAGE = 100;
 
+    public bool Check { get { return data.Condition.Check; } }
+
+    public List<CharacterLocation> Locations { get { return data.Locations; } }
+
     public Character() { }
     public Character(CharacterData data) {
         //TODO : Load saved characters
@@ -23,39 +28,19 @@ public class Character : XmlAsset
             relationships.Add(new Relationship(rd));
     }
 
-    public void PlayInteraction()
+    public void PlayDialogue(DialogueAction action)
     {
-        bool found = false;
-        foreach (Relationship rela in relationships)
+        foreach(Relationship relationship in relationships)
         {
-            found = rela.PlayInteraction();
-            if (found)
+            if (relationship.TryPlayInteraction())
                 return;
         }
 
-        List<InteractionDialogue> evnts = data.DefaultEvents.Where(e => e.Check).ToList();
+        List<ConditionalDialogue> evnts = data.Events.Where(e => e.Check).ToList();
 
-        if (evnts.Count >= 0)
-            evnts[Random.Range(0, evnts.Count)].Play(null);
+        if (evnts.Count > 0)
+            evnts[Random.Range(0, evnts.Count)].Play(action);
     }
-
-    /*public InteractionDialogue GetInteraction()
-    {
-        InteractionDialogue evnt = null;
-        foreach (Relationship rela in relationships)
-        {
-            evnt = rela.CheckInteraction();
-            if (evnt != null)
-                return evnt;
-        }
-
-        List<InteractionDialogue> evnts = data.DefaultEvents.Where(e => e.Check).ToList();
-
-        if (evnts.Count == 0)
-            return null;
-        else
-            return evnts[Random.Range(0, evnts.Count)];
-    }*/
 
     public void AddRelationPoints(int relation, int points)
     {

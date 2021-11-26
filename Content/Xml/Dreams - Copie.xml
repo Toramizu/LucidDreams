@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDreamData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <DreamData ID="Inn" SuccubiCount="2" Map="DreamMap1">
+    <name>FirstDream</name>
+    <hideFlags>None</hideFlags>
+    <Succubus>Horse Cocked Succubus</Succubus>
+    <Succubus>Arousing Succubus</Succubus>
+    <Succubus>Alraune</Succubus>
+    <Shop MinAbis="0" MaxAbis="2" />
+    <Next>ParkStreet</Next>
+  </DreamData>
+  <DreamData ID="ParkStreet" SuccubiCount="2" Map="DreamMap2">
+    <name>SecondDream</name>
+    <hideFlags>None</hideFlags>
+    <Succubus>Alchemist</Succubus>
+    <Succubus>Dark Elf</Succubus>
+    <Succubus>Spider</Succubus>
+    <Shop MinAbis="0" MaxAbis="2" />
+    <Next>Inn</Next>
+  </DreamData>
+</ArrayOfDreamData>

@@ -22,27 +22,32 @@ public class CharacterData : ImageHaver, XmlAsset
     [XmlIgnore]
     public SuccubusData Succubus { get { return AssetDB.Instance.Succubi[_Succubus]; } }
 
-    [XmlIgnore]
-    [SerializeField] List<InteractionDialogue> defaultEvents = new List<InteractionDialogue>();
-    [XmlIgnore]
-    public List<InteractionDialogue> DefaultEvents { get { return defaultEvents; } }
-    [XmlIgnore]
-    [SerializeField] List<RelationData> relationEvents = new List<RelationData>();
-    [XmlIgnore]
-    public List<RelationData> RelationEvents { get { return relationEvents; } }
+    [XmlElement("Event")]
+    public List<ConditionalDialogue> Events { get; set; }
 
-    [XmlIgnore]
-    [SerializeField] List<RelationshipData> relationShips = new List<RelationshipData>();
-    [XmlIgnore]
-    public List<RelationshipData> Relationships { get { return relationShips; } }
+    [XmlElement("Relationship")]
+    public List<RelationshipData> Relationships { get; set; }
+
+    [XmlElement("Unlock")]
+    public MultCondition Condition { get; set; }
+
+    [XmlElement("Location")]
+    public List<CharacterLocation> Locations { get; set; }
 }
 
-[System.Serializable]
 public class RelationData
 {
     [SerializeField] RelationEnum relationType;
     public RelationEnum RelationType { get { return relationType; } }
 
-    [SerializeField] List<InteractionData> relationEvents;
-    public List<InteractionData> RelationEvents { get { return relationEvents; } }
+    [SerializeField] List<ConditionalDialogue> relationEvents;
+    public List<ConditionalDialogue> RelationEvents { get { return relationEvents; } }
+}
+
+public class CharacterLocation
+{
+    [XmlAttribute("Time")]
+    public int Time { get; set; }
+    [XmlElement("Location")]
+    public List<string> Locations { get; set; }
 }

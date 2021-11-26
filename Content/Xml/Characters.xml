@@ -4,6 +4,7 @@
     <Images>
       <Image ID="" ImageID="ChFriend" Source="https://kisekaejade.com/" />
     </Images>
+    <Event Dialogue="C_CF_Default1" />
   </CharacterData>
   <CharacterData ID="BigSis" DisplayName="Big Sis" Icon="BS_T" Succubus="Maid">
     <Images>

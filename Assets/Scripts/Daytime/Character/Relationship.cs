@@ -19,7 +19,7 @@ public class Relationship
         relation = data;
     }
 
-    public bool PlayInteraction()
+    public bool TryPlayInteraction()
     {
         if (Points >= stage * POINTS_PER_STAGE && relation.RelationEvents[stage + 1].Check)
         {

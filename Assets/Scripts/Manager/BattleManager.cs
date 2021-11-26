@@ -39,12 +39,6 @@ public class BattleManager : Window
         NextRound();
     }
 
-    public void RefreshDescr()
-    {
-        //foreach (Ability abi in GetCharacter(true).Abilities)
-          //  abi.RefreshDescr();
-    }
-
     public bool CheckBattleStatus()
     {
         if (Opponent.Finished)
@@ -52,13 +46,11 @@ public class BattleManager : Window
             EndBattle(true);
             return true;
         }
-        //endPanel.Victory(opponent.Crystals, opponent.Data);
         else if (Player.Finished)
         {
             EndBattle(false);
             return true;
         }
-        //GameManager.Instance.NextDay();
         return false;
     }
 

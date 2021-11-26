@@ -9,18 +9,24 @@ public abstract class InteractionButton : MonoBehaviour
     [SerializeField] protected Image background;
     [SerializeField] Image icon;
 
+    [SerializeField] Image timeImage;
+
     protected InteractionEvent data;
 
     public virtual void Init(InteractionEvent data)
     {
-        this.data = data;
-
         if (data != null)
         {
+            this.data = data;
+
             background.color = data.BackgroundColor;
             icon.sprite = data.Icon;
             icon.color = data.IconColor;
+
+            timeImage.gameObject.SetActive(data.TimeSpent > 0);
         }
+        else
+            Destroy(gameObject);
     }
 
     public void OnClick()
