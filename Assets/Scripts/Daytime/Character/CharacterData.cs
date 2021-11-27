@@ -30,9 +30,14 @@ public class CharacterData : ImageHaver, XmlAsset
 
     [XmlElement("Unlock")]
     public MultCondition Condition { get; set; }
+    [XmlIgnore]
+    public bool Check { get { return Condition == null || Condition.Check; } }
 
     [XmlElement("Location")]
     public List<CharacterLocation> Locations { get; set; }
+
+    [XmlElement("Color")]
+    public ColorXml Color { get; set; }
 }
 
 public class RelationData

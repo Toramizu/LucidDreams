@@ -22,6 +22,11 @@ public class Clock : MonoBehaviour
         }
     }
 
+    public int NightTime
+    {
+        get { return timeImages.Count - 1; }
+    }
+
     void ParseTime()
     {
         if(currentTime >= timeImages.Count)
@@ -29,12 +34,6 @@ public class Clock : MonoBehaviour
             int c = currentTime;
             currentTime = c % timeImages.Count;
         }
-    }
-
-    public int AdvanceTime()
-    {
-        Time++;
-        return currentTime;
     }
 
     public int AdvanceTime(int amount)

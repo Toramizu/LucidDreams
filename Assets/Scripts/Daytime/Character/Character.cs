@@ -6,23 +6,22 @@ using static DialogueUI;
 
 public class Character : XmlAsset
 {
-    public string ID { get { return data.ID; } }
-
-    CharacterData data;
+    public string ID { get { return Data.ID; } }
+    public CharacterData Data { get; set; }
 
     List<Relationship> relationships;
     List<int> relationPoints = new List<int>(3);
     List<int> relationStage = new List<int>(3);
     const int POINTS_PER_STAGE = 100;
 
-    public bool Check { get { return data.Condition.Check; } }
+    public bool Check { get { return Data.Check; } }
 
-    public List<CharacterLocation> Locations { get { return data.Locations; } }
+    public List<CharacterLocation> Locations { get { return Data.Locations; } }
 
     public Character() { }
     public Character(CharacterData data) {
         //TODO : Load saved characters
-        this.data = data;
+        this.Data = data;
         relationships = new List<Relationship>();
         foreach (RelationshipData rd in data.Relationships)
             relationships.Add(new Relationship(rd));
@@ -36,7 +35,7 @@ public class Character : XmlAsset
                 return;
         }
 
-        List<ConditionalDialogue> evnts = data.Events.Where(e => e.Check).ToList();
+        List<ConditionalDialogue> evnts = Data.Events.Where(e => e.Check).ToList();
 
         if (evnts.Count > 0)
             evnts[Random.Range(0, evnts.Count)].Play(action);
@@ -47,9 +46,9 @@ public class Character : XmlAsset
         relationships[relation].Points += points;
 
         if (points > 0)
-            GameManager.Instance.Notify(data.ID + " +" + points + " " + relationships[relation].Name);
+            GameManager.Instance.Notify(Data.ID + " +" + points + " " + relationships[relation].Name);
         else if (points < 0)
-            GameManager.Instance.Notify(data.ID + " -" + (-points) + " " + relationships[relation].Name);
+            GameManager.Instance.Notify(Data.ID + " -" + (-points) + " " + relationships[relation].Name);
     }
 }
 

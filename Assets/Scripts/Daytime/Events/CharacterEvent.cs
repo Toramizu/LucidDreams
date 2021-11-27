@@ -8,7 +8,13 @@ public class CharacterEvent : InteractionEvent
 
     public CharacterEvent(Character chara)
     {
+        CharacterData data = chara.Data;
         this.chara = chara;
+        Name = data.Name;
+        _Icon = data._Icon;
+        _BackgroundColor = data.Color;
+
+        TimeSpent = 1;
     }
 
     public override void Play()

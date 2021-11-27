@@ -80,7 +80,8 @@ public class DayManager : Window
 
     void AddCharacter(string location, Character chara)
     {
-
+        CharacterEvent cEvent = new CharacterEvent(chara);
+        interactions[location].AddSub(cEvent);
     }
 
     public void AddLocation(string main, LocationData data)
@@ -119,7 +120,14 @@ public class DayManager : Window
     public void AdvanceTime(int amount)
     {
         int t = clock.AdvanceTime(amount);
-        backgroundImage.sprite = backgrounds[t];
-        FillLocations();
+        if (t < clock.NightTime)
+        {
+            backgroundImage.sprite = backgrounds[t];
+            FillLocations();
+        }
+        else
+        {
+            GameManager.Instance.StartNightTime();
+        }
     }
 }

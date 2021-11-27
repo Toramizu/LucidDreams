@@ -29,14 +29,7 @@ public class TestScript : MonoBehaviour
     [SerializeField] List<DialogueData> dials;
     void Test1()
     {
-        CharacterData cf = AssetDB.Instance.CharacterDatas["ChildFriend"];
-
-        cf.Events = new List<ConditionalDialogue>();
-        ConditionalDialogue dial = new ConditionalDialogue();
-        dial._Dialogue = "C_CF_Default1";
-        cf.Events.Add(dial);
-
-        AssetDB.Instance.CharacterDatas.SaveToXml();
+        GameManager.Instance.DayManager.AdvanceTime(2);
         Debug.Log("Done");
     }
 

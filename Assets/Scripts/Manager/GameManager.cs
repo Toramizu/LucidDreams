@@ -36,8 +36,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] DialogueUI dialogue;
 
 
-    [SerializeField] SuccubusData defaultSuccubus;
-    [SerializeField] DreamData defaultDream;
+    [SerializeField] string defaultSuccubus;
+    [SerializeField] string defaultDream;
     [SerializeField] Window dayTmp;
 
     public GameStatus Status { get; private set; }
@@ -64,14 +64,19 @@ public class GameManager : MonoBehaviour
         Status = GameStatus.Battle;
     }
 
+    public void StartNightTime()
+    {
+        StartDream(null, null);
+    }
+
     public void StartDream(DreamData dData, SuccubusData pcData)
     {
         dayManager.FadeOut();
 
         if (dData == null)
-            dData = defaultDream;
+            dData = AssetDB.Instance.Dreams[defaultDream];
         if (pcData == null)
-            pcData = defaultSuccubus;
+            pcData = AssetDB.Instance.Succubi[defaultSuccubus];
 
         dreamManager.StartDream(dData, pcData);
         playerManager.UpdateGauge();
