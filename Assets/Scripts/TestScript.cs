@@ -26,10 +26,14 @@ public class TestScript : MonoBehaviour
             Test9();
     }
 
-    [SerializeField] List<DialogueData> dials;
+    [SerializeField] CharacterUI cui;
     void Test1()
     {
-        GameManager.Instance.DayManager.AdvanceTime(2);
+        CharacterData cf = AssetDB.Instance.CharacterDatas["ChildFriend"];
+
+        cf.Color = new ColorXml(Color.cyan);
+
+        AssetDB.Instance.CharacterDatas.SaveToXml();
         Debug.Log("Done");
     }
 

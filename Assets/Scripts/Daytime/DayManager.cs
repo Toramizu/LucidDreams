@@ -12,6 +12,7 @@ public class DayManager : Window
     [SerializeField] Image backgroundImage;
     [SerializeField] List<Sprite> backgrounds;
 
+    [SerializeField] Transform tokenParent;
     [SerializeField] MainInteractionButton interactPrefab;
     [SerializeField] MainInteractionButton mainInteractPrefab;
     [SerializeField] SubInteractionButton subInteractPrefab;
@@ -98,7 +99,7 @@ public class DayManager : Window
             }
             else
             {
-                inter = Instantiate(interactPrefab, transform, false);
+                inter = Instantiate(interactPrefab, tokenParent, false);
                 interactions.Add(data.ID, inter);
             }
             inter.Init(data);

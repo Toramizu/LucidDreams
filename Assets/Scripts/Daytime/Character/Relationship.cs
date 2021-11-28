@@ -6,24 +6,25 @@ using UnityEngine;
 [System.Serializable]
 public class Relationship
 {
-    RelationshipData relation;
+    public RelationshipData Data { get; set; }
     public int Points { get; set; }
     const int POINTS_PER_STAGE = 100;
-    int stage;
+    public int Stage { get; set; }
+    public int MaxStage { get { return Data.RelationEvents.Count; } }
 
-    public string Name { get { return relation.RelationName; } }
+    public string Name { get { return Data.RelationName; } }
 
     public Relationship() { }
     public Relationship(RelationshipData data) {
         //Load saved
-        relation = data;
+        Data = data;
     }
 
     public bool TryPlayInteraction()
     {
-        if (Points >= stage * POINTS_PER_STAGE && relation.RelationEvents[stage + 1].Check)
+        if (Points >= Stage * POINTS_PER_STAGE && Data.RelationEvents[Stage + 1].Check)
         {
-            relation.RelationEvents[stage + 1].Play(IncreaseRelationship);
+            Data.RelationEvents[Stage + 1].Play(IncreaseRelationship);
             return true;
         }
         return false;
@@ -38,7 +39,7 @@ public class Relationship
 
     public void IncreaseRelationship()
     {
-        stage++;
-        GameManager.Instance.Notify(relation.RelationName + " => " + stage);
+        Stage++;
+        GameManager.Instance.Notify(Data.RelationName + " => " + Stage);
     }
 }

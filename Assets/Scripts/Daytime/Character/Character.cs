@@ -9,7 +9,7 @@ public class Character : XmlAsset
     public string ID { get { return Data.ID; } }
     public CharacterData Data { get; set; }
 
-    List<Relationship> relationships;
+    public List<Relationship> Relationships { get; set; }
     List<int> relationPoints = new List<int>(3);
     List<int> relationStage = new List<int>(3);
     const int POINTS_PER_STAGE = 100;
@@ -22,14 +22,14 @@ public class Character : XmlAsset
     public Character(CharacterData data) {
         //TODO : Load saved characters
         this.Data = data;
-        relationships = new List<Relationship>();
+        Relationships = new List<Relationship>();
         foreach (RelationshipData rd in data.Relationships)
-            relationships.Add(new Relationship(rd));
+            Relationships.Add(new Relationship(rd));
     }
 
     public void PlayDialogue(DialogueAction action)
     {
-        foreach(Relationship relationship in relationships)
+        foreach(Relationship relationship in Relationships)
         {
             if (relationship.TryPlayInteraction())
                 return;
@@ -43,12 +43,12 @@ public class Character : XmlAsset
 
     public void AddRelationPoints(int relation, int points)
     {
-        relationships[relation].Points += points;
+        Relationships[relation].Points += points;
 
         if (points > 0)
-            GameManager.Instance.Notify(Data.ID + " +" + points + " " + relationships[relation].Name);
+            GameManager.Instance.Notify(Data.ID + " +" + points + " " + Relationships[relation].Name);
         else if (points < 0)
-            GameManager.Instance.Notify(Data.ID + " -" + (-points) + " " + relationships[relation].Name);
+            GameManager.Instance.Notify(Data.ID + " -" + (-points) + " " + Relationships[relation].Name);
     }
 }
 

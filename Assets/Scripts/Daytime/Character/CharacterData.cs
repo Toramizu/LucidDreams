@@ -9,10 +9,11 @@ public class CharacterData : ImageHaver, XmlAsset
     public string ID { get; set; }
     [XmlAttribute("DisplayName")]
     public override string Name { get; set; }
+    [XmlElement("Background")]
+    public string Background { get; set; }
 
     [XmlIgnore]
     public Sprite Icon { get {
-            Debug.Log(_Icon);
             return AssetDB.Instance.Images[_Icon]; } }
     [XmlAttribute("Icon")]
     public string _Icon { get; set; }
@@ -38,15 +39,6 @@ public class CharacterData : ImageHaver, XmlAsset
 
     [XmlElement("Color")]
     public ColorXml Color { get; set; }
-}
-
-public class RelationData
-{
-    [SerializeField] RelationEnum relationType;
-    public RelationEnum RelationType { get { return relationType; } }
-
-    [SerializeField] List<ConditionalDialogue> relationEvents;
-    public List<ConditionalDialogue> RelationEvents { get { return relationEvents; } }
 }
 
 public class CharacterLocation

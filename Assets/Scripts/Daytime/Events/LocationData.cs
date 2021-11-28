@@ -42,4 +42,9 @@ public class ColorXml
     public byte B { get { return color.b; } set { color.b = value; } }
     [XmlAttribute("A"), DefaultValue(255)]
     public byte A { get { return color.a; } set { color.a = value; } }
+
+    public ColorXml() { }
+    public ColorXml(Color color) {
+        this.color = color;
+    }
 }
