@@ -168,7 +168,7 @@ public class DialogueUI : Window
                 right2Speaker.SetSpeaker(speaker);
                 break;
         }
-}
+    }
 
     #endregion
 

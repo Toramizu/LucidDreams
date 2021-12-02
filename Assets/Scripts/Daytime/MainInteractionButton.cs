@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MainInteractionButton : InteractionButton
 {
@@ -16,9 +17,14 @@ public class MainInteractionButton : InteractionButton
                 text.text = data.Name;
             else
                 text.text = value;
+
+            Canvas.ForceUpdateCanvases();
+            layoutGroup.enabled = false;
+            layoutGroup.enabled = true;
         }
     }
 
+    [SerializeField] LayoutGroup layoutGroup;
     [SerializeField] SubInteractionButton subPrefab;
     List<SubInteractionButton> subs = new List<SubInteractionButton>();
     [SerializeField] float iconGap;

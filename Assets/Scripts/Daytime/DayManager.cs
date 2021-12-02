@@ -131,4 +131,11 @@ public class DayManager : Window
             GameManager.Instance.StartNightTime();
         }
     }
+
+    public void NewDay()
+    {
+        int t = clock.NewDay();
+        backgroundImage.sprite = backgrounds[t];
+        FillLocations();
+    }
 }

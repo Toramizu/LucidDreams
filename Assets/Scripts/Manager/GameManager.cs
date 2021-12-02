@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Window dayTmp;
 
     public GameStatus Status { get; private set; }
+    public int Time { get { return dayManager.Time; } }
 
     private void Start()
     {
@@ -98,6 +99,7 @@ public class GameManager : MonoBehaviour
     public void EndDream()
     {
         dreamManager.FadeOut();
+        dayManager.NewDay();
         dayManager.Open();
     }
 
@@ -117,6 +119,12 @@ public class GameManager : MonoBehaviour
     {
         text = parser.ParseDescription(text, Flags.Strings);
         notifs.Notify(text);
+    }
+
+    public void Notify(string text, Color color)
+    {
+        text = parser.ParseDescription(text, Flags.Strings);
+        notifs.Notify(text, color);
     }
 }
 

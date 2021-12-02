@@ -10,6 +10,14 @@ public class NotificationsUI : MonoBehaviour
     bool busy;
     Queue<Notification> nQueue = new Queue<Notification>();
 
+    public void Notify(string text, Color color)
+    {
+        Notification notif = Instantiate(notifPrefab, transform);
+        notif.Text = text;
+        notif.Color = color;
+        Enqueue(notif);
+    }
+
     public void Notify(string text)
     {
         Notification notif = Instantiate(notifPrefab, transform);

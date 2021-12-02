@@ -29,7 +29,8 @@ public class DialogueChoice
     [XmlElement("Arousal", typeof(DialogueAddArousal2))]
     [XmlElement("Line", typeof(DialogueLine))]
     [XmlElement("Speaker", typeof(DialogueSpeaker))]
-    //[XmlElement("Condition", typeof(DialogueCondition))]
+    [XmlElement("Relationship", typeof(DialogueRelationship))]
+    [XmlElement("Condition", typeof(DialogueCondition))]
     [XmlElement("Roll", typeof(DialogueRoll))]
     public List<DialogueElement> Elements { get; set; }
 }

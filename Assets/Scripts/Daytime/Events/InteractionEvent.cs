@@ -49,6 +49,9 @@ public abstract class InteractionEvent
 
 public class ConditionalDialogue
 {
+    [XmlAttribute("Time")]
+    public int Time { get; set; }
+
     [XmlElement("Condition")]
     public MultCondition Condition { get; set; }
     [XmlIgnore]

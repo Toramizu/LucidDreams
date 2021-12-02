@@ -12,7 +12,12 @@ public class DreamData : XmlAsset
     public int SuccubiCount { get; set; }
 
     [XmlIgnore]
-    public SuccubusData Boss { get { return AssetDB.Instance.Succubi[_Boss]; } }
+    public SuccubusData Boss { get {
+            if (_Boss == null)
+                return null;
+            else
+                return AssetDB.Instance.Succubi[_Boss]; }
+    }
     [XmlAttribute("Boss")]
     public string _Boss { get; set; }
 
@@ -42,6 +47,8 @@ public class DreamData : XmlAsset
     {
         get
         {
+            if (_Nexts == null || _Nexts.Count == 0)
+                return null;
             List<DreamData> d = new List<DreamData>();
             foreach (string dream in _Nexts)
                 d.Add(AssetDB.Instance.Dreams[dream]);
@@ -62,6 +69,6 @@ public class DreamData : XmlAsset
             return m;
         }
     }
-    [XmlElement("Event")]
+    [XmlElement("Meditation")]
     public List<string> _Meditations { get; set; }
 }

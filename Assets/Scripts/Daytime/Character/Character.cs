@@ -46,9 +46,9 @@ public class Character : XmlAsset
         Relationships[relation].Points += points;
 
         if (points > 0)
-            GameManager.Instance.Notify(Data.ID + " +" + points + " " + Relationships[relation].Name);
+            GameManager.Instance.Notify(Data.ID + " +" + points + " " + Relationships[relation].Name, Data.Color.Color);
         else if (points < 0)
-            GameManager.Instance.Notify(Data.ID + " -" + (-points) + " " + Relationships[relation].Name);
+            GameManager.Instance.Notify(Data.ID + " -" + (-points) + " " + Relationships[relation].Name, Data.Color.Color);
     }
 }
 

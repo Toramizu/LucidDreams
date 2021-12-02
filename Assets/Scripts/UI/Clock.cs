@@ -41,6 +41,12 @@ public class Clock : MonoBehaviour
         Time += amount;
         return currentTime;
     }
+
+    public int NewDay()
+    {
+        Time = 0;
+        return 0;
+    }
 }
 
 public enum TimeSlot
@@ -48,4 +54,5 @@ public enum TimeSlot
     Morning,
     Afternoon,
     Evening,
+    Night,
 }

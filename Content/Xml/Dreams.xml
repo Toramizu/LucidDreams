@@ -6,12 +6,13 @@
     <Succubus>Alraune</Succubus>
     <Shop MinAbis="0" MaxAbis="2" IncrementCost="0" AbilityCostMod="0" />
     <Next>ParkStreet</Next>
+	<Meditation>M_Bed</Meditation>
   </DreamData>
-  <DreamData ID="ParkStreet" SuccubiCount="2" Map="DreamMap2">
+  <DreamData ID="ParkStreet" SuccubiCount="2" Map="DreamMap2" Boss="Holy">
     <Succubus>Alchemist</Succubus>
     <Succubus>Dark Elf</Succubus>
     <Succubus>Spider</Succubus>
     <Shop MinAbis="0" MaxAbis="2" IncrementCost="0" AbilityCostMod="0" />
-    <Next>Inn</Next>
+	<Meditation>M_Park</Meditation>
   </DreamData>
 </ArrayOfDreamData>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDialogueData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!--<DialogueData ID="CF_Intro">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, you came back? I missed you.</Line>
+	</DialogueData>-->
+	<DialogueData ID="CF_Default">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, nice to see you here.</Line>
+		<Choices>
+			<Choice Text="Nice to see you too. (Friendship)">
+				<Relationship Character="ChildhoodFriend" Relationship="0" Points="100"/>
+				<Line Focus="Left">Well, see you later.</Line>
+			</Choice>
+			<Choice Text="Let's spend time together. (Love)">
+				<Relationship Character="ChildhoodFriend" Relationship="1" Points="100"/>
+				<Line Focus="Left">Oh, can we go grab something to eat?</Line>
+			</Choice>
+			<Choice Text="Just leave me alone... (Loss)">
+				<Relationship Character="ChildhoodFriend" Relationship="2" Points="100"/>
+				<Line Focus="Left">Sorry...</Line>
+			</Choice>
+		</Choices>
+	</DialogueData>
+	
+	<DialogueData ID="CF_Friend_1">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Friendship Dialogue number 1.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Friend_2">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Friendship Dialogue number 2.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Friend_3">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Friendship Dialogue number 3.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Friend_4">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Friendship Dialogue number 4.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Friend_5">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Friendship Dialogue number 5.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Friend_6">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Friendship Dialogue number 6.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Friend_7">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Friendship Dialogue number 7.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Friend_8">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Friendship Dialogue number 8.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Friend_9">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Friendship Dialogue number 9.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Friend_10">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my final Friendship Dialogue.</Line>
+	</DialogueData>
+	
+	<DialogueData ID="CF_Love_1">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Love Dialogue number 1.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Love_2">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Love Dialogue number 2.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Love_3">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Love Dialogue number 3.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Love_4">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Love Dialogue number 4.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Love_5">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Love Dialogue number 5.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Love_6">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Love Dialogue number 6.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Love_7">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Love Dialogue number 7.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Love_8">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Love Dialogue number 8.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Love_9">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Love Dialogue number 9.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Love_10">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Love Dialogue number 10.</Line>
+	</DialogueData>
+	
+	<DialogueData ID="CF_Loss_1">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Loss Dialogue number 1.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Loss_2">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Loss Dialogue number 2.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Loss_3">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Loss Dialogue number 3.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Loss_4">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Loss Dialogue number 4.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Loss_5">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Loss Dialogue number 5.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Loss_6">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Loss Dialogue number 6.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Loss_7">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Loss Dialogue number 7.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Loss_8">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Loss Dialogue number 8.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Loss_9">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Loss Dialogue number 9.</Line>
+	</DialogueData>
+	<DialogueData ID="CF_Loss_10">
+		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
+		<Line Focus="Left">Hey, this is my Loss Dialogue number 10.</Line>
+	</DialogueData>
+</ArrayOfDialogueData>

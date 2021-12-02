@@ -12,15 +12,24 @@ public class LocationData : InteractionEvent, XmlAsset
     [XmlIgnore]
     public bool Check { get { return Condition == null || Condition.Check; } }
 
-    [XmlElement("Event")]
-    public List<ConditionalDialogue> Events { get; set; }
+    /*[XmlElement("Event")]
+    public List<ConditionalDialogue> Events { get; set; }*/
+
+    [XmlElement("TimeSlot")]
+    public List<LocationTimeSlot> TimeSlots { get; set; }
 
     [XmlAttribute("Parent")]
     public string Parent { get; set; }
 
     public override void Play()
     {
-        List<ConditionalDialogue> evnts = Events.Where(e => e.Check).ToList();
+        int time = GameManager.Instance.Time;
+
+        List<ConditionalDialogue> evnts = new List<ConditionalDialogue>();
+        foreach (LocationTimeSlot slot in TimeSlots)
+            if(slot.Time == time)
+                evnts = slot.Events.Where(e => e.Check).ToList();
+        //List<ConditionalDialogue> evnts = Events.Where(e => e.Check).ToList();
 
         if (evnts.Count > 0)
         {
@@ -30,21 +39,11 @@ public class LocationData : InteractionEvent, XmlAsset
     }
 }
 
-public class ColorXml
+public class LocationTimeSlot
 {
-    Color32 color = new Color32(255, 255, 255, 255);
-    public Color32 Color { get { return color; } }
-    [XmlAttribute("R")]
-    public byte R { get { return color.r; } set { color.r = value; } }
-    [XmlAttribute("G")]
-    public byte G { get { return color.g; } set { color.g = value; } }
-    [XmlAttribute("B")]
-    public byte B { get { return color.b; } set { color.b = value; } }
-    [XmlAttribute("A"), DefaultValue(255)]
-    public byte A { get { return color.a; } set { color.a = value; } }
+    [XmlAttribute("Time")]
+    public int Time { get; set; }
 
-    public ColorXml() { }
-    public ColorXml(Color color) {
-        this.color = color;
-    }
+    [XmlElement("Event")]
+    public List<ConditionalDialogue> Events { get; set; }
 }

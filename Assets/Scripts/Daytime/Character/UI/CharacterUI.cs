@@ -144,16 +144,32 @@ public class CharacterUI : Window
 public class CharacterDisplayUI
 {
     [SerializeField] TMP_Text charaName;
-    [SerializeField] Image charaImage;
     [SerializeField] TMP_Text charaDescr;
+    [SerializeField] Image charaImage;
+    [SerializeField] Image charaBackground;
+    [SerializeField] float backgroundColorFading;
 
     public void Display(Character chara)
     {
-        Debug.Log(chara.Data.Name);
-
         charaImage.sprite = chara.Data.Image.Image;
         charaName.text = chara.Data.Name;
         charaDescr.text = chara.Data.Background;
+
+        if (chara.Data.Color != null)
+        {
+            Color color = chara.Data.Color.Color;
+            Color faded = new Color();
+            faded.r = color.r + (1f - color.r) * backgroundColorFading;
+            faded.g = color.g + (1f - color.g) * backgroundColorFading;
+            faded.b = color.b + (1f - color.b) * backgroundColorFading;
+            faded.a = 1;
+
+            charaBackground.color = faded;
+        }
+        else
+        {
+            charaBackground.color = Color.white;
+        }
     }
 }
 
@@ -179,12 +195,19 @@ public class RelationshipUI
 
     public void Display(Character chara)
     {
+        if (chara.Relationships.Count == 0)
+        {
+            Clear();
+            return;
+        }
+
         if (chara.Data.Color == null)
             color = Color.white;
         else
             color = chara.Data.Color.Color;
         Relationship main = null;
         List<Relationship> others = new List<Relationship>();
+
 
         foreach(Relationship rela in chara.Relationships)
         {
@@ -289,5 +312,16 @@ public class RelationshipUI
             MiniRelation mini = MonoBehaviour.Instantiate(miniRelationPrefab, miniParent.transform, false);
             minis.Add(mini);
         }
+    }
+
+    void Clear()
+    {
+        relationName.text = "";
+        relationDescr.text = "";
+
+        foreach (Image img in images)
+            img.gameObject.SetActive(false);
+        foreach (MiniRelation mini in minis)
+            mini.gameObject.SetActive(false);
     }
 }

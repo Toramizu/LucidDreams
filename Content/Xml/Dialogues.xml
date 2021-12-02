@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfDialogueData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <DialogueData ID="M_Bed">
-    <Line Focus="Left">You enter a gigantic bedroom and see a bed in it's center. The figure sleeping inside waves at you to join her.</Line>
+    <Line Focus="Left">You enter a gigantic bedroom and see a bed in it's centre. The figure sleeping inside waves at you to join her.</Line>
     <Choices Title="Do you join her?">
       <Choice Text="Have a nap">
         <Roll>
@@ -24,12 +24,12 @@
           <Result Value="0" Shown="Critical Fail">
             <Line Focus="Left">As soon as your head touches the pillow, you fell in a deep sleep.</Line>
             <Line Focus="Left">But you didn't manage to rest for long before waking up to the succubus towering over you, hunger in her eyes...</Line>
-            <Battle Opponent="Sleeping" />
+            <Battle Opponent="Sleeping Succubus" />
           </Result>
         </Roll>
       </Choice>
       <Choice Text="Leave her alone">
-        <Line Focus="Left">You dice than napping in a dream is too dangerous and leave the room.</Line>
+        <Line Focus="Left">You decide than napping in a dream is too dangerous and leave the room.</Line>
       </Choice>
     </Choices>
   </DialogueData>
@@ -37,24 +37,42 @@
     <Line Focus="Left">You enter the town park. The weather is nice, warm with a light wind, and no one else is here. It's the perfect time to meditate and calm yourself down.</Line>
     <Choices Title="Meditate in the park?">
       <Choice Text="Meditate">
-        <Roll />
-        <Roll />
-        <Roll />
-        <Roll />
+        <Roll>
+          <Result Value="11" Shown="Critical Pass">
+            <Line Focus="Left">You sit down in the middle of the park and close your eyes...</Line>
+            <Line Focus="Left">You focus on all the arousal you accumulated during the night and evacuate it out of your mind. It takes a while, but nobody bothers you during that time.</Line>
+            <Line Focus="Left">Once you awake from your trance, you realise that you aren't alone anymore : a dozen of succubi joined you in your meditation, leeching of the arousal you released. As you start getting up, one of them opens an eye to look at you. You take the hint and leave.</Line>
+            <Arousal Proportion="-1" ToOpponent="false" />
+          </Result>
+          <Result Value="7" Shown="Pass">
+            <Line Focus="Left">You manage to focus for a while, but the few passing succubi keep you on guard.</Line>
+            <Line Focus="Left">You can't manage to fully rest, and decide to keep going.</Line>
+            <Arousal Proportion="-0.5" ToOpponent="false" />
+          </Result>
+          <Result Value="4" Shown="Fail">
+            <Line Focus="Left">Right as you sit on the ground, you see a group of three schoolgirl succubi entering the park.</Line>
+            <Line Focus="Left">You try ignoring them, but as soon as they see you, they start to make vulgar comments about you.</Line>
+            <Line Focus="Left">They don't seem too dangerous as they don't even try to approach you, but three on one is too risky for you and you get out of the park.</Line>
+          </Result>
+          <Result Value="0" Shown="Critical Fail">
+            <Line Focus="Left">You were resting for less than ten minutes when you hear running. You immediately open your eyes, but you were too late.</Line>
+            <Line Focus="Left">A sporty succubus was running in your direction and lunged at you before you had the time to get up...</Line>
+            <Battle Opponent="Sporty" />
+          </Result>
+        </Roll>
       </Choice>
-      <Choice Text="It must be a trap">
-        <Line Focus="Left">You dice than napping in a dream is too dangerous and leave the room.</Line>
+      <Choice Text="It's too open">
+        <Line Focus="Left">If you stay here too long, it's only a question of time before a succubus finds you.</Line>
       </Choice>
     </Choices>
   </DialogueData>
-  <DialogueData ID="E_Sleep">
-    <Line Focus="Left">You go to sleep for the night, having nice and non-erotic dreams.</Line>
+  <DialogueData ID="Inn_Rest">
+    <Line Focus="Left">You rest in your room for a few hours.</Line>
   </DialogueData>
   <DialogueData ID="E_Explore">
     <Line Focus="Left">You walk around town for a few hours. It's a good exercise.</Line>
   </DialogueData>
-  <DialogueData ID="C_CF_Default1">
-    <Speaker Speaker="ChildFriend" />
-    <Line Focus="Left">Hey, nice to see you again.</Line>
+  <DialogueData ID="Inn_Dream">
+	<Line>You go back to your room and fall asleep for the night...</Line>
   </DialogueData>
 </ArrayOfDialogueData>

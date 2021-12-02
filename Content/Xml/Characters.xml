@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCharacterData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <CharacterData ID="ChildFriend" DisplayName="Childhood Friend" Icon="CF_T" Succubus="Holy">
+  <!--<CharacterData ID="ChildFriend" DisplayName="Childhood Friend" Icon="CF_T" Succubus="Holy">
     <Images>
       <Image ID="" ImageID="ChFriend" Source="https://kisekaejade.com/" />
     </Images>
     <Background>She used to babysit you when you were a child. As she's an elf, she is still as young as she was back then.</Background>
     <Event Dialogue="C_CF_Default1" />
-    <Relationship Name="Childhood firend" Description="She seemed so mature at the time, but now, you find her a bit too naive and childish. I doesn't bother you much, but it underlines the difference between humans and elves.">
+    <Relationship Name="Childhood firend" AutoColor="true" Description="She seemed so mature at the time, but now, you find her a bit too naive and childish. I doesn't bother you much, but it underlines the difference between humans and elves.">
       <Event Dialogue="C_CF_Default1" />
       <Event Dialogue="C_CF_Default1" />
       <Event Dialogue="C_CF_Default1" />
@@ -18,7 +18,7 @@
       <Event Dialogue="C_CF_Default1" />
       <Event Dialogue="C_CF_Default1" />
     </Relationship>
-    <Relationship Name="Childhood crush" Description="She was your first love and you made peace with her behaviour as it means you won't be surprised with her changing too much.&#xA;Even if elves are often cold to humans, and rarely get together as a couple, you two seem to manage.">
+    <Relationship Name="Childhood crush" AutoColor="true" Description="She was your first love and you made peace with her behaviour as it means you won't be surprised with her changing too much.&#xA;Even if elves are often cold to humans, and rarely get together as a couple, you two seem to manage.">
       <Event Dialogue="C_CF_Default1" />
       <Event Dialogue="C_CF_Default1" />
       <Event Dialogue="C_CF_Default1" />
@@ -30,7 +30,7 @@
       <Event Dialogue="C_CF_Default1" />
       <Event Dialogue="C_CF_Default1" />
     </Relationship>
-    <Relationship Name="Lost friend" Description="She doesn't seem to be there for you as she was before. It doesn't feel good, but it might be better, your livespans are too different, it would have been hard later.">
+    <Relationship Name="Lost friend" AutoColor="true" Description="She doesn't seem to be there for you as she was before. It doesn't feel good, but it might be better, your livespans are too different, it would have been hard later.">
       <Event Dialogue="C_CF_Default1" />
       <Event Dialogue="C_CF_Default1" />
       <Event Dialogue="C_CF_Default1" />
@@ -43,7 +43,7 @@
       <Event Dialogue="C_CF_Default1" />
     </Relationship>
     <Color R="0" G="255" B="255" />
-  </CharacterData>
+  </CharacterData>-->
   <CharacterData ID="BigSis" DisplayName="Big Sis" Icon="BS_T" Succubus="Maid">
     <Images>
       <Image ID="" ImageID="BigSis" Source="https://kisekaejade.com/" />

@@ -87,7 +87,8 @@ public class XmlDB<T> where T : XmlAsset
     {
         get
         {
-            if (assets.ContainsKey(id))
+            if(id == null) throw new System.Exception(classId + " asset was null...");
+            else if (assets.ContainsKey(id))
                 return assets[id];
             else
                 throw new System.Exception(classId + " asset not found : " + id);
@@ -147,7 +148,7 @@ public class XmlDB<T> where T : XmlAsset
             LoadDirXml(contentPath);
             string[] dirs = Directory.GetDirectories(contentPath);
             foreach (string dir in dirs)
-                LoadDirXml(dir);
+                LoadDirXml(dir + "/");
         }
         catch (Exception e)
         {
@@ -157,9 +158,10 @@ public class XmlDB<T> where T : XmlAsset
 
     void LoadDirXml(string path)
     {
-        List<T> data;
-
-        data = LoadXml(path);
+        List<T> data = LoadXml(path);
+        
+        if (data == null)
+            return;
 
         if (assets == null)
             assets = new Dictionary<string, T>();

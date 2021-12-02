@@ -78,7 +78,7 @@
       <Equals Value="1" />
     </Slots>
     <Effects>
-      <Trait Bonus="2" UsesCumulativeBonus="false" TargetsUser="true" Trait="Unfeeling" />
+      <Trait Bonus="2" UsesCumulativeBonus="false" TargetsUser="true" Trait="Frigid" />
     </Effects>
   </AbilityData>
   <AbilityData ID="Tangle sack" Uses="0" Price="0">
@@ -135,6 +135,15 @@
     </Slots>
     <Effects>
       <Damage Bonus="2" UsesCumulativeBonus="true" TargetsUser="false" />
+    </Effects>
+  </AbilityData>
+  <AbilityData ID="Pose" Uses="1" Price="0">
+    <Description>Pose for you opponent to entice them for 6.</Description>
+    <Slots>
+      <EvenOdd isEven="false" />
+    </Slots>
+    <Effects>
+      <Damage Bonus="6" TargetsUser="false" />
     </Effects>
   </AbilityData>
   <AbilityData ID="Handjob" Uses="0" Price="0">

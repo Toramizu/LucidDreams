@@ -16,6 +16,10 @@ public class Notification : MonoBehaviour
         get { return text.text; }
         set { text.text = value; }
     }
+    public Color Color
+    {
+        set { text.color = value; }
+    }
 
     [SerializeField] CanvasGroup canvasGroup;
 

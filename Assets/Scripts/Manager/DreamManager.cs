@@ -10,12 +10,14 @@ public class DreamManager : Window, GridManager
     [SerializeField] TMP_Text crystals;
 
     [SerializeField] DreamShop shop;
-    //[SerializeField] MeditationPanel medit;
-    [SerializeField] List<DialogueData> meditations;
     List<DialogueData> dreamMeditations;
     List<SuccubusData> remainingSuccubi;
 
     [SerializeField] DreamToken playerToken;
+
+    [SerializeField] Window wakeUpWindow;
+
+    DreamData data;
 
     public bool CanMove { get; set; }
 
@@ -43,6 +45,11 @@ public class DreamManager : Window, GridManager
         playerToken.SetCharacter(cData);
     }
 
+    public void OpenWakeUpWindown()
+    {
+        wakeUpWindow.FadeIn();
+    }
+
     public void WakeUp()
     {
         GameManager.Instance.EndDream();
@@ -50,6 +57,7 @@ public class DreamManager : Window, GridManager
 
     public void ContinueDream(DreamData data)
     {
+        this.data = data;
         DreamMapData map = data.Map;
 
         Dictionary<NodeContent, List<DreamNode>> nodes = nodePanel.AddNodes(map.Nodes, this);
@@ -75,20 +83,16 @@ public class DreamManager : Window, GridManager
         if (nodes.ContainsKey(NodeContent.Exit))
         {
             List<DreamNode> exits = new List<DreamNode>(nodes[NodeContent.Exit]);
-            List<DreamData> nexts = new List<DreamData>(data.Nexts);
 
-            if (nexts.Count == 0)
+            if (data.Nexts == null || data.Nexts.Count == 0)
             {
-                while (nexts.Count > 0 && exits.Count > 0)
-                {
-                    DreamNode node = exits[Random.Range(0, exits.Count)];
-                    exits.Remove(node);
+                DreamNode node = exits[Random.Range(0, exits.Count)];
 
-                    node.SetExit(null);
-                }
+                node.SetExit(null);
             }
             else
             {
+                List<DreamData> nexts = new List<DreamData>(data.Nexts);
                 while (nexts.Count > 0 && exits.Count > 0)
                 {
                     DreamData next = nexts[Random.Range(0, nexts.Count)];
@@ -150,7 +154,7 @@ public class DreamManager : Window, GridManager
 
     public void Meditate()
     {
-        List<DialogueData> meds = new List<DialogueData>(meditations);
+        List<DialogueData> meds = new List<DialogueData>(data.Meditations);
         meds.AddRange(dreamMeditations);
         DialogueData med = meds[Random.Range(0, meds.Count)];
         GameManager.Instance.StartDialogue(med, null);

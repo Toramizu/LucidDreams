@@ -22,9 +22,9 @@ public class Relationship
 
     public bool TryPlayInteraction()
     {
-        if (Points >= Stage * POINTS_PER_STAGE && Data.RelationEvents[Stage + 1].Check)
+        if (Points >= (Stage + 1) * POINTS_PER_STAGE && Data.RelationEvents[Stage + 1].Check)
         {
-            Data.RelationEvents[Stage + 1].Play(IncreaseRelationship);
+            Data.RelationEvents[Stage].Play(IncreaseRelationship);
             return true;
         }
         return false;
