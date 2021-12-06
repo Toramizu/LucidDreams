@@ -37,6 +37,16 @@ public class PlayerManager : MonoBehaviour
         Abilities = data.Abilities;
         //EquipedAbilities = data.Abilities;
         diceText.text = data.Dice.ToString();
+        UpdateGauge();
+    }
+
+    public void SetPlayer(NightStat stats)
+    {
+        SuccubusData data = stats.Succubus;
+        Player.LoadCharacter(stats);
+        Abilities = data.Abilities;
+        diceText.text = data.Dice.ToString();
+        UpdateGauge();
     }
 
     public void LearnAbility(AbilityData data, int cost)

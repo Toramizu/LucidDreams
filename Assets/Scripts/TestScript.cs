@@ -26,14 +26,10 @@ public class TestScript : MonoBehaviour
             Test9();
     }
 
-    [SerializeField] CharacterUI cui;
+    [SerializeField] NightPrepUI nui;
     void Test1()
     {
-        CharacterData cf = AssetDB.Instance.CharacterDatas["ChildFriend"];
-
-        cf.Color = new ColorXml(Color.cyan);
-
-        AssetDB.Instance.CharacterDatas.SaveToXml();
+        nui.Open();
         Debug.Log("Done");
     }
 

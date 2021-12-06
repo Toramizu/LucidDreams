@@ -4,30 +4,33 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterUI : Window
+public class CharacterUI : Window, CharacterDisplayer
 {
     [SerializeField] CharacterToken tokenPrefab;
     [SerializeField] LayoutGroup tokenList;
 
-    List<CharacterToken> tokens = new List<CharacterToken>();
-    List<CharacterToken> displayedTokens = new List<CharacterToken>();
+    /*List<CharacterToken> tokens = new List<CharacterToken>();
+    List<CharacterToken> displayedTokens = new List<CharacterToken>();*/
 
     Character lastChara;
 
-    [SerializeField] int tokenDisplayed;
+    /*[SerializeField] int tokenDisplayed;
     int tokenPos;
     [SerializeField] Button next;
-    [SerializeField] Button previous;
+    [SerializeField] Button previous;*/
 
+    [SerializeField] CharacterListUI charaList;
     [SerializeField] CharacterDisplayUI charaDisplay;
     [SerializeField] RelationshipUI relationUI;
 
     public override void Open()
     {
         FadeIn();
-        Clear();
-        
-        foreach (Character chara in AssetDB.Instance.Characters.ToList())
+        charaList.Clear();
+
+        List<Character> charas = AssetDB.Instance.Characters.ToList();
+        charaList.Open(charas, this);
+        /*foreach (Character chara in AssetDB.Instance.Characters.ToList())
         {
             if (chara.Check)
             {
@@ -35,22 +38,28 @@ public class CharacterUI : Window
                 tokens.Add(token);
                 token.Init(chara, this);
             }
-        }
+        }*/
 
         if (lastChara == null || !lastChara.Check)
-            ShowCharacter(null);
-        else
-            ShowCharacter(lastChara);
+            foreach(Character chara in charas)
+                if (chara.Check)
+                {
+                    lastChara = chara;
+                    break;
+                }
 
-        ShowTokens();
+        DisplayCharacter(lastChara);
+
+        //charaList.ShowTokens();
     }
 
     public void DenbugOpen(List<Character> debugCharacters)
     {
         FadeIn();
-        Clear();
+        charaList.Clear();
 
-        foreach (Character chara in debugCharacters)
+        charaList.Open(debugCharacters, this);
+        /*foreach (Character chara in debugCharacters)
         {
             if (chara.Check)
             {
@@ -58,40 +67,41 @@ public class CharacterUI : Window
                 tokens.Add(token);
                 token.Init(chara, this);
             }
-        }
+        }*/
 
         if (lastChara == null || !lastChara.Check)
-            ShowCharacter(null);
+            DisplayCharacter(null);
         else
-            ShowCharacter(lastChara);
+            DisplayCharacter(lastChara);
 
-        ShowTokens();
+        //charaList.ShowTokens();
     }
 
-    void Clear()
+    /*void Clear()
     {
         foreach (CharacterToken token in tokens)
             Destroy(token.gameObject);
 
         tokens.Clear();
-    }
+    }*/
 
-    public void ShowCharacter(Character chara)
+    public void DisplayCharacter(Character chara)
     {
-        if(chara == null || !chara.Check)
-        {
+        if (chara == null || !chara.Check)
+            return;
+        /*{
             if (tokens.Count == 0)
                 return;
             else
                 chara = tokens[0].Character;
-        }
+        }*/
 
         lastChara = chara;
         charaDisplay.Display(chara);
         relationUI.Display(chara);
     }
 
-    void ShowTokens()
+    /*void ShowTokens()
     {
         foreach (CharacterToken displayed in displayedTokens)
             displayed.Toggle(false);
@@ -125,6 +135,93 @@ public class CharacterUI : Window
             tokens[i].Toggle(true);
             displayedTokens.Add(tokens[i]);
         }
+    }*/
+
+    public void DisplayNext()
+    {
+        /*tokenPos++;
+        ShowTokens();*/
+        charaList.DisplayNext();
+    }
+
+    public void DisplayPrevious()
+    {
+        /*tokenPos--;
+        ShowTokens();*/
+        charaList.DisplayPrevious();
+    }
+}
+
+public interface CharacterDisplayer
+{
+    void DisplayCharacter(Character chara);
+    void DisplayNext();
+    void DisplayPrevious();
+    void FadeOut();
+}
+
+[System.Serializable]
+public class CharacterListUI
+{
+    [SerializeField] CharacterToken tokenPrefab;
+    [SerializeField] LayoutGroup tokenList;
+
+    List<CharacterToken> tokens = new List<CharacterToken>();
+    List<CharacterToken> displayedTokens = new List<CharacterToken>();
+
+    [SerializeField] int tokenDisplayed;
+    int tokenPos;
+    [SerializeField] Button next;
+    [SerializeField] Button previous;
+
+    public void Open(List<Character> charas, CharacterDisplayer ui)
+    {
+        foreach (Character chara in charas)
+        {
+            if (chara.Check)
+            {
+                CharacterToken token = MonoBehaviour.Instantiate(tokenPrefab, tokenList.transform, false);
+                tokens.Add(token);
+                token.Init(chara, ui);
+            }
+        }
+        ShowTokens();
+    }
+
+    public void ShowTokens()
+    {
+        foreach (CharacterToken displayed in displayedTokens)
+            displayed.Toggle(false);
+        displayedTokens.Clear();
+
+        if (tokens.Count > tokenDisplayed)
+        {
+            next.gameObject.SetActive(true);
+            previous.gameObject.SetActive(true);
+        }
+        else
+        {
+            next.gameObject.SetActive(false);
+            previous.gameObject.SetActive(false);
+        }
+
+        int i = tokenPos * tokenDisplayed;
+        if (i < 0)
+        {
+            tokenPos = (tokens.Count - 1) / tokenDisplayed;
+            i = tokenPos * tokenDisplayed;
+        }
+        if (i > tokens.Count)
+        {
+            tokenPos = 0;
+            i = 0;
+        }
+
+        for (int j = 0; j < tokenDisplayed && i < tokens.Count; i++, j++)
+        {
+            tokens[i].Toggle(true);
+            displayedTokens.Add(tokens[i]);
+        }
     }
 
     public void DisplayNext()
@@ -137,6 +234,14 @@ public class CharacterUI : Window
     {
         tokenPos--;
         ShowTokens();
+    }
+
+    public void Clear()
+    {
+        foreach (CharacterToken token in tokens)
+            MonoBehaviour.Destroy(token.gameObject);
+
+        tokens.Clear();
     }
 }
 

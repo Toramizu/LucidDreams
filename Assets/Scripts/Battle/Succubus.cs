@@ -64,6 +64,32 @@ public class Succubus //: MonoBehaviour
         }
     }
 
+    public void LoadCharacter(NightStat stats)
+    {
+        SuccubusData data = stats.Succubus;
+        if (SuccubUI != null)
+        {
+            SuccubUI.LoadCharacter(data);
+            Dice = new DiceHolder(SuccubUI.Dice);
+            traits.TraitsUI = SuccubUI.Traits;
+        }
+        else
+        {
+            Dice = new DiceHolder(null);
+            traits.TraitsUI = null;
+        }
+
+        Data = data;
+        Arousal = 0;
+        MaxArousal = (int) (data.MaxArousal * stats.ArousalMod + 0.5f) + stats.ArousalBonus;
+        SuccubUI.FillGauge(Arousal, MaxArousal);
+
+        traits.Clear();
+
+        Rolls = data.Dice;
+        LoadAbilities(data.Abilities);
+    }
+
     public void LoadCharacter(SuccubusData data)
     {
         if (SuccubUI != null)

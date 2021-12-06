@@ -77,5 +77,7 @@ public class RollValue
     [XmlElement("Relationship", typeof(DialogueRelationship))]
     [XmlElement("Condition", typeof(DialogueCondition))]
     [XmlElement("Roll", typeof(DialogueRoll))]
+    [XmlElement("ArousalBonus", typeof(ArousalBonus))]
+    [XmlElement("RelationBonus", typeof(RelationBonus))]
     public List<DialogueElement> Elements { get; set; }
 }

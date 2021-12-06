@@ -1,0 +1,19 @@
+Melody, your childhood friend
+
+Melody is an elf and even if she's older than any human, she's quite young by elven standard.
+She works at the nursery and is very good with kids.
+Melody was your babysitter when you were young and you kind of had a crush on her as she seemed so mature.
+Now, you realise that she's quite childish and innocent when it concerns people. But she can be surprisingly wise when you don't expect it.
+
+Friendship : Childhood friend
+	1 Meeting
+	2 & 3, she's at the inn looking for you to hang out.
+	4 You find her in the park, playing with kids
+	5 She's waiting for you at the inn again, then you learn from mom that she waited 2 hours for you.
+	6 You confront her when she comes to you while you're working and she tells you that you're her only adult friend
+		The kids growing up stop hanging out with her and adults find her annoying
+		
+Love : First love
+	1 She's in the park with kids again, and you hear a child saying they'll marry her when they grow up, 
+		she says to come back when they are older, and she'll see
+	

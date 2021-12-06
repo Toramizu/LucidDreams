@@ -17,6 +17,8 @@ public class DreamManager : Window, GridManager
 
     [SerializeField] Window wakeUpWindow;
 
+    [SerializeField] string defaultDream;
+
     DreamData data;
 
     public bool CanMove { get; set; }
@@ -43,6 +45,17 @@ public class DreamManager : Window, GridManager
 
         //medit.CanMeditate = true;
         playerToken.SetCharacter(cData);
+    }
+
+    public void StartDream(NightStat stats)
+    {
+        Open();
+        GameManager.Instance.PlayerManager.SetPlayer(stats);
+
+        ContinueDream(AssetDB.Instance.Dreams[defaultDream]);
+
+        //medit.CanMeditate = true;
+        playerToken.SetCharacter(stats.Succubus);
     }
 
     public void OpenWakeUpWindown()

@@ -13,9 +13,9 @@ public class CharacterToken : MonoBehaviour
     }
 
     public Character Character { get; set; }
-    CharacterUI mainUI;
+    CharacterDisplayer mainUI;
 
-    public void Init(Character chara, CharacterUI ui)
+    public void Init(Character chara, CharacterDisplayer ui)
     {
         Character = chara;
         mainUI = ui;
@@ -24,7 +24,7 @@ public class CharacterToken : MonoBehaviour
 
     public void OnClick()
     {
-        mainUI.ShowCharacter(Character);
+        mainUI.DisplayCharacter(Character);
     }
 
     public void Toggle(bool toggle)

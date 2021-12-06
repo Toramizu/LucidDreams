@@ -43,6 +43,9 @@ public class GameManager : MonoBehaviour
     public GameStatus Status { get; private set; }
     public int Time { get { return dayManager.Time; } }
 
+    [SerializeField] NightPrepUI nightPreps;
+    public NightPreps NightPreps { get { return nightPreps.NightPreps; } }
+
     private void Start()
     {
         Instance = this;
@@ -67,7 +70,11 @@ public class GameManager : MonoBehaviour
 
     public void StartNightTime()
     {
-        StartDream(null, null);
+        dayManager.FadeOut();
+        
+        dreamManager.StartDream(nightPreps.Default);
+
+        Status = GameStatus.Dream;
     }
 
     public void StartDream(DreamData dData, SuccubusData pcData)
