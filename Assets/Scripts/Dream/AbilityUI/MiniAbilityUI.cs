@@ -28,7 +28,7 @@ public class MiniAbilityUI : Window
         for (int i = 0; i < 6; i++)
         {
             MiniAbility slot = Instantiate(miniAbilityPrefab, equipped, false);
-            slot.Open();
+            slot.FadeIn();
             equippedAbi.Add(slot);
             slot.EquipSlot = i;
             slot.DefaultPosition = new Vector3(miniX * (i % 2), -miniY * (i / 2), 0);
@@ -41,13 +41,13 @@ public class MiniAbilityUI : Window
             storedAbi.Add(slot);
             slot.DefaultPosition = new Vector3(miniX * (i % minisStorageX), -miniY * (i / minisStorageX), 0);
             slot.AbiUI = this;
-            slot.Open();
+            slot.FadeIn();
         }
     }
 
-    public override void Open()
+    public override void FadeIn()
     {
-        base.Open();
+        base.FadeIn();
         if (equippedAbi == null)
             Init();
 
@@ -72,9 +72,9 @@ public class MiniAbilityUI : Window
         DisplayAbility(null);
     }
 
-    public override void Close()
+    public override void FadeOut()
     {
-        base.Close();
+        base.FadeOut();
         List<AbilityData> abis = new List<AbilityData>();
         foreach (MiniAbility mAbi in equippedAbi)
             abis.Add(mAbi.Ability);
@@ -89,12 +89,12 @@ public class MiniAbilityUI : Window
         if(abi == displayed || abi == null)
         {
             displayed = null;
-            abilityPreview.Close();
+            abilityPreview.FadeOut();
         }
         else
         {
             displayed = abi;
-            abilityPreview.Open();
+            abilityPreview.FadeIn();
             new Ability(abi, abilityPreview);
         }
 

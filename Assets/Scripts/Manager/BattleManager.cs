@@ -31,8 +31,8 @@ public class BattleManager : Window
     
     public void StartBattle(SuccubusData oData, List<AbilityData> pAbis)
     {
-        Open();
-        endPanel.Close();
+        FadeIn();
+        endPanel.FadeOut();
         Opponent.LoadCharacter(oData);
         Player.Reset(pAbis);
         PlayerTurn = false;

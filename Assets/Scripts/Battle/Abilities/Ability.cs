@@ -89,7 +89,7 @@ public class Ability
 
     public void ResetAbility()
     {
-        AbiUI.Open();
+        AbiUI.FadeIn();
         if (Data.Uses == -1)
             RemainingUses = int.MaxValue;
         else
@@ -171,7 +171,7 @@ public class Ability
         if (AbiUI != null)
         {
             if (RemainingUses <= 0)
-                AbiUI.Close();
+                AbiUI.FadeOut();
             else
                 RefreshDescription();
         }

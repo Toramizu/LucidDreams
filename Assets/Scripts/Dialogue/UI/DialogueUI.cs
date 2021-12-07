@@ -31,7 +31,7 @@ public class DialogueUI : Window
     {
         if(data == null)
         {
-            Close();
+            FadeOut();
             Debug.Log("No dialogue...");
             action();
             return;
@@ -39,7 +39,7 @@ public class DialogueUI : Window
 
         this.action = action;
         FadeIn();
-        hidable.Open();
+        hidable.FadeIn();
         currentDialogue = data;
         AddInFront(data.Elements);
 
@@ -79,7 +79,7 @@ public class DialogueUI : Window
         }
         else
         {
-            Close();
+            FadeOut();
             action?.Invoke();
         }
     }
@@ -222,7 +222,7 @@ public class DialogueUI : Window
 
     public void CenterImage(ImageData image)
     {
-        Open();
+        FadeIn();
 
         centerImage.Init(image);
 

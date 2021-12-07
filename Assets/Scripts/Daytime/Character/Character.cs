@@ -15,6 +15,7 @@ public class Character : XmlAsset
     const int POINTS_PER_STAGE = 100;
 
     public bool Check { get { return Data.Check; } }
+    public bool NightCheck { get { return Data.NightCheck; } }
 
     public List<CharacterLocation> Locations { get { return Data.Locations; } }
 

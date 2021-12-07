@@ -39,7 +39,7 @@ public class OptionsMenu : Window
     public void ToggleDisplay()
     {
         displayOptions.Toggle();
-        soundOptions.Close();
+        soundOptions.FadeOut();
     }
 
     public void ChangeWindowMode(int mode)
@@ -66,7 +66,7 @@ public class OptionsMenu : Window
     public void ToggleSound()
     {
         soundOptions.Toggle();
-        displayOptions.Close();
+        displayOptions.FadeOut();
     }
 
     public void ChangedSEInutp()
@@ -101,7 +101,7 @@ public class OptionsMenu : Window
 
     public void OpenCredits()
     {
-        credits.Open();
+        credits.FadeIn();
     }
 
     public void CloseGame()

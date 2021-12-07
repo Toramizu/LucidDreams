@@ -12,10 +12,10 @@ public class TraitTooltip : Window
 
     public void Open(Trait trait)
     {
-        Open();
+        FadeIn();
         if (trait == null)
         {
-            Close();
+            FadeOut();
         }
         else
         {

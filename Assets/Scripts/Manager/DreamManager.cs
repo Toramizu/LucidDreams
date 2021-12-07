@@ -24,21 +24,21 @@ public class DreamManager : Window, GridManager
     public bool CanMove { get; set; }
 
     DreamNode currentNode;
-    public override void Open()
+    public override void FadeIn()
     {
-        base.Open();
+        base.FadeIn();
         CanMove = true;
     }
 
-    public override void Close()
+    public override void FadeOut()
     {
-        base.Close();
+        base.FadeOut();
         CanMove = false;
     }
 
     public void StartDream(DreamData data, SuccubusData cData)
     {
-        Open();
+        FadeIn();
         GameManager.Instance.PlayerManager.SetPlayer(cData);
 
         ContinueDream(data);
@@ -49,7 +49,7 @@ public class DreamManager : Window, GridManager
 
     public void StartDream(NightStat stats)
     {
-        Open();
+        FadeIn();
         GameManager.Instance.PlayerManager.SetPlayer(stats);
 
         ContinueDream(AssetDB.Instance.Dreams[defaultDream]);

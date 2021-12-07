@@ -34,6 +34,11 @@ public class CharacterData : ImageHaver, XmlAsset
     [XmlIgnore]
     public bool Check { get { return Condition == null || Condition.Check; } }
 
+    [XmlElement("NightUnlock")]
+    public MultCondition NightCondition { get; set; }
+    [XmlIgnore]
+    public bool NightCheck { get { return Check && (NightCondition == null || NightCondition.Check); } }
+
     [XmlElement("Location")]
     public List<CharacterLocation> Locations { get; set; }
 

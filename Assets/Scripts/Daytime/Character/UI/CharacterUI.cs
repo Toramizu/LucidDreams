@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,48 +10,24 @@ public class CharacterUI : Window, CharacterDisplayer
     [SerializeField] CharacterToken tokenPrefab;
     [SerializeField] LayoutGroup tokenList;
 
-    /*List<CharacterToken> tokens = new List<CharacterToken>();
-    List<CharacterToken> displayedTokens = new List<CharacterToken>();*/
-
     Character lastChara;
-
-    /*[SerializeField] int tokenDisplayed;
-    int tokenPos;
-    [SerializeField] Button next;
-    [SerializeField] Button previous;*/
 
     [SerializeField] CharacterListUI charaList;
     [SerializeField] CharacterDisplayUI charaDisplay;
     [SerializeField] RelationshipUI relationUI;
 
-    public override void Open()
+    public override void FadeIn()
     {
         FadeIn();
         charaList.Clear();
 
-        List<Character> charas = AssetDB.Instance.Characters.ToList();
+        List<Character> charas = AssetDB.Instance.Characters.ToList().Where(c => c.Check).ToList();
         charaList.Open(charas, this);
-        /*foreach (Character chara in AssetDB.Instance.Characters.ToList())
-        {
-            if (chara.Check)
-            {
-                CharacterToken token = Instantiate(tokenPrefab, tokenList.transform, false);
-                tokens.Add(token);
-                token.Init(chara, this);
-            }
-        }*/
 
         if (lastChara == null || !lastChara.Check)
-            foreach(Character chara in charas)
-                if (chara.Check)
-                {
-                    lastChara = chara;
-                    break;
-                }
+            lastChara = charas[0];
 
         DisplayCharacter(lastChara);
-
-        //charaList.ShowTokens();
     }
 
     public void DenbugOpen(List<Character> debugCharacters)
@@ -59,83 +36,22 @@ public class CharacterUI : Window, CharacterDisplayer
         charaList.Clear();
 
         charaList.Open(debugCharacters, this);
-        /*foreach (Character chara in debugCharacters)
-        {
-            if (chara.Check)
-            {
-                CharacterToken token = Instantiate(tokenPrefab, tokenList.transform, false);
-                tokens.Add(token);
-                token.Init(chara, this);
-            }
-        }*/
 
         if (lastChara == null || !lastChara.Check)
             DisplayCharacter(null);
         else
             DisplayCharacter(lastChara);
-
-        //charaList.ShowTokens();
     }
-
-    /*void Clear()
-    {
-        foreach (CharacterToken token in tokens)
-            Destroy(token.gameObject);
-
-        tokens.Clear();
-    }*/
 
     public void DisplayCharacter(Character chara)
     {
         if (chara == null || !chara.Check)
             return;
-        /*{
-            if (tokens.Count == 0)
-                return;
-            else
-                chara = tokens[0].Character;
-        }*/
 
         lastChara = chara;
         charaDisplay.Display(chara);
         relationUI.Display(chara);
     }
-
-    /*void ShowTokens()
-    {
-        foreach (CharacterToken displayed in displayedTokens)
-            displayed.Toggle(false);
-        displayedTokens.Clear();
-
-        if(tokens.Count > tokenDisplayed)
-        {
-            next.gameObject.SetActive(true);
-            previous.gameObject.SetActive(true);
-        }
-        else
-        {
-            next.gameObject.SetActive(false);
-            previous.gameObject.SetActive(false);
-        }
-        
-        int i = tokenPos * tokenDisplayed;
-        if(i < 0)
-        {
-            tokenPos = (tokens.Count - 1) / tokenDisplayed;
-            i = tokenPos * tokenDisplayed;
-        }
-        if(i > tokens.Count)
-        {
-            tokenPos = 0;
-            i = 0;
-        }
-
-        for(int j = 0; j < tokenDisplayed && i < tokens.Count; i++, j++)
-        {
-            tokens[i].Toggle(true);
-            displayedTokens.Add(tokens[i]);
-        }
-    }*/
 
     public void DisplayNext()
     {
@@ -178,12 +94,9 @@ public class CharacterListUI
     {
         foreach (Character chara in charas)
         {
-            if (chara.Check)
-            {
-                CharacterToken token = MonoBehaviour.Instantiate(tokenPrefab, tokenList.transform, false);
-                tokens.Add(token);
-                token.Init(chara, ui);
-            }
+            CharacterToken token = MonoBehaviour.Instantiate(tokenPrefab, tokenList.transform, false);
+            tokens.Add(token);
+            token.Init(chara, ui);
         }
         ShowTokens();
     }

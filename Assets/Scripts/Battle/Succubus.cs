@@ -81,7 +81,7 @@ public class Succubus //: MonoBehaviour
 
         Data = data;
         Arousal = 0;
-        MaxArousal = (int) (data.MaxArousal * stats.ArousalMod + 0.5f) + stats.ArousalBonus;
+        MaxArousal = stats.FinalArousal;
         SuccubUI.FillGauge(Arousal, MaxArousal);
 
         traits.Clear();

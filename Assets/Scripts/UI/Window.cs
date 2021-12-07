@@ -16,7 +16,7 @@ public class Window : MonoBehaviour
         canvasGroup.interactable = false;
     }
 
-    public virtual void Open()
+    /*public virtual void Open()
     {
         active = true;
         canvasGroup.alpha = 1;
@@ -60,6 +60,22 @@ public class Window : MonoBehaviour
             "time", .5f,
             "onupdate", "ChangeAlpha"
             ));
+    }*/
+
+    public virtual void FadeIn()
+    {
+        active = true;
+        canvasGroup.alpha = 1;
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.interactable = true;
+    }
+
+    public virtual void FadeOut()
+    {
+        active = false;
+        canvasGroup.alpha = 0;
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.interactable = false;
     }
 
     void ChangeAlpha(float alpha)
@@ -70,8 +86,8 @@ public class Window : MonoBehaviour
     public void Toggle()
     {
         if (active)
-            Close();
+            FadeOut();
         else
-            Open();
+            FadeIn();
     }
 }

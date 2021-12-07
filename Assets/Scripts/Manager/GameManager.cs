@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Instance = this;
-        dayTmp.Open();
+        dayTmp.FadeIn();
         Status = GameStatus.Day;
     }
 
@@ -70,11 +70,10 @@ public class GameManager : MonoBehaviour
 
     public void StartNightTime()
     {
-        dayManager.FadeOut();
-        
+        nightPreps.FadeIn();
+        /*dayManager.FadeOut();
         dreamManager.StartDream(nightPreps.Default);
-
-        Status = GameStatus.Dream;
+        Status = GameStatus.Dream;*/
     }
 
     public void StartDream(DreamData dData, SuccubusData pcData)
@@ -87,9 +86,23 @@ public class GameManager : MonoBehaviour
             pcData = AssetDB.Instance.Succubi[defaultSuccubus];
 
         dreamManager.StartDream(dData, pcData);
-        playerManager.UpdateGauge();
+        //playerManager.UpdateGauge();
         //battleManager.Close();
         Status = GameStatus.Dream;
+    }
+
+    public void StartDream(NightStat nightStat)
+    {
+        dayManager.FadeOut();
+
+        if (nightStat == null)
+            NextDay();
+        else
+        {
+            dreamManager.StartDream(nightStat);
+            //playerManager.UpdateGauge();
+            Status = GameStatus.Dream;
+        }
     }
 
     public void EndBattle(int crystals, AbilityData newAbility)
@@ -106,13 +119,13 @@ public class GameManager : MonoBehaviour
     public void EndDream()
     {
         dreamManager.FadeOut();
-        dayManager.NewDay();
-        dayManager.Open();
+        NextDay();
     }
 
     public void NextDay()
     {
         Debug.Log("It's a new day!");
+        dayManager.NewDay();
         dayTmp.FadeIn();
         Status = GameStatus.Day;
     }

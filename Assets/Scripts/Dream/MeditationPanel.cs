@@ -12,9 +12,9 @@ public class MeditationPanel : Window
 
     public bool CanMeditate { get; set; }
 
-    public override void Open()
+    public override void FadeIn()
     {
-        base.Open();
+        base.FadeIn();
         DialogueData med = meditations[Random.Range(0, meditations.Count)];
         GameManager.Instance.StartDialogue(med, null);
 
@@ -28,6 +28,6 @@ public class MeditationPanel : Window
     {
         if (CanMeditate)
             GameManager.Instance.PlayerManager.Meditate();
-        Close();
+        FadeOut();
     }
 }

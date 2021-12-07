@@ -21,9 +21,9 @@ public class EndPanel : Window
     
     public void Victory(int crystals, SuccubusData opponent)
     {
-        Open();
-        victory.Open();
-        loss.Close();
+        FadeIn();
+        victory.FadeIn();
+        loss.FadeOut();
 
         this.crystals = crystals;
         victoryText.text = "+" + crystals;
@@ -37,9 +37,9 @@ public class EndPanel : Window
 
     public void Loss()
     {
-        Open();
-        victory.Close();
-        loss.Open();
+        FadeIn();
+        victory.FadeOut();
+        loss.FadeIn();
 
         lossText.text = wakeUpText[Random.Range(0, wakeUpText.Count)];
     }
@@ -71,8 +71,8 @@ public class EndPanel : Window
     public void VictoryClose()
     {
         GameManager.Instance.EndBattle(crystals, ability);
-        victory.Close();
-        Close();
+        victory.FadeOut();
+        FadeOut();
     }
 }
 

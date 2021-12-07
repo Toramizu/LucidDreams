@@ -18,7 +18,7 @@ public class DreamShop : Window
     
     public void InitShop(ShopData data, List<SuccubusData> succubusAbilities)
     {
-        Open();
+        FadeIn();
 
         if (this.data != data)
             FirstLoad(data, succubusAbilities);
@@ -91,7 +91,7 @@ public class DreamShop : Window
         else
         {
             GameManager.Instance.PlayerManager.LearnAbility(aData, AbilityPrice(aData));
-            abilities[id].Close();
+            abilities[id].FadeOut();
         }
     }
 
@@ -131,9 +131,9 @@ public class DreamShop : Window
         return data.IncrementCost ;
     }
 
-    public override void Close()
+    public override void FadeOut()
     {
-        base.Close();
+        base.FadeOut();
         GameManager.Instance.DreamManager.CanMove = true;
     }
 }

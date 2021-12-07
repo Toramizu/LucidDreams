@@ -29,7 +29,7 @@ public class TestScript : MonoBehaviour
     [SerializeField] NightPrepUI nui;
     void Test1()
     {
-        nui.Open();
+        nui.FadeIn();
         Debug.Log("Done");
     }
 
