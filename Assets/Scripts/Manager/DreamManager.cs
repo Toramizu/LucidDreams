@@ -20,8 +20,11 @@ public class DreamManager : Window, GridManager
     [SerializeField] string defaultDream;
 
     DreamData data;
+    NightStat nightStats;
 
     public bool CanMove { get; set; }
+    int level;
+    public bool IsBossfight { get; set; }
 
     DreamNode currentNode;
     public override void FadeIn()
@@ -45,10 +48,12 @@ public class DreamManager : Window, GridManager
 
         //medit.CanMeditate = true;
         playerToken.SetCharacter(cData);
+        level = 0;
     }
 
     public void StartDream(NightStat stats)
     {
+        nightStats = stats;
         FadeIn();
         GameManager.Instance.PlayerManager.SetPlayer(stats);
 
@@ -56,16 +61,12 @@ public class DreamManager : Window, GridManager
 
         //medit.CanMeditate = true;
         playerToken.SetCharacter(stats.Succubus);
+        level = 0;
     }
 
     public void OpenWakeUpWindown()
     {
         wakeUpWindow.FadeIn();
-    }
-
-    public void WakeUp()
-    {
-        GameManager.Instance.EndDream();
     }
 
     public void ContinueDream(DreamData data)
@@ -78,6 +79,12 @@ public class DreamManager : Window, GridManager
 
         dreamMeditations = data.Meditations;
         CanMove = true;
+        IsBossfight = false;
+
+        if(level++ > 0 && nightStats != null)
+        {
+            nightStats.Character.AddRelationPoints(0, Variables.friendshipPerLevel * level);
+        }
     }
 
     void FillNodes(Dictionary<NodeContent, List<DreamNode>> nodes, DreamMapData map, DreamData data)
@@ -172,6 +179,44 @@ public class DreamManager : Window, GridManager
         DialogueData med = meds[Random.Range(0, meds.Count)];
         GameManager.Instance.StartDialogue(med, null);
         //medit.Open();
+    }
+
+    public void WinDream()
+    {
+        level++;
+        EndDream();
+
+        GameManager.Instance.Notify("You wake up victorious!");
+        nightStats.Character.AddRelationPoints(0, Variables.friendshipPerLevel * level);
+        nightStats.Character.AddRelationPoints(1, Variables.lovePerLevel * level);
+    }
+
+    public void FleeDream()
+    {
+        GameManager.Instance.Notify("You wake up in sweat...");
+        EndDream();
+    }
+
+    public void LoseDream()
+    {
+        EndDream();
+
+        if (IsBossfight)
+        {
+            GameManager.Instance.Notify("You wake up, heart pounding in your chest...");
+            nightStats.Character.AddRelationPoints(2, Variables.lossOnDefeatBoss);
+        }
+        else
+        {
+            GameManager.Instance.Notify("You wake up ashamed...");
+            nightStats.Character.AddRelationPoints(2, Variables.lossOnDefeat);
+        }
+    }
+
+    void EndDream()
+    {
+        GameManager.Instance.NextDay();
+        FadeOut();
     }
 
     #region Movement

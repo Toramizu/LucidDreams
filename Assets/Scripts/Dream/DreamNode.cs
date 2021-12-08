@@ -25,7 +25,7 @@ public class DreamNode : MonoBehaviour, PathNode
 
     SuccubusData cData;
     ShopData sData;
-    bool exit;
+    //bool exit;
     DreamData next;
 
     NodeContent type;
@@ -90,8 +90,16 @@ public class DreamNode : MonoBehaviour, PathNode
     {
         switch (type)
         {
-            case NodeContent.Succubus:
             case NodeContent.Boss:
+                GameManager.Instance.DreamManager.IsBossfight = true;
+                if (cData != null)
+                {
+                    GameManager.Instance.StartBattle(cData);
+                    rightToken.transform.localScale = new Vector3(.5f, .5f, .5f);
+                    type = NodeContent.None;
+                }
+                break;
+            case NodeContent.Succubus:
                 if (cData != null)
                 {
                     GameManager.Instance.StartBattle(cData);
@@ -104,19 +112,18 @@ public class DreamNode : MonoBehaviour, PathNode
                 break;
             case NodeContent.Exit:
                 if (next == null)
-                    GameManager.Instance.EndDream();
+                    GameManager.Instance.DreamManager.WinDream();
                 else
                     GameManager.Instance.DreamManager.ContinueDream(next);
                 break;
             case NodeContent.Meditation:
                 GameManager.Instance.DreamManager.Meditate();
                 infoImage.transform.localScale = new Vector3(.5f, .5f, .5f);
-                //type = NodeContent.None;
+                type = NodeContent.None;
                 break;
         }
 
-        //Debug.Log(coo);
-        if(cData != null)
+        /*if(cData != null)
         {
             if (cData != null)
             {
@@ -131,10 +138,10 @@ public class DreamNode : MonoBehaviour, PathNode
         } else if(exit)
         {
             if (next == null)
-                GameManager.Instance.EndDream();
+                GameManager.Instance.DreamManager.WinDream();
             else
                 GameManager.Instance.DreamManager.ContinueDream(next);
-        }
+        }*/
     }
 
     public void PlacePlayer(DreamToken token)
@@ -164,7 +171,6 @@ public class DreamNode : MonoBehaviour, PathNode
 
     public void SetExit(DreamData next)
     {
-        exit = true;
         this.next = next;
         infoImage.gameObject.SetActive(true);
         infoImage.sprite = nextMapSprite;

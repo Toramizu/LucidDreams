@@ -37,6 +37,7 @@ public class EndPanel : Window
 
     public void Loss()
     {
+        GameManager.Instance.DreamManager.LoseDream();
         FadeIn();
         victory.FadeOut();
         loss.FadeIn();

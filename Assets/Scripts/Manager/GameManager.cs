@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         dayTmp.FadeOut();
-        dayManager.Open(0);
+        dayManager.Open();
         //StartDream(null, null);
     }
 
@@ -124,9 +124,8 @@ public class GameManager : MonoBehaviour
 
     public void NextDay()
     {
-        Debug.Log("It's a new day!");
         dayManager.NewDay();
-        dayTmp.FadeIn();
+        //dayTmp.FadeIn();
         Status = GameStatus.Day;
     }
 

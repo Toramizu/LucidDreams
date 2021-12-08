@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ public class DayManager : Window
 {
     [SerializeField] Clock clock;
     public int Time { get { return clock.Time; } }
+    [SerializeField] TMP_Text dayText;
 
     [SerializeField] Image backgroundImage;
     [SerializeField] List<Sprite> backgrounds;
@@ -19,12 +21,12 @@ public class DayManager : Window
     
     Dictionary<string, MainInteractionButton> interactions = new Dictionary<string, MainInteractionButton>();
 
-    public void Open(int time)
+    public void Open()
     {
-        clock.Time = time;
         FillLocations();
         backgroundImage.sprite = backgrounds[0];
         FadeIn();
+        DailyChecks();
     }
 
     public void FillLocations()
@@ -120,7 +122,8 @@ public class DayManager : Window
 
     public void AdvanceTime(int amount)
     {
-        int t = clock.AdvanceTime(amount);
+        bool newDay = clock.AdvanceTime(amount);
+        int t = clock.Time;
         if (t < clock.NightTime)
         {
             backgroundImage.sprite = backgrounds[t];
@@ -130,6 +133,8 @@ public class DayManager : Window
         {
             GameManager.Instance.StartNightTime();
         }
+
+        if (newDay) DailyChecks();
     }
 
     public void NewDay()
@@ -137,5 +142,13 @@ public class DayManager : Window
         int t = clock.NewDay();
         backgroundImage.sprite = backgrounds[t];
         FillLocations();
+        DailyChecks();
+    }
+
+    void DailyChecks()
+    {
+        //Do relationship dacays
+        Debug.Log("It's a new day!");
+        dayText.text = clock.Date;
     }
 }

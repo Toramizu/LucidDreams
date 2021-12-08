@@ -12,7 +12,7 @@ public class Clock : MonoBehaviour
     public int Time
     {
         get { return currentTime; }
-        set
+        private set
         {
             currentTime = value;
 
@@ -21,6 +21,18 @@ public class Clock : MonoBehaviour
             image.sprite = timeImages[currentTime];
         }
     }
+
+    public int Day { get; private set; }
+    public string DayS { get { return days[Day % days.Length]; } }
+    string[] days = new string[] { "Moonday", "Waterday", "Aetherday", "Sunday", "Fireday", "Earthday" };
+    /*Moonday			Selen-
+    Waterday		Hydr-
+    Aetherday		Aether-
+    Sunday			Heli-
+    Fireday			Pyr-
+    Earthday		Ge-*/
+
+    public string Date { get { return DayS + " " + Day; } }
 
     public int NightTime
     {
@@ -31,20 +43,22 @@ public class Clock : MonoBehaviour
     {
         if(currentTime >= timeImages.Count)
         {
-            int c = currentTime;
-            currentTime = c % timeImages.Count;
+            Day += currentTime / timeImages.Count;
+            currentTime = currentTime % timeImages.Count;
         }
     }
 
-    public int AdvanceTime(int amount)
+    public bool AdvanceTime(int amount)
     {
+        int currentDay = Day;
         Time += amount;
-        return currentTime;
+        return Day > currentDay;
     }
 
     public int NewDay()
     {
         Time = 0;
+        Day++;
         return 0;
     }
 }

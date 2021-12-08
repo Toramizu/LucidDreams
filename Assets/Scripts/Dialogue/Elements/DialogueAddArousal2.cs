@@ -12,7 +12,6 @@ public class DialogueAddArousal2 : DialogueElement
 
     public override bool Play(DialogueUI dialUI)
     {
-        Debug.Log("Add arousal " + GameManager.Instance.Status);
         switch (GameManager.Instance.Status)
         {
             case GameStatus.Battle:
