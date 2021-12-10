@@ -9,6 +9,7 @@ public class DayManager : Window
 {
     [SerializeField] Clock clock;
     public int Time { get { return clock.Time; } }
+    public int Day { get { return clock.Day; } }
     [SerializeField] TMP_Text dayText;
 
     [SerializeField] Image backgroundImage;
@@ -150,5 +151,12 @@ public class DayManager : Window
         //Do relationship dacays
         Debug.Log("It's a new day!");
         dayText.text = clock.Date;
+
+        int day = clock.Day;
+
+        foreach(Character chara in AssetDB.Instance.Characters.ToList())
+        {
+
+        }
     }
 }

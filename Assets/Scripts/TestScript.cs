@@ -13,17 +13,23 @@ public class TestScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F3))
             Test3();
 
-        if (Input.GetKeyDown(KeyCode.F5))
-            Test5();
-        if (Input.GetKeyDown(KeyCode.F6))
-            Test6();
-        if (Input.GetKeyDown(KeyCode.F7))
-            Test7();
-        if (Input.GetKeyDown(KeyCode.F8))
-            Test8();
+        if (Variables.debugMode)
+        {
+            if (Input.GetKeyDown(KeyCode.F5))
+                Test5();
+            if (Input.GetKeyDown(KeyCode.F6))
+                Test6();
+            if (Input.GetKeyDown(KeyCode.F7))
+                Test7();
+            if (Input.GetKeyDown(KeyCode.F8))
+                Test8();
+        
 
-        if (Input.GetKeyDown(KeyCode.F9))
-            Test9();
+            if (Input.GetKeyDown(KeyCode.F9))
+                Test9();
+            if (Input.GetKeyDown(KeyCode.F12))
+                Test12();
+        }
     }
 
     [SerializeField] NightPrepUI nui;
@@ -47,22 +53,38 @@ public class TestScript : MonoBehaviour
 
     void Test5()
     {
-        GameManager.Instance.PlayerManager.Crystals = 99;
+        if (GameManager.Instance.Status == GameStatus.Dream || GameManager.Instance.Status == GameStatus.Battle)
+        {
+            GameManager.Instance.PlayerManager.Crystals = 99;
+            GameManager.Instance.Notify("Cheat : Lust Crystals +99");
+        }
     }
 
     void Test6()
     {
-        GameManager.Instance.BattleManager.Roll(1, null);
+        if (GameManager.Instance.Status == GameStatus.Battle)
+        {
+            GameManager.Instance.BattleManager.Roll(1, null);
+            GameManager.Instance.Notify("Cheat : Free roll");
+        }
     }
 
     void Test7()
     {
-        GameManager.Instance.BattleManager.FullHeal();
+        if (GameManager.Instance.Status == GameStatus.Dream || GameManager.Instance.Status == GameStatus.Battle)
+        {
+            GameManager.Instance.BattleManager.FullHeal();
+            GameManager.Instance.Notify("Cheat : Full heal");
+        }
     }
 
     void Test8()
     {
-        GameManager.Instance.BattleManager.EndBattle(true);
+        if (GameManager.Instance.Status == GameStatus.Battle)
+        {
+            GameManager.Instance.BattleManager.EndBattle(true);
+            GameManager.Instance.Notify("Cheat : Free win");
+        }
     }
 
     [SerializeField] Window mapCreator;
@@ -70,5 +92,11 @@ public class TestScript : MonoBehaviour
     void Test9()
     {
         mapCreator.Toggle();
+    }
+
+    void Test12()
+    {
+        Variables.debugMode = !Variables.debugMode;
+        GameManager.Instance.Notify("Debug Mode : " + Variables.debugMode);
     }
 }

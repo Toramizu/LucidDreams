@@ -22,7 +22,7 @@ public class Clock : MonoBehaviour
         }
     }
 
-    public int Day { get; private set; }
+    public int Day { get; private set; } = 1;
     public string DayS { get { return days[Day % days.Length]; } }
     string[] days = new string[] { "Moonday", "Waterday", "Aetherday", "Sunday", "Fireday", "Earthday" };
     /*Moonday			Selen-

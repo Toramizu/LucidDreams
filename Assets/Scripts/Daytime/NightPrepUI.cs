@@ -100,13 +100,14 @@ public class NightPrepUI : Window, CharacterDisplayer
 
     public void StartNight()
     {
+        displayed.Add(NightPreps.All);
         GameManager.Instance.StartDream(displayed);
     }
 }
 
 public class NightPreps
 {
-    NightStat all = new NightStat(null);
+    public NightStat All { get; private set; } = new NightStat(null);
     Dictionary<string, NightStat> characters = new Dictionary<string, NightStat>();
 
     public NightStat this[string id]
@@ -151,7 +152,7 @@ public class NightPreps
     NightStat GetStat(string character)
     {
         if (character == null)
-            return all;
+            return All;
         else
         {
             if (!characters.ContainsKey(character))
@@ -172,7 +173,7 @@ public class NightPreps
 
     public void ResetAll()
     {
-        all.Reset();
+        All.Reset();
         foreach (NightStat stat in characters.Values)
             stat.Reset();
     }
@@ -206,6 +207,26 @@ public class NightStat
 
         RelationBonus = new List<int>() { 0, 0, 0 };
         RelationMod = new List<float>() { 1f, 1f, 1f };
+    }
+
+    public void Add(NightStat other)
+    {
+        ArousalBonus += other.ArousalBonus;
+        ArousalMod *= other.ArousalMod;
+
+        for(int i = 0; i < RelationBonus.Count; i++)
+        {
+            RelationBonus[i] += other.RelationBonus[i];
+            RelationMod[i] *= other.RelationMod[i];
+        }
+    }
+
+    public int GetRelationValue(int relation, int value)
+    {
+        if (relation < RelationBonus.Count)
+            return (int)(value * RelationMod[relation]) + RelationBonus[relation];
+        else
+            return value;
     }
 
     public string Summary()

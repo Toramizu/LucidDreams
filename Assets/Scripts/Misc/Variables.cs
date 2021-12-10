@@ -15,4 +15,6 @@ public static class Variables
     public static int lossOnDefeat = 10;
     public static int lossOnDefeatBoss = 100;
     public static int lossDecayByLove = 5;
+
+    public static bool debugMode = false;
 }

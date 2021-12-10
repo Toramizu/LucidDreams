@@ -1193,8 +1193,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1295290750}
-        m_TargetAssemblyTypeName: AbilityUI, Assembly-CSharp
-        m_MethodName: Close
+        m_TargetAssemblyTypeName: MiniAbilityUI, Assembly-CSharp
+        m_MethodName: FadeOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1659,7 +1659,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 10, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &69639160
@@ -2073,7 +2073,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1098196078}
         m_TargetAssemblyTypeName: DreamShop, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: FadeOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6913,7 +6913,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 50, y: 50}
@@ -10192,7 +10192,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 10, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &516381780
@@ -10827,7 +10827,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1286804359}
         m_TargetAssemblyTypeName: Window, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: FadeOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10910,7 +10910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 85.095, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &545357684
@@ -20698,7 +20698,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 10, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1049813903
@@ -21519,8 +21519,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1295290750}
-        m_TargetAssemblyTypeName: AbilityUI, Assembly-CSharp
-        m_MethodName: Open
+        m_TargetAssemblyTypeName: MiniAbilityUI, Assembly-CSharp
+        m_MethodName: FadeIn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22682,7 +22682,6 @@ GameObject:
   - component: {fileID: 1135461036}
   - component: {fileID: 1135461035}
   - component: {fileID: 1135461038}
-  - component: {fileID: 1135461037}
   - component: {fileID: 1135461039}
   m_Layer: 5
   m_Name: Character Stats
@@ -22750,18 +22749,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135461033}
   m_CullTransparentMesh: 1
---- !u!114 &1135461037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1135461033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d3ceefcf1d635f47a84a14f4ab18c34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!225 &1135461038
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -22770,7 +22757,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135461033}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -22803,6 +22790,7 @@ MonoBehaviour:
   relationUI:
     relationImagePrefab: {fileID: 3698365643561863935, guid: 154be1afe63efc646bd79afef19ce1db, type: 3}
     emptySprite: {fileID: 21300000, guid: 4f02eb20a77a6c241aed1351483a8b17, type: 3}
+    lostSprite: {fileID: 21300000, guid: 29d290dc56e04ea49b24d5c0a1f62dcb, type: 3}
     defaultSprite: {fileID: 21300000, guid: e26fbeb12a1149041af3d06bbd52b435, type: 3}
     defaultColor: {r: 0, g: 0, b: 0, a: 0}
     spriteParent: {fileID: 316906304}
@@ -24881,7 +24869,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1387129894}
         m_TargetAssemblyTypeName: Window, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: FadeOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25147,7 +25135,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 225748865}
         m_TargetAssemblyTypeName: Window, Assembly-CSharp
-        m_MethodName: Close
+        m_MethodName: FadeOut
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25767,7 +25755,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1286804359}
         m_TargetAssemblyTypeName: Window, Assembly-CSharp
-        m_MethodName: Open
+        m_MethodName: FadeIn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28888,7 +28876,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1135461039}
         m_TargetAssemblyTypeName: CharacterUI, Assembly-CSharp
-        m_MethodName: Open
+        m_MethodName: FadeIn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -30103,7 +30091,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1286804359}
         m_TargetAssemblyTypeName: Window, Assembly-CSharp
-        m_MethodName: Open
+        m_MethodName: FadeIn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -33044,7 +33032,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1286804359}
         m_TargetAssemblyTypeName: Window, Assembly-CSharp
-        m_MethodName: Open
+        m_MethodName: FadeIn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -36161,6 +36149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1837498673}
+  - component: {fileID: 1837498674}
   m_Layer: 5
   m_Name: Main Relationship
   m_TagString: Untagged
@@ -36189,6 +36178,62 @@ RectTransform:
   m_AnchoredPosition: {x: 140, y: 0}
   m_SizeDelta: {x: -560, y: -420}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1837498674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837498672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1135461039}
+        m_TargetAssemblyTypeName: CharacterUI, Assembly-CSharp
+        m_MethodName: Debug_ShowRelationPoints
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1858641902
 GameObject:
   m_ObjectHideFlags: 0
@@ -36798,7 +36843,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867821455}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -41748,7 +41793,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 10, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2076924351

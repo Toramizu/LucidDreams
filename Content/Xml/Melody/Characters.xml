@@ -7,7 +7,8 @@
 		<Background>She used to babysit you when you were a child. As she's an elf, she is still as young as she was back then.</Background>
 		<!--<Event Dialogue="CF_Intro"/>-->
 		<Event Dialogue="CF_Default"/>
-		<Relationship Name="Childhood friend" AutoColor="true" Description="She seemed so mature at the time, but now, you find her a bit too naive and childish. I doesn't bother you much, but it underlines the difference between humans and elves.">
+		<Relationship Name="Childhood friend" Icon="Heart_Full"
+		Description="She seemed so mature at the time, but now, you find her a bit too naive and childish. I doesn't bother you much, but it underlines the difference between humans and elves.">
 			<Event Dialogue="CF_Friend_1"/>
 			<Event Dialogue="CF_Friend_2"/>
 			<Event Dialogue="CF_Friend_3"/>
@@ -19,7 +20,8 @@
 			<Event Dialogue="CF_Friend_9"/>
 			<Event Dialogue="CF_Friend_10"/>
 		</Relationship>
-		<Relationship Name="Childhood crush" AutoColor="true" Description="She was your first love and you made peace with her behaviour as it means you won't be surprised with her changing too much.&#xA;Even if elves are often cold to humans, and rarely get together as a couple, you two seem to manage.">
+		<Relationship Name="Childhood crush" Icon="Heart_Sparkling"
+		Description="She was your first love and you made peace with her behaviour as it means you won't be surprised with her changing too much.&#xA;Even if elves are often cold to humans, and rarely get together as a couple, you two seem to manage.">
 			<Event Dialogue="CF_Love_1"/>
 			<Event Dialogue="CF_Love_2"/>
 			<Event Dialogue="CF_Love_3"/>
@@ -31,7 +33,8 @@
 			<Event Dialogue="CF_Love_9"/>
 			<Event Dialogue="CF_Love_10"/>
 		</Relationship>
-		<Relationship Name="Lost friend" AutoColor="true" Description="She doesn't seem to be there for you as she was before. It doesn't feel good, but it might be better, your livespans are too different, it would have been hard later.">
+		<Relationship Name="Lost friend" Icon="Heart_Shattered"
+		Description="She doesn't seem to be there for you as she was before. It doesn't feel good, but it might be better, your livespans are too different, it would have been hard later.">
 			<Event Dialogue="CF_Loss_1"/>
 			<Event Dialogue="CF_Loss_2"/>
 			<Event Dialogue="CF_Loss_3"/>

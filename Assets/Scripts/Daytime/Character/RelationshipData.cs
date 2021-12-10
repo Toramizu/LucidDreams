@@ -14,8 +14,8 @@ public class RelationshipData
     [XmlAttribute("Icon")]
     public string _Icon { get; set; }
 
-    [XmlAttribute("AutoColor"), DefaultValue(true)]
-    public bool AutoColor { get; set; }
+    [XmlElement("Color")]
+    public ColorXml Color { get; set; }
 
     [XmlElement("Event")]
     public List<ConditionalDialogue> RelationEvents { get; set; }

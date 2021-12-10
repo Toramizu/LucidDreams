@@ -1,17 +1,17 @@
 Friendship (FP) : 
 	- You gain 1 FP every day you interact with someone (don't have to spend time)
 	- You gain 5 FP for every level finished during the night
-	- You loose 1 FP per day, every day you don't interact to someone, but can't loose under a Friendship level (if you have 5 Friendship, can't get under 500 FP)
+	- You lose 1 FP per day, every day you don't interact to someone, but can't lose under a Friendship level (if you have 5 Friendship, can't get under 500 FP)
 	
 Love (LvP) :
 	- You gain 5 LvP for every level finished when you beat a boss
-	- You loose 5 LvP per day you don't interact with someone if you have more LvP than FP
-	- You loose 5 LvP per day if you have more LsP than LvP
+	- You lose 5 LvP per day you don't interact with someone if you have more LvP than FP
+	- You lose 5 LvP per day if you have more LsP than LvP
 	
 Loss (LsP) :
 	- You gain 10 LsP every time you are defeated during the night
 	- You gain 100 LsP every time you are defeated by a boss
-	- You loose 5 LsP per day if you have more LvP than LsP
+	- You lose 5 LsP per day if you have more LvP than LsP
 	
 All (RP = FP, LvP or LsP) :
 	- You can gain/lose RP by picking specific choices during dialogues

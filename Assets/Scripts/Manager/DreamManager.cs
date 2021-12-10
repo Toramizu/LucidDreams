@@ -83,7 +83,7 @@ public class DreamManager : Window, GridManager
 
         if(level++ > 0 && nightStats != null)
         {
-            nightStats.Character.AddRelationPoints(0, Variables.friendshipPerLevel * level);
+            nightStats.Character.AddRelationPoints(0, nightStats.GetRelationValue(0, Variables.friendshipPerLevel) * level, false);
         }
     }
 
@@ -187,8 +187,8 @@ public class DreamManager : Window, GridManager
         EndDream();
 
         GameManager.Instance.Notify("You wake up victorious!");
-        nightStats.Character.AddRelationPoints(0, Variables.friendshipPerLevel * level);
-        nightStats.Character.AddRelationPoints(1, Variables.lovePerLevel * level);
+        nightStats.Character.AddRelationPoints(0, nightStats.GetRelationValue(0, Variables.friendshipPerLevel) * level, false);
+        nightStats.Character.AddRelationPoints(1, nightStats.GetRelationValue(1, Variables.lovePerLevel) * level, false);
     }
 
     public void FleeDream()
@@ -204,12 +204,12 @@ public class DreamManager : Window, GridManager
         if (IsBossfight)
         {
             GameManager.Instance.Notify("You wake up, heart pounding in your chest...");
-            nightStats.Character.AddRelationPoints(2, Variables.lossOnDefeatBoss);
+            nightStats.Character.AddRelationPoints(2, nightStats.GetRelationValue(2, Variables.lossOnDefeatBoss), false);
         }
         else
         {
             GameManager.Instance.Notify("You wake up ashamed...");
-            nightStats.Character.AddRelationPoints(2, Variables.lossOnDefeat);
+            nightStats.Character.AddRelationPoints(2, nightStats.GetRelationValue(2, Variables.lossOnDefeatBoss), false);
         }
     }
 

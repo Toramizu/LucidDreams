@@ -12,6 +12,9 @@ public class Relationship
     public int Stage { get; set; }
     public int MaxStage { get { return Data.RelationEvents.Count; } }
 
+    public int StageInPoints { get { return Stage * POINTS_PER_STAGE; } }
+    public int PointsInStage { get { return Points / POINTS_PER_STAGE; } }
+
     public string Name { get { return Data.RelationName; } }
 
     public Relationship() { }
@@ -30,12 +33,19 @@ public class Relationship
         return false;
     }
 
-    /*public InteractionDialogue CheckInteraction()
+    public int AddPoints(int points, bool stageLimit)
     {
-        if (Points >= stage * POINTS_PER_STAGE && relation.RelationEvents[stage + 1].Check)
-            return relation.RelationEvents[stage + 1];
-        return null;
-    }*/
+        if(points < 0)
+        {
+            if (stageLimit && Points + points < StageInPoints)
+                points = StageInPoints - Points;
+            else if (Points < -points)
+                points = -Points;
+        }
+
+        Points += points;
+        return points;
+    }
 
     public void IncreaseRelationship()
     {

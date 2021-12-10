@@ -18,7 +18,7 @@ public class CharacterUI : Window, CharacterDisplayer
 
     public override void FadeIn()
     {
-        FadeIn();
+        base.FadeIn();
         charaList.Clear();
 
         List<Character> charas = AssetDB.Instance.Characters.ToList().Where(c => c.Check).ToList();
@@ -65,6 +65,12 @@ public class CharacterUI : Window, CharacterDisplayer
         /*tokenPos--;
         ShowTokens();*/
         charaList.DisplayPrevious();
+    }
+
+    public void Debug_ShowRelationPoints()
+    {
+        if(Variables.debugMode)
+            relationUI.Debug_ShowRelationPoints();
     }
 }
 
@@ -196,6 +202,7 @@ public class RelationshipUI
 {
     [SerializeField] Image relationImagePrefab;
     [SerializeField] Sprite emptySprite;
+    [SerializeField] Sprite lostSprite;
     [SerializeField] Sprite defaultSprite;
     [SerializeField] Color defaultColor;
     [SerializeField] LayoutGroup spriteParent;
@@ -207,6 +214,7 @@ public class RelationshipUI
     [SerializeField] MiniRelation miniRelationPrefab;
     [SerializeField] LayoutGroup miniParent;
 
+    Relationship mainRelation;
     List<MiniRelation> minis = new List<MiniRelation>();
 
     Color color;
@@ -229,7 +237,7 @@ public class RelationshipUI
 
         foreach(Relationship rela in chara.Relationships)
         {
-            if (rela.Stage > 0)
+            if (rela.Stage > 0 || Variables.debugMode)
             {
                 others.Add(rela);
                 if (main == null || rela.Stage >= main.Stage)
@@ -248,12 +256,13 @@ public class RelationshipUI
 
     void Init(Relationship relation)
     {
+        mainRelation = relation;
         if (images.Count < relation.MaxStage)
             CreateImages(relation.MaxStage);
 
         int i = 0;
         Sprite s = relation.Data.Icon;
-        for (; i < relation.Stage; i++)
+        for (; i < relation.PointsInStage; i++)
         {
             Image img = images[i];
             images[i].gameObject.SetActive(true);
@@ -262,10 +271,23 @@ public class RelationshipUI
             else
                 img.sprite = defaultSprite;
 
-            if (relation.Data.AutoColor)
+            if (relation.Data.Color == null)
                 img.color = color;
             else
-                img.color = Color.white;
+                img.color = relation.Data.Color.Color;
+        }
+
+        for (; i < relation.Stage; i++)
+        {
+            Image img = images[i];
+            images[i].gameObject.SetActive(true);
+
+            img.sprite = lostSprite;
+
+            if (relation.Data.Color == null)
+                img.color = color;
+            else
+                img.color = relation.Data.Color.Color;
         }
 
         for (; i < relation.MaxStage; i++)
@@ -273,10 +295,10 @@ public class RelationshipUI
             Image img = images[i];
             img.sprite = emptySprite;
 
-            if (relation.Data.AutoColor)
+            if (relation.Data.Color == null)
                 img.color = color;
             else
-                img.color = Color.white;
+                img.color = relation.Data.Color.Color;
 
             images[i].gameObject.SetActive(true);
         }
@@ -305,7 +327,8 @@ public class RelationshipUI
         int i = 0;
         for(; i < relations.Count; i++)
         {
-            minis[i].gameObject.SetActive(true);
+            minis[i].Init(relations[i], color);
+            /*minis[i].gameObject.SetActive(true);
 
             if (relations[i].Data.Icon == null)
                 minis[i].Sprite = defaultSprite;
@@ -316,7 +339,7 @@ public class RelationshipUI
             if (relations[i].Data.AutoColor)
                 minis[i].Color = color;
             else
-                minis[i].Color = Color.white;
+                minis[i].Color = Color.white;*/
         }
 
         for (; i < minis.Count; i++)
@@ -341,5 +364,10 @@ public class RelationshipUI
             img.gameObject.SetActive(false);
         foreach (MiniRelation mini in minis)
             mini.gameObject.SetActive(false);
+    }
+
+    public void Debug_ShowRelationPoints()
+    {
+        GameManager.Instance.Notify(mainRelation.Name + " => " + mainRelation.Points + "/" + mainRelation.Stage * 100);
     }
 }

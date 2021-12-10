@@ -15,12 +15,8 @@ public class DialogueRelationship : DialogueElement
     public override bool Play(DialogueUI dialUI)
     {
         Character chara = AssetDB.Instance.Characters[Character];
-        chara.AddRelationPoints(Relationship, Points);
+        chara.AddRelationPoints(Relationship, Points, false);
 
-        /*if(Points > 0)
-            GameManager.Instance.Notify(Character + " => " + chara.Relationships[Relationship].Name + " +" + Points);
-        else
-            GameManager.Instance.Notify(Character + " => " + chara.Relationships[Relationship].Name + " " + Points);*/
         return true;
     }
 }
