@@ -7,10 +7,15 @@ public class SubTrait : Trait
 {
     public override void OnDefense(ref int damages, Succubus current, Succubus other, int stack)
     {
-        if (damages <= 0)   //No effect on healing
+        if (damages < 0)   //No effect on healing
             return;
 
-        if(stack >= damages)
+        damages /= 2;
+        current.Traits.AddTrait(this, -1);
+
+        /* Old Sub was acting like a shield
+         
+        if (stack >= damages)
         {
             current.Traits.AddTrait(this, -damages);
             damages = 0;
@@ -19,6 +24,6 @@ public class SubTrait : Trait
         {
             damages -= stack;
             current.Traits.RemoveTrait(this);
-        }
+        }*/
     }
 }

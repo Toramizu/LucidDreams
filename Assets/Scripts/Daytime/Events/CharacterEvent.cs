@@ -12,13 +12,14 @@ public class CharacterEvent : InteractionEvent
         this.chara = chara;
         Name = data.Name;
         _Icon = data._Icon;
-        _BackgroundColor = data.Color;
+        _BackgroundColor = data._Color;
 
         TimeSpent = 1;
     }
 
     public override void Play()
     {
-        chara.PlayDialogue(EndEvent);
+        GameManager.Instance.CharaTalk.Open(chara);
+        //chara.PlayDialogue(EndEvent);
     }
 }

@@ -7,14 +7,18 @@ public class DomTrait : Trait
 {
     public override void OnAttack(ref int damages, Succubus current, Succubus other, int stack)
     {
-        if (damages <= 0)   //No effect on healing
+        if (damages < 0)   //No effect on healing
             return;
 
-        damages += stack;
+        damages *= 2;
+
+        /*Old Dom was acting like a 1 to 1 damage boost
+         
+    damages += stack;
     }
 
     public override void EndTurn(Succubus current, int stack)
     {
-        current.Traits.RemoveTrait(this);
+        current.Traits.RemoveTrait(this);*/
     }
 }

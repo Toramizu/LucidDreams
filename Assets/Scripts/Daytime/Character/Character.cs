@@ -56,9 +56,9 @@ public class Character : XmlAsset
         int i = Relationships[relation].AddPoints(points, stageLimit);
 
         if (points > 0)
-            GameManager.Instance.Notify(Data.ID + " +" + points + " " + Relationships[relation].Name, Data.Color.Color);
+            GameManager.Instance.Notify(Data.ID + " +" + points + " " + Relationships[relation].Name, Data.Color);
         else if (points < 0)
-            GameManager.Instance.Notify(Data.ID + " " + points + " " + Relationships[relation].Name, Data.Color.Color);
+            GameManager.Instance.Notify(Data.ID + " " + points + " " + Relationships[relation].Name, Data.Color);
     }
 
     public void DailyChecks(int day)

@@ -27,9 +27,6 @@ public class TraitsSheet
         else
             Traits.Add(trait, amount);
 
-        if (trait.ReversrTrait != null && Traits[trait] < 0)
-            AddTrait(trait.ReversrTrait, -Traits[trait]);
-
         if(Traits[trait] <= 0)
         {
             Traits.Remove(trait);

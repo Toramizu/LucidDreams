@@ -43,7 +43,12 @@ public class CharacterData : ImageHaver, XmlAsset
     public List<CharacterLocation> Locations { get; set; }
 
     [XmlElement("Color")]
-    public ColorXml Color { get; set; }
+    public ColorXml _Color { get; set; }
+    [XmlIgnore]
+    public Color Color { get { return _Color.Color; } }
+
+    [XmlElement("Preferences")]
+    public CharacterPrefs Preferences { get; set; }
 }
 
 public class CharacterLocation

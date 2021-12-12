@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dom
   m_EditorClassIdentifier: 
   id: Dom
-  description: Inflicts X bonus arousal this turn
+  description: Doubles Arousal attacks
   icon: {fileID: 21300000, guid: 7da88ea5eee88f5479a5567816701257, type: 3}
   reverseTrait: {fileID: 0}
   maxStack: 5

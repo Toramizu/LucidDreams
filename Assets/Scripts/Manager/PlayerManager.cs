@@ -26,6 +26,8 @@ public class PlayerManager : MonoBehaviour
         set { abilities = new List<AbilityData>(value); }
     }
 
+    public Inventory Inventory { get; private set; } = new Inventory();
+
     public int HealthIncrement
     {
         get { return Player.Data.MaxArousal / 2; }

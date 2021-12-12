@@ -10,8 +10,6 @@ public abstract class Trait : ScriptableObject, XmlAsset
     public string Description { get { return description; } }
     [SerializeField] protected Sprite icon;
     public Sprite Icon { get { return icon; } }
-    [SerializeField] Trait reverseTrait;
-    public Trait ReversrTrait { get { return reverseTrait; } }
     [SerializeField] int maxStack = 0;
     public int MaxStack { get { return maxStack; } }
 

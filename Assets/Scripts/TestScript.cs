@@ -32,10 +32,9 @@ public class TestScript : MonoBehaviour
         }
     }
 
-    [SerializeField] NightPrepUI nui;
     void Test1()
     {
-        nui.FadeIn();
+        AssetDB.Instance.Items.SaveToXml();
         Debug.Log("Done");
     }
 

@@ -63,7 +63,7 @@ public class NightPrepUI : Window, CharacterDisplayer
 
         if (chara.Data.Color != null)
         {
-            Color color = chara.Data.Color.Color;
+            Color color = chara.Data.Color;
             Color faded = new Color();
             faded.r = color.r + (1f - color.r) * backgroundColorFading;
             faded.g = color.g + (1f - color.g) * backgroundColorFading;

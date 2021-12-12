@@ -48,6 +48,9 @@ public class AssetDB
         Characters = new XmlDB<Character>("Characters");
         LoadCharacters();
 
+        Items = new XmlDB<Item>("Items");
+        Items.LoadFromXml();
+
         Traits = new XmlDB<Trait>("Traits");
         Traits.AddRange(GameManager.Instance.Assets.Traits);
     }
@@ -61,6 +64,7 @@ public class AssetDB
     public XmlDB<DreamMapData> DreamMaps { get; private set; }
     public XmlDB<LocationData> Locations { get; private set; }
     public XmlDB<SuccubusData> Succubi { get; private set; }
+    public XmlDB<Item> Items { get; private set; }
 
     public XmlDB<Trait> Traits { get; private set; }
 

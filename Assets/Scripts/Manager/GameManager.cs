@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] DayManager dayManager;
     public DayManager DayManager { get { return dayManager; } }
 
+    [SerializeField] CharacterTalkUI charaTalk;
+    public CharacterTalkUI CharaTalk { get { return charaTalk; } }
+
     [SerializeField] Parser parser;
     public Parser Parser { get { return parser; } }
 
