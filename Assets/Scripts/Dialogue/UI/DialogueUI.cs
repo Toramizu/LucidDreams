@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class DialogueUI : Window
 {
-    [SerializeField] GameObject dialoguePanel;
+    [SerializeField] Button dialoguePanel;
     [SerializeField] TMP_Text dialogue;
     public string Dialogue
     {
@@ -43,11 +43,11 @@ public class DialogueUI : Window
         currentDialogue = data;
         AddInFront(data.Elements);
 
-        dialoguePanel.SetActive(false);
+        dialoguePanel.gameObject.SetActive(false);
 
         Dialogue = "";
         //leftSpeaker.Toggle(false);
-        leftSpeaker.Data = GameManager.Instance.PlayerManager.Player.Data;
+        leftSpeaker.Data = GameManager.Instance.PlayerManager.Player; ;
         leftSpeaker.Focus = false;
         rightSpeaker.Toggle(false);
         left2Speaker.Toggle(false);
@@ -84,6 +84,18 @@ public class DialogueUI : Window
         }
     }
 
+    Dictionary<string, Queue<DialogueElement>> loops = new Dictionary<string, Queue<DialogueElement>>();
+    public void AddLoop(string id)
+    {
+        loops[id] = new Queue<DialogueElement>(elements);
+    }
+
+    public void GoTo(string id)
+    {
+        if (loops.ContainsKey(id))
+            elements = new Queue<DialogueElement>(loops[id]);
+    }
+
     #endregion
 
     #region Dialogue lines
@@ -93,7 +105,7 @@ public class DialogueUI : Window
     {
         this.lines = new Queue<DialogueLine>(lines);
 
-        dialoguePanel.SetActive(true);
+        dialoguePanel.gameObject.SetActive(true);
 
         PlayLine();
     }
@@ -112,10 +124,11 @@ public class DialogueUI : Window
         {
             DialogueLine line = lines.Dequeue();
 
-            
+
 
             if (line.Line != null && line.Line != "")
-                Dialogue = line.Line.Replace("\\n", "\n");
+                Dialogue = GameManager.Instance.Parser.Parse(line.Line);
+            //line.Line.Replace("\\n", "\n");
             else
                 PlayLine();
         }
@@ -123,10 +136,10 @@ public class DialogueUI : Window
 
     public void PlayLine(DialogueLine line)
     {
-        dialoguePanel.SetActive(true);
-        Dialogue = line.Line;
+        dialoguePanel.gameObject.SetActive(true);
+        Dialogue = GameManager.Instance.Parser.Parse(line.Line);
 
-        if(line.Focus != SpeakerPos.NoChange)
+        if (line.Focus != SpeakerPos.NoChange)
         {
             leftSpeaker.Focus = false;
             left2Speaker.Focus = false;
@@ -184,6 +197,7 @@ public class DialogueUI : Window
     public void Play(string title, List<DialogueChoice> choices)
     {
         choicesPanel.SetActive(true);
+        dialoguePanel.interactable = false;
 
         if (title == null || title == "")
             choiceTitle.gameObject.SetActive(false);
@@ -210,6 +224,7 @@ public class DialogueUI : Window
 
         displayedChoices.Clear();
         choicesPanel.SetActive(false);
+        dialoguePanel.interactable = true;
 
         Next();
     }

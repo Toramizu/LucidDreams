@@ -1,0 +1,73 @@
+Triggers in the PARK, afternoon
+- Melody
+-- MC
+$ Kid
+
+
+You are walking into the park when you see Melody playing with two children. You often came here with her when you were young, sometime bringing Evelyn or Violet.
+She seems to be having fun, but now that you are older, you realise that she's doing her job conscientiously. Before, you always thought that she only came here to play, but you can see that she's always staying a step behind them, keeping an eye out.
+After a few minutes of observation, you get moving, not wanting to look like a creep.
+--> Keep watching
+	You go sit on a bench nearby and continue to observe them.
+	You don't completely understand what they are talking about, but the kid seems to enjoy what he was explaining to Melody. It reminds you of when you were talking to her about archery.
+	In hindsight, you know she wasn't that interested in what you talked about, but as a child, you kept going on and on, and she gently pushed you towards adventuring. Your parents weren't against the idea, but thought of it like a child's dream job, something you grow out of as an adult.
+	When she sent the kids home, you go talk to her.
+	-- Hi, Mel'
+	+20 Friendship
+	- Hey _MC. I saw you back there, but I was busy with the kids.
+--> Go to Melody
+	She was talking with one of the girls.
+	$ And now, I can transform water into ice.
+	- That's great, you're going to be a great mage when you're older.
+	$ I'll become an Ice-cream mage!
+	-- Hi, Mel', working hard?
+	+10 Love
+	- Hey _MC.
+	$ Oh, is she your friend who's an adventurer?
+	- Yes, that's her.
+	$ Melody talked a lot about you, today.
+	- Sarah wanted to become a mage, so I asked if it was to become an adventurer. That lead to talking about you.
+	$ But I don't want to become an adventurer, I only wanted to become a mage to have a lot of ice-cream.
+	You spent some time with them, and found that Sarah learned basic ice magic at school recently, and she was a quick learner. Melody and you tried to make her realise than ice-cream isn't really in the ice domain of magic, but she didn't seem to care.
+	After buying them two scoops of ice-cream. Melody sent them home.
+--> Just get going
+	You don't want to interrupt her work and leave to walk further into the woods. Its atmosphere used to be relaxing, but after all the time you spent on your guard in this kind of place, you can't help but reach for your bow (that you obviously left home) with each sound made by a shouting kid or passing hiker.
+	After thirty minutes or so, you hear a voice calling to you.
+	- _MC, I can see you're not armed, can I come?
+	You chuckled.
+	-- I can see I'm a good teacher.
+	Melody gets out of the shade with a smirk.
+	- I saw you enter the woods, so when it was time for the kids to go home, I came to see if you were still here.
+-- We talked a lot about me and my adventures, but I see you're still taking care of children.
+- Of course, it's kinda my job, now. I'm a teacher... well more of a babysitter for twenty kids, but I try to make them learn stuff, too.
+-- I... didn't know. You weren't when I was at that age, though.
+- Yeah, I was doing odd jobs around. I was still new to the city at that time, but when I decided to stay here, I had to find a real job.
+-- I remember, when I saw you the first time, I asked why you came here. You said "I'm looking for a boyfriend!".
+She blushed immediately and you laughed a bit.
+- Don't mock me, you're the one who answered "I'm half-boy, cant I be your boyfriend?"
+You don't remember that, but it doesn't sound too far fetched for kid-_MC to say that.
+--> Own up to it
+	-- I probably said something like that, I used to have a crush on you as a child.
+	+20 Love
+	- Only as a child?
+	- I'm kidding, I'm kidding.
+--> Dismiss it
+	-- I was only a child, I didn't know the difference between friend and boyfriend.
+	- Boo, way to ruin the fun.
+--> Deny it
+	-- Hey, you invented that.
+	- Maybe, or you purposefully forgot.
+- But yes, at that time, I came here to find and elf boyfriend... or half-boyfriend, I'm not that picky. But it was... another time...
+When you were young, it was shunned for elves to be in a couple with another race. Elves are special, they don't age and have a high mastery of magic, but half-elves often don't have those characteristics.
+To keep that heritage safe, the elven casts were in place. A high elf is the "purest" elf, with almost all elven traits. Under them came the street elves, most of them ageless but often lacking magic power, lower night vision or other things.
+Then, come the half-elves, before known as "Bastard-elves". They present other races characteristics, but do age, often more slowly than human or even dwarves, but do grow old after centuries.
+Nowadays, only the high-elves keep the "elf-only" rule. Since the war, elves became rarer and only their elite kept the rule. Most families found it useless to keep the tradition if it meant inbreeding would take them down in a few generations.
+-- Is that why you stayed? When I left town, you told me you were thinking about leaving too, to go search somewhere else.
+- Yup, now that my parents aren't always on my back to find "a good mate" (she does her impression of her mom saying it), I can live however I want. And this place's decent enough for me.
+- But last year, I thought about going back home. I mean, living there.
+-- Why is that?
+- When the world was freed, I went back to see my parents. You know, like a good girl should, and mom asked me to come back. I had no real reason to, so I said no, but when I came back here, I found that I had no reason to stay either...
+She looked sad as she said that, but, as usual, immediately cheered up.
+- But now that you're back, I feel better.
+You feel a little awkward, and don't want to prod her for answers, but you wonder how she really feels about you. Is it just friendship or...
+That can wait, you've been out for a while, and suggest going back to town.

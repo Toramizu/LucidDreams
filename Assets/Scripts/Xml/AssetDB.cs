@@ -19,6 +19,7 @@ public class AssetDB
             return instance;
         }
     }
+    public static bool IsLoaded { get { return instance != null; } }
 
     public AssetDB()
     {
@@ -222,6 +223,11 @@ public class SpriteDB
             else
                 return null;
         }
+    }
+
+    public List<Sprite> ToList()
+    {
+        return sprites.Values.ToList();
     }
 
     public int Count

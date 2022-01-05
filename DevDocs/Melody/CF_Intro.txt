@@ -1,0 +1,64 @@
+Triggers at the INN, anytime
+- Melody
+-- MC
+$ Margaret
+
+
+- Hey, _MC, I heard you came back to town, so I came to welcome you back.
+-- Hi Melody, nice to see you too.
+- So, how was the adventuring? I heard you managed to take down one of the Demon Knight.
+-- Calm down, Mel, I didn't do that alone, I was with a good team.
+- You'll have to tell me all about it later. So, why did you come back, you missed me?
+--> I missed you
+	+10 Love
+	-- Yeah, I kinda did.
+	- Well, now that you're back, we'll be able to play together again.
+	-- I'm not a kid anymore, you know.
+	- You'll always be a child compared to me, I'm a lot older than you.
+	-- Maybe, but only in years.
+--> I worried for Evelyn
+	+10 Friendship
+	-- I came back because I was worried for Eve'.
+	- Oh, yes. I'm sorry, I forgot she had...
+	-- Don't worry, she's cured now.
+	- What? How did it happen?
+	-- I'm not really sure. Doctor Warder is trying to figure it out, and there's someone from the castle, too.
+- *Smile* I'm really glad you're back.
+-- Thanks. See you tomorrow? I'm still quite tired from travelling back from the other side of the country.
+- Okay, but don't forget me, I know where you live. By-bye.
+-- *Mel leaves*...
+$ She's a nice girl.
+-- You're spying on my private conversations?
+$ I was, but not on purpose. I was passing by when I heard you and I'm quite curious by nature. You didn't seem to mind when it was to save you and your sister.
+--> Please, don't.
+	Flag => sub_Margaret +1
+	-- Please, don't do it when I'm not in danger.
+	$ I'll make an effort, if you ask nicely. I'm only trying to protect you.
+--> It's not what I meant.
+	-- You know that's not what I meant.
+	$ I do, but I'm still looking out for succubi around here.
+--> ...
+	Flag => sub_Margaret -1
+	$ You realise I'm on the lookout for danger around here, I'm not making the rounds for fun.
+-- But Melody isn't a succubus. I've known her since I was a child, she's too innocent to be one.
+$ And if you like her that way, you'll have to thank me again : I felt someone lurking around her. Tonight, you'll have to dive into the town's dreams to find her and fight the succubus.
+-- You mean she'll be Blissed? Can't we help her before it happens?
+$ There's three reasons not to : First, if I reveal a succubus around town, that'll cause a panic, even more if I show myself. Second, you won't be able to fight them correctly while awake. Lastly, I want to see you fighting in her dream. I did it last time, but I won't always be able to protect you.
+-- But why...
+$ Listen, once a succubus is draining someone, they are a lot stronger, but subduing them is the best way to improve your own skills. I could go and save her easily by myself, but you need the training and that succubus isn't too strong. If something happens, I'll get you out and yes, she'll stay asleep, but you'd still be able to save her the following night.
+$ Now, do as I say or let her stay in her dream, but I won't go and save her.
+--> Reluctantly agree
+	-- I'll do it, but I don't like taking a useless risk.
+	$ Good, so go prepare for tonight.
+--> ...
+	Flag => sub_Margaret -1
+	$ Ignoring me won't solve the problem.
+--> You're right
+	Flag => sub_Margaret +1
+	-- You're right, I'll do my best.
+	$ Good girl, I'll protect you if anything happens.
+	
+
+
+
+Flag => CF_Unlocked = 1

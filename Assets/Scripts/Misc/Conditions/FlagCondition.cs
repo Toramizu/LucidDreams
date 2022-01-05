@@ -6,32 +6,32 @@ using UnityEngine;
 public class FlagCondition : Condition
 {
     [XmlAttribute("Flag")]
-    string flag;
+    public string Flag { get; set; }
     [XmlAttribute("Comparator")]
-    Comparator comparator;
+    public Comparator Comparator { get; set; }
     [XmlAttribute("Value")]
-    int value;
+    public int Value { get; set; }
 
     public override bool Check
     {
         get
         {
-            int f = GameManager.Instance.Flags.GetFlag(flag);
-            switch (comparator)
+            int f = GameManager.Instance.Flags.GetFlag(Flag);
+            switch (Comparator)
             {
                 case Comparator.Equal:
                 default:
-                    return f == value;
+                    return f == Value;
                 case Comparator.Different:
-                    return f != value;
+                    return f != Value;
                 case Comparator.Smaller:
-                    return f < value;
+                    return f < Value;
                 case Comparator.SmallerOrEqual:
-                    return f <= value;
+                    return f <= Value;
                 case Comparator.Bigger:
-                    return f > value;
+                    return f > Value;
                 case Comparator.BiggerOrEqual:
-                    return f >= value;
+                    return f >= Value;
             }
         }
     }

@@ -15,7 +15,14 @@ public class PlayerManager : MonoBehaviour
     }
 
     [SerializeField] SuccubusUI playerUI;
-    public Succubus Player { get { return playerUI.Character; } }
+    public Succubus Player { get {
+            if (GameManager.Instance.Status == GameStatus.Day)
+                return null;
+            else
+                return playerUI.Character;
+        }
+    }
+    public Succubus PlayerSuccubus { get { return playerUI.Character; } }
     [SerializeField] TMP_Text crystalsText;
     [SerializeField] SimpleGauge dreamGauge;
     [SerializeField] TMP_Text diceText;
@@ -30,12 +37,12 @@ public class PlayerManager : MonoBehaviour
 
     public int HealthIncrement
     {
-        get { return Player.Data.MaxArousal / 2; }
+        get { return PlayerSuccubus.Data.MaxArousal / 2; }
     }
 
     public void SetPlayer(SuccubusData data)
     {
-        Player.LoadCharacter(data);
+        PlayerSuccubus.LoadCharacter(data);
         Abilities = data.Abilities;
         //EquipedAbilities = data.Abilities;
         diceText.text = data.Dice.ToString();
@@ -45,7 +52,7 @@ public class PlayerManager : MonoBehaviour
     public void SetPlayer(NightStat stats)
     {
         SuccubusData data = stats.Succubus;
-        Player.LoadCharacter(stats);
+        PlayerSuccubus.LoadCharacter(stats);
         Abilities = data.Abilities;
         diceText.text = data.Dice.ToString();
         UpdateGauge();
@@ -60,26 +67,26 @@ public class PlayerManager : MonoBehaviour
 
     public void Meditate()
     {
-        Player.Arousal = 0;
+        PlayerSuccubus.Arousal = 0;
         UpdateGauge();
     }
 
     public void ReduceArousal(int amount, int cost)
     {
         Crystals -= cost;
-        Player.Arousal -= amount;
+        PlayerSuccubus.Arousal -= amount;
         UpdateGauge();
     }
 
     public int InflictDamageProportion(float proportion)
     {
-        return Player.InflictDamageProportion(proportion);
+        return PlayerSuccubus.InflictDamageProportion(proportion);
     }
 
     public void IncreaseMaxArousal(int amount, int cost)
     {
         Crystals -= cost;
-        Player.MaxArousal += amount;
+        PlayerSuccubus.MaxArousal += amount;
             //amount;
         //player.Arousal = 0;
         UpdateGauge();
@@ -88,12 +95,12 @@ public class PlayerManager : MonoBehaviour
     public void AddDie(int amount, int cost)
     {
         Crystals -= cost;
-        Player.Rolls++;
-        diceText.text = Player.Rolls.ToString();
+        PlayerSuccubus.Rolls++;
+        diceText.text = PlayerSuccubus.Rolls.ToString();
     }
 
     public void UpdateGauge()
     {
-        dreamGauge.Fill(Player.Arousal, Player.MaxArousal);
+        dreamGauge.Fill(PlayerSuccubus.Arousal, PlayerSuccubus.MaxArousal);
     }
 }

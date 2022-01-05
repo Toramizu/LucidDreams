@@ -17,10 +17,12 @@ public class DayManager : Window
 
     [SerializeField] Transform tokenParent;
     [SerializeField] MainInteractionButton interactPrefab;
-    [SerializeField] MainInteractionButton mainInteractPrefab;
-    [SerializeField] SubInteractionButton subInteractPrefab;
-    
+
+    [SerializeField] NightPrepUI nightPreps;
+    public NightPreps NightPreps { get { return nightPreps.NightPreps; } }
+
     Dictionary<string, MainInteractionButton> interactions = new Dictionary<string, MainInteractionButton>();
+    [SerializeField] Sprite dialogueIcon;
 
     public void Open()
     {
@@ -72,13 +74,24 @@ public class DayManager : Window
 
         foreach (Character chara in charas)
         {
-            string location = null;
-            foreach (CharacterLocation loc in chara.Locations)
-                if (loc.Time == time)
-                    location = loc.Locations[Random.Range(0, loc.Locations.Count)];
+            DialogueUI.DialogueAction action;
+            ConditionalDialogue rEvent = chara.GetRelationshipEvent(out action);
+            if (rEvent != null && rEvent.Location != null) //Chara has relationship event
+            { //Place relationship event
+                DialogueEvent dEvent = new DialogueEvent(rEvent, action);
+                dEvent.Icon = dialogueIcon;
+                interactions[rEvent.Location].AddSub(dEvent);
+            }
+            else
+            { //Default chara event
+                string location = null;
+                foreach (CharacterLocation loc in chara.Locations)
+                    if (loc.Time == time)
+                        location = loc.Locations[Random.Range(0, loc.Locations.Count)];
 
-            if (location != null && interactions.ContainsKey(location))
-                AddCharacter(location, chara);
+                if (location != null && interactions.ContainsKey(location))
+                    AddCharacter(location, chara);
+            }
         }
     }
 
@@ -132,7 +145,8 @@ public class DayManager : Window
         }
         else
         {
-            GameManager.Instance.StartNightTime();
+            //GameManager.Instance.StartNightTime();
+            nightPreps.FadeIn();
         }
 
         if (newDay) DailyChecks();
@@ -144,6 +158,8 @@ public class DayManager : Window
         backgroundImage.sprite = backgrounds[t];
         FillLocations();
         DailyChecks();
+        FadeIn();
+        nightPreps.FadeOut();
     }
 
     void DailyChecks()
@@ -156,7 +172,7 @@ public class DayManager : Window
 
         foreach(Character chara in AssetDB.Instance.Characters.ToList())
         {
-
+            chara.DailyChecks(day - 1);
         }
     }
 }

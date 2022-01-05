@@ -6,18 +6,9 @@ using UnityEngine;
 public class DialogueBattle : DialogueElement
 {
     [XmlIgnore]
-    [SerializeField] SuccubusData opponent;
-    [XmlIgnore]
     public SuccubusData Opponent
     {
-        get {
-            if(opponent == null)
-                return AssetDB.Instance.Succubi[_Opponent];
-            return opponent;
-        }
-        set {
-            _Opponent = value.ID;
-        }
+        get { return AssetDB.Instance.Succubi[_Opponent]; }
     }
     [XmlAttribute("Opponent")]
     public string _Opponent { get; set; }

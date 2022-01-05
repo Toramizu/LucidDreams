@@ -48,7 +48,7 @@ public class DreamManager : Window, GridManager
 
         //medit.CanMeditate = true;
         playerToken.SetCharacter(cData);
-        level = 0;
+        level = 1;
     }
 
     public void StartDream(NightStat stats)
@@ -61,7 +61,7 @@ public class DreamManager : Window, GridManager
 
         //medit.CanMeditate = true;
         playerToken.SetCharacter(stats.Succubus);
-        level = 0;
+        level = 1;
     }
 
     public void OpenWakeUpWindown()
@@ -81,10 +81,12 @@ public class DreamManager : Window, GridManager
         CanMove = true;
         IsBossfight = false;
 
-        if(level++ > 0 && nightStats != null)
+        if(nightStats != null)
         {
             nightStats.Character.AddRelationPoints(0, nightStats.GetRelationValue(0, Variables.friendshipPerLevel) * level, false);
         }
+
+        level++;
     }
 
     void FillNodes(Dictionary<NodeContent, List<DreamNode>> nodes, DreamMapData map, DreamData data)
@@ -163,7 +165,6 @@ public class DreamManager : Window, GridManager
     {
         if (CanMove)
         {
-            //iTween.Stop(playerToken.gameObject);
             StartMove(Pathfinder.FindPath(currentNode, node));
         }
     }
@@ -183,7 +184,6 @@ public class DreamManager : Window, GridManager
 
     public void WinDream()
     {
-        level++;
         EndDream();
 
         GameManager.Instance.Notify("You wake up victorious!");
@@ -216,6 +216,7 @@ public class DreamManager : Window, GridManager
     void EndDream()
     {
         GameManager.Instance.NextDay();
+        wakeUpWindow.FadeOut();
         FadeOut();
     }
 
@@ -229,17 +230,6 @@ public class DreamManager : Window, GridManager
 
         this.path = new Queue<PathNode>(path);
         CheckAndMove(currentNode);
-
-        /*if (path == null)
-        {
-            
-            currentNode.OnEnter();
-        }
-        else
-        {
-            this.path = new Queue<PathNode>(path);
-            CheckAndMove(currentNode);
-        }*/
     }
 
     void CheckAndMove(DreamNode current)
@@ -251,7 +241,6 @@ public class DreamManager : Window, GridManager
         }
         else
         {
-            //currentNode = (DreamNode)path.Dequeue();
             MoveTo((DreamNode)path.Dequeue());
         }
     }

@@ -1,0 +1,66 @@
+Triggers at the INN, anytime
+- Melody
+-- MC
+
+
+You installed an archery range in the basement of the inn to be able to train safely. Even if daily training isn't needed nowadays, and even less while stuck in town, you like it and it helps you clear your mind to prepare for the night.
+The light was dimmed to train for night fighting, and as you were drawing your bow when you heard someone shout from behind you.
+- Found you!
+You almost fired blindly by surprise, but you managed to drop the arrow an instant before letting go of the bowstring. Immediately after, you unsheathed your dagger.
+- Hehe, made you drop your arrow.
+-- Mel! That was dangerous, if I didn't drop it, it would have flown uncontrollably. I could have turned towards you by reflex and shoot you!
+- I'm sorry... I was searching for you and your mother told me you were in the basement.
+--> What do you want?
+	Friendship -10
+	Love -10
+	-- So, what do you want?
+	- ...
+	-- I'm not mad at you, it's alright.
+--> You saw I was armed
+	-- You're an elf, you can see in the dark, so you knew I was armed. That was dangerous, but you startled me anyway.
+	--> I could have hurt you
+		Love +20
+		-- I wouldn't want to hurt you by accident.
+	--> Be careful of weapons
+		Friendship +10
+		-- You should be careful around weapons, those are real arrows, made to hurt and kill.
+	- I won't do it again.
+	-- Good. Now, you were looking for me?
+- I wanted to hear your story against the Demon Knight.
+-- Okay, but let's go back to my room, it'll be more comfortable.
+
+-- So, the fight against Lilith.
+- Yay.
+-- First, we started by fighting succubi. They were her minions and their speciality is invading the mind of their enemies. With time, they can fully charm someone to do what they want.
+-- When fighting them, they can easily distract us by messing with our thoughts, but they aren't tough, so they flee fast. They mostly fight indirectly, and finding Lilith was hard.
+You willingly hid the fact that they invade dreams, after her past experience with it, she would realise that succubi are the cause of the Blissful Sleep.
+-- That's where Lanelle was very helpful : she was able to pull the succubi to us whenever they attacked us, then prevent them from teleporting out. After that, Rhaz and I fought and Lanelle captured them after.
+-- Making Lilith come to us was easier than we expected, but it took us by surprise. One night, we were sleeping at the inn, between searching for other succubi and she simply chose to attack us.
+-- When Lanelle took her out, we had a fight totally unprepared. We were in our underwear, Rhaz was even naked, inside our inn room with people wondering what happened. She immediately charmed everybody, and we had civilians throwing themselves at us.
+-- Lanelle was casting her protection spell on us while Rhaz handled the charmed. During that time, Lilith was trying to... break my will, but I managed to hold on long enough. Unfortunately, a few persons were corrupted into succubi.
+-- As soon as Lanelle casted her spell, I unsheathed my dagger and rushed Lilith. I slashed at her leg, making her lose concentration and Rhaz managed to punch her. We kept her busy while Lanelle took out her sealing crystal and captured her inside.
+As I was telling my story, Melody was strangely attentive. I expected her to be more excited about it than she was, but she seemed a bit uncomfortable, even tough I left out that all that fight looked more like an orgy.
+- That was great. Thanks for telling my about your adventures.
+She stands up.
+- I'd better get going, you'd better rest a bit after your training, and you'll be needed soon to help around, I guess.
+--> See you
+	-- Okay, I'll see you next time.
+	- By-bye.
+	She quickly got out. She was definitively acting a bit strange.
+--> Is something wrong?
+	- Mh? No, I was only thinking about everything you did. While I was here, in Elodia, minding my own business, you were out there, with your companions, trying to save the world...
+	You get up and stretch taking the time to think about what to tell her.
+	--> Go adventuring together?
+		-- When we'll be able to get out, do you want to go adventuring with me?
+		Loss +20
+		- But I'm not good at that, you know it. I can barely hold a bow, I can't cast any spell more complex than sparkles... and that's not the problem, I don't want to be an adventurer, I just like it when you tell me about it.
+		-- Sorry, I...
+		- No, I'm sorry, I was the one who asked you to talk about it, and I'm only annoying you. I'll leave you alone.
+		And after that, she quickly left.
+	--> Joke nicely about it
+		Friendship +20
+		-- Don't worry about that so much. I might have saved the world, but you were the one who kept me out of danger when I was a child.
+		- And I changed your diapers, too. Couldn't beat a Demon Knight if you aren't potty trained.
+		Loss +5
+		But even while she was joking, you can feel she was still quite sad about something. You decided to not push it for now.
+		- Okay, this time, I'm leaving. Prepare more stories for next time. By-bye.

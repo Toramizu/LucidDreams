@@ -6,9 +6,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-public class Succubus //: MonoBehaviour
+public class Succubus : ImageHaver//: MonoBehaviour
 {
     public SuccubusUI SuccubUI { get; set; }
+    public override string Name { get { return Data.Name; } set { Data.Name = value; } }
 
     int arousal;
     public int Arousal {
@@ -254,88 +255,9 @@ public class Succubus //: MonoBehaviour
     
     public void PlayTurn()
     {
-        //List<DieToSlot> next = ai.FindNextAction(Abilities, Dice.RolledDice, this, GameManager.Instance.BattleManager.Other(this));
         List<DieToSlot> next = ai.FindNextAction(this, GameManager.Instance.BattleManager.Other(this));
         SuccubUI.PlayTurn(next);
-        
-        //StartCoroutine(AutoMoveDice(next));
     }
-
-    /*Dictionary<RolledDie, IDie> OLD_toPlace;
-    List<DieToSlot> toPlace;
-    Queue<RolledDie> OLD_slots;
-    Queue<DieToSlot> slots;
-    IDie currentSlot;
-    RolledDie currentDie;
-    
-    IEnumerator AutoMoveDice(List<DieToSlot> toPlace)
-    {
-        yield return null;
-        this.toPlace = toPlace;
-        slots = new Queue<DieToSlot>(toPlace);
-
-        PlaceNext();
-    }
-
-    void PlaceNext()
-    {
-        if (slots.Count == 0)
-        {
-            StartCoroutine(WaitEndTurn());
-        }
-        else
-        {
-            DieToSlot dts = slots.Dequeue();
-            currentDie = dts.Die;
-            currentSlot = dts.Slot;
-
-            iTween.MoveTo(currentDie.gameObject, iTween.Hash(
-                "x", currentSlot.X,
-                "y", currentSlot.Y,
-                //"speed", 500f,
-                "time", .8f,
-                "easeType", iTween.EaseType.easeOutSine,
-                "onComplete", "SlotDie",
-                "onCompleteTarget", gameObject
-                ));
-        }
-    }
-
-    void OLD_PlaceNext()
-    {
-        if (OLD_slots.Count == 0)
-        {
-            StartCoroutine(WaitEndTurn());
-        }
-        else
-        {
-            currentDie = OLD_slots.Dequeue();
-            currentSlot = OLD_toPlace[currentDie];
-
-            iTween.MoveTo(currentDie.gameObject, iTween.Hash(
-                "x", currentSlot.X,
-                "y", currentSlot.Y,
-                //"speed", 500f,
-                "time", .8f,
-                "easeType", iTween.EaseType.easeOutSine,
-                "onComplete", "SlotDie",
-                "onCompleteTarget", gameObject
-                ));
-        }
-    }
-
-    IEnumerator WaitEndTurn()
-    {
-        yield return new WaitForSecondsRealtime(1);
-        GameManager.Instance.BattleManager.NextRound();
-    }
-
-    void SlotDie()
-    {
-        currentSlot.OnDrop(currentDie);
-        PlaceNext();
-        //OLD_PlaceNext();
-    }*/
 
     const float DMG_VALUE = 10;
     const float KO_VALUE = 1000;

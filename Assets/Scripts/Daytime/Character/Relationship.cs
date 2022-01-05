@@ -33,6 +33,14 @@ public class Relationship
         return false;
     }
 
+    public ConditionalDialogue GetRelationshipEvent()
+    {
+        if (Points >= (Stage + 1) * POINTS_PER_STAGE && Data.RelationEvents[Stage].Check)
+            return Data.RelationEvents[Stage];
+        else
+            return null;
+    }
+
     public int AddPoints(int points, bool stageLimit)
     {
         if(points < 0)
@@ -51,5 +59,6 @@ public class Relationship
     {
         Stage++;
         GameManager.Instance.Notify(Data.RelationName + " => " + Stage);
+        GameManager.Instance.DayManager.AdvanceTime(1);
     }
 }

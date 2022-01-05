@@ -1,11 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class Parser : MonoBehaviour
 {
     [SerializeField] List<ParserItem> symbols;
     [SerializeField] string abilityBonus = "_++";
+
+    Dictionary<string, string> strings;
+    Dictionary<string, string> flags;
+
+    private void Start()
+    {
+        strings = new Dictionary<string, string>();
+        foreach (ParserItem i in symbols)
+            strings.Add(i.Replaced, i.Replacer);
+
+        flags = GameManager.Instance.Flags.Strings;
+    }
 
     public string ParseDescription(string description, Dictionary<string, string> strings)
     {
@@ -27,6 +40,26 @@ public class Parser : MonoBehaviour
             descr = descr.Replace(abilityBonus, ability.Used.ToString());
 
         return descr;
+    }
+
+    public string Parse(string text)
+    {
+        /*foreach (ParserItem symbol in symbols)
+            text = text.Replace(symbol.Replaced, symbol.Replacer);
+
+        return text;*/
+
+        var words = string.Join("|", flags.Keys);
+        text = Regex.Replace(text, $@"\b({words})\b", delegate (Match m)
+        {
+            return flags[m.Value];
+        });
+        words = string.Join("|", strings.Keys);
+        text = Regex.Replace(text, $@"\b({words})\b", delegate (Match m)
+        {
+            return strings[m.Value];
+        });
+        return text;
     }
 }
 

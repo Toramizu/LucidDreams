@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfLocationData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <LocationData ID="Inn" Name="Inn" PosX="0" PosY="0" Icon="Inn" TimeSpent="1">
-    <BgColor R="0" G="255" B="255" />
+  <LocationData ID="Inn" Name="Inn" PosX="-440" PosY="150" Icon="Inn" TimeSpent="1">
+    <BgColor R="135" G="170" B="255" />
     <IconColor R="255" G="255" B="255" />
+	<TimeSlot Time="-1">
+		<Event Dialogue="CF_Intro">
+			<Condition>
+				<IfFlag Flag="CF_Unlocked" Comparator="Smaller" Value="1" />
+			</Condition>
+		</Event>
+	</TimeSlot>
 	<TimeSlot Time="0">
-		<Event Dialogue="Inn_Rest"/>
+		<RandomEvent Dialogue="Inn_Rest"/>
 	</TimeSlot>
 	<TimeSlot Time="1">
-		<Event Dialogue="Inn_Rest"/>
+		<RandomEvent Dialogue="Inn_Rest"/>
 	</TimeSlot>
 	<TimeSlot Time="2">
-		<Event Dialogue="Inn_Dream"/>
+		<RandomEvent Dialogue="Inn_Dream"/>
+	</TimeSlot>
+  </LocationData>
+  <LocationData ID="Park" Name="Park" PosX="0" PosY="0" Icon="Inn" TimeSpent="1">
+    <BgColor R="170" G="255" B="135" />
+    <IconColor R="255" G="255" B="255" />
+	<TimeSlot Time="0">
+		<RandomEvent Dialogue="Inn_Rest"/>
+	</TimeSlot>
+	<TimeSlot Time="1">
+		<RandomEvent Dialogue="Inn_Rest"/>
 	</TimeSlot>
   </LocationData>
 </ArrayOfLocationData>

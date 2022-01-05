@@ -1,0 +1,40 @@
+Triggers anywhere, after freeing her from her Dreams
+- Melody
+-- MC
+
+
+- Hey, _MC, can I talk to you for a moment?
+-- Sure, I have some time. What is it?
+- The last few days, I was really tired. Each night, I was dreaming of a fairy, and it was fun, but when I woke up, I only wanted to go back to bed. It was because you came back that I got up.
+- But after a while, right after you came back, I was playing with her when she suddenly grew a... dick. Then she was trying to fuck me.
+She blushed saying that.
+--> Enjoyed it?
+	-- So, did you enjoy her attention?
+	+50 Loss
+	- ... maybe a little bit?
+	- Hey, stop that, that's not what I wanted to talk about.
+--> Let her continue
+- After she played whit me for a while, I saw you coming to save me. You managed to fight against the fairy's magic that was fun.
+-- You're welcome?
+- Yes, I felt like I was in danger, but I couldn't leave. I know about fairies, they are mischievous and have strong magic, it's hard to know what they'll do... Then you come out of nowhere to save me.
+--> Strange dream
+	-- That was a strange dream, but it looks like it was interesting.
+	- Yeah, I never saw a fairy in real life, and seeing one with a big dick was fun. She slogged it around when she flew, I can't help but laugh thinking back.
+--> Glad I could help
+	-- Glad that I could help you, even if it's just like that.
+	+50 Love
+	- Emh... yes, I remember being really afraid back then. I was relieved when I saw you.
+-- So, yeah, I wanted to say thank you, but now I feel stupid because it was only in my dreams.
+--> That sound stupid.
+	-- You're right, that sounds stupid.
+	- Stop that, I already knew it, so I won't thank you.
+--> I'll take it
+	-- I'll take your thanks anyway, I like the sound of it.
+	+50 Friendship
+	- Well, thank you... you earned it... somehow...
+--> You're welcome
+	-- You're welcome.
+	- Hey, I didn't say it yet...
+	+50 Friendship
+	- But thanks.
+You spent some time talking about her dream. She seemed happy to have you back.

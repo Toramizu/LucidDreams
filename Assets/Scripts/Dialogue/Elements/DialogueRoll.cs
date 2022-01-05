@@ -79,5 +79,7 @@ public class RollValue
     [XmlElement("Roll", typeof(DialogueRoll))]
     [XmlElement("ArousalBonus", typeof(ArousalBonus))]
     [XmlElement("RelationBonus", typeof(RelationBonus))]
+    [XmlElement("Loop", typeof(DialogueLoop))]
+    [XmlElement("Flag", typeof(DialogueFlag))]
     public List<DialogueElement> Elements { get; set; }
 }

@@ -35,7 +35,17 @@ public abstract class InteractionEvent
     [XmlAttribute("Icon")]
     public string _Icon { get; set; }
     [XmlIgnore]
-    public Sprite Icon { get { return AssetDB.Instance.Images[_Icon]; } }
+    Sprite icon;
+    [XmlIgnore]
+    public Sprite Icon {
+        get {
+            if (icon == null)
+                return AssetDB.Instance.Images[_Icon];
+            else
+                return icon;
+        }
+        set { icon = value; }
+    }
 
     [XmlAttribute("TimeSpent"), DefaultValue(0)]
     public int TimeSpent { get; set; }
@@ -51,6 +61,8 @@ public class ConditionalDialogue
 {
     [XmlAttribute("Time")]
     public int Time { get; set; }
+    [XmlAttribute("Location")]
+    public string Location { get; set; }
 
     [XmlElement("Condition")]
     public MultCondition Condition { get; set; }

@@ -49,4 +49,9 @@
       <Image ID="" ImageID="BigSis" Source="https://kisekaejade.com/" />
     </Images>
   </CharacterData>
+  <CharacterData ID="Player" DisplayName="_MC">
+    <Images>
+      <Image ID="" ImageID="Silhouette"/>
+    </Images>
+  </CharacterData>
 </ArrayOfCharacterData>

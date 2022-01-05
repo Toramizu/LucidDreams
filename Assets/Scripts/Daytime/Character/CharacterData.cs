@@ -45,7 +45,14 @@ public class CharacterData : ImageHaver, XmlAsset
     [XmlElement("Color")]
     public ColorXml _Color { get; set; }
     [XmlIgnore]
-    public Color Color { get { return _Color.Color; } }
+    public Color Color {
+        get {
+            if (_Color == null)
+                return Color.white;
+            else
+                return _Color.Color;
+        }
+    }
 
     [XmlElement("Preferences")]
     public CharacterPrefs Preferences { get; set; }

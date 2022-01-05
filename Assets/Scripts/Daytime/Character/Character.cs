@@ -19,7 +19,7 @@ public class Character : XmlAsset
 
     public List<CharacterLocation> Locations { get { return Data.Locations; } }
 
-    public int LastInteraction { get; set; }
+    public int LastInteraction { get; set; } = 1;
 
     public Character() { }
     public Character(CharacterData data) {
@@ -50,15 +50,34 @@ public class Character : XmlAsset
             evnts[Random.Range(0, evnts.Count)].Play(action);
     }
 
+    public ConditionalDialogue GetRelationshipEvent(out DialogueAction action)
+    {
+        ConditionalDialogue evnt;
+        foreach (Relationship relationship in Relationships)
+        {
+            evnt = relationship.GetRelationshipEvent();
+            if (evnt != null)
+            {
+                action = relationship.IncreaseRelationship;
+                return evnt;
+            }
+        }
+        action = null;
+        return null;
+    }
+
     public void AddRelationPoints(int relation, int points, bool stageLimit)
     {
+        if (Relationships.Count <= relation)
+            return;
+
         //Relationships[relation].Points += points;
         int i = Relationships[relation].AddPoints(points, stageLimit);
 
         if (points > 0)
-            GameManager.Instance.Notify(Data.ID + " +" + points + " " + Relationships[relation].Name, Data.Color);
+            GameManager.Instance.Notify(Data.Name + " +" + points + " " + Relationships[relation].Name, Data.Color);
         else if (points < 0)
-            GameManager.Instance.Notify(Data.ID + " " + points + " " + Relationships[relation].Name, Data.Color);
+            GameManager.Instance.Notify(Data.Name + " " + points + " " + Relationships[relation].Name, Data.Color);
     }
 
     public void DailyChecks(int day)
@@ -66,9 +85,12 @@ public class Character : XmlAsset
         if(day > LastInteraction)
         {
             AddRelationPoints(0, LastInteraction - day, true);
-            if(Relationships[1].Stage > Relationships[0].Stage)
+            if(Relationships.Count > 2 && Relationships[1].Stage > Relationships[0].Stage)
                 AddRelationPoints(2, Variables.loveDecayRate, false);
         }
+
+        if (Relationships.Count < 3)
+            return;
 
         if (Relationships[1].Stage > Relationships[2].Stage)
             AddRelationPoints(2, Variables.lossDecayByLove, false);

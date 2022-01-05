@@ -82,9 +82,9 @@ public class DialogueSpeakerUI : ImageUI
             cData = AssetDB.Instance.CharacterDatas[speaker.Speaker];
 
             if (speaker.Displayed == null)
-                Text = cData.Name;
+                Text = GameManager.Instance.Parser.Parse(cData.Name);
             else
-                Text = speaker.Displayed;
+                Text = GameManager.Instance.Parser.Parse(speaker.Displayed);
 
             Init(cData.Image);
         }

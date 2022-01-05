@@ -11,6 +11,11 @@ public class CharacterTalkUI : Window
     [SerializeField] Image charaImage;
     [SerializeField] List<Image> images;
 
+    [SerializeField] ComplexButton talk;
+    [SerializeField] ComplexButton love;
+    [SerializeField] ComplexButton gift;
+    [SerializeField] ComplexButton invite;
+
     Character chara;
 
     public void Open(Character chara)
@@ -28,6 +33,13 @@ public class CharacterTalkUI : Window
         Color color = chara.Data.Color;
         foreach (Image img in images)
             img.color = color;
+
+        talk.Toggle(true);
+
+        //TODO : Change to true or condition when done
+        gift.Toggle(false);
+        love.Toggle(false);
+        invite.Toggle(false);
     }
 
     public void Talk()
@@ -39,6 +51,7 @@ public class CharacterTalkUI : Window
     public void Gift()
     {
         GameManager.Instance.Notify("Gift for " + chara.Data.Name);
+        gift.Toggle(false);
     }
 
     public void Love()

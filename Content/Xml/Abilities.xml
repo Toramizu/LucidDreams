@@ -193,12 +193,12 @@
     </Effects>
   </AbilityData>
   <AbilityData ID="Reverence" Uses="0" Price="0">
-    <Description>Show your inferiority and gain _Die _Sub</Description>
+    <Description>Show your inferiority and gain 1 _Sub</Description>
     <Slots>
       <MinMax Value="3" IsMax="true" />
     </Slots>
     <Effects>
-      <Trait Bonus="0" DiceMult="1" UsesCumulativeBonus="false" TargetsUser="true" Trait="Sub" />
+      <Trait Bonus="1" DiceMult="0" UsesCumulativeBonus="false" TargetsUser="true" Trait="Sub" />
     </Effects>
   </AbilityData>
   <AbilityData ID="Calm Down" Uses="0" Price="2">

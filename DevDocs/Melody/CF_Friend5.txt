@@ -1,0 +1,95 @@
+Triggers in the INN, afternoon
+- Melody
+-- MC
+
+
+You come back to the inn after doing a lot of chores in town. Your car is full of groceries and cleaned bedsheets.
+As you start unloading them, you see Melody sitting in the entrance hall.
+- Need some help?
+--> It's okay
+	-- It's alright, you don't need to bother.
+	- ... okay.
+	You do a few back and forth with her watching you silently. You can feel the awkwardness in the air as she is being strangely silent.
+	--> Okay, you can help
+		-10 Friendship
+		-10 Love
+		+20 Loss
+		She gets up with a nod and follows your instructions on where to drop everything.
+	--> Continue silently
+		+10 Loss
+	Once you finished, she talks to you, uncertain of herself.
+	- Can we talk for a moment?
+--> Sure
+	+20 Friendship
+	+20 Love
+	-- Sure, once I come back, we'll get the fresh food and deliver it to the kitchen. I'll be right back.
+	With the two of you, the job is quickly done. You don't talk much while doing it, but she seemed quite happy to help.
+	-- Thanks for the help. You were waiting for me?
+	- Not really, I only wanted to talk for a moment.
+-- Sure, let's get out of the way.
+You go to your room, and she seems quite uncomfortable.
+-- So, what did you want to talk about? I'm sorry I don't really have time for another story, Violet's out today so I need to do her job.
+- ...
+She can't seem to look at you in the eyes, but it seems there is something on her mind.
+--> Just spit it out
+	+20 Loss
+	-- You want to say something, just spit it out.
+--> You can talk to me
+	+20 Friendship
+	-- If there's anything, you can talk to me, you know?
+--> Let her talk
+	+10 Friendship
+	+10 Loss
+	-- ...
+- Do I bother you?
+--> Of course not
+	+10 Friendship
+	+10 Love
+	-- Of course you don't bother me, why are you asking?
+--> Right now or in general?
+	+50 Loss
+	-- Do you mean right now, or in general?
+--> Kind of...
+	+50 Loss
+	-- Kind of... you're quite... insistent on coming here.
+- Everytime I come and see you, you take your time to talk to me, but I always feel like you have something else to do, but you're too polite to shoo me away.
+- I only wanted to know : Do I really annoy you when I come here looking for you?
+--> Yes
+	-- I mean... yes. I have a lot to do around here, and not much time to rest, so...
+	- I understand, I'll be going, sorry to be an annoyance...
+	-1000 Friendship
+	-1000 Love
+	+500 Loss
+	You can hear her sobbing on her way out, then you get up and go back to work.
+--> No
+	-- No, you don't bother me. It's only that I don't have a lot of free time with the inn. The inn is overflowing with clients stuck in town, Violet is always slacking, Evelyn is really bad with clients, I just wanted to help.
+	She still can't look at you.
+	--> Lets make a deal
+		-- Let's make a deal : if you ever annoy me, be it because I have something else to do or you being really annoying, I'll tell you frankly. Will that be better for you?
+		- You'll be frank?
+		-- Of course.
+		+20 Friendship
+		+50 Love
+		- Okay
+	--> Did I ever say it?
+		-- Did I ever say anything that made you feel that way before?
+		- No directly, but I sometimes wonder if you don't want to hurt me by saying it or something like that.
+		-- I don't, really. I'd tell you if that was the case.
+		+10 Friendship
+		+10 Love
+	She's crying, but at least her eyes are looking in your direction, now.
+	-- Feeling better?
+	- Yeah, thanks.
+	--> Why the question?
+		-- So, what triggered all that?
+		- Well, I was only coming here to spend time, but looking at you work, I realised that I always came here while you were busy or working.
+		You know her enough to know it's time to joke a little to relieve the tension.
+		-- Yes, but what would be the alternative? Me waiting for you? I like you, but that would be a bit creepy, no?
+		+10 Friendship
+		She cry-laughs at that answer.
+		- I know, I'm stupid.
+	--> Let her be
+	- I'll find a way to solve that problem, don't worry. It's just that I don't want you to have negative emotions about me.
+	You hear your mom shouting your name from the hallway.
+	- Okay, I'll be going now. I've taken enough of your time for today.
+	-- Come back whenever you want.

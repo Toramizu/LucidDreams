@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; set; }
     #endregion
 
+    [SerializeField] Loading loading;
+    public Loading Loading { get { return loading; } }
+
     [SerializeField] PlayerManager playerManager;
     public PlayerManager PlayerManager { get { return playerManager; } }
 
@@ -41,26 +44,34 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] string defaultSuccubus;
     [SerializeField] string defaultDream;
-    [SerializeField] Window dayTmp;
+    [SerializeField] Window introWindow;
 
     public GameStatus Status { get; private set; }
     public int Time { get { return dayManager.Time; } }
 
-    [SerializeField] NightPrepUI nightPreps;
-    public NightPreps NightPreps { get { return nightPreps.NightPreps; } }
+    /*[SerializeField] NightPrepUI nightPreps;
+    public NightPreps NightPreps { get { return nightPreps.NightPreps; } }*/
+    public NightPreps NightPreps { get { return dayManager.NightPreps; } }
 
     private void Start()
     {
         Instance = this;
-        dayTmp.FadeIn();
+        introWindow.FadeIn();
         Status = GameStatus.Day;
     }
 
     public void StartGame()
     {
-        dayTmp.FadeOut();
+        Loading.FadeIn();
+        StartCoroutine(LoadData());
+    }
+
+    IEnumerator LoadData()
+    {
+        yield return null;
+        introWindow.FadeOut();
         dayManager.Open();
-        //StartDream(null, null);
+        Loading.FadeOut();
     }
 
     public void StartBattle(SuccubusData opponent)
@@ -69,14 +80,6 @@ public class GameManager : MonoBehaviour
         battleManager.FadeIn();
         battleManager.StartBattle(opponent, playerManager.Abilities);
         Status = GameStatus.Battle;
-    }
-
-    public void StartNightTime()
-    {
-        nightPreps.FadeIn();
-        /*dayManager.FadeOut();
-        dreamManager.StartDream(nightPreps.Default);
-        Status = GameStatus.Dream;*/
     }
 
     public void StartDream(DreamData dData, SuccubusData pcData)
@@ -89,8 +92,6 @@ public class GameManager : MonoBehaviour
             pcData = AssetDB.Instance.Succubi[defaultSuccubus];
 
         dreamManager.StartDream(dData, pcData);
-        //playerManager.UpdateGauge();
-        //battleManager.Close();
         Status = GameStatus.Dream;
     }
 
@@ -103,7 +104,6 @@ public class GameManager : MonoBehaviour
         else
         {
             dreamManager.StartDream(nightStat);
-            //playerManager.UpdateGauge();
             Status = GameStatus.Dream;
         }
     }
@@ -128,7 +128,6 @@ public class GameManager : MonoBehaviour
     public void NextDay()
     {
         dayManager.NewDay();
-        //dayTmp.FadeIn();
         Status = GameStatus.Day;
     }
 
@@ -139,13 +138,13 @@ public class GameManager : MonoBehaviour
 
     public void Notify(string text)
     {
-        text = parser.ParseDescription(text, Flags.Strings);
+        text = parser.Parse(text);
         notifs.Notify(text);
     }
 
     public void Notify(string text, Color color)
     {
-        text = parser.ParseDescription(text, Flags.Strings);
+        text = parser.Parse(text);
         notifs.Notify(text, color);
     }
 }

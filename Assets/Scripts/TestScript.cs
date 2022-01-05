@@ -27,9 +27,9 @@ public class TestScript : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.F9))
                 Test9();
-            if (Input.GetKeyDown(KeyCode.F12))
-                Test12();
         }
+        if (Input.GetKeyDown(KeyCode.F12))
+                Test12();
     }
 
     void Test1()

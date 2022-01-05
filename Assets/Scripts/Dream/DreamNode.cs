@@ -35,7 +35,7 @@ public class DreamNode : MonoBehaviour, PathNode
     }
 
     #region Pathfinding
-    public bool PathStop { get { return cData != null; } }
+    public bool PathStop { get { return type == NodeContent.Succubus || type == NodeContent.Boss; } }
 
     public int PCost
     {

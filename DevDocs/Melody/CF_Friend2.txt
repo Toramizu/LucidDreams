@@ -1,0 +1,45 @@
+Triggers at the INN, anytime
+- Melody
+-- MC
+* Big Sis
+
+
+While you were relaxing in your room with a good book, enjoying the comfort of civilization, Evelyn knocks at 
+* Hey, _MC, your elf friend is at the reception. She's looking for you.
+-- Thanks, Eve'
+By the time you pick your bookmark and put the book on its shelf, you see Melody standing in the doorframe.
+-- The wait was too long?
+- I came to your room often when I was babysitting you. I know the place.
+Right as she was seeing that, you find her looking around the room. Especially at your adventuring gear and your bow.
+- Could you tell me about your adventures? As an elf, they didn't want me to go out in dangerous places.
+Elven biology is quite different from humans. They don't age past adulthood and can live for millennia, but the chance for an elven couple to have a child is extremely low. During the war against the demons, the number of elves dropped drastically.
+-- It's funny you said that : One of my companion was an elf.
+- Oh, tell me about her. How old was she? Why did she go adventuring? Can I meet her?
+-- 700, for research, when we'll be able to exit the town.
+- Hey!
+-- Okay, okay. She's called Lanaelle Létincelle. She's from the same family than the Létincelle around, but another branch. From our talks, I deduced that she was a bit older than 700, but she never revealed her exact age, so maybe a bit older.
+-- She was researching demons, and a great mage, so that's why she was able and willing to fight demons. If not for her, we wouldn't ever have been able to beat Lilith.
+- She's the Demon Knight you fought, right?
+-- Yes, she was able to muddle our minds, and thanks to a spell she created, we were able to fight almost normally. And that's without talking about her powerful battle magic or that she was the one who managed to seal her away.
+Melody is looking at you with a smirk.
+- Do you love her? Hearing you talking about her...
+--> Maybe a bit?
+	-- I know it's not a satisfying answer, but that was complicated.
+	+10 Love
+--> No, she was too strange
+	-- She lived for so long, our interests were too different.
+-- Oh, but our other companion, Rhaz, an orc, tried to hook up with her. Lana had such an obvious lack of interest that I couldn't hold a chuckle when she was rebuffed. I never saw an orc blush before.
+-- After that Rhaz shunned me for a week and Lana became even colder. That's when I realised than during her long life, she experienced so many things that it would be hard for us to become close friends outside of adventuring.
+Right after finishing your sentence, you see sadness in Melody's eyes.
+-- Sorry, I shouldn't have said that...
+She immediately cheers back up... or hides her pain behind her smile.
+- Don't worry, I'm fine.
+--> Joke about it
+	-- Hey, you're not a 700 years old elf who spent her life studying one subject, it will be alright.
+	Friendship +20
+--> Change the subject
+You spend the following hour talking about fun things that happened while adventuring. Melody quickly cheered up.
+- Hey, can you tell me about your fight against the Knight?
+-- Sure, but it would have to be another time. It's quite a long story, and I have to help Evelyn cook for the guests. There are too many people from outside town stuck here, so the inn is perpetually full.
+- Okay, don't forget about it. See you next time.
+After she left, you spent a while thinking about how different those two elves are.

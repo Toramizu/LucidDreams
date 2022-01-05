@@ -14,6 +14,7 @@ public class MultCondition : Condition
     [XmlElement("IfChara", typeof(CharaCondition))]
     [XmlElement("IfString", typeof(StringCondition))]
     [XmlElement("IfTime", typeof(TimeCondition))]
+    [XmlElement("IfRand", typeof(RandCondition))]
     public List<Condition> Conditions { get; set; }
 
     public override bool Check

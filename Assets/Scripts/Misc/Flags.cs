@@ -5,7 +5,7 @@ using UnityEngine;
 public class Flags
 {
     Dictionary<string, int> flags = new Dictionary<string, int>();
-    public Dictionary<string, string> Strings { get; set; } = new Dictionary<string, string>();
+    public Dictionary<string, string> Strings { get; set; } = new Dictionary<string, string>() { { "_MC", "MC" } };
 
     public bool HasFlag(string flag)
     {
@@ -16,7 +16,7 @@ public class Flags
 
     public int GetFlag(string flag)
     {
-        if (flag.Contains(flag))
+        if (flags.ContainsKey(flag))
             return flags[flag];
         else return 0;
     }

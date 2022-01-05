@@ -92,11 +92,11 @@ public class NightPrepUI : Window, CharacterDisplayer
         charaList.DisplayPrevious();
     }
 
-    public override void FadeOut()
+    /*public override void FadeOut()
     {
         base.FadeOut();
-        GameManager.Instance.NextDay();
-    }
+        //GameManager.Instance.NextDay();
+    }*/
 
     public void StartNight()
     {

@@ -27,14 +27,30 @@ public class LocationData : InteractionEvent, XmlAsset
 
         List<ConditionalDialogue> evnts = new List<ConditionalDialogue>();
         foreach (LocationTimeSlot slot in TimeSlots)
-            if(slot.Time == time)
-                evnts = slot.Events.Where(e => e.Check).ToList();
-        //List<ConditionalDialogue> evnts = Events.Where(e => e.Check).ToList();
-
+            if(slot.Time < 0 || slot.Time == time)
+                evnts.AddRange(slot.Events.Where(e => e.Check));
+        
         if (evnts.Count > 0)
         {
             ConditionalDialogue evnt = evnts[Random.Range(0, evnts.Count)];
             GameManager.Instance.StartDialogue(evnt.Dialogue, EndEvent);
+        }
+        else
+        {
+            evnts.Clear();
+            foreach (LocationTimeSlot slot in TimeSlots)
+                if (slot.Time < 0 || slot.Time == time)
+                    evnts.AddRange(slot.RandomEvents.Where(e => e.Check));
+
+            if (evnts.Count > 0)
+            {
+                ConditionalDialogue evnt = evnts[Random.Range(0, evnts.Count)];
+                GameManager.Instance.StartDialogue(evnt.Dialogue, EndEvent);
+            }
+            else
+            {
+                GameManager.Instance.Notify("Nothing to do here...");
+            }
         }
     }
 }
@@ -46,4 +62,6 @@ public class LocationTimeSlot
 
     [XmlElement("Event")]
     public List<ConditionalDialogue> Events { get; set; }
+    [XmlElement("RandomEvent")]
+    public List<ConditionalDialogue> RandomEvents { get; set; }
 }

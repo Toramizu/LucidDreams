@@ -1,48 +1,536 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfDialogueData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<!--<DialogueData ID="CF_Intro">
-		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
-		<Line Focus="Left">Hey, you came back? I missed you.</Line>
-	</DialogueData>-->
-	<DialogueData ID="CF_Default">
-		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
-		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
-		<Line Focus="Left">Hey, nice to see you here.</Line>
+	
+	<!--
+		<Speaker Speaker="Player" Position="Left"/>
+		<Speaker Speaker="ChildhoodFriend" Position="Right"/>
+		
+		<Line>						</Line>
+		<Line Focus="Left">
+		<Line Focus="Right">
+		
+		<Relationship Character="ChildhoodFriend" Relationship="1" Points="10"/>
+		
 		<Choices>
+			<Choice Text="">
+			
+			</Choice>			
+			<Choice Text="">
+			
+			</Choice>
+		</Choices>
+	-->
+	
+	<DialogueData ID="CF_Default">
+		<Speaker Speaker="Player" Position="Left"/>
+		<Speaker Speaker="ChildhoodFriend" Position="Right"/>
+		<Line Focus="Right">Hey, nice to see you here.</Line>
+		<Choices Text="Debug choices">
 			<Choice Text="Nice to see you too. (Friendship)">
 				<Relationship Character="ChildhoodFriend" Relationship="0" Points="100"/>
-				<Line Focus="Left">Well, see you later.</Line>
+				<Line Focus="Right">Well, see you later.</Line>
 			</Choice>
 			<Choice Text="Let's spend time together. (Love)">
 				<Relationship Character="ChildhoodFriend" Relationship="1" Points="100"/>
-				<Line Focus="Left">Oh, can we go grab something to eat?</Line>
+				<Line Focus="Right">Oh, can we go grab something to eat?</Line>
 			</Choice>
 			<Choice Text="Just leave me alone... (Loss)">
 				<Relationship Character="ChildhoodFriend" Relationship="2" Points="100"/>
-				<Line Focus="Left">Sorry...</Line>
+				<Line Focus="Right">Sorry...</Line>
+			</Choice>
+			<Choice Text="I was just passing by. (Leave)">
+				<Line Focus="Right">...?</Line>
 			</Choice>
 		</Choices>
 	</DialogueData>
 	
+	<DialogueData ID="CF_Intro">
+	<!--Triggers at the INN, anytime-->
+		<Speaker Speaker="Player" Position="Left"/>
+		<Speaker Speaker="ChildhoodFriend" Position="Right"/>		
+		<Line Focus="Right">Hey, _MC, I heard you came back to town, so I came to welcome you back.</Line>
+		<Line Focus="Left">Hi Melody, nice to see you too.</Line>
+		<Line Focus="Right">So, how was the adventuring? I heard you managed to take down one of the Demon Knight.</Line>
+		<Line Focus="Left">Calm down, Mel, I didn't do that alone, I was with a good team.</Line>
+		<Line Focus="Right">You'll have to tell me all about it later. So, why did you come back, you missed me?</Line>
+		
+		<Choices>
+			<Choice Text="I missed you.">
+				<Relationship Character="ChildhoodFriend" Relationship="1" Points="10"/>
+				<Line Focus="Left">Yeah, I kinda did.</Line>
+				<Line Focus="Right">Well, now that you're back, we'll be able to play together again.</Line>
+				<Line Focus="Left">I'm not a kid anymore, you know.</Line>
+				<Line Focus="Right">You'll always be a child compared to me, I'm a lot older than you.</Line>
+				<Line Focus="Left">Maybe, but it's only because you're an elf.</Line>
+			</Choice>
+			<Choice Text="I was worried for Evelyn">
+				<Relationship Character="ChildhoodFriend" Relationship="0" Points="10"/>
+				<Line Focus="Left">I came back because I was worried for Eve'.</Line>
+				<Line Focus="Right">Oh, yes. I'm sorry, I forgot she had...</Line>
+				<Line Focus="Left">Don't worry, she's cured now.</Line>
+				<Line Focus="Right">What? How did it happen?</Line>
+				<Line Focus="Left">I'm not really sure. Doctor Warder is trying to figure it out, and there's someone from the castle, too.</Line>
+			</Choice>
+		</Choices>
+	
+		<Line Focus="Right">I'm really glad you're back.</Line>
+		<Line Focus="Left">Thanks. See you tomorrow? I'm still quite tired from travelling back from the other side of the country.</Line>
+		<Line Focus="Right">Okay, but don't forget me, I know where you live. By-bye.</Line>
+		
+		<Speaker Speaker="" Position="Right"/>
+		<Line/>
+		
+		<Speaker Speaker="Margaret" Position="Right"/>
+		<Line Focus="Right">She's a nice girl.</Line>
+		<Line Focus="Left">You're spying on my private conversations?</Line>
+		<Line Focus="Right">I was, but not on purpose. I was passing by when I heard you and I'm quite curious by nature. You didn't seem to mind when it was to save you and your sister.</Line>
+		
+		<Choices>
+			<Choice Text="Please, don't.">
+				<Flag ID="Mar_Sub" Value="1"/>
+				<Line Focus="Left">Please, don't do it when I'm not in danger.</Line>
+				<Line Focus="Right">I'll make an effort, if you ask nicely. I'm only trying to protect you.</Line>
+			</Choice>
+			<Choice Text="It's not what I meant.">
+				<Line Focus="Left">You know that's not what I meant.</Line>
+				<Line Focus="Right">I do, but I'm still looking out for succubi around here.</Line>
+			</Choice>
+			<Choice Text="...">
+				<Flag ID="Mar_Sub" Value="-1"/>
+				<Line Focus="Right">You realise I'm on the lookout for danger around here, I'm not making the rounds for fun.</Line>
+			</Choice>
+		</Choices>
+
+		<Line Focus="Left">But Melody isn't a succubus. I've known her since I was a child, she's too innocent to be one.</Line>
+		<Line Focus="Right">And if you like her that way, you'll have to thank me again : I felt someone lurking around her. Tonight, you'll have to dive into the town's dreams to find her and fight the succubus.</Line>
+		<Line Focus="Left">You mean she'll be Blissed? Can't we help her before it happens?</Line>
+		<Line Focus="Right">There's three reasons not to : First, if I reveal a succubus around town, that'll cause a panic, even more if I show myself. Second, you won't be able to fight them correctly while awake. Lastly, I want to see you fighting in her dream. I did it last time, but I won't always be able to protect you.</Line>
+		<Line Focus="Left">But why...</Line>
+		<Line Focus="Right">Listen, once a succubus is draining someone, they are a lot stronger, but subduing them is the best way to improve your own skills. I could go and save her easily by myself, but you need the training and that succubus isn't too strong. If something happens, I'll get you out and yes, she'll stay asleep, but you'd still be able to save her the following night.</Line>
+		<Line Focus="Right">Now, do as I say or let her stay in her dream, but I won't go and save her.</Line>
+
+		<Choices>
+			<Choice Text="Reluctantly agree">
+				<Line Focus="Left">I'll do it, but I don't like taking a useless risk.</Line>
+				<Line Focus="Right">Good, so go prepare for tonight.</Line>
+			</Choice>
+			<Choice Text="...">
+				<Flag ID="Mar_Sub" Value="-1"/>
+				<Line Focus="Right">Ignoring me won't solve the problem.</Line>
+			</Choice>
+			<Choice Text="You're right">
+				<Flag ID="Mar_Sub" Value="1"/>
+				<Line Focus="Left">You're right, I'll do my best.</Line>
+				<Line Focus="Right">Good girl, I'll protect you if anything happens.</Line>
+			</Choice>
+		</Choices>
+
+		
+		
+		
+		<Flag ID="CF_Unlocked" Value="1" Set="true"/>
+	</DialogueData>
 	<DialogueData ID="CF_Friend_1">
-		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
-		<Line Focus="Left">Hey, this is my Friendship Dialogue number 1.</Line>
+	<!--Triggers anywhere, after freeing her from her Dreams-->
+		<Speaker Speaker="Player" Position="Left"/>
+		<Speaker Speaker="ChildhoodFriend" Position="Right"/>
+		
+		<Line Focus="Right">Hey, _MC, can I talk to you for a moment?</Line>
+		<Line Focus="Left">	Sure, I have some time. What is it?</Line>
+		<Line Focus="Right">The last few days, I was really tired. Each night, I was dreaming of a fairy, and it was fun, but when I woke up, I only wanted to go back to bed. It was because you came back that I got up.</Line>
+		<Line Focus="Right">But after a while, right after you came back, I was playing with her when she suddenly grew a... dick. Then she was trying to fuck me.</Line>
+		<Line>She blushed saying that.</Line>
+		<Choices>
+			<Choice Text="Enjoyed it?">
+			<Line Focus="Left">	So, did you enjoy her attention?</Line>
+			<Relationship Character="ChildhoodFriend" Relationship="2" Points="50"/>
+			<Line Focus="Right">... maybe a little bit?</Line>
+			<Line Focus="Right">Hey, stop that, that's not what I wanted to talk about.</Line>
+			</Choice>
+			<Choice Text="Let her continue">
+			<Line Focus="Right">After she played whit me for a while, I saw you coming to save me. You managed to fight against the fairy's magic that was fun.</Line>
+			<Line Focus="Left">	You're welcome?</Line>
+			<Line Focus="Right">Yes, I felt like I was in danger, but I couldn't leave. I know about fairies, they are mischievous and have strong magic, it's hard to know what they'll do... Then you come out of nowhere to save me.</Line>
+			</Choice>
+			<Choice Text="Strange dream">
+			<Line Focus="Left">	That was a strange dream, but it looks like it was interesting.</Line>
+			<Line Focus="Right">Yeah, I never saw a fairy in real life, and seeing one with a big dick was fun. She slogged it around when she flew, I can't help but laugh thinking back.</Line>
+			</Choice>
+			<Choice Text="Glad I could help">
+			<Line Focus="Left">	Glad that I could help you, even if it's just like that.</Line>
+			<Relationship Character="ChildhoodFriend" Relationship="1" Points="50"/>
+			<Line Focus="Right">Emh... yes, I remember being really afraid back then. I was relieved when I saw you.</Line>
+			</Choice>
+		</Choices>
+		<Line Focus="Right">So, yeah, I wanted to say thank you, but now I feel stupid because it was only in my dreams.</Line>
+		
+		<Choices>
+			<Choice Text="That sound stupid.">
+			<Line Focus="Left">	You're right, that sounds stupid.</Line>
+			<Line Focus="Right">Stop that, I already knew it, so I won't thank you.</Line>
+			</Choice>
+			<Choice Text="I'll take it.">
+			<Line Focus="Left">	I'll take your thanks anyway, I like the sound of it.</Line>
+			<Relationship Character="ChildhoodFriend" Relationship="0" Points="50"/>
+			<Line Focus="Right">Well, thank you... you earned it... somehow...</Line>
+			</Choice>
+			<Choice Text="You're welcome.">
+			<Line Focus="Left">	You're welcome.</Line>
+			<Line Focus="Right">Hey, I didn't say it yet...</Line>
+			<Relationship Character="ChildhoodFriend" Relationship="1" Points="50"/>
+			<Line Focus="Right">But thanks.</Line>
+			</Choice>
+		</Choices>
+		<Line>You spent some time talking about her dream. She seemed happy to have you back.</Line>
+	
+	
 	</DialogueData>
 	<DialogueData ID="CF_Friend_2">
-		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
-		<Line Focus="Left">Hey, this is my Friendship Dialogue number 2.</Line>
+	<!--Triggers at the INN, anytime-->
+		<Speaker Speaker="Player" Position="Left"/>
+		<Line>While you were relaxing in your room with a good book, enjoying the comfort of civilization, Evelyn knocks at your door.</Line>
+		<Speaker Speaker="BigSis" Position="Right"/>
+		<Line Focus="Right">Hey, _MC, your elf friend is at the reception. She's looking for you.</Line>
+		<Line Focus="Left">Thanks, Eve'.</Line>
+		<Speaker Position="Right"/>
+		<Line>By the time you pick your bookmark and put the book on its shelf, you see Melody standing in the doorframe.</Line>
+		<Speaker Speaker="ChildhoodFriend" Position="Right"/>
+		<Line Focus="Left">The wait was too long?</Line>
+		<Line Focus="Right">I came to your room often when I was babysitting you. I know the place.</Line>
+		<Line>Right as she was seeing that, you find her looking around the room. Especially at your adventuring gear and your bow.</Line>
+		<Line Focus="Right">Could you tell me about your adventures? As an elf, they didn't want me to go out in dangerous places.</Line>
+		<Line>Elven biology is quite different from humans. They don't age past adulthood and can live for millennia, but the chance for an elven couple to have a child is extremely low. During the war against the demons, the number of elves dropped drastically.</Line>
+		<Line Focus="Left">It's funny you said that : One of my companion was an elf.</Line>
+		<Line Focus="Right">Oh, tell me about her. How old was she? Why did she go adventuring? Can I meet her?</Line>
+		<Line Focus="Left">700, for research, when we'll be able to exit the town.</Line>
+		<Line Focus="Right">Hey!</Line>
+		<Line Focus="Left">Okay, okay. She's called Lanaelle Létincelle. She's from the same family than the Létincelle around, but another branch. From our talks, I deduced that she was a bit older than 700, but she never revealed her exact age, so maybe a bit older.</Line>
+		<Line Focus="Left">She was researching demons, and a great mage, so that's why she was able and willing to fight demons. If not for her, we wouldn't ever have been able to beat Lilith.</Line>
+		<Line Focus="Right">She's the Demon Knight you fought, right?</Line>
+		<Line Focus="Left">Yes, she was able to muddle our minds, and thanks to a spell she created, we were able to fight almost normally. And that's without talking about her powerful battle magic or that she was the one who managed to seal her away.</Line>
+		<Line>Melody is looking at you with a smirk.</Line>
+		<Line Focus="Right">Do you love her? Hearing you talking about her...</Line>
+		<Choices>
+			<Choice Text="Maybe a bit?">
+			<Line Focus="Left">I know it's not a satisfying answer, but that was complicated.</Line>
+			<Relationship Character="ChildhoodFriend" Relationship="1" Points="20"/>
+			</Choice>
+			<Choice Text="No, she was too strange">
+			<Line Focus="Left">She lived for so long, our interests were too different.</Line>
+			</Choice>
+		</Choices>
+		<Line Focus="Left">Oh, but our other companion, Rhaz, an orc, tried to hook up with her. Lana had such an obvious lack of interest that I couldn't hold a chuckle when she was rebuffed. I never saw an orc blush before.</Line>
+		<Line Focus="Left">After that Rhaz shunned me for a week and Lana became even colder. That's when I realised than during her long life, she experienced so many things that it would be hard for us to become close friends outside of adventuring.</Line>
+		<Line>Right after finishing your sentence, you see sadness in Melody's eyes.</Line>
+		<Line Focus="Left">Sorry, I shouldn't have said that...</Line>
+		<Line>She immediately cheers back up... or hides her pain behind her smile.</Line>
+		<Line Focus="Right">Don't worry, I'm fine.</Line>
+		<Choices>
+			<Choice Text="Joke about it">
+			<Line Focus="Left">Hey, you're not a 700 years old elf who spent her life studying one subject, it will be alright.</Line>
+			<Relationship Character="ChildhoodFriend" Relationship="0" Points="20"/>
+			</Choice>
+			<Choice Text="Change the subject"/>
+		</Choices>
+		<Line>You spend the following hour talking about fun things that happened while adventuring. Melody quickly cheered up.</Line>
+		<Line Focus="Right">Hey, can you tell me about your fight against the Knight?</Line>
+		<Line Focus="Left">Sure, but it would have to be another time. It's quite a long story, and I have to help Evelyn cook for the guests. There are too many people from outside town stuck here, so the inn is perpetually full.</Line>
+		<Line Focus="Right">Okay, don't forget about it. See you next time.</Line>
+		<Line>After she left, you spent a while thinking about how different those two elves are.</Line>
 	</DialogueData>
 	<DialogueData ID="CF_Friend_3">
-		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
-		<Line Focus="Left">Hey, this is my Friendship Dialogue number 3.</Line>
+	<!--Triggers at the INN, anytime-->
+		<Speaker Speaker="Player" Position="Left"/>
+		<Line>You installed an archery range in the basement of the inn to be able to train safely. Even if daily training isn't needed nowadays, and even less while stuck in town, you like it and it helps you clear your mind to prepare for the night.</Line>
+		<Line>The light was dimmed to train for night fighting, and as you were drawing your bow when you heard someone shout from behind you.</Line>
+		<Speaker Speaker="ChildhoodFriend" Position="Right"/>
+		<Line Focus="Right">Found you!</Line>
+		<Line>You almost fired blindly by surprise, but you managed to drop the arrow an instant before letting go of the bowstring. Immediately after, you unsheathed your dagger.</Line>
+		<Line Focus="Right">Hehe, made you drop your arrow.</Line>
+		<Line Focus="Left">Mel! That was dangerous, if I didn't drop it, it would have flown uncontrollably. I could have turned towards you by reflex and shoot you!</Line>
+		<Line Focus="Right">I'm sorry... I was searching for you and your mother told me you were in the basement.</Line>
+		<Choices>
+			<Choice Text="What do you want?">
+				<Relationship Character="ChildhoodFriend" Relationship="0" Points="-20"/>
+				<Relationship Character="ChildhoodFriend" Relationship="1" Points="-20"/>
+				<Line Focus="Left">So, what do you want?</Line>
+				<Line Focus="Right">...</Line>
+				<Line Focus="Left">I'm not mad at you, it's alright.</Line>
+			</Choice>			
+			<Choice Text="You saw I was armed">
+				<Line Focus="Left">You're an elf, you can see in the dark, so you knew I was armed. That was dangerous, but you startled me anyway.</Line>
+				<Choices>
+					<Choice Text="I could have hurt you">
+					<Relationship Character="ChildhoodFriend" Relationship="1" Points="20"/>
+					<Line Focus="Left">I wouldn't want to hurt you by accident.</Line>
+					</Choice>			
+					<Choice Text="Be careful of weapons">
+					<Relationship Character="ChildhoodFriend" Relationship="0" Points="20"/>
+					<Line Focus="Left">You should be careful around weapons, those are real arrows, made to hurt and kill.</Line>
+					</Choice>
+				</Choices>
+				<Line Focus="Right">I won't do it again.</Line>
+				<Line Focus="Left">Good. Now, you were looking for me?</Line>
+			</Choice>
+		</Choices>
+		<Line Focus="Right">I wanted to hear your story against the Demon Knight.</Line>
+		<Line Focus="Left">Okay, but let's go back to my room, it'll be more comfortable.</Line>
+
+		<Line Focus="Left">So, the fight against Lilith.</Line>
+		<Line Focus="Right">Yay.</Line>
+		<Line Focus="Left">First, we started by fighting succubi. They were her minions and their speciality is invading the mind of their enemies. With time, they can fully charm someone to do what they want.</Line>
+		<Line Focus="Left">When fighting them, they can easily distract us by messing with our thoughts, but they aren't tough, so they flee fast. They mostly fight indirectly, and finding Lilith was hard.</Line>
+		<Line>You willingly hid the fact that they invade dreams, after her past experience with it, she would realise that succubi are the cause of the Blissful Sleep.</Line>
+		<Line Focus="Left">That's where Lanelle was very helpful : she was able to pull the succubi to us whenever they attacked us, then prevent them from teleporting out. After that, Rhaz and I fought and Lanelle captured them after.</Line>
+		<Line Focus="Left">Making Lilith come to us was easier than we expected, but it took us by surprise. One night, we were sleeping at the inn, between searching for other succubi and she simply chose to attack us.</Line>
+		<Line Focus="Left">When Lanelle took her out, we had a fight totally unprepared. We were in our underwear, Rhaz was even naked, inside our inn room with people wondering what happened. She immediately charmed everybody, and we had civilians throwing themselves at us.</Line>
+		<Line Focus="Left">Lanelle was casting her protection spell on us while Rhaz handled the charmed. During that time, Lilith was trying to... break my will, but I managed to hold on long enough. Unfortunately, a few persons were corrupted into succubi.</Line>
+		<Line Focus="Left">As soon as Lanelle casted her spell, I unsheathed my dagger and rushed Lilith. I slashed at her leg, making her lose concentration and Rhaz managed to punch her. We kept her busy while Lanelle took out her sealing crystal and captured her inside.</Line>
+		<Line>As I was telling my story, Melody was strangely attentive. I expected her to be more excited about it than she was, but she seemed a bit uncomfortable, even tough I left out that all that fight looked more like an orgy.</Line>
+		<Line Focus="Right">That was great. Thanks for telling my about your adventures.</Line>
+		<Line>She stands up.</Line>
+		<Line Focus="Right">I'd better get going, you'd better rest a bit after your training, and you'll be needed soon to help around, I guess.</Line>
+		<Choices>
+			<Choice Text="See you">
+				<Line Focus="Left">Okay, I'll see you next time.</Line>
+				<Line Focus="Right">By-bye.</Line>
+				<Line>She quickly got out. She was definitively acting a bit strange.</Line>
+			</Choice>			
+			<Choice Text="Is something wrong?">
+				<Line Focus="Right">Mh? No, I was only thinking about everything you did. While I was here, in Elodia, minding my own business, you were out there, with your companions, trying to save the world...</Line>
+				<Line>You get up and stretch taking the time to think about what to tell her.</Line>
+				<Choices>
+					<Choice Text="Go adventuring together?">
+						<Line Focus="Left">When we'll be able to get out, do you want to go adventuring with me?</Line>
+						<Relationship Character="ChildhoodFriend" Relationship="2" Points="20"/>
+						<Line Focus="Right">But I'm not good at that, you know it. I can barely hold a bow, I can't cast any spell more complex than sparkles... and that's not the problem, I don't want to be an adventurer, I just like it when you tell me about it.</Line>
+						<Line Focus="Left">Sorry, I...</Line>
+						<Line Focus="Right">No, I'm sorry, I was the one who asked you to talk about it, and I'm only annoying you. I'll leave you alone.</Line>
+						<Line>And after that, she quickly left.</Line>
+					</Choice>			
+					<Choice Text="Joke nicely about it">
+						<Relationship Character="ChildhoodFriend" Relationship="0" Points="20"/>
+						<Line Focus="Left">Don't worry about that so much. I might have saved the world, but you were the one who kept me out of danger when I was a child.</Line>
+						<Line Focus="Right">And I changed your diapers, too. Couldn't beat a Demon Knight if you aren't potty trained.</Line>
+						<Relationship Character="ChildhoodFriend" Relationship="2" Points="10"/>
+						<Line>But even while she was joking, you can feel she was still quite sad about something. You decided to not push it for now.</Line>
+						<Line Focus="Right">Okay, this time, I'm leaving. Prepare more stories for next time. By-bye.</Line>
+					</Choice>
+				</Choices>
+			</Choice>
+		</Choices>
 	</DialogueData>
 	<DialogueData ID="CF_Friend_4">
-		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
-		<Line Focus="Left">Hey, this is my Friendship Dialogue number 4.</Line>
+	<!--Triggers in the PARK, afternoon-->
+		<Speaker Speaker="Player" Position="Left"/>
+		<Line>You are walking into the park when you see Melody playing with two children. You often came here with her when you were young, sometime bringing Evelyn or Violet.</Line>
+		<Line>She seems to be having fun, but now that you are older, you realise that she's doing her job conscientiously. Before, you always thought that she only came here to play, but you can see that she's always staying a step behind them, keeping an eye out.</Line>
+		<Line>After a few minutes of observation, you get moving, not wanting to look like a creep.</Line>
+		<Choices>
+			<Choice Text="Keep watching">
+				<Line>You go sit on a bench nearby and continue to observe them.</Line>
+				<Line>You don't completely understand what they are talking about, but the kid seems to enjoy what he was explaining to Melody. It reminds you of when you were talking to her about archery.</Line>
+				<Line>In hindsight, you know she wasn't that interested in what you talked about, but as a child, you kept going on and on, and she gently pushed you towards adventuring. Your parents weren't against the idea, but thought of it like a child's dream job, something you grow out of as an adult.</Line>
+				<Line>When she sent the kids home, you go talk to her.</Line>
+				<Speaker Speaker="ChildhoodFriend" Position="Right"/>
+				<Line Focus="Left">Hi, Mel'</Line>
+				<Relationship Character="ChildhoodFriend" Relationship="0" Points="20"/>
+				<Line Focus="Right">Hey _MC. I saw you back there, but I was busy with the kids.</Line>
+			</Choice>			
+			<Choice Text="Go to Melody">
+				<Line>She was talking with one of the girls.</Line>
+				<Speaker Speaker="ChildhoodFriend" Position="Right"/>
+				<Speaker Speaker="Kid" Position="Right2"/>
+				<Line Focus="Right2">And now, I can transform water into ice.</Line>
+				<Line Focus="Right">That's great, you're going to be a great mage when you're older.</Line>
+				<Line Focus="Right2">I'll become an Ice-cream mage!</Line>
+				<Line Focus="Left">Hi, Mel', working hard?</Line>
+				<Relationship Character="ChildhoodFriend" Relationship="1" Points="10"/>
+				<Line Focus="Right">Hey _MC.</Line>
+				<Line Focus="Right2">Oh, is she your friend who's an adventurer?</Line>
+				<Line Focus="Right">Yes, that's her.</Line>
+				<Line Focus="Right2">Melody talked a lot about you, today.</Line>
+				<Line Focus="Right">Sarah wanted to become a mage, so I asked if it was to become an adventurer. That lead to talking about you.</Line>
+				<Speaker Speaker="Sarah" Position="Right2"/>
+				<Line Focus="Right2">But I don't want to become an adventurer, I only wanted to become a mage to have a lot of ice-cream.</Line>
+				<Line>You spent some time with them, and found that Sarah learned basic ice magic at school recently, and she was a quick learner. Melody and you tried to make her realise than ice-cream isn't really in the ice domain of magic, but she didn't seem to care.</Line>
+				<Line>After buying them two scoops of ice-cream. Melody sent them home.</Line>
+				<Speaker Speaker="" Position="Right2"/>
+			</Choice>			
+			<Choice Text="Just get going">
+				<Line>You don't want to interrupt her work and leave to walk further into the woods. Its atmosphere used to be relaxing, but after all the time you spent on your guard in this kind of place, you can't help but reach for your bow (that you obviously left home) with each sound made by a shouting kid or passing hiker.</Line>
+				<Line>After thirty minutes or so, you hear a voice calling to you.</Line>
+				<Speaker Speaker="ChildhoodFriend" Position="Right"/>
+				<Line Focus="Right">_MC, I can see you're not armed, can I come?</Line>
+				<Line>You chuckled.</Line>
+				<Line Focus="Left">I can see I'm a good teacher.</Line>
+				<Line>Melody gets out of the shade with a smirk.</Line>
+				<Line Focus="Right">I saw you enter the woods, so when it was time for the kids to go home, I came to see if you were still here.</Line>
+			</Choice>
+		</Choices>
+		<Line Focus="Left">We talked a lot about me and my adventures, but I see you're still taking care of children.</Line>
+		<Line Focus="Right">Of course, it's kinda my job, now. I'm a teacher... well more of a babysitter for twenty kids, but I try to make them learn stuff, too.</Line>
+		<Line Focus="Left">I... didn't know. You weren't when I was at that age, though.</Line>
+		<Line Focus="Right">Yeah, I was doing odd jobs around. I was still new to the city at that time, but when I decided to stay here, I had to find a real job.</Line>
+		<Line Focus="Left">I remember, when I saw you the first time, I asked why you came here. You said "I'm looking for a boyfriend!".</Line>
+		<Line>She blushed immediately and you laughed a bit.</Line>
+		<Line Focus="Right">Don't mock me, you're the one who answered "I'm half-boy, cant I be your boyfriend?"</Line>
+		<Line>You don't remember that, but it doesn't sound too far fetched for kid-_MC to say that.</Line>
+		<Choices>
+			<Choice Text="Own up to it">
+				<Line Focus="Left">I probably said something like that, I used to have a crush on you as a child.</Line>
+				<Relationship Character="ChildhoodFriend" Relationship="1" Points="20"/>
+				<Line Focus="Right">Only as a child?</Line>
+				<Line Focus="Right">I'm kidding, I'm kidding.</Line>
+			</Choice>			
+			<Choice Text="Dismiss it">
+				<Line Focus="Left">I was only a child, I didn't know the difference between friend and boyfriend.</Line>
+				<Line Focus="Right">Boo, way to ruin the fun.</Line>
+			</Choice>			
+			<Choice Text="Deny it">
+				<Line Focus="Left">Hey, you invented that.</Line>
+				<Line Focus="Right">Maybe, or you purposefully forgot.</Line>
+			</Choice>
+		</Choices>
+		<Line Focus="Right">But yes, at that time, I came here to find and elf boyfriend... or half-boyfriend, I'm not that picky. But it was... another time...</Line>
+		<Line>When you were young, it was shunned for elves to be in a couple with another race. Elves are special, they don't age and have a high mastery of magic, but half-elves often don't have those characteristics.</Line>
+		<Line>To keep that heritage safe, the elven casts were in place. A high elf is the "purest" elf, with almost all elven traits. Under them came the street elves, most of them ageless but often lacking magic power, lower night vision or other things.</Line>
+		<Line>Then, come the half-elves, before known as "Bastard-elves". They present other races characteristics, but do age, often more slowly than human or even dwarves, but do grow old after centuries.</Line>
+		<Line>Nowadays, only the high-elves keep the "elf-only" rule. Since the war, elves became rarer and only their elite kept the rule. Most families found it useless to keep the tradition if it meant inbreeding would take them down in a few generations.</Line>
+		<Line Focus="Left">Is that why you stayed? When I left town, you told me you were thinking about leaving too, to go search somewhere else.</Line>
+		<Line Focus="Right">Yup, now that my parents aren't always on my back to find "a good mate" (she does her impression of her mom saying it), I can live however I want. And this place's decent enough for me.</Line>
+		<Line Focus="Right">But last year, I thought about going back home. I mean, living there.</Line>
+		<Line Focus="Left">Why is that?</Line>
+		<Line Focus="Right">When the world was freed, I went back to see my parents. You know, like a good girl should, and mom asked me to come back. I had no real reason to, so I said no, but when I came back here, I found that I had no reason to stay either...</Line>
+		<Line>She looked sad as she said that, but, as usual, immediately cheered up.</Line>
+		<Line Focus="Right">But now that you're back, I feel better.</Line>
+		<Line>You feel a little awkward, and don't want to prod her for answers, but you wonder how she really feels about you. Is it just friendship or...</Line>
+		<Line>That can wait, you've been out for a while, and suggest going back to town.</Line>
 	</DialogueData>
 	<DialogueData ID="CF_Friend_5">
-		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
-		<Line Focus="Left">Hey, this is my Friendship Dialogue number 5.</Line>
+	<!--Triggers in the INN, afternoon-->
+		<Speaker Speaker="Player" Position="Left"/>
+		<Line>You come back to the inn after doing a lot of chores in town. Your car is full of groceries and cleaned bedsheets.</Line>
+		<Speaker Speaker="ChildhoodFriend" Position="Right"/>
+		<Line>As you start unloading them, you see Melody sitting in the entrance hall.</Line>
+		<Line Focus="Right">Need some help?</Line>
+		<Choices>
+			<Choice Text="It's okay">
+				<Line Focus="Left">It's alright, you don't need to bother.</Line>
+				<Line Focus="Right">... okay.</Line>
+				<Line>You do a few back and forth with her watching you silently. You can feel the awkwardness in the air as she is being strangely silent.</Line>
+				<Choices>
+					<Choice Text="Okay, you can help">
+						<Relationship Character="ChildhoodFriend" Relationship="0" Points="-10"/>
+						<Relationship Character="ChildhoodFriend" Relationship="1" Points="-10"/>
+						<Relationship Character="ChildhoodFriend" Relationship="2" Points="20"/>
+						<Line>She gets up with a nod and follows your instructions on where to drop everything.</Line>
+					</Choice>			
+					<Choice Text="Continue silently">
+						<Relationship Character="ChildhoodFriend" Relationship="2" Points="10"/>
+						<Line>Once you finished, she talks to you, uncertain of herself.</Line>
+						<Line Focus="Right">Can we talk for a moment?</Line>
+					</Choice>
+				</Choices>	
+			</Choice>					
+			<Choice Text="Sure">
+				<Relationship Character="ChildhoodFriend" Relationship="0" Points="20"/>
+				<Relationship Character="ChildhoodFriend" Relationship="1" Points="20"/>
+				<Line Focus="Left">Sure, once I come back, we'll get the fresh food and deliver it to the kitchen. I'll be right back.</Line>
+				<Line>With the two of you, the job is quickly done. You don't talk much while doing it, but she seemed quite happy to help.</Line>
+				<Line Focus="Left">Thanks for the help. You were waiting for me?</Line>
+				<Line Focus="Right">Not really, I only wanted to talk for a moment.</Line>
+			</Choice>
+		</Choices>
+		<Line Focus="Left">Sure, let's get out of the way.</Line>
+		<Line>You go to your room, and she seems quite uncomfortable.</Line>
+		<Line Focus="Left">So, what did you want to talk about? I'm sorry I don't really have time for another story, Violet's out today so I need to do her job.</Line>
+		<Line Focus="Right">...</Line>
+		<Line>She can't seem to look at you in the eyes, but it seems there is something on her mind.</Line>
+		<Choices>
+			<Choice Text="Just spit it out">
+				<Relationship Character="ChildhoodFriend" Relationship="2" Points="20"/>
+				<Line Focus="Left">You want to say something, just spit it out.</Line>
+			</Choice>			
+			<Choice Text="You can talk to me">
+				<Relationship Character="ChildhoodFriend" Relationship="0" Points="20"/>
+				<Line Focus="Left">If there's anything, you can talk to me, you know?</Line>
+			</Choice>			
+			<Choice Text="Let her talk">
+				<Relationship Character="ChildhoodFriend" Relationship="0" Points="10"/>
+				<Relationship Character="ChildhoodFriend" Relationship="2" Points="10"/>
+				<Line Focus="Left">...</Line>
+			</Choice>
+		</Choices>
+		<Line Focus="Right">Do I bother you?</Line>
+		<Choices>
+			<Choice Text="Of course not">
+				<Relationship Character="ChildhoodFriend" Relationship="0" Points="10"/>
+				<Relationship Character="ChildhoodFriend" Relationship="1" Points="10"/>
+				<Line Focus="Left">Of course you don't bother me, why are you asking?</Line>
+			</Choice>			
+			<Choice Text="Right now or in general?">
+				<Relationship Character="ChildhoodFriend" Relationship="2" Points="50"/>
+				<Line Focus="Left">Do you mean right now, or in general?</Line>
+			</Choice>			
+			<Choice Text="Kind of...">
+				<Relationship Character="ChildhoodFriend" Relationship="2" Points="50"/>
+				<Line Focus="Left">Kind of... you're quite... insistent on coming here.</Line>
+			</Choice>
+		</Choices>
+		<Line Focus="Right">Everytime I come and see you, you take your time to talk to me, but I always feel like you have something else to do, but you're too polite to shoo me away.</Line>
+		<Line Focus="Right">I only wanted to know : Do I really annoy you when I come here looking for you?</Line>
+		<Choices>
+			<Choice Text="Yes">
+				<Line Focus="Left">I mean... yes. I have a lot to do around here, and not much time to rest, so...</Line>
+				<Line Focus="Right">I understand, I'll be going, sorry to be an annoyance...</Line>
+				<Relationship Character="ChildhoodFriend" Relationship="0" Points="-1000"/>
+				<Relationship Character="ChildhoodFriend" Relationship="1" Points="-1000"/>
+				<Relationship Character="ChildhoodFriend" Relationship="2" Points="500"/>
+				<Line>You can hear her sobbing on her way out, then you get up and go back to work.</Line>
+			</Choice>			
+			<Choice Text="No">
+				<Line Focus="Left">No, you don't bother me. It's only that I don't have a lot of free time with the inn. The inn is overflowing with clients stuck in town, Violet is always slacking, Evelyn is really bad with clients, I just wanted to help.</Line>
+				<Line>She still can't look at you.</Line>
+				<Choices>
+				<Choice Text="Lets make a deal">
+					<Line Focus="Left">Let's make a deal : if you ever annoy me, be it because I have something else to do or you being really annoying, I'll tell you frankly. Will that be better for you?</Line>
+					<Line Focus="Right">You'll be frank?</Line>
+					<Line Focus="Left">Of course.</Line>
+					<Relationship Character="ChildhoodFriend" Relationship="0" Points="20"/>
+					<Relationship Character="ChildhoodFriend" Relationship="1" Points="50"/>
+					<Line Focus="Right">Okay.</Line>
+				</Choice>			
+				<Choice Text="Did I ever say it?">
+					<Line Focus="Left">Did I ever say anything that made you feel that way before?</Line>
+					<Line Focus="Right">No directly, but I sometimes wonder if you don't want to hurt me by saying it or something like that.</Line>
+					<Line Focus="Left">I don't, really. I'd tell you if that was the case.</Line>
+					<Relationship Character="ChildhoodFriend" Relationship="0" Points="10"/>
+					<Relationship Character="ChildhoodFriend" Relationship="1" Points="10"/>
+					</Choice>
+				</Choices>
+				<Line>She's crying, but at least her eyes are looking in your direction, now.</Line>
+				<Line Focus="Left">Feeling better?</Line>
+				<Line Focus="Right">Yeah, thanks.</Line>
+				<Choices>
+					<Choice Text="Why the question?">
+						<Line Focus="Left">So, what triggered all that?</Line>
+						<Line Focus="Right">Well, I was only coming here to spend time, but looking at you work, I realised that I always came here while you were busy or working.</Line>
+						<Line>You know her enough to know it's time to joke a little to relieve the tension.</Line>
+						<Line Focus="Left">Yes, but what would be the alternative? Me waiting for you? I like you, but that would be a bit creepy, no?</Line>
+						<Relationship Character="ChildhoodFriend" Relationship="0" Points="10"/>
+						<Line>She cry-laughs at that answer.</Line>
+						<Line Focus="Right">I know, I'm stupid.</Line>
+					</Choice>			
+					<Choice Text="Let her be">
+						<Line Focus="Right">I'll find a way to solve that problem, don't worry. It's just that I don't want you to have negative emotions about me.</Line>
+						<Line>You hear your mom shouting your name from the hallway.</Line>
+						<Line Focus="Right">Okay, I'll be going now. I've taken enough of your time for today.</Line>
+						<Line Focus="Left">Come back whenever you want.</Line>
+					</Choice>
+				</Choices>
+			</Choice>
+		</Choices>
 	</DialogueData>
 	<DialogueData ID="CF_Friend_6">
 		<Speaker Speaker="ChildhoodFriend" Position="Left"/>
