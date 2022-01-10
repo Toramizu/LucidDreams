@@ -1,9 +1,7 @@
 Do Edge
-	Choose succubus skill if won on exact dmg
+	Choose skill if won on exact dmg
 	
-Dialogue events
-	End dialogue
-	something I forgot...
-	
-Characters
-	Difference between LI (with succubus) and others (without)
+
+Big nexts :
+Inventory & Items
+	Gifts, Consumables

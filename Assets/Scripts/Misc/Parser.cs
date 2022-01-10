@@ -48,8 +48,10 @@ public class Parser : MonoBehaviour
             text = text.Replace(symbol.Replaced, symbol.Replacer);
 
         return text;*/
+        if (text == null)
+            return "";
 
-        var words = string.Join("|", flags.Keys);
+        string words = string.Join("|", flags.Keys);
         text = Regex.Replace(text, $@"\b({words})\b", delegate (Match m)
         {
             return flags[m.Value];

@@ -19,6 +19,8 @@
 			
 			</Choice>
 		</Choices>
+		
+		<RelationUp Character="ChildhoodFriend" Relationship="0" Level=""/>
 	-->
 	
 	<DialogueData ID="CF_Default">
@@ -78,7 +80,7 @@
 		<Line Focus="Right">Okay, but don't forget me, I know where you live. By-bye.</Line>
 		
 		<Speaker Speaker="" Position="Right"/>
-		<Line/>
+		<Line>...</Line>
 		
 		<Speaker Speaker="Margaret" Position="Right"/>
 		<Line Focus="Right">She's a nice girl.</Line>
@@ -182,6 +184,7 @@
 			</Choice>
 		</Choices>
 		<Line>You spent some time talking about her dream. She seemed happy to have you back.</Line>
+		<RelationUp Character="ChildhoodFriend" Relationship="0" Level="1"/>
 	
 	
 	</DialogueData>
@@ -237,6 +240,7 @@
 		<Line Focus="Left">Sure, but it would have to be another time. It's quite a long story, and I have to help Evelyn cook for the guests. There are too many people from outside town stuck here, so the inn is perpetually full.</Line>
 		<Line Focus="Right">Okay, don't forget about it. See you next time.</Line>
 		<Line>After she left, you spent a while thinking about how different those two elves are.</Line>
+		<RelationUp Character="ChildhoodFriend" Relationship="0" Level="2"/>
 	</DialogueData>
 	<DialogueData ID="CF_Friend_3">
 	<!--Triggers at the INN, anytime-->
@@ -319,6 +323,7 @@
 				</Choices>
 			</Choice>
 		</Choices>
+		<RelationUp Character="ChildhoodFriend" Relationship="0" Level="3"/>
 	</DialogueData>
 	<DialogueData ID="CF_Friend_4">
 	<!--Triggers in the PARK, afternoon-->
@@ -406,6 +411,7 @@
 		<Line Focus="Right">But now that you're back, I feel better.</Line>
 		<Line>You feel a little awkward, and don't want to prod her for answers, but you wonder how she really feels about you. Is it just friendship or...</Line>
 		<Line>That can wait, you've been out for a while, and suggest going back to town.</Line>
+		<RelationUp Character="ChildhoodFriend" Relationship="0" Level="4"/>
 	</DialogueData>
 	<DialogueData ID="CF_Friend_5">
 	<!--Triggers in the INN, afternoon-->
@@ -531,6 +537,7 @@
 				</Choices>
 			</Choice>
 		</Choices>
+		<RelationUp Character="ChildhoodFriend" Relationship="0" Level="5"/>
 	</DialogueData>
 	<DialogueData ID="CF_Friend_6">
 		<Speaker Speaker="ChildhoodFriend" Position="Left"/>

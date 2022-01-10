@@ -23,6 +23,11 @@ public class DialogueChoice
     [XmlAttribute("Text")]
     public string Text { get; set; }
 
+    [XmlElement("If")]
+    public MultCondition Condition { get; set; }
+    [XmlIgnore]
+    public bool Check { get { return Condition == null || Condition.Check; } }
+
     [XmlElement("Choices", typeof(DialogueChoices))]
     [XmlElement("Battle", typeof(DialogueBattle))]
     [XmlElement("ArousalFlat", typeof(DialogueAddArousal))]
@@ -30,6 +35,7 @@ public class DialogueChoice
     [XmlElement("Line", typeof(DialogueLine))]
     [XmlElement("Speaker", typeof(DialogueSpeaker))]
     [XmlElement("Relationship", typeof(DialogueRelationship))]
+    [XmlElement("RelationUp", typeof(DialogueRelationStage))]
     [XmlElement("Condition", typeof(DialogueCondition))]
     [XmlElement("Roll", typeof(DialogueRoll))]
     [XmlElement("ArousalBonus", typeof(ArousalBonus))]

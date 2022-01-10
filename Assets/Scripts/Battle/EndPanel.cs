@@ -7,20 +7,24 @@ public class EndPanel : Window
 {
     [SerializeField] Window victory;
     [SerializeField] TMP_Text victoryText;
-    [SerializeField] TMP_Text newAbilityText;
-    [SerializeField] List<AbilityStolenFlavourText> newAbilitySynonym = new List<AbilityStolenFlavourText>();
-    [SerializeField] AbilityUI abilityPanel;
 
     [SerializeField] Window loss;
     [SerializeField] TMP_Text lossText;
     [SerializeField] List<string> wakeUpText;
 
+    [SerializeField] AbilityPicker abilityPicker;
+
     int crystals;
-    SuccubusData opponent;
-    AbilityData ability;
+    Succubus opponent;
+
+    [SerializeField] GameObject edgedText;
+    bool edged;
     
-    public void Victory(int crystals, SuccubusData opponent)
+    public void Victory(int crystals, Succubus opponent, bool edged)
     {
+        this.edged = edged;
+        edgedText.SetActive(edged);
+
         FadeIn();
         victory.FadeIn();
         loss.FadeOut();
@@ -29,10 +33,6 @@ public class EndPanel : Window
         victoryText.text = "+" + crystals;
 
         this.opponent = opponent;
-        ability = opponent.Abilities[Random.Range(0, opponent.Abilities.Count)];
-        newAbilityText.text = newAbilitySynonym[Random.Range(0, newAbilitySynonym.Count)].BuildText(ability.ID);
-        new Ability(ability, abilityPanel);
-        //abilityPanel.Init(ability, null);
     }
 
     public void Loss()
@@ -45,7 +45,7 @@ public class EndPanel : Window
         lossText.text = wakeUpText[Random.Range(0, wakeUpText.Count)];
     }
 
-    void NewAbility(List<AbilityData> abilities)
+    /*void NewAbility(List<AbilityData> abilities)
     {
         if (abilities.Count == 0)
         {
@@ -67,13 +67,21 @@ public class EndPanel : Window
                 abilityPanel.Init(ability, null);
             }
         }
-    }
+    }*/
 
     public void VictoryClose()
     {
-        GameManager.Instance.EndBattle(crystals, ability);
-        victory.FadeOut();
-        FadeOut();
+        if (edged)
+        {
+            abilityPicker.Open(opponent, crystals);
+            victory.FadeOut();
+        }
+        else
+        {
+            GameManager.Instance.EndBattle(crystals, null);
+            victory.FadeOut();
+            FadeOut();
+        }
     }
 }
 

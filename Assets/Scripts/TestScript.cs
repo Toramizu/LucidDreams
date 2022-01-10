@@ -81,7 +81,7 @@ public class TestScript : MonoBehaviour
     {
         if (GameManager.Instance.Status == GameStatus.Battle)
         {
-            GameManager.Instance.BattleManager.EndBattle(true);
+            GameManager.Instance.BattleManager.EndBattle(true, true);
             GameManager.Instance.Notify("Cheat : Free win");
         }
     }

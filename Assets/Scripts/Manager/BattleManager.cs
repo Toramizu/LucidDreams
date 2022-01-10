@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static DialogueUI;
 
 public class BattleManager : Window
 {
@@ -11,6 +12,9 @@ public class BattleManager : Window
 
     [SerializeField] EndPanel endPanel;
     [SerializeField] TraitTooltip tooltip;
+
+    DialogueAction onWin;
+    DialogueAction onLoss;
 
     public bool PlayerTurn { get; private set; }
     public Succubus GetCharacter(bool current)
@@ -28,7 +32,14 @@ public class BattleManager : Window
         else
             return Opponent;
     }
-    
+
+    public void StartBattle(SuccubusData oData, List<AbilityData> pAbis, DialogueAction onWin, DialogueAction onLoss)
+    {
+        this.onWin = onWin;
+        this.onLoss = onLoss;
+        StartBattle(oData, pAbis);
+    }
+
     public void StartBattle(SuccubusData oData, List<AbilityData> pAbis)
     {
         FadeIn();
@@ -43,23 +54,32 @@ public class BattleManager : Window
     {
         if (Opponent.Finished)
         {
-            EndBattle(true);
+            EndBattle(true, Opponent.Edged);
             return true;
         }
         else if (Player.Finished)
         {
-            EndBattle(false);
+            EndBattle(false, false);
             return true;
         }
         return false;
     }
 
-    public void EndBattle(bool victory)
+    public void EndBattle(bool victory, bool edged)
     {
         if (victory)
-            endPanel.Victory(Opponent.Crystals, Opponent.Data);
+        {
+            endPanel.Victory(Opponent.Crystals, Opponent, edged);
+            onWin?.Invoke();
+        }
         else
+        {
             endPanel.Loss();
+            onLoss?.Invoke();
+        }
+
+        onWin = null;
+        onLoss = null;
     }
 
     public void NextRound()

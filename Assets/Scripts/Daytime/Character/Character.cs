@@ -15,11 +15,12 @@ public class Character : XmlAsset
     const int POINTS_PER_STAGE = 100;
 
     public bool Check { get { return Data.Check; } }
-    public bool NightCheck { get { return Data.NightCheck; } }
+    public bool NightCheck { get { return Data.NightCheck && Data._Succubus != null; } }
 
     public List<CharacterLocation> Locations { get { return Data.Locations; } }
 
     public int LastInteraction { get; set; } = 1;
+    public bool IsImportant { get { return Data.IsImportant; } }
 
     public Character() { }
     public Character(CharacterData data) {
@@ -38,11 +39,11 @@ public class Character : XmlAsset
             AddRelationPoints(0, 1, false);
         }
 
-        foreach(Relationship relationship in Relationships)
+        /*foreach(Relationship relationship in Relationships)
         {
             if (relationship.TryPlayInteraction())
                 return;
-        }
+        }*/
 
         List<ConditionalDialogue> evnts = Data.Events.Where(e => e.Check).ToList();
 
@@ -50,26 +51,31 @@ public class Character : XmlAsset
             evnts[Random.Range(0, evnts.Count)].Play(action);
     }
 
-    public ConditionalDialogue GetRelationshipEvent(out DialogueAction action)
+    public ConditionalDialogue GetRelationshipEvent()
     {
-        ConditionalDialogue evnt;
         foreach (Relationship relationship in Relationships)
-        {
-            evnt = relationship.GetRelationshipEvent();
-            if (evnt != null)
-            {
-                action = relationship.IncreaseRelationship;
-                return evnt;
-            }
-        }
-        action = null;
+            return relationship.GetRelationshipEvent();
         return null;
+    }
+
+    public void IncreaseRelationship(int relation, int level)
+    {
+        if (Relationships.Count <= relation)
+        {
+            GameManager.Instance.NotifyError("No relationship " + relation + " for " + Data.ID);
+            return;
+        }
+
+        Relationships[relation].IncreaseRelationship(level);
     }
 
     public void AddRelationPoints(int relation, int points, bool stageLimit)
     {
         if (Relationships.Count <= relation)
+        {
+            GameManager.Instance.NotifyError("No relationship " + relation + " for " + Data.ID);
             return;
+        }
 
         //Relationships[relation].Points += points;
         int i = Relationships[relation].AddPoints(points, stageLimit);

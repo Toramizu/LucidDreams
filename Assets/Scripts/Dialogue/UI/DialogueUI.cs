@@ -79,9 +79,14 @@ public class DialogueUI : Window
         }
         else
         {
-            FadeOut();
-            action?.Invoke();
+            Close();
         }
+    }
+
+    public void Close()
+    {
+        FadeOut();
+        action?.Invoke();
     }
 
     Dictionary<string, Queue<DialogueElement>> loops = new Dictionary<string, Queue<DialogueElement>>();
@@ -99,41 +104,6 @@ public class DialogueUI : Window
     #endregion
 
     #region Dialogue lines
-    Queue<DialogueLine> lines;
-
-    public void Play(List<DialogueLine> lines)
-    {
-        this.lines = new Queue<DialogueLine>(lines);
-
-        dialoguePanel.gameObject.SetActive(true);
-
-        PlayLine();
-    }
-
-    public void PlayLine()
-    {
-        if (lines == null)
-            return;
-
-        if (lines.Count == 0)
-        {
-            lines = null;
-            Next();
-        }
-        else
-        {
-            DialogueLine line = lines.Dequeue();
-
-
-
-            if (line.Line != null && line.Line != "")
-                Dialogue = GameManager.Instance.Parser.Parse(line.Line);
-            //line.Line.Replace("\\n", "\n");
-            else
-                PlayLine();
-        }
-    }
-
     public void PlayLine(DialogueLine line)
     {
         dialoguePanel.gameObject.SetActive(true);
@@ -207,18 +177,34 @@ public class DialogueUI : Window
             choiceTitle.gameObject.SetActive(true);
         }
 
+        bool anyChoice = false;
         foreach (DialogueChoice choice in choices)
         {
-            DialogueChoiceUI dc = Instantiate(choiceButtonPrefab, choicesDisplay);
-            dc.Init(choice, this);
-            displayedChoices.Add(dc);
+            if (choice.Check)
+            {
+                DialogueChoiceUI dc = Instantiate(choiceButtonPrefab, choicesDisplay);
+                dc.Init(choice, this);
+                displayedChoices.Add(dc);
+                anyChoice = true;
+            }
+        }
+
+        if (!anyChoice)
+        {
+            GameManager.Instance.NotifyError("No choice available in " + currentDialogue.ID);
+            CloseChoices();
         }
     }
 
     public void Choose(DialogueChoice choice)
     {
         AddInFront(choice.Elements);
+        
+        CloseChoices();
+    }
 
+    void CloseChoices()
+    {
         foreach (DialogueChoiceUI diplayed in displayedChoices)
             Destroy(diplayed.gameObject);
 

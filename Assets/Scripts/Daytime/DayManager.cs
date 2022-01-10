@@ -74,11 +74,10 @@ public class DayManager : Window
 
         foreach (Character chara in charas)
         {
-            DialogueUI.DialogueAction action;
-            ConditionalDialogue rEvent = chara.GetRelationshipEvent(out action);
+            ConditionalDialogue rEvent = chara.GetRelationshipEvent();
             if (rEvent != null && rEvent.Location != null) //Chara has relationship event
             { //Place relationship event
-                DialogueEvent dEvent = new DialogueEvent(rEvent, action);
+                DialogueEvent dEvent = new DialogueEvent(rEvent, null);
                 dEvent.Icon = dialogueIcon;
                 interactions[rEvent.Location].AddSub(dEvent);
             }

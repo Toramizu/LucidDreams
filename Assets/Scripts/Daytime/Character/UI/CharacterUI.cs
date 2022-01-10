@@ -21,11 +21,16 @@ public class CharacterUI : Window, CharacterDisplayer
         base.FadeIn();
         charaList.Clear();
 
-        List<Character> charas = AssetDB.Instance.Characters.ToList().Where(c => c.Check).ToList();
+        List<Character> charas = AssetDB.Instance.Characters.ToList().Where(c => c.IsImportant && c.Check).ToList();
         charaList.Open(charas, this);
 
         if (lastChara == null || !lastChara.Check)
-            lastChara = charas[0];
+        {
+            if(charas.Count == 0)
+                FadeOut();
+            else
+                lastChara = charas[0];
+        }
 
         DisplayCharacter(lastChara);
     }

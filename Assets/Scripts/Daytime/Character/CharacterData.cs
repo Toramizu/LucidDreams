@@ -56,6 +56,13 @@ public class CharacterData : ImageHaver, XmlAsset
 
     [XmlElement("Preferences")]
     public CharacterPrefs Preferences { get; set; }
+
+    [XmlIgnore]
+    public bool IsImportant { get
+        {
+            return Relationships != null && Relationships.Count > 0;
+        }
+    }
 }
 
 public class CharacterLocation

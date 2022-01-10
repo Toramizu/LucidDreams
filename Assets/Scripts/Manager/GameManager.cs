@@ -74,11 +74,11 @@ public class GameManager : MonoBehaviour
         Loading.FadeOut();
     }
 
-    public void StartBattle(SuccubusData opponent)
+    public void StartBattle(SuccubusData opponent, DialogueAction onWin, DialogueAction onLoss)
     {
         dreamManager.FadeOut();
         battleManager.FadeIn();
-        battleManager.StartBattle(opponent, playerManager.Abilities);
+        battleManager.StartBattle(opponent, playerManager.Abilities, onWin, onLoss);
         Status = GameStatus.Battle;
     }
 
@@ -140,6 +140,14 @@ public class GameManager : MonoBehaviour
     {
         text = parser.Parse(text);
         notifs.Notify(text);
+    }
+
+    public void NotifyError(string text)
+    {
+        text = parser.Parse(text);
+        notifs.Notify("/!\\ " + text + "/!\\ ");
+        Debug.Log(text);
+        //Debug.LogError(text);
     }
 
     public void Notify(string text, Color color)

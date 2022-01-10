@@ -6,19 +6,9 @@ Melody was your babysitter when you were young and you kind of had a crush on he
 Now, you realise that she's quite childish and innocent when it concerns people. But she can be surprisingly wise when you don't expect it.
 
 Friendship : Childhood friend
-	2 & 3, she's at the inn looking for you to hang out.
-	4 You find her in the park, playing with kids
-	5 She's waiting for you at the inn again, but you have to work.
-	6 She comes to see you on the morning and asks to work here at the inn sometimes.
-		She hopes this will get you closer.
-	7 You instruct her on what to do, you see Mel seems to have fun, but once she's finished she's really tired
-	8 She continues to have fun while working, but after work, you come across Margaret.
-		Margaret gives you the information that something isn't right about Mel. Look after her.
-	9 You spy on Melody at work. She only seems to enjoy her work when you are there, whining when she's alone.
-		She also enjoys the company of Mom and Evelyn (somewhat), but is too tired afterwards.
-	0 You confront her when she comes to work and she tells you that you're her only adult friend and don't want to lose you
-		The kids growing up stop hanging out with her and adults find her annoying
-		You tell her that she doesn't need to overwork herself like that and she only comes every moonday
+	6 : She comes to work at the Inn after her day at school. She asks about your opinion on that. Two routes?
+		- Good idea : Route 1 : +Love, She comes everyday, and often gains lots of Loss
+		- Bad idea : Route 2 : -Love, She comes sometimes, as usual, but you make her meet your other friends
 		
 Love : First love
 	1 She's in the park with kids again, and you hear a child saying they'll marry her when they grow up, 

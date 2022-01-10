@@ -23,7 +23,7 @@ public class Relationship
         Data = data;
     }
 
-    public bool TryPlayInteraction()
+    /*public bool TryPlayInteraction()
     {
         if (Points >= (Stage + 1) * POINTS_PER_STAGE && Data.RelationEvents[Stage + 1].Check)
         {
@@ -31,7 +31,7 @@ public class Relationship
             return true;
         }
         return false;
-    }
+    }*/
 
     public ConditionalDialogue GetRelationshipEvent()
     {
@@ -55,10 +55,22 @@ public class Relationship
         return points;
     }
 
-    public void IncreaseRelationship()
+    public void IncreaseRelationship(int level)
+    {
+        if(level >= Stage)
+        {
+            if (level > Stage + 1)
+                GameManager.Instance.NotifyError("Unexpected relationship progress : From " + Stage + " to " + level);
+
+            Stage = level;
+            GameManager.Instance.Notify(Data.RelationName + " => " + Stage);
+        }
+    }
+
+    /*public void IncreaseRelationship()
     {
         Stage++;
         GameManager.Instance.Notify(Data.RelationName + " => " + Stage);
         GameManager.Instance.DayManager.AdvanceTime(1);
-    }
+    }*/
 }

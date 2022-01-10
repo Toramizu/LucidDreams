@@ -59,7 +59,7 @@ public class Ability
 
         this.AbiUI = abiUI;
         if (abiUI != null)
-            abiUI.Init(data, this);
+            abiUI.Init(this);
         
         if (data.EqualDice)
             Link = new LinkedValue();

@@ -94,7 +94,7 @@ public class DreamNode : MonoBehaviour, PathNode
                 GameManager.Instance.DreamManager.IsBossfight = true;
                 if (cData != null)
                 {
-                    GameManager.Instance.StartBattle(cData);
+                    GameManager.Instance.StartBattle(cData, null, null);
                     rightToken.transform.localScale = new Vector3(.5f, .5f, .5f);
                     type = NodeContent.None;
                 }
@@ -102,7 +102,7 @@ public class DreamNode : MonoBehaviour, PathNode
             case NodeContent.Succubus:
                 if (cData != null)
                 {
-                    GameManager.Instance.StartBattle(cData);
+                    GameManager.Instance.StartBattle(cData, null, null);
                     rightToken.transform.localScale = new Vector3(.5f, .5f, .5f);
                     type = NodeContent.None;
                 }

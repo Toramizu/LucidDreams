@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-public class Succubus : ImageHaver//: MonoBehaviour
+public class Succubus : ImageHaver
 {
     public SuccubusUI SuccubUI { get; set; }
     public override string Name { get { return Data.Name; } set { Data.Name = value; } }
@@ -36,6 +36,7 @@ public class Succubus : ImageHaver//: MonoBehaviour
         }
     }
     public bool Finished { get { return Arousal >= MaxArousal; } }
+    public bool Edged { get { return Arousal == MaxArousal; } }
     public int Missing { get { return MaxArousal - Arousal; } }
     
     public SuccubusData Data { get; private set; }

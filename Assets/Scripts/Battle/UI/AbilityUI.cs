@@ -22,24 +22,28 @@ public class AbilityUI : Window
     public AbilityData Data { get; set; }
     Ability ability;
 
-    public void Init(AbilityData data, Ability ability)
+    public void Init(Ability ability)
     {
-        if (data == null)
+        if (ability == null)
+        {
+            GameManager.Instance.NotifyError("Missing ability");
             return;
+        }
 
         gameObject.SetActive(true);
+        FadeIn();
 
-        title.text = data.ID;
-        Data = data;
+        title.text = ability.Data.ID;
+        Data = ability.Data;
         this.ability = ability;
-        SetCount(data.Total);
+        SetCount(ability.Data.Total);
 
         lockTransform.SetActive(false);
 
         foreach (DieSlotUI slot in dieSlots)
             slot.gameObject.SetActive(false);
 
-        SetUses(data.Uses);
+        SetUses(ability.Data.Uses);
     }
 
     public void Remove()

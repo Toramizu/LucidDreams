@@ -5,7 +5,11 @@ using UnityEngine;
 public class Flags
 {
     Dictionary<string, int> flags = new Dictionary<string, int>();
-    public Dictionary<string, string> Strings { get; set; } = new Dictionary<string, string>() { { "_MC", "MC" } };
+    public Dictionary<string, string> Strings { get; set; } = new Dictionary<string, string>()
+    {
+        { "_MC", "MC" },
+        { "_Margaret", "Margaret" }
+    };
 
     public bool HasFlag(string flag)
     {
