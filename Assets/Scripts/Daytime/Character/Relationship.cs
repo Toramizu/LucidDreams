@@ -7,31 +7,30 @@ using UnityEngine;
 public class Relationship
 {
     public RelationshipData Data { get; set; }
-    public int Points { get; set; }
     const int POINTS_PER_STAGE = 100;
-    public int Stage { get; set; }
+    string id;
+    public int Points {
+        get { return Flags.Instance.GetFlag(id + "_Points"); }
+        set { Flags.Instance.SetFlag(id + "_Points", value); }
+    }
+    public int Stage {
+        get { return Flags.Instance.GetFlag(id + "_Stage"); }
+        set { Flags.Instance.SetFlag(id + "_Stage", value); }
+    }
     public int MaxStage { get { return Data.RelationEvents.Count; } }
 
     public int StageInPoints { get { return Stage * POINTS_PER_STAGE; } }
     public int PointsInStage { get { return Points / POINTS_PER_STAGE; } }
 
     public string Name { get { return Data.RelationName; } }
+    public RelationType Type { get { return Data.Type; } }
 
     public Relationship() { }
-    public Relationship(RelationshipData data) {
+    public Relationship(RelationshipData data, string charaID) {
         //Load saved
         Data = data;
+        id = charaID + "_" + data.Type.ToString();
     }
-
-    /*public bool TryPlayInteraction()
-    {
-        if (Points >= (Stage + 1) * POINTS_PER_STAGE && Data.RelationEvents[Stage + 1].Check)
-        {
-            Data.RelationEvents[Stage].Play(IncreaseRelationship);
-            return true;
-        }
-        return false;
-    }*/
 
     public ConditionalDialogue GetRelationshipEvent()
     {
@@ -66,11 +65,4 @@ public class Relationship
             GameManager.Instance.Notify(Data.RelationName + " => " + Stage);
         }
     }
-
-    /*public void IncreaseRelationship()
-    {
-        Stage++;
-        GameManager.Instance.Notify(Data.RelationName + " => " + Stage);
-        GameManager.Instance.DayManager.AdvanceTime(1);
-    }*/
 }

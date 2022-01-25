@@ -8,7 +8,7 @@ public class DialogueRelationStage : DialogueElement
     [XmlAttribute("Character")]
     public string Character { get; set; }
     [XmlAttribute("Relationship")]
-    public int Relationship { get; set; }
+    public RelationType Relationship { get; set; }
     [XmlAttribute("Level")]
     public int Level { get; set; }
 

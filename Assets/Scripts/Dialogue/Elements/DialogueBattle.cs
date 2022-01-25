@@ -6,6 +6,13 @@ using UnityEngine;
 public class DialogueBattle : DialogueElement
 {
     [XmlIgnore]
+    public SuccubusData Player
+    {
+        get { return AssetDB.Instance.Succubi[_Player]; }
+    }
+    [XmlAttribute("Player")]
+    public string _Player { get; set; }
+    [XmlIgnore]
     public SuccubusData Opponent
     {
         get { return AssetDB.Instance.Succubi[_Opponent]; }
@@ -19,7 +26,10 @@ public class DialogueBattle : DialogueElement
 
     public override bool Play(DialogueUI dialUI)
     {
-        GameManager.Instance.StartBattle(Opponent, OnWin, OnLoss);
+        if(_Player == null)
+            GameManager.Instance.StartBattle(Opponent, OnWin, OnLoss);
+        else
+            GameManager.Instance.StartSingleBattle(Player, Opponent, OnWin, OnLoss);
         return true;
     }
 

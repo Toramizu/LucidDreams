@@ -42,5 +42,8 @@ public class DialogueChoice
     [XmlElement("RelationBonus", typeof(RelationBonus))]
     [XmlElement("Loop", typeof(DialogueLoop))]
     [XmlElement("Flag", typeof(DialogueFlag))]
+    [XmlElement("End", typeof(DialogueEnd))]
+    [XmlElement("Next", typeof(DialogueNext))]
+    [XmlElement("Input", typeof(DialogueInput))]
     public List<DialogueElement> Elements { get; set; }
 }

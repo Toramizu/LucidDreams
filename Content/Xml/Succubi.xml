@@ -81,4 +81,13 @@
     </Images>
     <Ability>Handjob</Ability>
   </SuccubusData>
+  <SuccubusData ID="Margaret" Dice="3" MaxArousal="50" Crystals="1">
+    <Images>
+      <Image ID="" ImageID="Margaret_S"/>
+    </Images>
+    <Ability>Dominance</Ability>
+    <Ability>Submission</Ability>
+    <Ability>Drain</Ability>
+    <Ability>All in</Ability>
+  </SuccubusData>
 </ArrayOfSuccubusData>

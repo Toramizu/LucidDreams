@@ -49,14 +49,15 @@
       <Image ID="" ImageID="BigSis" Source="https://kisekaejade.com/" />
     </Images>
   </CharacterData>
-  <CharacterData ID="Player" DisplayName="_MC">
+  <CharacterData ID="Player" DisplayName="_FirstName">
     <Images>
       <Image ID="" ImageID="Silhouette"/>
     </Images>
   </CharacterData>
   <CharacterData ID="Margaret" DisplayName="Margaret">
     <Images>
-      <Image ID="" ImageID="Silhouette"/>
+      <Image ID="" ImageID="Margaret_H"/>
+      <Image ID="Demon" ImageID="Margaret_S"/>
     </Images>
   </CharacterData>
 </ArrayOfCharacterData>

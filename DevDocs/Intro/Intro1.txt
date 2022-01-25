@@ -1,0 +1,45 @@
+Day 1, morning
+- : MC
+$ : Guard
+
+$ Okay, it's mainly a formality since I know your deeds, but I need to fill the documents so I'll need to ask you a few questions. First, your name.
+==> Enter name
+$ What are your reasons for entering Enova?
+- My sister has contracted the Blissful Sleep, and I came back to take care of her and help my parents with their inn.
+$ Only people who could potentially help fight the Blissful Sleep are authorised to enter, what skill would you bring?
+$ That one is easy, I'll just write "Took down the Demon Knight Lilith". Adventurers aren't often needed nowadays, but to do that, you must be quite resourceful.
+--> I had help
+	-Dom
+	- I didn't do it alone, I was part of a group. And the brains of the group was Lanelle.
+	$ Okay then : "Was part of the team that took down the Demon Knight Lilith". Don't worry too much, nobody is going to bother us with those details.
+--> You're welcome
+	+Dom
+	- You're welcome for that.
+	$...
+	She looks up from the papers she was filling, but don't say anything.
+$ As an adventurer, what was your speciality.
+--> Leader
+	++Dom
+	- I gave directives and organised the group. I also specialized in sniping.
+--> Jack of all trades
+	- I was a Jack of all trades, but mainly long distance combat.
+--> Filling the gaps
+	--Dom
+	- I did anything Lanelle and Rhaz needed me to do. And I'm not bad with a bow.
+$ Any competence in magic?
+- Only the basics, I've wanted to freshen up but never took the time.
+$ What were you doing before coming here?
+- Not much. I was an adventurer, but there weren't many jobs for people like us since the fall of the Demon Queen last year.
+$ Place of residence, I guess your family's inn. Any acquaintances inside, again, your family.
+- I have a few others, I lived there until 7 years ago.
+$ Anyone important to you living outside the city? Just in case... you know...
+- Not beside my party, but even then, we didn't see each other much after the end of the war. Lanelle went back to studying but I don't know where Rhaz might be, she went back adventuring, as she said.
+$ Do you want us to warn them if you're infected?
+- Maybe? I didn't think about them... Rhaz probably wouldn't help much, but Lanelle might be interested... Yes, warn them, just in case.
+$ Okay, all is ready. If you're sure of yourself, I'll escort you to the entrance in the barrier. I must insist that it's a one way trip, and you won't be let out until the Blissful Sleep is identified or cured.
+- ...
+- I'm ready. It's been a long time.
+...
+
+Time +1
+GOTO Intro2

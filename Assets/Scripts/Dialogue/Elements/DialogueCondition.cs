@@ -22,7 +22,7 @@ public class DialogueCondition : DialogueElement
 
 public class DialogueIf
 {
-    [XmlElement("If")]
+    [XmlElement("Check")]
     public MultCondition Condition { get; set; }
     [XmlIgnore]
     public bool Check { get { return Condition == null || Condition.Check; } }
@@ -42,5 +42,7 @@ public class DialogueIf
     [XmlElement("Loop", typeof(DialogueLoop))]
     [XmlElement("Flag", typeof(DialogueFlag))]
     [XmlElement("End", typeof(DialogueEnd))]
+    [XmlElement("Next", typeof(DialogueNext))]
+    [XmlElement("Input", typeof(DialogueInput))]
     public List<DialogueElement> Elements { get; set; }
 }

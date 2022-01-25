@@ -184,7 +184,7 @@ public class Ability
             AbiUI.SetDescription(
                 GameManager.Instance.Parser.ParseAbilityDescription(this,
                 GameManager.Instance.BattleManager.GetCharacter(true),
-                GameManager.Instance.Flags.Strings));
+                Flags.Instance.Strings));
             AbiUI.SetUses(RemainingUses);
         }
     }

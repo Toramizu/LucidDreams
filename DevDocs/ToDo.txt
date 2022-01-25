@@ -1,6 +1,11 @@
-Do Edge
-	Choose skill if won on exact dmg
-	
+Better dreams
+	- Dream map included in dream
+	- DreamNode child => Succubus, spawn, exit, medit, shop... (base = nothing)
+Events between dreams (specific to dream or general)
+
+Dialogue
+	Advance time
+	Redo Speaker & positions
 
 Big nexts :
 Inventory & Items

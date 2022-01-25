@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static DialogueUI;
 
 public class AbilityPicker : Window
 {
@@ -12,10 +13,12 @@ public class AbilityPicker : Window
     [SerializeField] List<string> stealingTexts;
 
     int crystals;
+    DialogueAction onWin;
 
-    public void Open(Succubus succubus, int crystals)
+    public void Open(Succubus succubus, int crystals, DialogueAction onWin)
     {
         this.crystals = crystals;
+        this.onWin = onWin;
 
         int i = 0;
         for(; i < abilities.Count && i < succubus.Abilities.Count; i++)
@@ -33,18 +36,25 @@ public class AbilityPicker : Window
     public void PickAbility(int i)
     {
         if(i < abilities.Count)
+        {
             GameManager.Instance.EndBattle(crystals, abilities[i].Data);
+            Close();
+        }
         else
             Skip();
 
-        FadeOut();
-        endPanel.FadeOut();
     }
 
     public void Skip()
     {
         GameManager.Instance.EndBattle(crystals + 3, null);
+        Close();
+    }
+
+    void Close()
+    {
         FadeOut();
         endPanel.FadeOut();
+        onWin?.Invoke();
     }
 }

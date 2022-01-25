@@ -34,7 +34,7 @@
     </Choices>
   </DialogueData>
   <DialogueData ID="M_Park">
-    <Line Focus="Left">You enter the town park. The weather is nice, warm with a light wind, and no one else is here. It's the perfect time to meditate and calm yourself down.</Line>
+    <Line Focus="Left">You enter the city park. The weather is nice, warm with a light wind, and no one else is here. It's the perfect time to meditate and calm yourself down.</Line>
     <Choices Title="Meditate in the park?">
       <Choice Text="Meditate">
         <Roll>

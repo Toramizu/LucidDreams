@@ -21,11 +21,28 @@ public class DialogueUI : Window
 
 
     [SerializeField] Window hidable;
+    [SerializeField] InputUI inputWindow;
+
+    bool locked;
+    public bool Locked
+    {
+        get { return locked; }
+        set
+        {
+            locked = value;
+            dialoguePanel.interactable = !value;
+        }
+    }
 
     #region Dialogue
     DialogueData currentDialogue;
     Queue<DialogueElement> elements;
     DialogueAction action;
+
+    public void QuickOpen(DialogueData data)
+    {
+        Open(data, action);
+    }
 
     public void Open(DialogueData data, DialogueAction action)
     {
@@ -46,8 +63,7 @@ public class DialogueUI : Window
         dialoguePanel.gameObject.SetActive(false);
 
         Dialogue = "";
-        //leftSpeaker.Toggle(false);
-        leftSpeaker.Data = GameManager.Instance.PlayerManager.Player; ;
+        //leftSpeaker.Data = GameManager.Instance.PlayerManager.Player; ;
         leftSpeaker.Focus = false;
         rightSpeaker.Toggle(false);
         left2Speaker.Toggle(false);
@@ -72,14 +88,17 @@ public class DialogueUI : Window
 
     public void Next()
     {
-        if (elements.Count > 0)
+        if (!Locked)
         {
-            if (elements.Dequeue().Play(this))
-                Next();
-        }
-        else
-        {
-            Close();
+            if (elements.Count > 0)
+            {
+                if (elements.Dequeue().Play(this))
+                    Next();
+            }
+            else
+            {
+                Close();
+            }
         }
     }
 
@@ -101,36 +120,37 @@ public class DialogueUI : Window
             elements = new Queue<DialogueElement>(loops[id]);
     }
 
+    public void EnterInput(string text, string id)
+    {
+        inputWindow.Open(text, id);
+    }
     #endregion
 
     #region Dialogue lines
     public void PlayLine(DialogueLine line)
     {
         dialoguePanel.gameObject.SetActive(true);
-        Dialogue = GameManager.Instance.Parser.Parse(line.Line);
+        Dialogue = GameManager.Instance.Parser.Parse(line.Line).Replace("\t", ""); ;
 
-        if (line.Focus != SpeakerPos.NoChange)
+        leftSpeaker.Focus = false;
+        left2Speaker.Focus = false;
+        rightSpeaker.Focus = false;
+        right2Speaker.Focus = false;
+
+        switch (line.Focus)
         {
-            leftSpeaker.Focus = false;
-            left2Speaker.Focus = false;
-            rightSpeaker.Focus = false;
-            right2Speaker.Focus = false;
-
-            switch (line.Focus)
-            {
-                case SpeakerPos.Left:
-                    leftSpeaker.Focus = true;
-                    break;
-                case SpeakerPos.Left2:
-                    left2Speaker.Focus = true;
-                    break;
-                case SpeakerPos.Right:
-                    rightSpeaker.Focus = true;
-                    break;
-                case SpeakerPos.Right2:
-                    right2Speaker.Focus = true;
-                    break;
-            }
+            case SpeakerPos.Left:
+                leftSpeaker.Focus = true;
+                break;
+            case SpeakerPos.Left2:
+                left2Speaker.Focus = true;
+                break;
+            case SpeakerPos.Right:
+                rightSpeaker.Focus = true;
+                break;
+            case SpeakerPos.Right2:
+                right2Speaker.Focus = true;
+                break;
         }
     }
 
@@ -167,7 +187,7 @@ public class DialogueUI : Window
     public void Play(string title, List<DialogueChoice> choices)
     {
         choicesPanel.SetActive(true);
-        dialoguePanel.interactable = false;
+        Locked = true;
 
         if (title == null || title == "")
             choiceTitle.gameObject.SetActive(false);
@@ -210,7 +230,7 @@ public class DialogueUI : Window
 
         displayedChoices.Clear();
         choicesPanel.SetActive(false);
-        dialoguePanel.interactable = true;
+        Locked = false;
 
         Next();
     }

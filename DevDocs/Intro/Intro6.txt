@@ -1,0 +1,130 @@
+Day 2, morning
+- : MC
+-- : Margaret
+$ : BigSis
+µ : Mom
+) : Doc'
+
+You jump awake.
+It takes you a few seconds to process everything that happened during the night, and you're not really sure it was real, but you decide to go check on Evelyn anyway.
+It's barely morning, but it's the time you used to wake up at while adventuring. You quietly go to your sister's room and unlock the door.
+She's still sleeping. Was everything a dream? Or did Margaret trick you? You grunt in discontentment.
+$ Mhh? Who's there?
+You turn towards Evelyn and see her waking up.
+$ _FirstName? What are you... oh, I'm still dreaming...
+You rush to hug her. And you feel her awkwardly stand there, not knowing what to do.
+- I'm sorry, you had the Blissful Sleep, but now you're cured.
+You spend a few minutes explaining what happened to her, when you hear someone open the door.
+µ Oh, _FirstName... Eve'?
+Mom almost tackled your sister as she took her in her arms.
+µ What happened? How did you wake up?
+$ I... I don't know. _FirstName told me I had the Blissful Sleep, I didn't even know. I was only having a very long dream, but at the end, I dreamt of _FirstName and then I woke up.
+µ _FirstName? Do you know anything about it?
+--> Tell her
+	+Dom
+	You were about to tell when you felt disagreement inside you and change your mind.
+--> Deny it
+- No, sorry. I was only checking up on her when she woke up.
+Your mother didn't seem to mind the reason and was happy to get her daughter back. Evelyn was standing there, looking lost.
+µ Can you call Doctor Warder? She needs to see that.
+You go down, pick the phone and call Doc'. She was surprised, but didn't doubt you can came immediately.
+The doctor kept Evelyn in her room and, after asking the both of you what you knew, asked you to leave.
+µ I need to get breakfast ready for the patrons, I'm already late.
+- I'll help you, don't worry.
+The two of you made quick work of the breakfast. Your mom was bringing food to someone's table when you hear someone call out to her.
+-- Hello madam, my name's Margaret. I'm a researcher in mind magic and I heard one of your daughters woke up from the Blissful Sleep. Would you allow me to talk to her, please?
+Wait, Margaret?
+You peek into the restaurant, and even if she looks a bit different, you're sure she's the succubus from last night.
+µ Ehm, sure.
+She turns and sees you.
+µ _FirstName could you bring miss to Evelyn? Doctor Warder should still be there.
+- Okay, most of the meals are made, you only need to serve them.
+On the way there, you couldn't help yourself and checked the woman from the corner of your eye, to make sure she really was the succubus.
+-- I did say you we'd talk again soon, but I guess you were expecting next night.
+- Eh... yes, how can...
+-- Stop, we'll talk once I saw your sister.
+When you opened Evelyn's door, you found her mid check-up, sitting naked on the bed.
+) We're busy right now.
+-- Don't worry, I'm here for the same reason.
+) Margaret? How are you already here?
+-- I was going to your office, but you were absent, so your wife told me what happened.
+) *Sigh* Could you come later, I'm doing a few tests and checking if her health is in good condition.
+-- Yes, yes. I'm going to question her sister then, just in case. We'll be in her room.
+She grabs you by the arm and drags you next door.
+-- Now she won't be bothering us. I'll explain everything I can about our current situation.
+- Yes, that's needed.
+-- First, a summary from last night. I'm a nice succubus who only want to live in peace, anything else you want to know?
+<JumpTo>
+--> Blissful Sleep?
+	- What's the Blissful Sleep, exactly?
+	-- As I told you before, we succubi need to feed on humes' lust to survive. There are three main ways to do it.
+	-- Fist, as I do, is to use our ability to invade dreams, giving nice and pleasing feelings, or hard sex on some cases, and we have enough energy for a few days. It's the least efficient way to do it, but as we don't do anything harmful, nobody have any reason to think succubi are present.
+	-- The second way should be obvious to you, as it was Lilith's way, is to charm humes or make them submit. They become addicted to our presence and do anything we ask of them. In this case, we have a willing source of energy who's always available. Of course, other humes view that as a threat and will come to chase us.
+	-- The third is a combination of the two, we make humes addicted to their dreams. This is the Blissful Sleep, making them unwilling to wake up, and after some time, unable to.
+	-- It's a great option, for unethical succubi. But it should be harder to do, lower succubi are able to do it even though powerful ones were unable to until recently. I'm still investigating how they got this power, and all I found was it came from a strange Dream Delver they met.
+	-- Oh, Dream Delver is the name we give to people who can walk between dreams, like us, or even you as you found last night.
+	<GoTo>
+--> Body fusion?
+	- How did we share body, did I control you?
+	-- When I told your mother that I'm a researcher in mind magic, it wasn't a lie. I transferred your mind to my body and withdrew mine. It allowed you to control it for a time.
+	-- Fortunately, with my mind still inside, making you use my abilities wasn't too hard.
+	<GoTo>
+--> You didn't fight?
+	- Why didn't you fight rather than making me fight through you?
+	-- We were in your sister's dream, so even though she was weak, she had a lot of energy available whilst I had none. When we shared bodies, it used yours instead.
+	- Couldn't you have only used my energy instead of making me fight?
+	-- It would have been easier, but since you will need to fight like that, it was a safe way to train you.
+	<GoTo>
+--> Maid succubus?
+	- What happened with the maid succubus from tonight?
+	-- It's the drawback of our nature, when a succubus loses to a hume, they instinctively submit to them. It's some kind of self-defence mechanism to charm dominant opponents and try to extract their lust for a comeback.
+	-- But if the opponent is skilled enough, we can stay into a submissive role and hope to keep them as Master or Mistress for a reliable source of energy.
+	- So she submits to me, now?
+	-- As long as you keep my help, yes. You aren't skilled enough to keep her alone for now. Even if that one was particularly weak.
+	<GoTo>
+--> Evelyn?
+	- Is Evelyn safe now?
+	-- Safe... not entirely. If we free that maid, she'll be able to charm your sister whenever she wants.
+	- Can't we do something about it?
+	-- We could, but I suggest we keep them like they are now. The maid won't do anything without our consent and she'll get more powerful over time.
+	- More powerful?
+	-- Only somewhat, she won't overpower us but enough to be helpful.
+	<GoTo>
+--> Save others?
+	- So can we save other people with the Sleep?
+	-- We could if we wanted, but I think it's better to not do too much. If we save too much, other succubi will be on guard and our job will be harder.
+	-- But if we keep them like this, nothing bad will happen to them anyway, as they need them alive to drain them.
+	- I'm not really happy with that.
+	-- I doesn't mean we won't be able to save anyone. If there's someone you'd like to save in particular, there shouldn't be any problem.
+--> Margaret?
+	- Who are you exactly?
+	-- I'm only a powerful succubus, I already told you my reasons for doing what I do and there isn't much more to say.
+	- Why are you disguised as a human mage? And Doctor Warder knew you.
+	-- Quite perceptive. That's good. Any succubus can exist in the waking world if they wish to, and the human form is quite easy to do, you don't need much energy.
+	-- The reason I know Warder is because I'm working at the castle at the moment. As you probably know, the princess has caught the Blissful Sleep and I offered my help.
+--> No more question
+- I don't have any more question, thank you.
+-- Good. Now my plan for solving the situation. I need you to find who is giving this power to the succubi.
+-- You will need to delve deeper in the dreams of the city to find more information. Since I will be doing the same, you won't be able to use my powers you'll need someone else's.
+-- Luckily for us, we have a cute little maid available for you to use.
+- So I'll have to fight as her? Will she allow it?
+-- I'll make sure of that. The only problem is that she's kind of weak, so you'll need to buff her up.
+- Will I have to train as her every night? It's a lot different to what I usually do.
+-- Hahaha, no, there's no need to train. Her power will grow with her host's spirit. If the host becomes mentally stronger, so will she.
+-- What you'll need to do is to spend time with your sister. Be supportive or show compassion and she will grow. Or you can be a jerk, if it's your style, but it's more of an all-or-nothing scenario.
+-- She will be more affected by everything happening, so I'd suggest you to be careful. 
+-- Speaking of witch, the opposite is true. I told you that training isn't needed, but it's still helpful : if you are skilled and show strength, it will improve your sister's morale. And if you lose and get dominated, it will degrade, so pay attention and don't hesitate to wake up if it becomes too dangerous.
+- That's quite a lot to take in...
+-- If you want to help me, and you do, it's the basics you needed to know.
+--> Okay
+	-Dom
+	- Okay, I'll do my best.
+	-- Good pet.
+--> And you?
+	+Dom
+	- What about you? What will be your role in this?
+	-- I'll be investigating too, but mainly in the waking world. I try to make myself sparse in the dream world, since I'm in the minority now, I might be killed by any succubus with their hume.
+- What now?
+-- Now, I'll go see if Warder has finished with your sister, make a few checks to see if she's alright and won't have any surprise from her time sleeping.
+-- If you're willing to Dream Dive tonight, you can do a lot to prepare. You can spend time with your sister, but almost anything you do will impact what will happen. Just try and find out.
+After she gave you all those instructions, she leaves the room. You spend some time wondering what to do with your day, outside of the rush hours at the inn, you are quite free to do as you will.

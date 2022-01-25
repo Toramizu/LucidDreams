@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class Flags
 {
+    public static Flags Instance { get; private set; } = new Flags();
+
     Dictionary<string, int> flags = new Dictionary<string, int>();
     public Dictionary<string, string> Strings { get; set; } = new Dictionary<string, string>()
     {
-        { "_MC", "MC" },
+        { "_FirstName", "Sylvia" },
+        { "_LastName", "Brightmoon" },
         { "_Margaret", "Margaret" }
     };
+
+    public Flags()
+    {
+        Instance = this;
+    }
 
     public bool HasFlag(string flag)
     {
@@ -32,7 +40,7 @@ public class Flags
 
     public void FlagAdd(string flag, int value)
     {
-        if (flag.Contains(flag))
+        if (flags.ContainsKey(flag))
             flags[flag] += value;
         else
             flags.Add(flag, value);

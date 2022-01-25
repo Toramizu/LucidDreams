@@ -313,4 +313,45 @@
       <Trait Bonus="0" DiceMult="1" UsesCumulativeBonus="false" TargetsUser="true" Trait="Pheromones" />
     </Effects>
   </AbilityData>
+  <AbilityData ID="Dominance" Uses="0" Price="0">
+    <Description>Show your superiority, _Die arousal and 1 _Dom</Description>
+    <Slots>
+      <MinMax Value="4" IsMax="false" />
+    </Slots>
+    <Effects>
+      <Damage Bonus="0" DiceMult="1" UsesCumulativeBonus="false" TargetsUser="false" />
+      <Trait Bonus="1" DiceMult="0" UsesCumulativeBonus="false" TargetsUser="true" Trait="Dom" />
+    </Effects>
+  </AbilityData>
+  <AbilityData ID="Submission" Uses="0" Price="0">
+    <Description>Let them enjoy themselves, _Die arousal and 1 _Sub</Description>
+    <Slots>
+      <MinMax Value="3" IsMax="true" />
+    </Slots>
+    <Effects>
+      <Damage Bonus="0" DiceMult="1" UsesCumulativeBonus="false" TargetsUser="false" />
+      <Trait Bonus="1" DiceMult="0" UsesCumulativeBonus="false" TargetsUser="true" Trait="Sub" />
+    </Effects>
+  </AbilityData>
+  <AbilityData ID="Drain" Uses="0" Price="0">
+    <Description>Drain your lust into them, half of _Die removed from your arousal and added to theirs</Description>
+    <Slots>
+      <EvenOdd isEven="true" />
+    </Slots>
+    <Effects>
+      <Damage Bonus="0" DiceMult="-0.5" UsesCumulativeBonus="false" TargetsUser="true" />
+      <Damage Bonus="0" DiceMult="0.5" UsesCumulativeBonus="false" TargetsUser="false" />
+    </Effects>
+  </AbilityData>
+  <AbilityData ID="All in" Uses="0" Price="0">
+    <Description>Apply _Die _Die _Die arousal to the opponent, great when _Dom</Description>
+    <Slots>
+      <Any />
+      <Any />
+      <Any />
+    </Slots>
+    <Effects>
+      <Damage Bonus="0" DiceMult="1" UsesCumulativeBonus="false" TargetsUser="false" />
+    </Effects>
+  </AbilityData>
 </ArrayOfAbilityData>

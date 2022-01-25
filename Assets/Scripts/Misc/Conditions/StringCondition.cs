@@ -17,7 +17,7 @@ public class StringCondition : Condition
     {
         get
         {
-            return (GameManager.Instance.Flags.GetString(flag) == value) == equal;
+            return (Flags.Instance.GetString(flag) == value) == equal;
         }
     }
 }

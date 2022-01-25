@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] SoundManager sound;
     public SoundManager Sound { get { return sound; } }
 
-    public Flags Flags { get; private set; } = new Flags();
+    //public Flags Flags { get; private set; } = new Flags();
 
     [SerializeField] NotificationsUI notifs;
     [SerializeField] DialogueUI dialogue;
@@ -60,18 +60,20 @@ public class GameManager : MonoBehaviour
         Status = GameStatus.Day;
     }
 
-    public void StartGame()
+    public void StartGame(bool playIntro)
     {
         Loading.FadeIn();
-        StartCoroutine(LoadData());
+        StartCoroutine(LoadData(playIntro));
     }
 
-    IEnumerator LoadData()
+    IEnumerator LoadData(bool playIntro)
     {
         yield return null;
         introWindow.FadeOut();
         dayManager.Open();
         Loading.FadeOut();
+        if (playIntro)
+            StartDialogue(AssetDB.Instance.Dialogues["Intro1"], null);
     }
 
     public void StartBattle(SuccubusData opponent, DialogueAction onWin, DialogueAction onLoss)
@@ -79,6 +81,32 @@ public class GameManager : MonoBehaviour
         dreamManager.FadeOut();
         battleManager.FadeIn();
         battleManager.StartBattle(opponent, playerManager.Abilities, onWin, onLoss);
+        Status = GameStatus.Battle;
+    }
+
+    public void StartSingleBattle(SuccubusData player, SuccubusData opponent, DialogueAction onWin, DialogueAction onLoss)
+    {
+        /*bool day = dayManager.Active;
+        dayManager.FadeOut();
+        bool dial = dayManager.Active;
+        dialogue.FadeOut();
+        bool dream = dayManager.Active;
+        dreamManager.FadeOut();*/
+        PlayerManager.SetPlayer(player);
+        battleManager.FadeIn();
+
+        /*void OnWin()
+        {
+            if(day)
+                dayManager.FadeIn();
+            if(dial)
+                dialogue.FadeIn()
+            if (dream)
+                dreamManager.FadeIn();;
+            onWin?.Invoke();
+        }*/
+
+        battleManager.StartBattle(opponent, playerManager.Abilities, onWin, onLoss, true);
         Status = GameStatus.Battle;
     }
 

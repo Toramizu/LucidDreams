@@ -15,6 +15,7 @@ public class BattleManager : Window
 
     DialogueAction onWin;
     DialogueAction onLoss;
+    bool single;
 
     public bool PlayerTurn { get; private set; }
     public Succubus GetCharacter(bool current)
@@ -33,10 +34,11 @@ public class BattleManager : Window
             return Opponent;
     }
 
-    public void StartBattle(SuccubusData oData, List<AbilityData> pAbis, DialogueAction onWin, DialogueAction onLoss)
+    public void StartBattle(SuccubusData oData, List<AbilityData> pAbis, DialogueAction onWin, DialogueAction onLoss, bool single = false)
     {
         this.onWin = onWin;
         this.onLoss = onLoss;
+        this.single = single;
         StartBattle(oData, pAbis);
     }
 
@@ -69,14 +71,19 @@ public class BattleManager : Window
     {
         if (victory)
         {
-            endPanel.Victory(Opponent.Crystals, Opponent, edged);
-            onWin?.Invoke();
+            if (single)
+            {
+                FadeOut();
+                onWin?.Invoke();
+            }
+            else
+            {
+                GameManager.Instance.DreamManager.GainFriendshipPoints();
+                endPanel.Victory(Opponent.Crystals, Opponent, edged, onWin);
+            }
         }
         else
-        {
-            endPanel.Loss();
-            onLoss?.Invoke();
-        }
+            endPanel.Loss(onLoss);
 
         onWin = null;
         onLoss = null;

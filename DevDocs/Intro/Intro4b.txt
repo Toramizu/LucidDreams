@@ -1,0 +1,13 @@
+Day 1, evening
+- : MC
+-- : Margaret
+
+A rope of cum escapes from your cock... or is it Margaret's?
+IF Dom > 0
+	-- What are you doing? She isn't that strong, you shouldn't have any problems against her, I'll take a breather and we'll try again.
+ELSE
+	-- Come on, pet, try again. Don't worry about me, I'm strong enough to withstand her attacks for hours.
+Dom -5
+-- You only have to use the biggest die possible on my abilities, she should submit quickly.
+
+FIGHT Margaret Vs Maid, onLoss => Intro4b, onWin => Intro5

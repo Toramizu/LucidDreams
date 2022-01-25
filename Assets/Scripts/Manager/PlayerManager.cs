@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] int crystals;
+    [SerializeField] string crystals = "Crystals";
     public int Crystals {
-        get { return crystals; }
+        get { return Flags.Instance.GetFlag(crystals); }
         set {
-            crystals = value;
+            Flags.Instance.SetFlag(crystals, value);
             crystalsText.text = value.ToString();
         }
     }

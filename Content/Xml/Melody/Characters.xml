@@ -10,7 +10,7 @@
 			<IfFlag Flag="CF_Unlocked" Comparator="BiggerOrEqual" Value="1" />
 		</Unlock>
 		<Event Dialogue="CF_Default"/>
-		<Relationship Name="Childhood friend" Icon="Heart_Full"
+		<Relationship Type="Friendship" Name="Childhood friend" Icon="Heart_Full"
 		Description="She seemed so mature at the time, but now, you find her a bit too naive and childish. I doesn't bother you much, but it underlines the difference between humans and elves.">
 			<Event Dialogue="CF_Friend_1" Location=""/>
 			<Event Dialogue="CF_Friend_2" Location="Inn"/>
@@ -23,7 +23,7 @@
 			<Event Dialogue="CF_Friend_9" Location=""/>
 			<Event Dialogue="CF_Friend_10" Location=""/>
 		</Relationship>
-		<Relationship Name="Childhood crush" Icon="Heart_Sparkling"
+		<Relationship Type="Love" Name="Childhood crush" Icon="Heart_Sparkling"
 		Description="She was your first love and you made peace with her behaviour as it means you won't be surprised with her changing too much.&#xA;Even if elves are often cold to humans, and rarely get together as a couple, you two seem to manage.">
 			<Event Dialogue="CF_Love_1" Location=""/>
 			<Event Dialogue="CF_Love_2" Location=""/>
@@ -36,7 +36,7 @@
 			<Event Dialogue="CF_Love_9" Location=""/>
 			<Event Dialogue="CF_Love_10" Location=""/>
 		</Relationship>
-		<Relationship Name="Lost friend" Icon="Heart_Shattered"
+		<Relationship Type="Loss" Name="Lost friend" Icon="Heart_Shattered"
 		Description="She doesn't seem to be there for you as she was before. It doesn't feel good, but it might be better, your livespans are too different, it would have been hard later.">
 			<Event Dialogue="CF_Loss_1" Location=""/>
 			<Event Dialogue="CF_Loss_2" Location=""/>

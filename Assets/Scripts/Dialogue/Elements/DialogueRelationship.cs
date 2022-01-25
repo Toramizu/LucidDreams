@@ -8,7 +8,7 @@ public class DialogueRelationship : DialogueElement
     [XmlAttribute("Character")]
     public string Character { get; set; }
     [XmlAttribute("Relationship")]
-    public int Relationship { get; set; }
+    public RelationType Relationship { get; set; }
     [XmlAttribute("Points")]
     public int Points { get; set; }
 

@@ -12,9 +12,9 @@ public class EvenOddDie : DiceCondition
     public override int[] AcceptedValues {
         get {
             if (Even)
-                return new int[] { 0, 1, 3, 5 };
-            else
                 return new int[] { 0, 2, 4, 6 };
+            else
+                return new int[] { 0, 1, 3, 5 };
         }
     }
 

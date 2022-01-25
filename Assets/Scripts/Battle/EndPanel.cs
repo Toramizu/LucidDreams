@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static DialogueUI;
 
 public class EndPanel : Window
 {
@@ -19,8 +20,11 @@ public class EndPanel : Window
 
     [SerializeField] GameObject edgedText;
     bool edged;
-    
-    public void Victory(int crystals, Succubus opponent, bool edged)
+
+    DialogueAction onWin;
+    DialogueAction onLoss;
+
+    public void Victory(int crystals, Succubus opponent, bool edged, DialogueAction onWin)
     {
         this.edged = edged;
         edgedText.SetActive(edged);
@@ -33,9 +37,10 @@ public class EndPanel : Window
         victoryText.text = "+" + crystals;
 
         this.opponent = opponent;
+        this.onWin = onWin;
     }
 
-    public void Loss()
+    public void Loss(DialogueAction onLoss)
     {
         GameManager.Instance.DreamManager.LoseDream();
         FadeIn();
@@ -43,6 +48,7 @@ public class EndPanel : Window
         loss.FadeIn();
 
         lossText.text = wakeUpText[Random.Range(0, wakeUpText.Count)];
+        this.onLoss = onLoss;
     }
 
     /*void NewAbility(List<AbilityData> abilities)
@@ -73,7 +79,7 @@ public class EndPanel : Window
     {
         if (edged)
         {
-            abilityPicker.Open(opponent, crystals);
+            abilityPicker.Open(opponent, crystals, onWin);
             victory.FadeOut();
         }
         else
@@ -81,7 +87,13 @@ public class EndPanel : Window
             GameManager.Instance.EndBattle(crystals, null);
             victory.FadeOut();
             FadeOut();
+            onWin?.Invoke();
         }
+    }
+
+    public void DefeatClose()
+    {
+        onLoss?.Invoke();
     }
 }
 

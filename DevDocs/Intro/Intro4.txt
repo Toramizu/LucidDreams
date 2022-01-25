@@ -1,0 +1,82 @@
+Day 1, evening
+- : MC
+-- : Margaret
+$ : Maid Succubus
+µ : Mom
+^ : Melody?
+
+(Mom & Violet in)
+After a awkward supper with mom and Violet, you are ready to go to bed.
+- I'm going to sleep, it's been so long since I've used my own bed I feel like it calls to me.
+µ Could you go check on Evelyn on the way?
+- Sure, and I'll be on guard if there's any sound coming from her room during the night. I'm used to being careful even during the night.
+µ Thank you
+(Mom & Violet out)
+You enter Evelyn's room and find her sleeping peacefully. Now that you're alone, you can observe her more carefully.
+Evelyn always had an inexpressive face. She never really showed joy or sadness, but as you watch her now, she seemed to be smiling. Not really a smile of happiness but more of contentment, which you find strange.
+But as you think more about it, maybe her current situation suits her?
+After checking if she had anything she could have needed for food or water, you smile to her.
+- Good night, Eve'.
+And you leave her room, making sure to lock it up, to go to yours.
+Your bed never felt this comfortable. Between the bedrolls and cheap inn beds, it feels like luxury and you fall asleep in minutes.
+...
+As is often the case, you're in a lucid dream. You're dreaming about camping in the wilds with your party, but Melody is also present ans she has nothing to do here.
+(Melody in)
+^ _FirstName, you take the first round? Rhaz and I have some things to talk about in private.
+--> Okay
+	-Dom
+	- Okay, have fun but don't wake up Lanelle. She's always grumpy when she doesn't sleep enough.
+	(Melody out)
+	After that, she enters Rhaz's tent. You hear her grunt and Melody's muffled voice coming through...
+--> Your turn
+	+Dom
+	- Hey, it was your turn to keep watch. I have something else to do.
+	^ You're no fun, _FirstName.
+	(Melody out)
+	You get up and start taking care of your weapon's maintenance...
+But you don't really care, it's only a dream, after all.
+Right as you think that, you feel some kind of presence close, right over there. You think about warning your group... but it's useless.
+You start approaching the presence stealthily, it feels too real to be part of the dream, like the others. You exit the meadow where your camp was, but the surroundings become less and less precise.
+A few meters further, you find yourself in a blurry place, changing at the speed of thought, when you see someone's shape.
+- Who's there?
+$ Hey, that's my question! What are you doing here? It's my dream, you can't steal her!
+(Succubus in)
+$ ... Wait, you're hume?
+She looks like a maid, which would be strange outside of a dream, but the lust you feel emanating from her immediately indicate her true nature.
+- You're a succubus?
+$ Of course, and I already have a dream, but yours seem appetizing too.
+You reach to your bow in a flash and shoot an arrow in her direction. It connects but she laugh if off.
+$ Might have hurt if it were real. Now it's my turn.
+She points her feather duster at you and your clothing vanishes.
+$ Good. I'm the head maid and you're my subordinate. Now come, and lick my boots clean.
+--> Yea, head maid
+--> Yes, immediately
+--> Yes, mistress
+You can't control your dream anymore and you're starting to crawl towards her.
+-- Stop that, now!
+Another succubus arrives, and you are immobilized.
+$ Hey, this one's mine, go find a prey elsewhere.
+-- You can see that she's conscious, it will be too dangerous for her if you make her submit.
+$ What are you, the protector of the humes?
+-- No, I'm only saying that if humes started dying, bigger problems would arise for all of us.
+$ Nothing will happen if only one dies. You're too paranoid. I'll just devour her soul and it'll make it look like a normal death. Plus, you can't fight me, you don't even have a dream, you're powerless.
+-- Looks like you don't leave me any choice. Hume, allow me to help you.
+As she speaks to you, you regain control of your body.
+--> Help me
+	-Dom
+	-- Good girl, let me take care of her.
+--> I'll manage
+	+Dom
+	-- Now's not the time for pride, if you don't be stupid. Now, allow me.
+-- My name's Margaret. It's only polite to exchange names before merging souls.
+Her mind invade yours. It doesn't feel bad, but it's quite strange.
+IF Dom > 0
+	+++Dom
+	You're starting to control her. Her power and abilities are now yours and the presence of the maid totally disappeared. You are now in control of her whole being.
+ELSE
+	---Dom
+	She's overwhelming you, her power invading every part of your body. You feel yourself shrink to be nestled inside of her. You are now protected by her whole being.
+You two are now one. You seem to have control of her body, but it still seems to have a memory of her abilities.
+-- Now that I'm on your mind, you'll be able to use my powers to make her submit. Do your best, it shouldn't be hard.
+
+FIGHT Margaret Vs Maid, onLoss => Intro4b, onWin => Intro5

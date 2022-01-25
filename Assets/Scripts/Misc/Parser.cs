@@ -17,7 +17,7 @@ public class Parser : MonoBehaviour
         foreach (ParserItem i in symbols)
             strings.Add(i.Replaced, i.Replacer);
 
-        flags = GameManager.Instance.Flags.Strings;
+        flags = Flags.Instance.Strings;
     }
 
     public string ParseDescription(string description, Dictionary<string, string> strings)

@@ -13,8 +13,10 @@ public static class Variables
     public static int loveDecayByLoss = 5;
 
     public static int lossOnDefeat = 10;
-    public static int lossOnDefeatBoss = 100;
+    public static int lossPerLevel = 5;
     public static int lossDecayByLove = 5;
+
+    public static float bossLoveLossMod = 2;
 
     public static bool debugMode = false;
 }

@@ -1,0 +1,79 @@
+Day 1, afternoon
+- : MC
+-- : Mom
+$ : Doc'
++ : Patron
+
+After crossing the spherical shield encompassing the city, you take the tram back home and in less than one hour, you're in front of the Princess' Lullaby, your family's inn.
+It's around midday but you see that the restaurant is almost empty. Worse than that, the few people who are present are waiting for their meals but don't seem too bothered.
+You enter the kitchen to find it empty, but someone shouted from behind you.
++ If you're searching for Alice, she's busy for now : her daughter got up to eat and fell down the stairs. You can wait here with us or go to the restaurant down the street.
+- Thank you, I'm going to see if I can help.
+(+ Mom)
+You get to the private quarters, towards your sister's room, when you hear sobbing in your parent's. Your mother is crying there, alone. You dropped your luggage in the hall before entering.
+- Is Evelyn okay? I learned what happened from a client.
+-- _FirstName?
+She quickly wiped her tears before getting up to hug you. It's a bit tight, but you're not going to tell her that.
+-- Thank you for coming back. Eve's okay, the doctor is inside with her to check if she doesn't have anything broken.
+- What about dad? Or Violet?
+-- Your dad's at work right now, I didn't want to bother her for now. And Violet... she's become distant the last few years, she doesn't help at all with Evelyn.
+You can see she's about to start crying again, but forces herself to stay strong.
+-- It was my fault Eve hurt herself : I forgot to lock her room when I brought lunch in her bedroom. I was already late to serve the clients at the restaurant, so I rushed and forgot to lock...
+- It's all right, you said she wasn't hurt, and I'm back, I'm going to help you with taking care of her, and the inn.
+-- Thank you, really. With the barrier, a lot of people are lodging here and the inn is almost full, it was already hard with Eve's help, but since then...
+You stand next to her in silence, until you hear to door from the next room opening.
+(+Doc)
+$ I finished to check her, and no major injury. I didn't see any improvement in her condition, but at least, it didn't worsen either.
+-- ...
+Your mother looks relieved, but doesn't seem to know what to say.
+$ And good afternoon _FirstName, it's nice to see you back, even if it's in this conditions. And thank you for your job out there.
+- Ehm... yes, hello to you, too.
+Doctor Warder is the best in town, so it's no surprise to see her taking care of the 
+$ I'm sorry I can't help much more, I promise I'll do all I can to fight the Blissful Sleep : if it's an illness, I'll find a cure for it, and if it's a curse, I have enough notions in magic to help and find someone to dispel it.
+--> Counting on you
+	- We're counting on you. Evelyn might be a bit weird, but she doesn't deserve this.
+	+ 20 Friendship Doc'
+	$ I know, and you're not the only ones.
+	She looks determined and her self-confidence seem to reassure your mother.
+--> Do what you can
+	- Do what you can to help her.
+	+ 20 Loss Doc'
+	$ Of course, who do you take me for?
+-- Thank you doctor Warder.
+$ No problem, Alice. And please, call me Hilda. Now, _FirstName : since you were on the road, I'd like to have a check up to see if everything is okay. Would you agree to do it now? It shouldn't take much time and I'll get you up to date on the Blissful Sleep.
+--> Yes
+	- Okay, if you feel it's needed.
+	$ We'll go to your room, let's leave some space to your mother. She'll be alright, don't worry.
+	(-Mom)
+	Once alone, she started examining you superficially, but seemed more interested in talk
+	$ Do you know about the Blissful Sleep?
+	--> I do
+		- Yes, I inquired a bit before coming back.
+		+ 20 Love Doc'
+		$ Okay, that makes things easier.
+	--> Not much
+		- Not a lot, but I understand that it's an unknown... something that makes people sleep all day.
+		+ 20 Friendship Doc'
+		$ That's the gist of it : We don't really know what causes it, or where it comes from, but people afflicted don't seem able to fully wake up. They sleep most of the day and when they need to get up, to eat or relieve themselves for example, they manage to get up, but it's closer to sleepwalking than being awake. They often fall back asleep on the spot when they finish what they needed.
+		- I know it is incurable, but is it deadly?
+		$ The Sleep itself isn't dangerous, at least no one died from it yet, but there were a lot of accidents when they needed something. Falling down the stairs is a frequent one, but in some cases, people get out of their house and fall asleep outside, someone started a fire after cooking in their sleep and a few children had to be taken care of because their parents had it.
+		- That looks quite serious.
+		$ That's an understatement. Especially since we don't know how they caught it. It seems confined to this city, but I can't determine if it is transmitted so they erected a barrier around the town. Quite an overkill, but they said their mages didn't have a lot to do after the war.
+		- And you're working alone on that?
+		$ Not really. There are others working on it, some coming from outside, like you, and we exchange what we find every week, but we can only determine what it's probably not. I sometimes wonder if any of them are working, but I can't say I bring much more to the table.
+		- I'm sorry I can't help.
+		$ It's the reason I wanted to talk to you.
+	$ I wanted to ask for your help on the investigation. I know a lot about medicine and alchemy, I'm decent in healing magic but that might limit my field of view. I know you're good at solving problems, and if the Sleep is more of a spell or curse, you might be able to find things I can't. A new perspective can always help.
+	- I'll keep an eye out. I'm only back in town for a few hours, I don't know it as well as before and I'll need to help around the inn, but I'll do what I can.
+	$ Thank you, but please, take your time resting from your travels and take care of Alice and Evelyn in priority. I'm only asking on a hunch, your and your family's health comes first.
+	$ Well, I'll leave you for now. If you have any problem, don't hesitate to come to me. And if you find anything, tell me.
+	- Don't worry, I will.
+--> No
+	- I'm sorry, but not right now. I'm quite tired from all this and the journey was quite long.
+	$ All right, as you wish.
+
+$ I'll be leaving then, but before I go : don't worry about your sister, the Sleep only makes her sleep. As long as you keep her locked in her room and keep your ears open to any strange noise, everything will be okay.
+After trying to reassure you, the doctor left.
+
+Time +1
+GOTO Intro3

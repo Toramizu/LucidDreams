@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ public class DreamManager : Window, GridManager
     public bool CanMove { get; set; }
     int level;
     public bool IsBossfight { get; set; }
-
+    
     DreamNode currentNode;
     public override void FadeIn()
     {
@@ -44,11 +45,10 @@ public class DreamManager : Window, GridManager
         FadeIn();
         GameManager.Instance.PlayerManager.SetPlayer(cData);
 
+        level = 0;
         ContinueDream(data);
 
-        //medit.CanMeditate = true;
         playerToken.SetCharacter(cData);
-        level = 1;
     }
 
     public void StartDream(NightStat stats)
@@ -56,17 +56,25 @@ public class DreamManager : Window, GridManager
         nightStats = stats;
         FadeIn();
         GameManager.Instance.PlayerManager.SetPlayer(stats);
-
+        
+        level = 0;
         ContinueDream(AssetDB.Instance.Dreams[defaultDream]);
 
-        //medit.CanMeditate = true;
         playerToken.SetCharacter(stats.Succubus);
-        level = 1;
     }
 
     public void OpenWakeUpWindown()
     {
         wakeUpWindow.FadeIn();
+    }
+
+    public void NextDream()
+    {
+
+        /*if (next == null)
+            GameManager.Instance.DreamManager.WinDream();
+        else
+            GameManager.Instance.DreamManager.ContinueDream(next);*/
     }
 
     public void ContinueDream(DreamData data)
@@ -80,12 +88,7 @@ public class DreamManager : Window, GridManager
         dreamMeditations = data.Meditations;
         CanMove = true;
         IsBossfight = false;
-
-        if(nightStats != null)
-        {
-            nightStats.Character.AddRelationPoints(0, nightStats.GetRelationValue(0, Variables.friendshipPerLevel) * level, false);
-        }
-
+        
         level++;
     }
 
@@ -182,18 +185,23 @@ public class DreamManager : Window, GridManager
         //medit.Open();
     }
 
+    public void GainFriendshipPoints()
+    {
+        nightStats.Character.AddRelationPoints(RelationType.Friendship, nightStats.GetRelationValue(0, Variables.friendshipPerLevel) * level, false);
+    }
+
     public void WinDream()
     {
         EndDream();
 
         GameManager.Instance.Notify("You wake up victorious!");
-        nightStats.Character.AddRelationPoints(0, nightStats.GetRelationValue(0, Variables.friendshipPerLevel) * level, false);
-        nightStats.Character.AddRelationPoints(1, nightStats.GetRelationValue(1, Variables.lovePerLevel) * level, false);
+        nightStats.Character.AddRelationPoints(RelationType.Love, (int) (level * Variables.lovePerLevel * Variables.bossLoveLossMod), false);
     }
 
     public void FleeDream()
     {
-        GameManager.Instance.Notify("You wake up in sweat...");
+        GameManager.Instance.Notify("You wake up quite aroused.");
+        nightStats.Character.AddRelationPoints(RelationType.Love, level * Variables.lovePerLevel, false);
         EndDream();
     }
 
@@ -204,12 +212,14 @@ public class DreamManager : Window, GridManager
         if (IsBossfight)
         {
             GameManager.Instance.Notify("You wake up, heart pounding in your chest...");
-            nightStats.Character.AddRelationPoints(2, nightStats.GetRelationValue(2, Variables.lossOnDefeatBoss), false);
+            //nightStats.Character.AddRelationPoints(2, nightStats.GetRelationValue(2, Variables.lossOnDefeatBoss), false);
+            nightStats.Character.AddRelationPoints(RelationType.Loss, (int)(level * Variables.lossPerLevel * Variables.bossLoveLossMod), false);
         }
         else
         {
             GameManager.Instance.Notify("You wake up ashamed...");
-            nightStats.Character.AddRelationPoints(2, nightStats.GetRelationValue(2, Variables.lossOnDefeatBoss), false);
+            //nightStats.Character.AddRelationPoints(2, nightStats.GetRelationValue(2, Variables.lossOnDefeatBoss), false);
+            nightStats.Character.AddRelationPoints(RelationType.Loss, level * Variables.lossPerLevel, false);
         }
     }
 
@@ -217,6 +227,7 @@ public class DreamManager : Window, GridManager
     {
         GameManager.Instance.NextDay();
         wakeUpWindow.FadeOut();
+        level = 0;
         FadeOut();
     }
 

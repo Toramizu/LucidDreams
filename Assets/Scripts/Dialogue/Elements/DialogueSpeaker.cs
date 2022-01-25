@@ -10,7 +10,7 @@ public class DialogueSpeaker : DialogueElement
     public string Speaker { get; set; }
     [XmlAttribute("Displayed")]
     public string Displayed { get; set; }
-    [XmlAttribute("ImageID")]
+    [XmlAttribute("Image")]
     public string ImageID { get; set; }
     [XmlAttribute("Position"), DefaultValue(SpeakerPos.Left)]
     public SpeakerPos SpeakerPosition { get; set; }
@@ -24,10 +24,9 @@ public class DialogueSpeaker : DialogueElement
 
 public enum SpeakerPos
 {
+    None,
     Left,
     Left2,
     Right,
     Right2,
-    None,
-    NoChange
 }

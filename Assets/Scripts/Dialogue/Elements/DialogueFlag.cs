@@ -15,12 +15,12 @@ public class DialogueFlag : DialogueElement
     public override bool Play(DialogueUI dialUI)
     {
         if (Set)
-            GameManager.Instance.Flags.SetFlag(ID, Value);
+            Flags.Instance.SetFlag(ID, Value);
         else
-            GameManager.Instance.Flags.FlagAdd(ID, Value);
+            Flags.Instance.FlagAdd(ID, Value);
 
         if (Variables.debugMode)
-            GameManager.Instance.Notify(ID + " => " + GameManager.Instance.Flags.GetFlag(ID));
+            GameManager.Instance.Notify(ID + " => " + Flags.Instance.GetFlag(ID));
 
         return true;
     }

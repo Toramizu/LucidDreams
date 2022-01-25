@@ -1,0 +1,727 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDialogueData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!--
+		<Speaker Speaker="Player" Position="Left"/>
+		<Speaker Speaker="ChildhoodFriend" Position="Right"/>
+		
+		<Line>						</Line>
+		<Line Focus="Left">
+		<Line Focus="Right">
+		
+		<Relationship Character="ChildhoodFriend" Relationship="Friendship" Points="10"/>
+		
+		<Choices>
+			<Choice Text="">
+			
+			</Choice>			
+			<Choice Text="">
+			
+			</Choice>
+		</Choices>
+		
+		<Flag ID="Dominance" Value="1"/>
+		
+		<RelationUp Character="ChildhoodFriend" Relationship="Friendship" Level=""/>
+	-->
+  
+	<DialogueData ID="Intro1">
+		<Speaker Speaker="Player" Position="Left"/>
+		<Speaker Speaker="Guard" Position="Right"/>
+		
+		<Line Focus="Right">Okay, it's mainly a formality since I know your deeds, but I need to fill the documents so I'll need to ask you a few questions. First, your name.</Line>
+		<Input ID="_FirstName">First name :</Input>
+		<Input ID="_LastName">Last name :</Input>
+		<Speaker Speaker="Player" Position="Left"/>
+		<Line Focus="Right">What are your reasons for entering Enova?</Line>
+		<Line Focus="Left">My sister has contracted the Blissful Sleep, and I came back to take care of her and help my parents with their inn.</Line>
+		<Line Focus="Right">Only people who could potentially help fight the Blissful Sleep are authorised to enter, what skill would you bring?</Line>
+		<Line Focus="Right">That one is easy, I'll just write "Took down the Demon Knight Lilith". Adventurers aren't often needed nowadays, but to do that, you must be quite resourceful.</Line>
+		<Choices>
+			<Choice Text="I had help">
+				<Flag ID="Dominance" Value="-1"/>
+				<Line Focus="Left">I didn't do it alone, I was part of a group. And the brains of the group was Lanelle.</Line>
+				<Line Focus="Right">Okay then : "Was part of the team that took down the Demon Knight Lilith". Don't worry too much, nobody is going to bother us with those details.</Line>
+			</Choice>			
+			<Choice Text="You're welcome">
+				<Flag ID="Dominance" Value="1"/>
+				<Line Focus="Left">You're welcome for that.</Line>
+				<Line Focus="Right">...</Line>
+				<Line>She looks up from the papers she was filling, but don't say anything.</Line>
+			</Choice>
+		</Choices>
+		<Line Focus="Right">As an adventurer, what was your speciality?</Line>
+		<Choices>
+			<Choice Text="Leader">
+				<Flag ID="Dominance" Value="5"/>
+				<Line Focus="Left">I gave directives and organised the group. I also specialized in sniping.</Line>
+			</Choice>			
+			<Choice Text="Jack of all trades">
+				<Line Focus="Left">I was a Jack of all trades, but mainly long distance combat.</Line>
+			</Choice>			
+			<Choice Text="Filling the gaps">
+				<Flag ID="Dominance" Value="-5"/>
+				<Line Focus="Left">I did anything Lanelle and Rhaz needed me to do. And I'm not bad with a bow.</Line>
+			</Choice>
+		</Choices>
+		<Line Focus="Right">Any competence in magic?</Line>
+		<Line Focus="Left">Only the basics, I've wanted to brush up on it, but never took the time.</Line>
+		<Line Focus="Right">What were you doing before coming here?</Line>
+		<Line Focus="Left">Not much. I was an adventurer, but there weren't many jobs for people like us since the fall of the Demon Queen last year.</Line>
+		<Line Focus="Right">Place of residence, I guess your family's inn. Any acquaintances inside, again, your family.</Line>
+		<Line Focus="Left">I have a few others, I lived there until 7 years ago.</Line>
+		<Line Focus="Right">Anyone important to you living outside the city? Just in case... you know...</Line>
+		<Line Focus="Left">Not beside my party, but even then, we didn't see each other much after the end of the war.</Line>
+		<Line Focus="Left">Lanelle went back to studying but I don't know where Rhaz might be, she went back adventuring, as she said.</Line>
+		<Line Focus="Right">Do you want us to warn them if you're infected?</Line>
+		<Line Focus="Left">Maybe? I didn't think about it... Rhaz probably wouldn't help much, but Lanelle might be interested... Yes, warn them, just in case.</Line>
+		<Line Focus="Right">Okay, all is ready. If you're sure of yourself, I'll escort you to the entrance in the barrier.</Line>
+		<Line Focus="Right">I must insist that it's a one way trip, and you won't be let out until the Blissful Sleep is identified or cured.</Line>
+		<Line Focus="Left">...</Line>
+		<Line Focus="Left">I'm ready. It's been a long time.</Line>
+		<Line>...</Line>	
+		<Next ID="Intro2"/>
+	</DialogueData>
+	
+	<DialogueData ID="Intro2">
+		<Speaker Speaker="Player" Position="Left"/>
+		<Line>After crossing the spherical shield encompassing the city, you take the tram back home and in less than one hour, you're in front of the Princess' Lullaby, your family's inn.</Line>
+		<Line>It's around midday but you see that the restaurant is almost empty. Worse than that, the few people who are present are waiting for their meals but don't seem too bothered.</Line>
+		<Line>You enter the kitchen to find it empty, but someone shouted from behind you.</Line>
+		<Speaker Speaker="Customer" Position="Right"/>
+		<Line Focus="Right">If you're searching for Alice, she's busy for now : her daughter got up to eat and fell down the stairs. You can wait here with us or go to the restaurant down the street.</Line>
+		<Line Focus="Left">Thank you, I'm going to see if I can help.</Line>
+		<Speaker Speaker="Mom" Position="Right"/>
+		<Line>You get to the private quarters, towards your sister's room, when you hear sobbing in your parent's. Your mother is crying there, alone. You dropped your luggage in the hall before entering.</Line>
+		<Line Focus="Left">Is Evelyn okay? I learned what happened from a client.</Line>
+		<Line Focus="Right">_FirstName?</Line>
+		<Line>She quickly wiped her tears before getting up to hug you. It's a bit tight, but you're not going to tell her that.</Line>
+		<Line Focus="Right">Thank you for coming back. Eve's okay, the doctor is inside with her to check if she doesn't have anything broken.</Line>
+		<Line Focus="Left">What about dad? Or Violet?</Line>
+		<Line Focus="Right">Your dad's at work right now, I didn't want to bother her for now. And Violet... she's become distant the last few years, she doesn't help at all with Evelyn.</Line>
+		<Line>You can see she's about to start crying again, but forces herself to stay strong.</Line>
+		<Line Focus="Right">It was my fault Eve hurt herself : I forgot to lock her room when I brought breakfast in her bedroom. I was already late to serve the clients at the restaurant, so I rushed and forgot to lock...</Line>
+		<Line Focus="Left">It's all right, you said she wasn't hurt. I'm back, I'm going to help you with taking care of her, and the inn.</Line>
+		<Line Focus="Right">Thank you, really. With the barrier, a lot of people are lodging here and the inn is almost full, it was already hard with Eve's help, but since then...</Line>
+		<Line>You stand next to her in silence, until you hear to door from the next room opening.</Line>
+		<Speaker Speaker="Doctor" Position="Right2"/>
+		<Line Focus="Right2">I finished to check her, and no major injury. I didn't see any improvement in her condition, but at least, it didn't worsen either.</Line>
+		<Line Focus="Right">...</Line>
+		<Line>Your mother looks relieved, but doesn't seem to know what to say.</Line>
+		<Line Focus="Right2">And good afternoon _FirstName, it's nice to see you back, even if it's in this conditions. And thank you for your job out there.</Line>
+		<Line Focus="Left">Ehm... yes, hello to you, too.</Line>
+		<Line>Doctor Warder is the best in town, so it's no surprise to see her taking care of the people afflicted by it.</Line>
+		<Line Focus="Right2">I'm sorry I can't help much more, I promise I'll do all I can to fight the Blissful Sleep : if it's an illness, I'll find a cure for it.</Line>
+		<Line Focus="Right2">And if it's a curse, I have enough knowledge in magic to help or find someone to dispel it.</Line>
+		<Choices>
+			<Choice Text="Counting on you">
+				<Relationship Character="Doctor" Relationship="Friendship" Points="20"/>
+				<Line Focus="Left">We're counting on you. Evelyn might be a bit weird, but she doesn't deserve this.</Line>
+				<Line Focus="Right2">I know, and you're not the only ones.</Line>
+				<Line>She looks determined and her self-confidence seem to reassure your mother.</Line>
+			</Choice>			
+			<Choice Text="Do what you can">
+				<Relationship Character="Doctor" Relationship="Loss" Points="20"/>
+				<Line Focus="Left">Do what you can to help her.</Line>
+				<Line Focus="Right2">Of course, who do you take me for?</Line>
+			</Choice>
+		</Choices>
+		<Line Focus="Right">Thank you doctor Warder.</Line>
+		<Line Focus="Right2">No problem, Alice. And please, call me Hilda. Now, _FirstName : since you were on the road, I'd like to have a check up to see if everything is okay.</Line>
+		<Line Focus="Right2">Would you agree to do it now? It shouldn't take much time and I'll get you up to date on the Blissful Sleep.</Line>
+		<Choices>
+			<Choice Text="Yes">
+				<Line Focus="Left">Okay, if you feel it's needed.</Line>
+				<Line Focus="Right2">We'll go to your room, let's leave some space to your mother. She'll be alright, don't worry.</Line>
+				<Speaker Speaker="Doctor" Position="Right"/>
+				<Speaker Position="Right2"/>
+				<Line>Once alone, she started examining you superficially, but seemed more interested in talking.</Line>
+				<Line Focus="Right">Do you know about the Blissful Sleep?</Line>
+				<Choices>
+					<Choice Text="I do">
+						<Relationship Character="Doctor" Relationship="Love" Points="20"/>
+						<Line Focus="Left">Yes, I inquired a bit before coming back.</Line>
+						<Line Focus="Right">Okay, that makes things easier.</Line>
+					</Choice>			
+					<Choice Text="Not much">
+						<Relationship Character="Doctor" Relationship="Friendship" Points="20"/>
+						<Line Focus="Left">Not a lot, but I understand that it's an unknown... something that makes people sleep all day.</Line>
+						<Line Focus="Right">That's the gist of it : We don't really know what causes it, or where it comes from, but people afflicted don't seem able to fully wake up.</Line>
+						<Line Focus="Right">They sleep most of the day and when they need to get up, to eat or relieve themselves for example, they manage to get up, but it's closer to sleepwalking than being awake.</Line>
+						<Line Focus="Right">Then, they often fall back asleep on the spot when they finish what they needed.</Line>
+						<Line Focus="Left">I know it is incurable, but is it deadly?</Line>
+						<Line Focus="Right">The Sleep itself isn't dangerous, at least no one died from it yet, but there were a lot of accidents when they needed something.</Line>
+						<Line Focus="Right">Falling down the stairs is a frequent one, but in some cases, people get out of their house and fall asleep outside.</Line>
+						<Line Focus="Right">Someone started a fire after cooking in their sleep and a few children had to be taken care of because their parents had it.</Line>
+						<Line Focus="Left">That looks quite serious.</Line>
+						<Line Focus="Right">That's an understatement. Especially since we don't know how they caught it. It seems confined to this city, but I can't determine if it is transmitted so they erected a barrier around the town.</Line>
+						<Line Focus="Right">Quite an overkill, but they said their mages didn't have a lot to do after the war.</Line>
+						<Line Focus="Left">And you're working alone on that?</Line>
+						<Line Focus="Right">Not really. There are others working on it, some coming from outside, like you, and we exchange what we find every week, but we can only determine what it's probably not.</Line>
+						<Line Focus="Right">I sometimes wonder if any of them are working, but I can't say I bring much more to the table.</Line>
+						<Line Focus="Left">I'm sorry I can't help.</Line>
+						<Line Focus="Right">It's the reason I wanted to talk to you.</Line>
+					</Choice>
+				</Choices>
+				<Line Focus="Right">I wanted to ask for your help on the investigation. I know a lot about medicine and alchemy, I'm decent in healing magic but that might limit my field of view.</Line>
+						<Line Focus="Right">I know you're good at solving problems, and if the Sleep is more of a spell or curse, you might be able to find things I can't. A new perspective can always help.</Line>
+				<Line Focus="Left">I'll keep an eye out. I'm only back in town for a few hours, I don't know it as well as before and I'll need to help around the inn, but I'll do what I can.</Line>
+				<Line Focus="Right">Thank you, but please, take your time resting from your travels and take care of Alice and Evelyn in priority. I'm only asking on a hunch, your and your family's health comes first.</Line>
+				<Line Focus="Right">Well, I'll leave you for now. If you have any problem, don't hesitate to come to me. And if you find anything, tell me.</Line>
+				<Line Focus="Left">Don't worry, I will.</Line>
+			</Choice>			
+			<Choice Text="No">
+				<Line Focus="Left">I'm sorry, but not right now. I'm quite tired from all this and the journey was quite long.</Line>
+				<Line Focus="Right2">All right, as you wish. I'll be leaving then, but before I go : don't worry about your sister, the Sleep only makes her sleep.</Line>
+				<Line Focus="Right2">As long as you keep her locked in her room and keep your ears open to any strange noise, everything will be okay.</Line>
+			</Choice>
+		</Choices>
+		<Line>After trying to reassure you, the doctor left.</Line>
+		<Next ID="Intro3"/>
+	</DialogueData>
+	
+	<DialogueData ID="Intro3">
+		<Speaker Speaker="Player" Position="Left"/>
+		
+		<Line>You spent the next few hours unpacking. You didn't have much, mainly adventuring gear, but you had a lot to think about.</Line>
+		<Line>You were sitting on your bed, thinking if you should keep your dagger with you at all times, like you did before, was acceptable.</Line>
+		<Line>That habit ended up saving your life, but is it really accepted around here, since you're not really an adventurer anymore...</Line>
+		<Line>But your thoughts were interrupted by a knock on your door.</Line>
+		<Speaker Speaker="Mom" Position="Right"/>
+		<Line Focus="Right">It's me, can I come in?</Line>
+		<Line Focus="Left">Yeah, the door's open.</Line>
+		<Line>Your mother enters the room. All traces of tears have left her face as she tries to stand strong in front of you.</Line>
+		<Line Focus="Right">I wanted to check up on you. I know you often wrote to me, but it's been too long since we were about to talk like that.</Line>
+		<Line>For a while, the two of you talked. Every subject was about you and your adventures, from your companions to the fight against Lilith.</Line>
+		<Line Focus="Right">And during all those travels, did anyone discovered your... secret?</Line>
+		<Line>Your secret... it took a few seconds before remembering what she was talking about : you are a futanari, an hermaphrodite or one of the two genders.</Line>
+		<Line>Women are usually either female or shemales, but there is an exception : Futanaris, descendants of the Angel, and the sign of royal blood and nobility.</Line>
+		<Line Focus="Left">Don't worry, nobody found out about that. And what could happen, really? I've met others, out there, and it was always "Oh, my mom was the mistress of that noble" or "My great-grandma was a futanari, we didn't know it was still in our line".</Line>
+		<Line Focus="Right">I know it wouldn't bother you, but the queen used to live in this town before her coronation, and I don't want to have problems with her because of that.</Line>
+		<Line Focus="Right">Anyone could accuse her of being your father and I don't know what she would do. I already have enough problems keeping Vi silent about it...</Line>
+		<Line>Violet is your younger sister. She also is a futanari but have another opinion on the situation. She thinks she's the daughter of the Queen, so wants the same privileges than a princess.</Line>
+		<Line>Last you knew, she was actively searching for proof but fell short when she found that the Queen was crowned and left the city for the capital one year before her birth.</Line>
+		<Line Focus="Left">Don't worry too much about it, I'll keep it secret and you know that Violet will too, she'd be too ashamed to be seen as the bastard of a random noble to take the risk.</Line>
+		<Line Focus="Left">Speaking of her, she's back? I haven't seen her since I came home.</Line>
+		<Line Focus="Right">Yes, she came back not long ago. I told her to come and welcome you back, but she grumbled and went to her room, as usual...</Line>
+		<Line Focus="Left">I'll go and say hello.</Line>
+		<Line Focus="Right">Be sure to knock, she locks her door anyway.</Line>
+		<Speaker Position="Right"/>
+		<Line>Violet's room is right next to yours, if you didn't hear her, it's because she tried to be stealthy... You wonder why she is avoiding you like that.</Line>
+		<Line>As you approach her door, you hear fain noises from inside.</Line>
+		<Choices>
+			<Choice Text="Knock"/>			
+			<Choice Text="Listen in">
+				<Speaker Speaker="Violet" Position="Right"/>
+				<Line Focus="Right">*Moan*</Line>
+				<Line>She's having some personal time, by herself based on what you hear.</Line>
+				<Choices>
+					<Choice Text="Knock anyway">
+						<Flag ID="Dominance" Value="1"/>
+					</Choice>			
+					<Choice Text="Wait a bit">
+						<Flag ID="Dominance" Value="-1"/>
+						<Line>You go back to your room for now. Around 15 minutes later, you go back and don't hear her anymore.</Line>
+					</Choice>			
+					<Choice Text="Listen in">
+						<Line Focus="Right">*Moan* Why does that always happen like that. All I wanted was to go to the pool, and if I go now, I'll be treated as a pervert.</Line>
+						<Line>It seems like her libido hasn't changed. As a teen, she was always like that, but mom wouldn't let her have sex before being sure her girlfriend wouldn't reveal her secret.</Line>
+						<Line>She was always on her back about it, but I know that she had a few sex friends back then, behind mom's back.</Line>
+						<Line Focus="Right">Come on, you put on a slutty bathing suit, it's not my fault I get aroused, I can't control it.</Line>
+						<Line Focus="Right">Now get on your knees and suck my cock.</Line>
+						<Line>She continued like that for 5 minutes, including the bathing girl in her fantasy.</Line>
+						<Line Focus="Right">You're going to drink it all, like a good girl.</Line>
+						<Choices>
+							<Choice Text="Listen">
+								<Flag ID="Dominance" Value="-5"/>
+								<Line Focus="Right">Yes, take it and enjoy my gift to you. That's what you earned for choosing that string you call bikini.</Line>
+								<Line>You decide to wait a bit before knocking, it would be too awkward otherwise...</Line>
+							</Choice>			
+							<Choice Text="Knock">
+								<Flag ID="Dominance" Value="5"/>
+								<Line>*Knock Knock*</Line>
+								<Line Focus="Right">Yshh... shit! Really? Fuck off, that ruined my orgasm!</Line>
+							</Choice>
+						</Choices>
+					</Choice>
+				</Choices>
+			
+			</Choice>
+		</Choices>
+		<Line>*Knock Knock*</Line>
+		<Line Focus="Right">What? Who's there?</Line>
+		<Line Focus="Left">_FirstName, I came back and wanted to see you.</Line>
+		<Line Focus="Right">*Sigh*... okay, coming.</Line>
+		<Line>After a few seconds, you hear the door opening.</Line>
+		<Speaker Speaker="LilSis" Position="Right"/>
+		<Line Focus="Right">I'm here, what do you want?</Line>
+		<Line Focus="Left">Well, since it's been 7 years since I saw you, I wanted to spend some time with my little sister.</Line>
+		<Line Focus="Right">I don't really have anything interesting to tell you. And I know about what you did from mom.</Line>
+		<Line Focus="Left">We can talk about anything, what have you been up to recently?</Line>
+		<Line Focus="Right">Not much.</Line>
+		<Line>All this time, she was standing in the door. She didn't seem to want to invite you in, and you can understand. You feel the heat from her session emanating from her room.</Line>
+		<Line>The conversation was really one sided, she didn't ask you anything and kept her answers to the minimum.</Line>
+		<Choices>
+			<Choice Text="I'll get going">
+				<Flag ID="Dominance" Value="-1"/>
+				<Line Focus="Left">I'll get going, it was nice talking to you, but I'm quite tired from my day.</Line>
+				<Line Focus="Right">Sure, sure, see you.</Line>
+			</Choice>			
+			<Choice Text="What do you do with your day?">
+				<Flag ID="Dominance" Value="1"/>
+				<Line Focus="Left">So, what do you do with your day? I didn't see you when I came back.</Line>
+				<Line Focus="Right">Not much, I just... hang out.</Line>
+				<Line Focus="Left">With friends?</Line>
+				<Line>You asked almost on reflex, out of big sister concern, but you know that wasn't a good move.</Line>
+				<Line Focus="Right">No, alone. And can you stop treating me like a child? Mom barely stopped but you come back and take her place.</Line>
+				<Line Focus="Right">*Sigh* I'll just go.</Line>
+			</Choice>
+		</Choices>
+		<Line>Right after that, she closes her door and you even hear her locking it.</Line>
+		<Next ID="Intro4"/>
+	</DialogueData>
+	
+	<DialogueData ID="Intro4">
+		<Speaker Speaker="Player" Position="Left"/>
+		<Line>After a awkward supper with mom and Violet, you are ready to go to bed.</Line>
+		<Speaker Speaker="Mom" Position="Right"/>
+		<Speaker Speaker="LilSis" Position="Right2"/>
+		<Line Focus="Left">I'm going to sleep, it's been so long since I've used my own bed I feel like it calls to me.</Line>
+		<Line Focus="Right">Could you go check on Evelyn on the way?</Line>
+		<Line Focus="Left">Sure, and I'll be on guard if there's any sound coming from her room during the night. I'm used to being careful even during the night.</Line>
+		<Line Focus="Right">Thank you.</Line>
+		<Speaker Position="Right"/>
+		<Speaker Position="Right2"/>
+		<Line>You enter Evelyn's room and find her sleeping peacefully. Now that you're alone, you can observe her more carefully.</Line>
+		<Line>Evelyn always had an inexpressive face. She never really showed joy or sadness, but as you watch her now, she seemed to be smiling. Not really a smile of happiness but more of contentment, which you find strange.</Line>
+		<Line>But as you think more about it, maybe her current situation suits her?</Line>
+		<Line>After checking if she had anything she could have needed for food or water, you smile to her.</Line>
+		<Line Focus="Left">Good night, Eve'.</Line>
+		<Line>And you leave her room, making sure to lock it up, to go to yours.</Line>
+		<Line>Your bed never felt this comfortable. Between the bedrolls and cheap inn beds, it feels like luxury and you fall asleep in minutes.</Line>
+		<Line>...</Line>
+		<Line>As is often the case, you're in a lucid dream. You're dreaming about camping in the wilds with your party, but Melody is also present ans she has nothing to do here.</Line>
+		<Speaker Speaker="ChildhoodFriend" Position="Right"/>
+		<Line Focus="Right">_FirstName, you take the first round? Rhaz and I have some things to talk about in private.</Line>
+		<Choices>
+			<Choice Text="Okay">
+				<Flag ID="Dominance" Value="-1"/>
+				<Line Focus="Left">Okay, have fun but don't wake up Lanelle. She's always grumpy when she doesn't get enough sleep.</Line>
+				<Speaker Position="Right"/>
+				<Line>After that, she enters Rhaz's tent. You hear her grunt and Melody's muffled voice coming through...</Line>
+			</Choice>			
+			<Choice Text="Your turn">
+				<Flag ID="Dominance" Value="1"/>
+				<Line Focus="Left">Hey, it was your turn to keep watch. I have something else to do.</Line>
+				<Line Focus="Right">You're no fun, _FirstName.</Line>
+				<Speaker Position="Right"/>
+				<Line>You get up and start taking care of your weapon's maintenance...</Line>
+			</Choice>
+		</Choices>
+		<Line>But you don't really care, it's only a dream, after all.</Line>
+		<Line>Right as you think that, you feel some kind of presence close, right over there. You think about warning your group... but it's useless.</Line>
+		<Line>You start approaching the presence stealthily, it feels too real to be part of the dream, like the others. You exit the meadow where your camp was, but the surroundings become less and less precise.</Line>
+		<Line>A few meters further, you find yourself in a blurry place, changing at the speed of thought, when you see someone's shape.</Line>
+		<Line Focus="Left">Who's there?</Line>
+		<Line Focus="Right">Hey, that's my question! What are you doing here? It's my dream, you can't steal her!</Line>
+		<Speaker Speaker="Maid" Position="Right"/>
+		<Line Focus="Right">... Wait, you're a hume?</Line>
+		<Line>She looks like a maid, which would be strange outside of a dream, but the lust you feel emanating from her immediately indicate her true nature.</Line>
+		<Line Focus="Left">You're a succubus?</Line>
+		<Line Focus="Right">Of course, and I already have a dream, but yours seem appetizing too.</Line>
+		<Line>You reach to your bow in a flash and shoot an arrow in her direction. It connects but she laugh if off.</Line>
+		<Line Focus="Right">That might have hurt if it were real, but now it's my turn.</Line>
+		<Line>She points her feather duster at you and your clothing vanishes.</Line>
+		<Line Focus="Right">Good. I'm the head maid and you're my subordinate. Now come, and lick my boots clean.</Line>
+		<Choices>
+			<Choice Text="Yes, head maid">
+			</Choice>			
+			<Choice Text="Yes, immediately">
+			</Choice>			
+			<Choice Text="Yes, mistress">
+			</Choice>
+		</Choices>
+		<Line>You can't control your dream anymore and you're starting to crawl towards her.</Line>
+		<Speaker Speaker="Margaret" Position="Left2" Image="Margaret_S"/>
+		<Line Focus="Left2">Stop that, now!</Line>
+		<Line>Another succubus arrives, and you are immobilized.</Line>
+		<Line Focus="Right">Hey, this one's mine, go find a prey elsewhere.</Line>
+		<Line Focus="Left2">You can see that she's conscious, it will be too dangerous for her if you make her submit.</Line>
+		<Line Focus="Right">What are you, the protector of the humes?</Line>
+		<Line Focus="Left2">No, I'm only saying that if humes started dying, bigger problems would arise for all of us.</Line>
+		<Line Focus="Right">Nothing will happen if only one dies. You're too paranoid. I'll just devour her soul and it'll make it look like a normal death.</Line>
+		<Line Focus="Right">Plus, you can't fight me, you don't even have a dream, you're powerless.</Line>
+		<Line Focus="Left2">Looks like you don't leave me any choice. Hume, allow me to help you.</Line>
+		<Line>As she speaks to you, you regain control of your body.</Line>
+		<Choices>
+			<Choice Text="Help me">
+				<Flag ID="Dominance" Value="-1"/>
+				<Line Focus="Left2">Good girl, let me take care of her.</Line>
+			</Choice>			
+			<Choice Text="I'll manage">
+				<Flag ID="Dominance" Value="1"/>
+				<Line Focus="Left2">Now's not the time for pride, if you don't be stupid. Now, allow me.</Line>
+			</Choice>
+		</Choices>
+		<Line Focus="Left2">My name's Margaret. It's only polite to exchange names before merging souls.</Line>
+		<Line>Her mind invade yours. It doesn't feel bad, but it's quite strange.</Line>
+		<Condition>
+			<If>
+				<Check>
+					<IfFlag Flag="Dominance" Comparator="Bigger" Value="0"/>
+				</Check>
+				<Flag ID="Dominance" Value="20"/>
+				<Line>You're starting to control her. Her power and abilities are now yours and the presence of the maid totally disappeared.</Line>
+				<Line>You are now in control of her whole being.</Line>
+			</If>
+			<If>
+				<Flag ID="Dominance" Value="-20"/>
+				<Line>She's overwhelming you, her power invading every part of your body. You feel yourself shrink to be nestled inside of her.</Line>
+				<Line>You are now protected by her whole being.</Line>
+			</If>
+		</Condition>
+		<Speaker Position="Left2"/>
+		<Speaker Speaker="Margaret" Position="Left"/>
+		<Line>You two are now one. You seem to have control of her body, but it still seems to have a memory of her abilities.</Line>
+		<Line Focus="Left">Now that I'm on your mind, you'll be able to use my powers to make her submit. Do your best, it shouldn't be hard.</Line>
+		<Battle Player="Margaret" Opponent="Maid" WinEvent="Intro5" LossEvent="Intro4b"/>
+	</DialogueData>
+	
+	<DialogueData ID="Intro4b">
+		<Speaker Speaker="Margaret" Position="Left"/>
+		<Speaker Speaker="Maid" Position="Right"/>
+		
+		<Line>A rope of cum escapes from your cock... or is it Margaret's?</Line>
+		<Condition>
+			<If>
+				<Check>
+					<IfFlag Flag="Dominance" Comparator="Bigger" Value="0"/>
+				</Check>
+				<Line Focus="Left">What are you doing? She isn't that strong, you shouldn't have any problems against her, I'll take a breather and we'll try again.</Line>
+			</If>
+			<If>
+			<Line Focus="Left">Come on, pet, try again. Don't worry about me, I'm strong enough to withstand her attacks for hours.</Line>
+			</If>
+		</Condition>
+		<Flag ID="Dominance" Value="-5"/>
+		<Line Focus="Left">You only have to use the biggest die possible on my abilities, she should submit quickly.</Line>
+		<Battle Player="Margaret" Opponent="Maid" WinEvent="Intro5" LossEvent="Intro4b"/>
+	</DialogueData>
+	
+	<DialogueData ID="Intro5">
+		<Speaker Speaker="Margaret" Position="Left"/>
+		<Speaker Speaker="Maid" Position="Right"/>
+		<Line Focus="Right">Mmmaaaahhhh...</Line>
+		<Line>She came intensely, spraying cum in a straight line in front of her.</Line>
+		<Line Focus="Left">Good, she'll serve us well. Continue to milk her, otherwise she'll get get back up.</Line>
+		<Condition>
+			<If>
+				<Check>
+					<IfFlag Flag="Dominance" Comparator="Bigger" Value="0"/>
+				</Check>
+				<Line>You walk up to the kneeling maid decisively, grab her cock and stroke it hard.</Line>
+			</If>
+			<If>
+				<Line>Almost instinctively, you were already going towards her. You grab her cock and start giving her a nice, gentle stroke.</Line>
+			</If>
+		</Condition>
+		<Line Focus="Right">*Moan*</Line>
+		<Line Focus="Left">Okay, now that this problem is being dealt with, let's have a little talk.</Line>
+		<Line>It feels awkward to have a conversation with someone sharing the same body whilst giving a handjob to the maid, but Margaret doesn't seem to be bothered.</Line>
+		<Line Focus="Left">Now, could you explain to me what you are doing here?</Line>
+		<Choices>
+			<Choice Text="Not really">
+				<Flag ID="Dominance" Value="-1"/>
+				<Speaker Speaker="_FirstName" Position="Left2"/>
+				<Line Focus="Left2">Not really, I don't really understand what's happening.</Line>
+				<Line Focus="Left">Don't worry, pet, I think I kind of understand.</Line>
+				<Line>You feel her prodding your soul for informations.</Line>
+			</Choice>			
+			<Choice Text="I was just sleeping">
+				<Flag ID="Dominance" Value="1"/>
+				<Speaker Speaker="_FirstName" Position="Left2"/>
+				<Line Focus="Left2">I was just sleeping when I felt her presence. When I inspected she attacked me.</Line>
+				<Line Focus="Left">Mmh, yes, that's a possibility.</Line>
+				<Line>It seems she has a good understanding of what's happening.</Line>
+			</Choice>
+		</Choices>
+		<Line Focus="Left">Do you know where we are, right now?</Line>
+		<Line Focus="Left2">I'm not sure, but I think I'm dreaming. Even if it feels more real than usual. I'm used to lucid dreams, but this one's on another level.</Line>
+		<Line Focus="Left">You're right, she and I are succubi and we live in dreams. Right now, that maid was trying to make you submit to her.</Line>
+		<Choices>
+			<Choice Text="Thanks for helping">
+				<Flag ID="Dominance" Value="-1"/>
+				<Line Focus="Left">You're welcome, but it wasn't out of selflessness.</Line>
+			</Choice>			
+			<Choice Text="Why are you helping"></Choice>
+		</Choices>
+		<Line Focus="Left">I'm only trying to prevent some higher power to exterminate all of us. If idiots like her start killing humes like you, someone'll find that demons are here and big bad "heroes" will come to exterminate us.</Line>
+		<Line Focus="Left2">There are demons in the city?</Line>
+		<Line Focus="Left">Always have been... or at least for hundreds of years. And only succubi, to be precise.</Line>
+		<Line Focus="Left2">How? We defeated Lilith, you should be gone!</Line>
+		<Line Focus="Right">Mistress Lilith for you, human. *moan*</Line>
+		<Line>You shut her up by stroking faster.</Line>
+		<Line Focus="Left">Ignore her. Lilith was only our mother, the original succubus, but no every one of us was following her. Some like me would rather enjoy peace, and others, like that one...</Line>
+		<Line>You grab her balls with a bit too much strength.</Line>
+		<Line Focus="Right">*moan*, stop that.</Line>
+		<Line>Strangely enough, she came as she said that.</Line>
+		<Line Focus="Left">Some like her only fled when she was defeated.</Line>
+		<Line Focus="Left2">Ah, so you're a friendly succubus?</Line>
+		<Line Focus="Left">As much as can be. I still need the lust of humes to survive and asking politely isn't an option. The difference is that I don't make you submit to me.</Line>
+		<Line Focus="Left2">What does that change? It's just a dream, no?</Line>
+		<Line Focus="Left">Draining humes tires them out, but they often put it down to the wet dream they had. But when we decide to keep a hume for ourselves, they lose the will to wake up, inflicting what you call the Blissful Sleep.</Line>
+		<Line Focus="Left2">Wait, so you're the cause of the Blissful Sleep? It's causing a lot of problems in town right now.</Line>
+		<Line Focus="Right">Ouch! Hey, careful, that hurts...</Line>
+		<Line>In your anger, you kind of crushed the maid's cock in your hand.</Line>
+		<Line Focus="Left">I know and I'm sorry. I'm only trying to keep it under control on both sides.</Line>
+		<Line Focus="Left2">Can you cure it? My sister has it and I want to cure her.</Line>
+		<Line Focus="Left">If we find her succubus, I should be able to. Hey you!</Line>
+		<Line>You stopped your massage and you can feel she was close to a new orgasm.</Line>
+		<Line Focus="Right">Uh? Yes? Please continue...</Line>
+		<Line Focus="Left">Before that, describe the hume you're having under control.</Line>
+		<Line Focus="Right">Ehm, a female human, black hair, not that attractive... and quite gloomy.</Line>
+		<Line Focus="Left">And would probably have a very submissive personality, or be some kind of maid. Does that fit?</Line>
+		<Line Focus="Left2">Yes! It's been a long time, but it's her. How can that be?</Line>
+		<Line Focus="Left">I guess your sister's sleeping not far from you. Distances between dreams is similar to the waking world.</Line>
+		<Line Focus="Left2">Can you free her from that maid?</Line>
+		<Line Focus="Left">Somewhat, I can wake her up, but the link between the two has to come from this slut.</Line>
+		<Line>She looks at the succubus, who's waiting patiently for her handjob.</Line>
+		<Line Focus="Left">But I have an idea. Would you help me to solve the Blissful Sleep problem without expunging all of us?</Line>
+		<Choices>
+			<Choice Text="If you free my sister">
+				<Line Focus="Left2">If you free my sister, I will. I want the Sleep gone too.</Line>
+			</Choice>			
+			<Choice Text="I'm not sure">
+				<Line Focus="Left2">I'm not sure if I should trust you. We've been at war with demons for long enough to know it's a bad idea.</Line>
+				<Line Focus="Left">You realise I'm the only one who would help your sister right now? Without taking into account that I could inflict the same fate on you, or worse, any time you fall asleep.</Line>
+				<Line>She doesn't seem to want to do it, but it's a warning if you ever try to get in her way.</Line>
+				<Line Focus="Left2">Okay, I'll help if you keep your word.</Line>
+			</Choice>
+		</Choices>
+		<Line Focus="Left">Good, now, let's take care of her.</Line>
+		<Line>You push her down on her back and set your cock in front of her pussy.</Line>
+		<Line Focus="Left">Now, fuck her as you will. When you're coming, creampie her and I will cast my spell.</Line>
+		<Line>She seems really aroused, but on guard.</Line>
+		<Choices>
+			<Choice Text="Fuck her hard">
+				<Flag ID="Dominance" Value="3"/>
+				<Line>Her cunt was drenched after all the teasing you did to her, so you plunged deep in one thrust.</Line>
+				<Line Focus="Right">Mhhhnn... </Line>
+				<Line>She moans under you, enjoying your ministrations. You only care about your own pleasure, but she enjoys it nonetheless.</Line>
+				<Line Focus="Left">You don't have to care about her, you only need to fill her up.</Line>
+				<Line>Doing just as Margaret said, you quickly accelerate.</Line>
+				<Choices>
+					<Choice Text="Make her beg">
+						<Line Focus="Left2">Do you want to cum?</Line>
+						<Line Focus="Right">Yes!</Line>
+						<Line Focus="Left2">I didn't hear it.</Line>
+						<Line Focus="Right">Please, Mistress, let me cum.</Line>
+						<Line>You feel your own orgasm coming from her submission, but you hold a few more seconds to allow her to finish together.</Line>
+						<Line Focus="Right">Mmmm, thank you, Mistress...</Line>
+					</Choice>			
+					<Choice Text="Ignore her">
+						<Line>You thrust faster and faster, feeling her squirm under you.</Line>
+						<Line Focus="Right">I'm getting close...</Line>
+						<Line>So are you, and you continue without paying attention to her. You quickly feel your orgasm coming and thrust in deep.</Line>
+						<Line Focus="Right">Wait, just a few more...</Line>
+						<Line>But you don't care and fill her up.</Line>
+						<Line Focus="Right">Mhh, I can't... reach... grmbl..</Line>
+					</Choice>
+				</Choices>
+			</Choice>
+			<Choice Text="Treat her gently">
+				<Flag ID="Dominance" Value="-3"/>
+				<Line>You gently start massaging her breasts, not to arouse her but to show your intentions. She relaxes a bit and, with a nod, allows you inside of her.</Line>
+				<Line Focus="Right">Mhh...</Line>
+				<Line>You make a few slow thrusts to judge her reactions and find a rhythm that fits you both.</Line>
+				<Line Focus="Left">You don't have to care about her, you only need to fill her up.</Line>
+				<Line>Even if that's the case, you'll reach the end anyway, so might as well make you both enjoy it. You slowly feel your orgasm come.</Line>
+				<Line Focus="Right">I'm coming soon... Mistress.</Line>
+				<Choices>
+					<Choice Text="Kiss her">
+						<Line>Your mouths join together as you share a sloppy kiss. You feel her arms pulling you towards her and take you as deep as possible for your creampie.</Line>
+						<Line Focus="Right">Did I please you, Mistress.</Line>
+					</Choice>			
+					<Choice Text="Suck her nipple">
+						<Line>You take her nipple into your mouth, teasing her over the limit. You feel her cum on your belly and her pussy contracts, pushing you over the edge.</Line>
+						<Line Focus="Right">Thank you, Mistress.</Line>
+					</Choice>
+				</Choices>
+			</Choice>
+		</Choices>
+		<Line>A few seconds later, you feel light-headed and your sight starts to blur.</Line>
+		<Line Focus="Left">Don't worry, everything is as planned. You are waking up, I don't have time to explain, but I'll explain everything to you soon.</Line>
+		<Line>You feel your mind escape from Margaret's body.</Line>
+		<Line Focus="Left">Wait for me, but don't tell anyone of what happened before we talk, okay?</Line>
+		<Line>She winks at you before everything fades away.</Line>
+		<Next ID="Intro6"/>
+	</DialogueData>
+	
+	<DialogueData ID="Intro6">	
+		<Speaker Speaker="Player" Position="Left"/>
+		
+		<Line>You jump awake.</Line>
+		<Line>It takes you a few seconds to process everything that happened during the night, and you're not really sure it was real, but you decide to go check on Evelyn anyway.</Line>
+		<Line>It's barely morning, but it's the time you used to wake up at while adventuring. You quietly go to your sister's room and unlock the door.</Line>
+		<Line>She's still sleeping. Was everything a dream? Or did Margaret trick you? You grunt in discontentment.</Line>
+		<Speaker Speaker="BigSis" Position="Right"/>
+		<Line Focus="Right">Mhh? Who's there?</Line>
+		<Line>You turn towards Evelyn and see her waking up.</Line>
+		<Line Focus="Right">_FirstName? What are you... oh, I'm still dreaming...</Line>
+		<Line>You rush to hug her. And you feel her awkwardly stand there, not knowing what to do.</Line>
+		<Line Focus="Left">I'm sorry, you had the Blissful Sleep, but now you're cured.</Line>
+		<Line>You spend a few minutes explaining what happened to her, when you hear someone open the door.</Line>
+		<Speaker Speaker="Mom" Position="Right2"/>
+		<Line Focus="Right2">Oh, _FirstName... Eve'?</Line>
+		<Line>Mom almost tackled your sister as she took her in her arms.</Line>
+		<Line Focus="Right2">What happened? How did you wake up?</Line>
+		<Line Focus="Right">I... I don't know. _FirstName told me I had the Blissful Sleep, I didn't even know. I was only having a very long dream, but at the end, I dreamt of _FirstName and then I woke up.</Line>
+		<Line Focus="Right2">_FirstName? Do you know anything about it?</Line>
+		<Choices>
+			<Choice Text="Tell her">
+				<Flag ID="Dominance" Value="1"/>
+				<Line>You were about to tell when you felt disagreement inside you and change your mind.</Line>
+			</Choice>			
+			<Choice Text="Deny it">
+				<Flag ID="Dominance" Value="-1"/>
+			</Choice>
+		</Choices>
+		<Line Focus="Left">No, sorry. I was only checking up on her when she woke up.</Line>
+		<Line>Your mother didn't seem to mind the reason and was happy to get her daughter back. Evelyn was standing there, looking lost.</Line>
+		<Line Focus="Right2">Can you call Doctor Warder? She needs to see that.</Line>
+		<Line>You go down, pick the phone and call Doc'. She was surprised, but didn't doubt you can came immediately.</Line>
+		<Speaker Speaker="Doctor" Position="Left2"/>
+		<Line>The doctor kept Evelyn in her room and, after asking the both of you what you knew, asked you to leave.</Line>
+		<Speaker Position="Left2"/>
+		<Speaker Position="Right2"/>
+		<Speaker Speaker="Mom" Position="Right"/>
+		<Line Focus="Right">I need to get breakfast ready for the patrons, I'm already late.</Line>
+		<Line Focus="Left">I'll help you, don't worry.</Line>
+		<Line>The two of you made quick work of the breakfast. Your mom was bringing food to someone's table when you hear someone call out to her.</Line>
+		<Speaker Speaker="Margaret" Position="Right2"/>
+		<Line Focus="Right2">Hello madam, my name's Margaret. I'm a researcher in mind magic and I heard one of your daughters woke up from the Blissful Sleep. Would you allow me to talk to her, please?</Line>
+		<Line>Wait, Margaret?</Line>
+		<Line>You peek into the restaurant, and even if she looks a bit different, you're sure she's the succubus from last night.</Line>
+		<Line Focus="Right">Ehm, sure.</Line>
+		<Line>She turns and sees you.</Line>
+		<Line Focus="Right">_FirstName could you bring miss to Evelyn? Doctor Warder should still be there.</Line>
+		<Line Focus="Left">Okay, most of the meals are made, you only need to serve them.</Line>
+		<Speaker Position="Right"/>
+		<Speaker Position="Right2"/>
+		<Speaker Speaker="Margaret" Position="Left2"/>
+		<Line>On the way there, you couldn't help yourself and checked the woman from the corner of your eye, to make sure she really was the succubus.</Line>
+		<Line Focus="Left2">I did say you we'd talk again soon, but I guess you were expecting next night.</Line>
+		<Line Focus="Left">Eh... yes, how can...</Line>
+		<Line Focus="Left2">Stop, we'll talk once I've seen your sister.</Line>
+		<Line>When you opened Evelyn's door, you found her mid check-up, sitting naked on the bed.</Line>
+		<Speaker Speaker="Doctor" Position="Right"/>
+		<Speaker Speaker="BigSis" Position="Right2"/>
+		<Line Focus="Right">We're busy right now.</Line>
+		<Line Focus="Left2">Don't worry, I'm here for the same reason.</Line>
+		<Line Focus="Right">Margaret? How are you already here?</Line>
+		<Line Focus="Left2">I was going to your office, but you were absent, so your wife told me what happened.</Line>
+		<Line Focus="Right">*Sigh* Could you come later, I'm doing a few tests and checking if her health is in good condition.</Line>
+		<Line Focus="Left2">Yes, yes. I'm going to question her sister then, just in case. We'll be in her room.</Line>
+		<Speaker Position="Right"/>
+		<Speaker Position="Right2"/>
+		<Line>She grabs you by the arm and drags you next door.</Line>
+		<Speaker Position="Left2"/>
+		<Speaker Speaker="Margaret" Position="Right"/>
+		<Line Focus="Right">Now she won't be bothering us. I'll explain everything I can about our current situation.</Line>
+		<Line Focus="Left">Yes, that's needed.</Line>
+		<Line Focus="Right">First, a summary from last night. I'm a nice succubus who only want to live in peace, anything else you want to know?</Line>
+		<Loop ID="Choices"/>
+		<Choices>
+			<Choice Text="Blissful Sleep?">
+				<Line Focus="Left">What's the Blissful Sleep, exactly?</Line>
+				<Line Focus="Right">As I told you before, we succubi need to feed on humes' lust to survive. There are three main ways to do it.</Line>
+				<Line Focus="Right">Fist, as I do, is to use our ability to invade dreams, giving nice and pleasing feelings, or hard sex on some cases, and we have enough energy for a few days.</Line>
+				<Line Focus="Right">It's the least efficient way to do it, but as we don't do anything harmful, nobody have any reason to think succubi are present.</Line>
+				<Line Focus="Right">The second way should be obvious to you, as it was Lilith's way, is to charm humes or make them submit. They become addicted to our presence and do anything we ask of them.</Line>
+				<Line Focus="Right">In this case, we have a willing source of energy who's always available. Of course, other humes view that as a threat and will come to chase us.</Line>
+				<Line Focus="Right">The third is a combination of the two, we make humes addicted to their dreams. This is the Blissful Sleep, making them unwilling to wake up, and after some time, unable to.</Line>
+				<Line Focus="Right">It's a great option, for unethical succubi. But it should be harder to do, lower succubi are able to do it even though powerful ones were unable to until recently.</Line>
+				<Line Focus="Right">I'm still investigating how they got this power, and all I found was it came from a strange Dream Delver they met.</Line>
+				<Line Focus="Right">Oh, Dream Delver is the name we give to people who can walk between dreams, like us, or even you as you found last night.</Line>
+				<Loop ID="Choices"/>
+			</Choice>			
+			<Choice Text="Body fusion?">
+				<Line Focus="Left">How did we share body, did I control you?</Line>
+				<Line Focus="Right">When I told your mother that I'm a researcher in mind magic, it wasn't a lie. I transferred your mind to my body and withdrew mine. It allowed you to control it for a time.</Line>
+				<Line Focus="Right">Fortunately, with my mind still inside, making you use my abilities wasn't too hard.</Line>
+				<Loop ID="Choices"/>
+			</Choice>			
+			<Choice Text="You didn't fight?">
+				<Line Focus="Left">Why didn't you fight rather than making me fight through you?</Line>
+				<Line Focus="Right">We were in your sister's dream, so even though she was weak, she had a lot of energy available whilst I had none. When we shared bodies, it used yours instead.</Line>
+				<Line Focus="Left">Couldn't you have only used my energy instead of making me fight?</Line>
+				<Line Focus="Right">It would have been easier, but since you will need to fight like that, it was a safe way to train you.</Line>
+				<Loop ID="Choices"/>
+			</Choice>			
+			<Choice Text="Maid succubus?">
+				<Line Focus="Left">What happened with the maid succubus from tonight?</Line>
+				<Line Focus="Right">It's the drawback of our nature, when a succubus loses to a hume, they instinctively submit to them.</Line>
+				<Line Focus="Right">It's some kind of self-defence mechanism to charm dominant opponents and try to extract their lust for a comeback.</Line>
+				<Line Focus="Right">But if the opponent is skilled enough, we can stay into a submissive role and hope to keep them as Master or Mistress for a reliable source of energy.</Line>
+				<Line Focus="Left">So she submits to me, now?</Line>
+				<Line Focus="Right">As long as you keep my help, yes. You aren't skilled enough to keep her alone for now. Even if that one was particularly weak.</Line>
+				<Loop ID="Choices"/>
+			</Choice>			
+			<Choice Text="Evelyn?">
+				<Line Focus="Left">Is Evelyn safe now?</Line>
+				<Line Focus="Right">Safe... not entirely. If we free that maid, she'll be able to charm your sister whenever she wants.</Line>
+				<Line Focus="Left">Can't we do something about it?</Line>
+				<Line Focus="Right">We could, but I suggest we keep them like they are now. The maid won't do anything without our consent and she'll get more powerful over time.</Line>
+				<Line Focus="Left">More powerful?</Line>
+				<Line Focus="Right">Only somewhat, she won't overpower us but enough to be helpful.</Line>
+				<Loop ID="Choices"/>
+			</Choice>			
+			<Choice Text="Save others?">
+				<Line Focus="Left">So can we save other people with the Sleep?</Line>
+				<Line Focus="Right">We could if we wanted, but I think it's better to not do too much. If we save too much, other succubi will be on guard and our job will be harder.</Line>
+				<Line Focus="Right">But if we keep them like this, nothing bad will happen to them anyway, as they need them alive to drain them.</Line>
+				<Line Focus="Left">I'm not really happy with that.</Line>
+				<Line Focus="Right">I doesn't mean we won't be able to save anyone. If there's someone you'd like to save in particular, there shouldn't be any problem.</Line>
+				<Loop ID="Choices"/>
+			</Choice>			
+			<Choice Text="Margaret?">
+				<Line Focus="Left">Who are you exactly?</Line>
+				<Line Focus="Right">I'm only a powerful succubus, I already told you my reasons for doing what I do and there isn't much more to say.</Line>
+				<Line Focus="Left">Why are you disguised as a human mage? And Doctor Warder knew you.</Line>
+				<Line Focus="Right">Quite perceptive. That's good. Any succubus can exist in the waking world if they wish to, and the human form is quite easy to do, you don't need much energy.</Line>
+				<Line Focus="Right">The reason I know Warder is because I'm working at the castle at the moment. As you probably know, the princess has caught the Blissful Sleep and I offered my help.</Line>
+				<Loop ID="Choices"/>
+			</Choice>			
+			<Choice Text="No more question"></Choice>
+		</Choices>
+		<Line Focus="Left">I don't have any more question, thank you.</Line>
+		<Line Focus="Right">Good. Now my plan for solving the situation. I need you to find who is giving this power to the succubi.</Line>
+		<Line Focus="Right">You will need to delve deeper in the dreams of the city to find more information. Since I will be doing the same, you won't be able to use my powers you'll need someone else's.</Line>
+		<Line Focus="Right">Luckily for us, we have a cute little maid available for you to use.</Line>
+		<Line Focus="Left">So I'll have to fight as her? Will she allow it?</Line>
+		<Line Focus="Right">I'll make sure of that. The only problem is that she's kind of weak, so you'll need to buff her up.</Line>
+		<Line Focus="Left">Will I have to train as her every night? It's a lot different to what I usually do.</Line>
+		<Line Focus="Right">Hahaha, no, there's no need to train. Her power will grow with her host's spirit. If the host becomes mentally stronger, so will she.</Line>
+		<Line Focus="Right">What you'll need to do is to spend time with your sister. Be supportive or show compassion and she will grow. Or you can be a jerk, if it's your style, but it's more of an all-or-nothing scenario.</Line>
+		<Line Focus="Right">She will be more affected by everything happening, so I'd suggest you to be careful. </Line>
+		<Line Focus="Right">Speaking of witch, the opposite is true. Even if I told you that training isn't needed, it's still helpful : if you are skilled and show strength, it will improve your sister's morale.</Line>
+		<Line Focus="Right">But if you lose and get dominated, it will degrade, so pay attention and don't hesitate to wake up if it becomes too dangerous.</Line>
+		<Line Focus="Left">That's quite a lot to take in...</Line>
+		<Line Focus="Right">If you want to help me, and you do, it's the basics you needed to know.</Line>
+		<Choices>
+			<Choice Text="Okay">
+				<Flag ID="Dominance" Value="-1"/>
+				<Line Focus="Left">Okay, I'll do my best.</Line>
+				<Line Focus="Right">Good pet.</Line>
+			</Choice>			
+			<Choice Text="And you?">
+				<Flag ID="Dominance" Value="1"/>
+				<Line Focus="Left">What about you? What will be your role in this?</Line>
+				<Line Focus="Right">I'll be investigating too, but mainly in the waking world. I try to make myself sparse in the dream world, since I'm in the minority now, I might be killed by any succubus with their hume.</Line>
+			</Choice>
+		</Choices>
+		<Line Focus="Left">What now?</Line>
+		<Line Focus="Right">Now, I'll go see if Warder has finished with your sister, make a few checks to see if she's alright and won't have any surprise from her time sleeping.</Line>
+		<Line Focus="Right">If you're willing to Dream Dive tonight, you can do a lot to prepare. You can spend time with your sister, but almost anything you do will impact what will happen. Just try and find out.</Line>
+		<Line>After she gave you all those instructions, she leaves the room. You spend some time wondering what to do with your day, outside of the rush hours at the inn, you are quite free to do as you will.</Line>
+	</DialogueData>
+</ArrayOfDialogueData>

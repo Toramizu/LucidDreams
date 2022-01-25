@@ -78,7 +78,7 @@ public class AssetDB
     }
 }
 
-public class XmlDB<T> where T : XmlAsset
+public class XmlDB<T> where T : class, XmlAsset
 {
     string classId;
     Dictionary<string, T> assets;
@@ -109,13 +109,13 @@ public class XmlDB<T> where T : XmlAsset
         this.classId = classId;
         assets = new Dictionary<string, T>();
     }
-    /*public XmlDB(string classId, List<T> assets)
+
+    public T GetNullableAsset(string id)
     {
-        this.classId = classId;
-        this.assets = new Dictionary<string, T>();
-        foreach (T asset in assets)
-            this.assets.Add(asset.ID, asset);
-    }*/
+        if (id == null || !assets.ContainsKey(id))
+            return null;
+        return assets[id];
+    }
 
     public bool ContainsID(string id)
     {

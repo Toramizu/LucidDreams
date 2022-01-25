@@ -8,8 +8,8 @@ public class DialogueLine : DialogueElement
 {
     [XmlText]
     public string Line { get; set; }
-    [XmlAttribute("Focus"), DefaultValue(SpeakerPos.NoChange)]
-    public SpeakerPos Focus { get; set; }
+    [XmlAttribute("Focus"), DefaultValue(SpeakerPos.None)]
+    public SpeakerPos Focus { get; set; } = SpeakerPos.None;
 
     public override bool Play(DialogueUI dialUI)
     {

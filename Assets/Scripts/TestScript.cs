@@ -34,13 +34,16 @@ public class TestScript : MonoBehaviour
 
     void Test1()
     {
-        AssetDB.Instance.Items.SaveToXml();
+        DialogueData d = AssetDB.Instance.Dialogues["Intro4"];
+        GameManager.Instance.StartDialogue(d, null);
+
         Debug.Log("Done");
     }
 
     void Test2()
     {
-        Debug.Log(AssetDB.Instance.Images.Count);
+        foreach (string s in Flags.Instance.Strings.Keys)
+            Debug.Log(s + " => " + Flags.Instance.Strings[s]);
     }
 
     void Test3()

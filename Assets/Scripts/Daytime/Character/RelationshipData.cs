@@ -9,6 +9,9 @@ public class RelationshipData
     [XmlAttribute("Name")]
     public string RelationName { get; set; }
 
+    [XmlAttribute("Type")]
+    public RelationType Type { get; set; }
+
     [XmlIgnore]
     public Sprite Icon { get { return AssetDB.Instance.Images[_Icon]; } }
     [XmlAttribute("Icon")]
@@ -22,4 +25,12 @@ public class RelationshipData
 
     [XmlAttribute("Description")]
     public string Description { get; set; }
+}
+
+public enum RelationType
+{
+    Friendship,
+    Love,
+    Loss,
+    Other,
 }

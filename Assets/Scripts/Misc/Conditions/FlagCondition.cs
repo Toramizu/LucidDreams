@@ -16,7 +16,7 @@ public class FlagCondition : Condition
     {
         get
         {
-            int f = GameManager.Instance.Flags.GetFlag(Flag);
+            int f = Flags.Instance.GetFlag(Flag);
             switch (Comparator)
             {
                 case Comparator.Equal:

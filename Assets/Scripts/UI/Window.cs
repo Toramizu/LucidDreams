@@ -5,12 +5,12 @@ using UnityEngine;
 public class Window : MonoBehaviour
 {
     protected CanvasGroup canvasGroup;
-    bool active;
+    public bool Active { get; set; }
 
     protected virtual void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-        active = false;
+        Active = false;
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
         canvasGroup.interactable = false;
@@ -64,7 +64,7 @@ public class Window : MonoBehaviour
 
     public virtual void FadeIn()
     {
-        active = true;
+        Active = true;
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
@@ -72,7 +72,7 @@ public class Window : MonoBehaviour
 
     public virtual void FadeOut()
     {
-        active = false;
+        Active = false;
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
         canvasGroup.interactable = false;
@@ -85,7 +85,7 @@ public class Window : MonoBehaviour
 
     public void Toggle()
     {
-        if (active)
+        if (Active)
             FadeOut();
         else
             FadeIn();

@@ -20,16 +20,16 @@ public class DialogueRoll : DialogueElement
     {
         string text = "";
         int total = 0;
-        if (FlagBonus != null && GameManager.Instance.Flags.HasFlag(FlagBonus))
+        if (FlagBonus != null && Flags.Instance.HasFlag(FlagBonus))
         {
-            int bonus = GameManager.Instance.Flags.GetFlag(FlagBonus);
+            int bonus = Flags.Instance.GetFlag(FlagBonus);
             total += bonus;
             text += "(" + bonus + ") + ";
         }
 
-        if (FlagMalus != null && GameManager.Instance.Flags.HasFlag(FlagMalus))
+        if (FlagMalus != null && Flags.Instance.HasFlag(FlagMalus))
         {
-            int bonus = GameManager.Instance.Flags.GetFlag(FlagMalus);
+            int bonus = Flags.Instance.GetFlag(FlagMalus);
             total -= bonus;
             text += "(" + -bonus + ") + ";
         }
@@ -81,5 +81,8 @@ public class RollValue
     [XmlElement("RelationBonus", typeof(RelationBonus))]
     [XmlElement("Loop", typeof(DialogueLoop))]
     [XmlElement("Flag", typeof(DialogueFlag))]
+    [XmlElement("End", typeof(DialogueEnd))]
+    [XmlElement("Next", typeof(DialogueNext))]
+    [XmlElement("Input", typeof(DialogueInput))]
     public List<DialogueElement> Elements { get; set; }
 }

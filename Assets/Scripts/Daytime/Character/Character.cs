@@ -9,7 +9,8 @@ public class Character : XmlAsset
     public string ID { get { return Data.ID; } }
     public CharacterData Data { get; set; }
 
-    public List<Relationship> Relationships { get; set; }
+    Dictionary<RelationType, Relationship> relationDict = new Dictionary<RelationType, Relationship>();
+    public List<Relationship> Relationships { get { return relationDict.Values.ToList(); } }
     List<int> relationPoints = new List<int>(3);
     List<int> relationStage = new List<int>(3);
     const int POINTS_PER_STAGE = 100;
@@ -26,9 +27,11 @@ public class Character : XmlAsset
     public Character(CharacterData data) {
         //TODO : Load saved characters
         this.Data = data;
-        Relationships = new List<Relationship>();
+        //Relationships = new List<Relationship>();
+        relationDict = new Dictionary<RelationType, Relationship>();
         foreach (RelationshipData rd in data.Relationships)
-            Relationships.Add(new Relationship(rd));
+            relationDict[rd.Type] = new Relationship(rd, ID);
+            //Relationships.Add(new Relationship(rd));
     }
 
     public void PlayDialogue(DialogueAction action)
@@ -58,37 +61,70 @@ public class Character : XmlAsset
         return null;
     }
 
-    public void IncreaseRelationship(int relation, int level)
+    public void IncreaseRelationship(RelationType relation, int level)
     {
-        if (Relationships.Count <= relation)
+        if(relationDict.ContainsKey(relation))
+            relationDict[relation].IncreaseRelationship(level);
+        else
+            GameManager.Instance.NotifyError("No relationship " + relation + " for " + Data.ID);
+
+        /*if (Relationships.Count <= relation)
         {
             GameManager.Instance.NotifyError("No relationship " + relation + " for " + Data.ID);
             return;
         }
 
-        Relationships[relation].IncreaseRelationship(level);
+        Relationships[relation].IncreaseRelationship(level);*/
     }
 
-    public void AddRelationPoints(int relation, int points, bool stageLimit)
+    public void AddRelationPoints(RelationType relation, int points, bool stageLimit)
     {
-        if (Relationships.Count <= relation)
+        if (relationDict.ContainsKey(relation))
+        {
+            relationDict[relation].AddPoints(points, stageLimit);
+
+            if (points > 0)
+                GameManager.Instance.Notify(Data.Name + " +" + points + " " + relationDict[relation].Name, Data.Color);
+            else if (points < 0)
+                GameManager.Instance.Notify(Data.Name + " " + points + " " + relationDict[relation].Name, Data.Color);
+        }
+        else
+            GameManager.Instance.NotifyError("No relationship " + relation + " for " + Data.ID);
+
+
+        /*if (Relationships.Count <= relation)
         {
             GameManager.Instance.NotifyError("No relationship " + relation + " for " + Data.ID);
             return;
         }
 
-        //Relationships[relation].Points += points;
         int i = Relationships[relation].AddPoints(points, stageLimit);
 
         if (points > 0)
             GameManager.Instance.Notify(Data.Name + " +" + points + " " + Relationships[relation].Name, Data.Color);
         else if (points < 0)
-            GameManager.Instance.Notify(Data.Name + " " + points + " " + Relationships[relation].Name, Data.Color);
+            GameManager.Instance.Notify(Data.Name + " " + points + " " + Relationships[relation].Name, Data.Color);*/
     }
 
     public void DailyChecks(int day)
     {
-        if(day > LastInteraction)
+        if (day > LastInteraction && relationDict.ContainsKey(RelationType.Friendship))
+        {
+            AddRelationPoints(RelationType.Friendship, LastInteraction - day, true);
+            if (relationDict.ContainsKey(RelationType.Love) && relationDict[RelationType.Love].Stage > relationDict[RelationType.Friendship].Stage)
+                AddRelationPoints(RelationType.Love, Variables.loveDecayRate, false);
+        }
+        
+        if(relationDict.ContainsKey(RelationType.Love) && relationDict.ContainsKey(RelationType.Loss))
+        {
+            if (relationDict[RelationType.Love].Stage > relationDict[RelationType.Loss].Stage)
+                AddRelationPoints(RelationType.Loss, Variables.lossDecayByLove, false);
+            else if (relationDict[RelationType.Love].Stage < relationDict[RelationType.Loss].Stage)
+                AddRelationPoints(RelationType.Love, Variables.loveDecayByLoss, false);
+        }
+
+        
+        /*if (day > LastInteraction)
         {
             AddRelationPoints(0, LastInteraction - day, true);
             if(Relationships.Count > 2 && Relationships[1].Stage > Relationships[0].Stage)
@@ -101,7 +137,7 @@ public class Character : XmlAsset
         if (Relationships[1].Stage > Relationships[2].Stage)
             AddRelationPoints(2, Variables.lossDecayByLove, false);
         else if (Relationships[1].Stage < Relationships[2].Stage)
-            AddRelationPoints(1, Variables.loveDecayByLoss, false);
+            AddRelationPoints(1, Variables.loveDecayByLoss, false);*/
     }
 }
 
