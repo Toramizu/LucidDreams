@@ -10,6 +10,7 @@ public class Succubus : ImageHaver
 {
     public SuccubusUI SuccubUI { get; set; }
     public override string Name { get { return Data.Name; } set { Data.Name = value; } }
+    public override ImageSet Images { get { return Data.Images; } set { Data.Images = value; } }
 
     int arousal;
     public int Arousal {
@@ -162,21 +163,21 @@ public class Succubus : ImageHaver
         Arousal += amount;
         if (Arousal < 0)
             Arousal = 0;
-        else if (Arousal > MaxArousal)
-            Arousal = MaxArousal;
+        /*else if (Arousal > MaxArousal)
+            Arousal = MaxArousal;*/
 
         if (SuccubUI != null)
         {
             SuccubUI.FillGauge(Arousal, MaxArousal);
-            GameManager.Instance.BattleManager.CheckBattleStatus();
+            GameManager.Instance.CheckBattleStatus();
         }
     }
 
     public int InflictDamageProportion(float proportion)
     {
         int amount = (int)(maxArousal * proportion);
-        if (amount < arousal)
-            amount = arousal;
+        /*if (amount < arousal)
+            amount = arousal;*/
 
         InflictDamage(amount);
 

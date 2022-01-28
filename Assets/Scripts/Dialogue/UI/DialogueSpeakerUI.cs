@@ -87,11 +87,18 @@ public class DialogueSpeakerUI : ImageUI
         if (speaker == null || (speaker.Speaker == null && speaker.Displayed == null && speaker.ImageID == null))
             Toggle(false);
 
-        if (speaker.Speaker != null && speaker.Speaker != "")
+         if (speaker.Speaker != null && speaker.Speaker != "")
         {
-            cData = AssetDB.Instance.CharacterDatas.GetNullableAsset(speaker.Speaker);
-            if(cData == null)
-                cData = AssetDB.Instance.Succubi.GetNullableAsset(speaker.Speaker);
+            if (speaker.Speaker == "S") //S = Succubus played currently
+            {
+                cData = GameManager.Instance.PlayerManager.Player;
+            }
+            else
+            {
+                cData = AssetDB.Instance.CharacterDatas.GetNullableAsset(speaker.Speaker);
+                if (cData == null)
+                    cData = AssetDB.Instance.Succubi.GetNullableAsset(speaker.Speaker);
+            }
 
             if(cData == null)
                 Text = GameManager.Instance.Parser.Parse(speaker.Speaker);

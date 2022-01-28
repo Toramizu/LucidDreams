@@ -10,7 +10,7 @@ public abstract class ImageHaver
     public abstract string Name { get; set; }
 
     [XmlElement("Images")]
-    public ImageSet Images { get; set; }
+    public virtual ImageSet Images { get; set; }
     [XmlIgnore]
     public ImageData Image { get { return Images.Default; } }
 }

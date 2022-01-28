@@ -53,6 +53,8 @@ public class SuccubusUI : MonoBehaviour
 
     public void FillGauge(int amount, int maxAmount)
     {
+        if (amount > maxAmount)
+            amount = maxAmount;
         gauge.Fill(amount, maxAmount);
     }
 
@@ -97,7 +99,7 @@ public class SuccubusUI : MonoBehaviour
 
     void PlaceNext()
     {
-        if (GameManager.Instance.BattleManager.CheckBattleStatus())
+        if (GameManager.Instance.CheckBattleStatus())
             return;
 
         if (slots.Count == 0)

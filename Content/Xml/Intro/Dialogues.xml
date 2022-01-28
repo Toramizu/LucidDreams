@@ -341,7 +341,7 @@
 			</Choice>
 		</Choices>
 		<Line>You can't control your dream anymore and you're starting to crawl towards her.</Line>
-		<Speaker Speaker="Margaret" Position="Left2" Image="Margaret_S"/>
+		<Speaker Speaker="Margaret" Position="Left2" Image="Demon"/>
 		<Line Focus="Left2">Stop that, now!</Line>
 		<Line>Another succubus arrives, and you are immobilized.</Line>
 		<Line Focus="Right">Hey, this one's mine, go find a prey elsewhere.</Line>
@@ -380,14 +380,14 @@
 			</If>
 		</Condition>
 		<Speaker Position="Left2"/>
-		<Speaker Speaker="Margaret" Position="Left"/>
+		<Speaker Speaker="Margaret" Position="Left2" Image="Demon"/>
 		<Line>You two are now one. You seem to have control of her body, but it still seems to have a memory of her abilities.</Line>
 		<Line Focus="Left">Now that I'm on your mind, you'll be able to use my powers to make her submit. Do your best, it shouldn't be hard.</Line>
 		<Battle Player="Margaret" Opponent="Maid" WinEvent="Intro5" LossEvent="Intro4b"/>
 	</DialogueData>
 	
 	<DialogueData ID="Intro4b">
-		<Speaker Speaker="Margaret" Position="Left"/>
+		<Speaker Speaker="Margaret" Position="Left2" Image="Demon"/>
 		<Speaker Speaker="Maid" Position="Right"/>
 		
 		<Line>A rope of cum escapes from your cock... or is it Margaret's?</Line>
@@ -408,7 +408,7 @@
 	</DialogueData>
 	
 	<DialogueData ID="Intro5">
-		<Speaker Speaker="Margaret" Position="Left"/>
+		<Speaker Speaker="Margaret" Position="Left2" Image="Demon"/>
 		<Speaker Speaker="Maid" Position="Right"/>
 		<Line Focus="Right">Mmmaaaahhhh...</Line>
 		<Line>She came intensely, spraying cum in a straight line in front of her.</Line>

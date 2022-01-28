@@ -12,18 +12,5 @@ public class SubTrait : Trait
 
         damages /= 2;
         current.Traits.AddTrait(this, -1);
-
-        /* Old Sub was acting like a shield
-         
-        if (stack >= damages)
-        {
-            current.Traits.AddTrait(this, -damages);
-            damages = 0;
-        }
-        else
-        {
-            damages -= stack;
-            current.Traits.RemoveTrait(this);
-        }*/
     }
 }

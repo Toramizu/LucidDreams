@@ -34,16 +34,18 @@ public class TestScript : MonoBehaviour
 
     void Test1()
     {
-        DialogueData d = AssetDB.Instance.Dialogues["Intro4"];
-        GameManager.Instance.StartDialogue(d, null);
-
-        Debug.Log("Done");
+        DialogueAddArousal da1 = new DialogueAddArousal();
+        da1.Amount = 20;
+        da1.Play(null);
+        GameManager.Instance.Notify("Done");
     }
 
     void Test2()
     {
-        foreach (string s in Flags.Instance.Strings.Keys)
-            Debug.Log(s + " => " + Flags.Instance.Strings[s]);
+        DialogueAddArousal2 da2 = new DialogueAddArousal2();
+        da2.Proportion = -.5f;
+        da2.Play(null);
+        GameManager.Instance.Notify("Done");
     }
 
     void Test3()

@@ -136,8 +136,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public bool CheckBattleStatus()
+    {
+        if (Status == GameStatus.Battle)
+            return battleManager.CheckBattleStatus();
+        return false;
+    }
+
     public void EndBattle(int crystals, AbilityData newAbility)
     {
+        Status = GameStatus.Dream;
         playerManager.Crystals += crystals;
         if(newAbility != null)
             playerManager.LearnAbility(newAbility, 0);

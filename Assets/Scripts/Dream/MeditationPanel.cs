@@ -17,17 +17,5 @@ public class MeditationPanel : Window
         base.FadeIn();
         DialogueData med = meditations[Random.Range(0, meditations.Count)];
         GameManager.Instance.StartDialogue(med, null);
-
-        /*if (CanMeditate)
-            quote.text = meditationQuotes[Random.Range(0, meditationQuotes.Count)];
-        else
-            quote.text = "You already took a rest here, it became too dangerous to rest again...";*/
-    }
-
-    public void Meditate()
-    {
-        if (CanMeditate)
-            GameManager.Instance.PlayerManager.Meditate();
-        FadeOut();
     }
 }

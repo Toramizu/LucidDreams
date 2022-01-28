@@ -88,8 +88,8 @@ public class Character : XmlAsset
             else if (points < 0)
                 GameManager.Instance.Notify(Data.Name + " " + points + " " + relationDict[relation].Name, Data.Color);
         }
-        else
-            GameManager.Instance.NotifyError("No relationship " + relation + " for " + Data.ID);
+        /*else
+            GameManager.Instance.NotifyError("No relationship " + relation + " for " + Data.ID);*/
 
 
         /*if (Relationships.Count <= relation)

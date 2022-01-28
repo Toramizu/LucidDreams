@@ -85,7 +85,7 @@ public class DieSlotUI : MonoBehaviour, IDropHandler
             RolledDieUI die = eventData.pointerDrag.GetComponent<RolledDieUI>();
             if (!die.Locked)
                 slot.OnDrop(die.Die);
-            GameManager.Instance.BattleManager.CheckBattleStatus();
+            GameManager.Instance.CheckBattleStatus();
             GameManager.Instance.Sound.PlaceDice();
         }
     }

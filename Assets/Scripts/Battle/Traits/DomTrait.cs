@@ -11,14 +11,6 @@ public class DomTrait : Trait
             return;
 
         damages *= 2;
-
-        /*Old Dom was acting like a 1 to 1 damage boost
-         
-    damages += stack;
-    }
-
-    public override void EndTurn(Succubus current, int stack)
-    {
-        current.Traits.RemoveTrait(this);*/
+        current.Traits.AddTrait(this, -1);
     }
 }

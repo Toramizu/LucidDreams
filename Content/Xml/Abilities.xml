@@ -112,7 +112,7 @@
   <AbilityData ID="Lust Spell" Uses="0" Price="5">
     <Description>Arouse for _Die/2 and gives 2 _Aro</Description>
     <Slots>
-      <EvenOdd isEven="false" />
+      <EvenOdd isEven="true" />
     </Slots>
     <Effects>
       <Damage Bonus="0" DiceMult="0.5" UsesCumulativeBonus="false" TargetsUser="false" />
@@ -166,21 +166,23 @@
     </Effects>
   </AbilityData>
   <AbilityData ID="Holy Water" Uses="0" Price="5">
-    <Description>Sprays Holy Water and 2 _Sti</Description>
+    <Description>Sprays Holy Water for 5 arousal and 2 _Sti</Description>
     <Slots>
       <Equals Value="1" />
     </Slots>
     <Effects>
+      <Damage Bonus="5" DiceMult="0" UsesCumulativeBonus="false" TargetsUser="false" />
       <Trait Bonus="2" UsesCumulativeBonus="false" TargetsUser="false" Trait="Sticky" />
     </Effects>
   </AbilityData>
   <AbilityData ID="Pray" Uses="0" Price="5">
-    <Description>Submit for _Die _Sub</Description>
+    <Description>Submit to them for 2 _Sub and _++ Damage. Improves each use.</Description>
     <Slots>
       <EvenOdd isEven="true" />
     </Slots>
     <Effects>
       <Trait Bonus="0" DiceMult="1" UsesCumulativeBonus="false" TargetsUser="true" Trait="Sub" />
+      <Damage Bonus="0" UsesCumulativeBonus="true" TargetsUser="false" />
     </Effects>
   </AbilityData>
   <AbilityData ID="Big Guns" Uses="0" Total="15" Price="5">

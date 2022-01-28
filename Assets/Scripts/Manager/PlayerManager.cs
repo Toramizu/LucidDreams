@@ -65,12 +65,6 @@ public class PlayerManager : MonoBehaviour
         abilities.Add(data);
     }
 
-    public void Meditate()
-    {
-        PlayerSuccubus.Arousal = 0;
-        UpdateGauge();
-    }
-
     public void ReduceArousal(int amount, int cost)
     {
         Crystals -= cost;
@@ -80,7 +74,9 @@ public class PlayerManager : MonoBehaviour
 
     public int InflictDamageProportion(float proportion)
     {
-        return PlayerSuccubus.InflictDamageProportion(proportion);
+        int dmg = PlayerSuccubus.InflictDamageProportion(proportion);
+        UpdateGauge();
+        return dmg;
     }
 
     public void IncreaseMaxArousal(int amount, int cost)

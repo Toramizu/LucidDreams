@@ -13,7 +13,23 @@ public class DialogueAddArousal : DialogueElement
 
     public override bool Play(DialogueUI dialUI)
     {
-        switch (GameManager.Instance.Status)
+        if (!ToOpponent)
+        {
+            GameManager.Instance.PlayerManager.ReduceArousal(-Amount, 0);
+            if (Amount >= 0)
+                GameManager.Instance.Notify("Gained " + Amount + " arousal");
+            else
+                GameManager.Instance.Notify("Lost " + -Amount + " arousal");
+        }
+        else if (GameManager.Instance.Status == GameStatus.Battle)
+        {
+            GameManager.Instance.BattleManager.Opponent.InflictDamage(Amount);
+            if (Amount >= 0)
+                GameManager.Instance.Notify("Opponent gained " + Amount + " arousal");
+            else
+                GameManager.Instance.Notify("Opponent lost " + -Amount + " arousal");
+        }
+        /*switch (GameManager.Instance.Status)
         {
             case GameStatus.Battle:
                 if (ToOpponent)
@@ -41,7 +57,7 @@ public class DialogueAddArousal : DialogueElement
                 else
                     GameManager.Instance.Notify("Lost " + -Amount + " arousal");
                 break;
-        }
+        }*/
         return true;
     }
 }

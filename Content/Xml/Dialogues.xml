@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfDialogueData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <DialogueData ID="M_Bed">
+	<Speaker Speaker="S" Position="Left"/>	
     <Line Focus="Left">You enter a gigantic bedroom and see a bed in it's centre. The figure sleeping inside waves at you to join her.</Line>
     <Choices Title="Do you join her?">
       <Choice Text="Have a nap">
@@ -34,6 +35,7 @@
     </Choices>
   </DialogueData>
   <DialogueData ID="M_Park">
+	<Speaker Speaker="S" Position="Left"/>	
     <Line Focus="Left">You enter the city park. The weather is nice, warm with a light wind, and no one else is here. It's the perfect time to meditate and calm yourself down.</Line>
     <Choices Title="Meditate in the park?">
       <Choice Text="Meditate">

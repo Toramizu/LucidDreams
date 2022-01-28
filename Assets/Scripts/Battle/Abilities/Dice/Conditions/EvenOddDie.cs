@@ -23,7 +23,7 @@ public class EvenOddDie : DiceCondition
 
     public override bool Check(int die)
     {
-        return base.Check(die) && (((die % 2 == 0) != Even) || die == 0);
+        return base.Check(die) && (((die % 2 == 0) == Even) || die == 0);
     }
 
     public override string ConditionText()
