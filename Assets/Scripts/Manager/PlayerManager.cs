@@ -26,6 +26,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] TMP_Text crystalsText;
     [SerializeField] SimpleGauge dreamGauge;
     [SerializeField] TMP_Text diceText;
+    [SerializeField] TMP_Text luckText;
 
     List<AbilityData> abilities;
     public List<AbilityData> Abilities {
@@ -45,7 +46,8 @@ public class PlayerManager : MonoBehaviour
         PlayerSuccubus.LoadCharacter(data);
         Abilities = data.Abilities;
         //EquipedAbilities = data.Abilities;
-        diceText.text = data.Dice.ToString();
+        diceText.text = PlayerSuccubus.Rolls.ToString();
+        luckText.text = PlayerSuccubus.Luck.ToString();
         UpdateGauge();
     }
 
@@ -54,7 +56,8 @@ public class PlayerManager : MonoBehaviour
         SuccubusData data = stats.Succubus;
         PlayerSuccubus.LoadCharacter(stats);
         Abilities = data.Abilities;
-        diceText.text = data.Dice.ToString();
+        diceText.text = PlayerSuccubus.Rolls.ToString();
+        luckText.text = PlayerSuccubus.Luck.ToString();
         UpdateGauge();
     }
 

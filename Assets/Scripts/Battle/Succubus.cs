@@ -46,8 +46,9 @@ public class Succubus : ImageHaver
     //[SerializeField] Transform abilityPanel;
     //[SerializeField] List<Ability> Abilities = new List<Ability>();
     public List<Ability> Abilities { get; set; } = new List<Ability>();
-        //{ get { return Abilities; } }
+    //{ get { return Abilities; } }
     public int Rolls { get; set; }
+    public int Luck { get; set; }
 
     //[SerializeField] DiceHolder dice;
     public DiceHolder Dice { get; private set; }
@@ -89,7 +90,8 @@ public class Succubus : ImageHaver
 
         traits.Clear();
 
-        Rolls = data.Dice;
+        Rolls = stats.Dice;
+        Luck = stats.Luck;
         LoadAbilities(data.Abilities);
     }
 

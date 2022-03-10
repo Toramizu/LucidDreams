@@ -1,0 +1,100 @@
+Inn, Mel_Love > 0
+- MC
+$ Elf Patron
+µ High elf
+
+Today, you decided to think about how to ask Melody out. You know that elves have customs for this but can't remember the specifics.
+LOOP
+--> Ask a street elf patron
+	You remember that a street elf is living here at the moment. You know they are pretty lax with traditions because they are a traveller, but you think they should still be of help.
+	$ Oh, you're in love with an elf? I can help you, I had a human wife before. She's the reason I'm a wonderer nowadays.
+	--> What happened?
+		- What happened? It didn't work out?
+		$ It did, but I had to leave my family to be with her. It was a long time ago and they didn't approve, so I wasn't welcome there.
+		$ Luckily, our daughter was welcomed, but I'd feel guilty going back there after the way I left.
+	--> Don't pry
+	$ If you want to have a big impact, you should offer her something that will last. My wife offered me this bracelet, and it held through the years since her death.
+	$ The biggest thing you have to keep in mind is that she will outlive you. I don't know her, but if you two are like us, she'll have a hard time loving anyone else after you, leaving her alone for long years.
+	$ But don't let that hold you back, those were the best years of my life, and I still have our daughter.
+	- Thank you, it was quite helpful. I'll keep that in mind.
+	$ No problem. And don't think too much about all I said, I'm just an old widow talking about her older days.
+	LOOPTO
+--> Find a high elf
+	There is a high elf renting one of the annexes of the inn. She is a noble from an elven city, but had to stay since the erection of the barrier.
+	She agrees to hear you out, but as you explain the situation to her, you can see that she isn't entirely comfortable with it.
+	µ Hmm, I understand your situation. Would you happen to know the gender of that elf?
+	- Yes, she's female.
+	µ That makes it harder for you. Street elves like her aren't as strict with courtship as we are, but you still should try to get the approval of her family.
+	--> She can make her own choices
+		+Dom
+		- She's an adult, she can make her own choices for herself.
+		µ Please, you are asking for my opinion because I am an elf, like her. Your lives are shorter than ours, so you can be more independent, but we live fore centuries, good relations and reputations are important.
+		µ Showing respect to your fellow elves is the most important thing, we live for long and aren't numerous so if we want to live with our pairs, we need to be careful of how we treat them.		
+	--> Agree
+		-Dom
+		- Yes, it's a good idea.
+	µ But with the current problems, you will not be able to. I would suggest waiting for passage to be allowed, but we don't know how long we have until they will.
+	- I'm not that patient.
+	µ Then you should ask her about it. She knows them better than I and should know their opinion on the subject.
+	µ Usually, when you ask the permission from her parents, they should give you a task to accomplish. The more they approve of you, the easier the task.
+	µ Unfortunately, that will be impossible, but in that case, you should pick the task yourself. The harder it is, the more it shows your interest in her.
+	µ From what you told me about you two, you wouldn't need to do the impossible. You two get along and you are a good adventurer and it would be undervaluing yourself to do too much.
+	- All that is a bit confusing.
+	µ I know, and I'm sorry. I don't know enough about her or her family to be more precise. It's the customs we live by, and it works for us, but as I said elves and humans are quite different.
+	µ I'd suggest you to look into the story of Selene and Lune, it would show that you are ready to make efforts for her.
+	- Well, thank you for your time. I will take time to think about what we talked about.
+	µ You're welcome. And good luck to you.
+	LOOPTO
+--> Go to the library
+	You spend some time reading about classical elven love stories. You are quite surprised by how few they are compared to human ones, and most of them are written by humans without really taking elven customs into account.
+	But in that lot, two of them spark your interest.
+	--> Elven moon lovers
+		The first story is an old elven tale, old even by elven standards. You knew about the story, but didn't really have all the details.
+		In that tale, the young elf Selene is in love with Lune. But her love was frowned upon, Lune was one of the oldest elves, and barely talked to the others.
+		She spent all her time looking at the sky. Living only during the night, everyone said she fell in love with the moon.
+		At first, Selene was discouraged and lonely, but quickly found herself staring at the stars too. She then understood : the moon was a comforting presence in the sky.
+		The moon isn't always there, she wonders at her own rhythm and lives her own life, but she comes back every month. Even when feeling alone, she was there to cheer you up in the middle of the night.
+		Selene knew Lune's feelings, and to show her she hunted for a particular gem. She wanted a moonstone, that she fitted as an amulet, and gave it to Lune.
+		And she was right, Lune felt alone in the elven town. As the eldest, she didn't really fit with younger generations and decided to stand aside to alleviate her pain.
+		The two of them lived together during the nights and are rumored to have had a daughter who discovered moon magic.
+	--> Elven maid and human princess
+		The second story is more modern and is closer to your case. It tells the story of a young elf employed as a maid to a human queen.
+		She was abandoned as a child, but was found by the queen and her head maid. She was raised and, when given the choice, decided to repay her debt by becoming a maid too.
+		After the queen gave birth to a daughter, the maid was to take care of the young princess.
+		She took care of the princess like she was her own child. She had always dreamt of having a family of her own, but never had the chance.
+		As the years passed, the princess seemed to show affection to the maid until one day, when she asked to marry her.
+		She was still a child, so the maid told her that she had to wait to be an adult and, if she was still willing, she would consider it.
+		For a long time, the princess didn't seem to change her mind. But the year before her adulthood, the princess slowly distanced herself.
+		As she became an adult, she married a noble from a prestigious family. The maid didn't say anything, she started loving the princess, but it was not her place to tell her.
+		The princess and her wife were happy. The maid stayed with the princess, who soon become queen when her mother became too ill to rule.
+		But her wife didn't like her, saying that she loved the new queen. When confronted, the maid couldn't deny it.
+		The noble's family was too powerful and the queen had no choice but to fire her.
+		Without any other skill, the maid was afraid of what she would become. That's when the old queen chose her to take care of her during her illness.
+		She told her that years ago, the princess asked her to marry the maid, but the queen forbade it.
+		The following years were hard. The maid went trough the motions without much joy and the old queen's health was quickly degrading.
+		The royal couple was having problems too, the queen's wife was suspected of cheating and the queen wasn't doing anything about it.
+		One evening, the old queen gave the maid a small wooden ring. "Give it to my daughter, and tell her I am sorry and that I was wrong about her marriage. Tell her to do as she please."
+		She died during the night.
+		After giving her time to grieve, the maid relayed the old queen's message with her ring. The following day, the royal divorce happened.
+		The noble's family didn't say anything after the rumors of cheating were proven true, and the people were happy for the new couple.
+		The wooden ring became the symbol of their marriage.
+	LOOPTO
+--> Don't bother with a gift
+	+Dom
+	FLAG Mel_Gift = 0
+	You decide that you don't need a gift, it should be alright without it.
+--> Find a gift
+	You have decided on your gift :
+	--> An elven necklace
+		FLAG Mel_Gift = 1
+		A necklace directly imported from the elven lands. It has strange patterns woven into its silver.
+	--> A wooden ring
+		FLAG Mel_Gift = 2
+		A simple wooden ring with a simple engraving.
+	--> A moonstone amulet
+		FLAG Mel_Gift = 3
+		A silvery white gemstone set in a silver amulet.
+	--> A diamond ring
+		FLAG Mel_Gift = 4
+		An small golden ring with a beautiful diamond.
+	You leave the shop with your gift wrapped and a little anxious about what's next.

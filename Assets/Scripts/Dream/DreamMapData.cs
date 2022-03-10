@@ -46,7 +46,7 @@ public class DreamNodeData
     public NodeContent Content { get; set; }
 
     [XmlElement("Link")]
-    public List<int> NodeLinks { get; set; }
+    public List<int> NodeLinks { get; set; } = new List<int>();
 
     public DreamNodeData() { }
     public DreamNodeData(NodeContent content, Vector3 position)

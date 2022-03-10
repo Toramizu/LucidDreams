@@ -25,6 +25,8 @@ public class SuccubusData : ImageHaver, XmlAsset
 
     [XmlAttribute("Dice")]
     public int Dice { get; set; }
+    [XmlAttribute("Luck")]
+    public int Luck { get; set; }
     [XmlAttribute("MaxArousal")]
     public int MaxArousal { get; set; }
 

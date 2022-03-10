@@ -42,9 +42,9 @@ After a few minutes of observation, you get moving, not wanting to look like a c
 - Of course, it's kinda my job, now. I'm a teacher... well more of a babysitter for twenty kids, but I try to make them learn stuff, too.
 -- I... didn't know. You weren't when I was at that age, though.
 - Yeah, I was doing odd jobs around. I was still new to the city at that time, but when I decided to stay here, I had to find a real job.
--- I remember, when I saw you the first time, I asked why you came here. You said "I'm looking for a boyfriend!".
+-- I remember, when I saw you the first time, I asked why you came here. You said "I'm looking for a girlfriend!".
 She blushed immediately and you laughed a bit.
-- Don't mock me, you're the one who answered "I'm half-boy, cant I be your boyfriend?"
+- Don't mock me, you're the one who answered "CantI be your girlfriend?"
 You don't remember that, but it doesn't sound too far fetched for kid-_MC to say that.
 --> Own up to it
 	-- I probably said something like that, I used to have a crush on you as a child.
@@ -52,12 +52,12 @@ You don't remember that, but it doesn't sound too far fetched for kid-_MC to say
 	- Only as a child?
 	- I'm kidding, I'm kidding.
 --> Dismiss it
-	-- I was only a child, I didn't know the difference between friend and boyfriend.
+	-- I was only a child, I didn't know the difference between friend and girlfriend.
 	- Boo, way to ruin the fun.
 --> Deny it
 	-- Hey, you invented that.
 	- Maybe, or you purposefully forgot.
-- But yes, at that time, I came here to find and elf boyfriend... or half-boyfriend, I'm not that picky. But it was... another time...
+- But yes, at that time, I came here to find and elf girlfriend, I'm not that picky. But it was... another time...
 When you were young, it was shunned for elves to be in a couple with another race. Elves are special, they don't age and have a high mastery of magic, but half-elves often don't have those characteristics.
 To keep that heritage safe, the elven casts were in place. A high elf is the "purest" elf, with almost all elven traits. Under them came the street elves, most of them ageless but often lacking magic power, lower night vision or other things.
 Then, come the half-elves, before known as "Bastard-elves". They present other races characteristics, but do age, often more slowly than human or even dwarves, but do grow old after centuries.

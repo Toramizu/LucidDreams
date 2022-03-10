@@ -1,64 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfDreamMapData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <DreamMapData ID="DreamMap1">
-    <Node X="0" Y="0" Content="None">
+    <Node X="-10" Y="1" Content="None">
       <Link>0</Link>
       <Link>1</Link>
       <Link>2</Link>
       <Link>3</Link>
     </Node>
-    <Node X="0" Y="-300" Content="Start">
+    <Node X="-10" Y="-349" Content="Start">
       <Link>0</Link>
     </Node>
-    <Node X="250" Y="50" Content="Succubus">
+    <Node X="290" Y="101" Content="Succubus">
       <Link>4</Link>
       <Link>2</Link>
     </Node>
-    <Node X="-250" Y="50" Content="Succubus">
+    <Node X="-310" Y="101" Content="Succubus">
       <Link>1</Link>
       <Link>5</Link>
     </Node>
-    <Node X="350" Y="250" Content="Exit">
+    <Node X="390" Y="301" Content="Exit">
       <Link>4</Link>
     </Node>
-    <Node X="0" Y="250" Content="Shop">
+    <Node X="-10" Y="301" Content="Shop">
       <Link>3</Link>
     </Node>
-    <Node X="-350" Y="250" Content="Meditation">
+    <Node X="-410" Y="301" Content="Meditation">
       <Link>5</Link>
     </Node>
   </DreamMapData>
   <DreamMapData ID="DreamMap2">
-    <Node X="450" Y="-100" Content="Exit">
+    <Node X="540" Y="-299" Content="Exit">
       <Link>0</Link>
     </Node>
-    <Node X="0" Y="150" Content="Succubus">
+    <Node X="-10" Y="201" Content="Succubus">
       <Link>1</Link>
       <Link>2</Link>
       <Link>3</Link>
     </Node>
-    <Node X="250" Y="100" Content="Boss">
+    <Node X="540" Y="101" Content="Boss">
       <Link>3</Link>
       <Link>4</Link>
       <Link>0</Link>
     </Node>
-    <Node X="-250" Y="100" Content="None">
+    <Node X="-560" Y="101" Content="None">
       <Link>5</Link>
       <Link>1</Link>
       <Link>6</Link>
     </Node>
-    <Node X="-400" Y="-100" Content="Start">
+    <Node X="-560" Y="-299" Content="Start">
       <Link>5</Link>
     </Node>
-    <Node X="0" Y="0" Content="Succubus">
+    <Node X="-10" Y="1" Content="Succubus">
       <Link>6</Link>
       <Link>4</Link>
       <Link>7</Link>
     </Node>
-    <Node X="0" Y="250" Content="Shop">
+    <Node X="-10" Y="351" Content="Shop">
       <Link>2</Link>
     </Node>
-    <Node X="0" Y="-100" Content="Meditation">
+    <Node X="-10" Y="-149" Content="Meditation">
       <Link>7</Link>
     </Node>
   </DreamMapData>

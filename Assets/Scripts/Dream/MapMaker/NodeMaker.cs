@@ -50,7 +50,7 @@ public class NodeMaker : DreamNode, IBeginDragHandler, IDragHandler, IEndDragHan
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.position = RoundPosition(transform.position);
+        transform.localPosition = RoundPosition(transform.localPosition);
 
         held = false;
         canvasGroup.blocksRaycasts = true;

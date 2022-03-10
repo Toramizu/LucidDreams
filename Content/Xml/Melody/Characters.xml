@@ -2,9 +2,10 @@
 <ArrayOfCharacterData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<CharacterData ID="ChildhoodFriend" DisplayName="Melody" Icon="ChildhoodFriend_T" Succubus="Holy">
 		<Images>
-			<Image ID="" ImageID="ChildhoodFriend" Source="https://kisekaejade.com/"/>
+			  <Image ID="" ImageID="Melody"/>
+			  <Image ID="Naked" ImageID="Melody_N"/>
 		</Images>
-		<Background>She used to babysit you when you were a child. As she's an elf, she is still as young as she was back then.</Background>
+		<Background>Melody used to babysit you when you were a child. As she's an elf, she is still as young as she was back then.</Background>
 		<!--<Event Dialogue="CF_Intro"/>-->
 		<Unlock>
 			<IfFlag Flag="CF_Unlocked" Comparator="BiggerOrEqual" Value="1" />

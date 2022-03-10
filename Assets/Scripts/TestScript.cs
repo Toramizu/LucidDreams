@@ -23,11 +23,12 @@ public class TestScript : MonoBehaviour
                 Test7();
             if (Input.GetKeyDown(KeyCode.F8))
                 Test8();
-        
 
-            if (Input.GetKeyDown(KeyCode.F9))
-                Test9();
+
         }
+
+        if (Input.GetKeyDown(KeyCode.F9))
+            Test9();
         if (Input.GetKeyDown(KeyCode.F12))
                 Test12();
     }

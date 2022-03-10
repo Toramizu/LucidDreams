@@ -4,12 +4,17 @@ Better dreams
 Events between dreams (specific to dream or general)
 
 Dialogue
-	Loopable choices (eliminate chosen options + end choice)
+	Tmp variables
+	Loopable choices (with end)
 	Advance time
 	Redo Speaker & positions
-	Add \t or spaces to start of line
+	Dom/Sub gain (notify)
 	
+Relationship Buffs :
+	- Friendship => Luck
+	- Love => Max arousal
+	- Loss => Dice & skills
+
 Big nexts :
 Inventory & Items
 	Gifts, Consumables
-Save & Load
