@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] string defaultDream;
     [SerializeField] Window introWindow;
 
+    [SerializeField] Window mapCreator;
+
     public GameStatus Status { get; private set; }
     public int Time { get { return dayManager.Time; } }
 
@@ -190,6 +192,12 @@ public class GameManager : MonoBehaviour
     {
         text = parser.Parse(text);
         notifs.Notify(text, color);
+    }
+
+    public void OpenMapCreator()
+    {
+        introWindow.FadeOut();
+        mapCreator.FadeIn();
     }
 }
 

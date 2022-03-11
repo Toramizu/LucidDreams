@@ -185,6 +185,8 @@ public class NightStat
     public SuccubusData Succubus { get { return Character.Data.Succubus; } }
     public int ArousalBonus { get; set; }
     public float ArousalMod { get; set; }
+    public int Dice { get; set; }
+    public int Luck { get; set; }
 
     public int FinalArousal
     {
@@ -202,8 +204,22 @@ public class NightStat
 
     public void Reset()
     {
-        ArousalBonus = 0;
-        ArousalMod = 1f;
+        if (Character == null)
+        {
+            ArousalBonus = 0;
+            ArousalMod = 1f;
+
+            Dice = 0;
+            Luck = 0;
+        }
+        else
+        {
+            ArousalBonus = 0;
+            ArousalMod = 1f + (Character.Relationships[1].Stage / 10f);
+
+            Dice = (int)(Succubus.Dice * Character.Relationships[2].Stage / 10f);
+            Luck = Character.Relationships[0].Stage;
+        }
 
         RelationBonus = new List<int>() { 0, 0, 0 };
         RelationMod = new List<float>() { 1f, 1f, 1f };
@@ -219,6 +235,8 @@ public class NightStat
             RelationBonus[i] += other.RelationBonus[i];
             RelationMod[i] *= other.RelationMod[i];
         }
+
+        Luck += other.Luck;
     }
 
     public int GetRelationValue(int relation, int value)
@@ -253,7 +271,8 @@ public class NightStat
             txt.Append(")");
         }
 
-        txt.Append("\nDice : ").Append(sData.Dice);
+        txt.Append("\nDice : ").Append(sData.Dice + " + " + Dice);
+        txt.Append("\nLuck : ").Append(sData.Luck + " + " + Luck);
 
         if (RelationBonus[0] != 0 || RelationMod[0] != 1f)
         {

@@ -1,0 +1,65 @@
+Park, Fr 5+
+- MC
+-- Melody
+$ Sarah
+µ Kim
+
+You were going to take a breather in the city park when you saw Melody watching over Sarah and another kid practicing magic.
+She waves at you to come over.
+-- Hey, _FirstName!
+- Hello Mel', hi Sarah.
+She doesn't answer, her eyes fixed on a glass of water.
+-- She is training her ice magic. She was a bit sad that they didn't teach ice cream magic, but she's working hard anyway.
+-- And this is Kim, she's a bit older and is the one training her.
+µ Hello.
+Unlike Sarah, Kim looks like a half-elf. They aren't very common and children are ever rarer.
+- Hello Kim, I'm _FirstName, an old friend of Melody.
+µ Do you know any magic, miss _FirstName?
+- Only a few easy ones, I stopped practicing after school.
+µ Oh, too bad.
+-- Kim is quite good, she can freeze a whole bottle of water in a few seconds. 
+Indeed, it's better than you could do right now.
+µ But you still beat me, miss Melody.
+-- Well, I'm older.
+--> You beat me
+	-Dom
+	- You're both better than me, I couldn't keep a whole bottle frozen anyway.
+	-- That's mainly because you don't practice. It's just like your bow, you have to do it frequently to get better at it.
+	µ And you're human.
+	-- Kim!
+	µ But it's true, elves are better at magic, even half-elves like me.
+	-- Still, that's not a good way of saying it.
+	Kim grumbles a bit.
+--> Change subject
+- So, how is it going, Sarah?
+She keeps both her hands above the glass, focusing her magic into it. You can see frost forming on the top.
+$ It's hard.
+- But you're doing a good job, continue like that.
+-- Yes, you're learning quickly.
+She smiles but doesn't look away from her glass.
+During that time, you can see that Kim has started to pour water on her hand and freeze it as it flows.
+-- What are you doing, Kim?
+µ An ice sculpture.
+You can see a bit of ice forming around her fingers. It expands quite fast, forming a shape made of ice.
+After a minute, you can see an icy hart in her hands.
+µ Done. What do you think, miss Melody?
+-- Oh, it's cute.
+µ I made it for you.
+Ah, you can see the young half-elf seems to have a crush on Melody.
+-- Thank you.
+Melody seems to realise it too, but does her best to not react.
+You stifle a laugh, but think better of it since you were in Kim's place at her age.
+- I'm going to leave you to your training, they will soon need me back at the inn.
+-- Okay, see you next time _FirstName.
+µ Goodbye miss.
+Sarah doesn't answer, still focused on her task.
+
+During the way back, you are wondering about your feelings about Melody. Seeing Kim reminded you on how you felt as a child.
+But now, you could try your luck. It might be a little awkward at the start, but more biracial couples are forming those days, so it shouldn't be too big of a problem.
+The question is : do you really see the two of you becoming a couple?
+--> Not for now
+	You're not certain. You don't see her the same was as before, and you have other problems right now.
+	You could always ask her out later.
+--> Ask her out
+	FLAG Mel_Love = 1
+	That would be like realising a childhood dream. You'll have to do it the right way, though, she's still an elf.

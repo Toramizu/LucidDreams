@@ -65,6 +65,8 @@ public class Window : MonoBehaviour
     public virtual void FadeIn()
     {
         Active = true;
+        if (canvasGroup == null)
+            Debug.Log("?");
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;

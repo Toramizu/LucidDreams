@@ -1,0 +1,60 @@
+Park
+- MC
+-- Melody
+
+You asked Melody to meet you in the park. You thought it was the best place to ask her out since she feels at ease here and there shouldn't be too many people.
+When you see her coming, you know that could change a lot between the two of you.
+It's your last chance to back out...
+--> There is always next time...
+	FLAG Mel_Love = 0
+	-- Hey, _FirstName. Why did you call me here?
+	- No particular reason, I had some free time and wanted to spend it with you.
+	She looks at you a bit too long before answering.
+	+50 Loss
+	-- It's usually me who come and find you, it's nice it is the other way around for once.
+	+20 Friendship 
+	The two of you spend a few hours in the park. She seemed oblivious to your previous intentions, but with her, you're never certain.
+--> Take a deep breath
+	You take a deep breath, keep it inside your lungs for a few seconds before exhaling.
+	-- Hey, _FirstName. Why did you call me here?
+	IF Mel_Gift > 0
+		You take the wrapped box from your pocket and offer it to her.
+		-- Oh, a gift from _FirstName. What is it?
+		She quickly unwraps it.
+		SWITCH Mel_Gift
+		CASE 1
+			-- Hey, it's one of those necklaces they sell in souvenir shops back home. What's the occasion?
+			Well that wasn't quite the reaction you expected. Still, you can't stop now.
+		CASE 2
+			FLAG Mel_Love = 2
+			-- A wooden ring? It reminds me of the story of the maid and the princess. Wait...
+		CASE 3
+			FLAG Mel_Love = 2
+			-- Moonstone! Just like the old legend. Are you...
+		CASE 4
+			FLAG Mel_Love = 2
+			+50 Love
+			-- A diamond on a ring? Are you proposing to me?
+	IF Dom > 0
+		- Mel, I want you to be my girlfriend.
+		+10 Loss
+	ELSE
+		- Mel, will you be my girlfriend?
+		+10 Love
+	IF Mel_Love = 1
+		-- _FirstName... it's a hard question...
+		-- I've known you since you were a kid, and I'm an elf, people will talk...
+		--> Give me a chance
+			-Dom
+			- Just give me a chance. We'll se what comes of it, and if it doesn't work, I won't stop being your friend.
+		--> Let them talk
+			+Dom
+			- Just let them talk. It's not about people, it's about the two of us.
+		She takes a few seconds to think about it. At least she is smiling.
+		-- Okay, let's try. I did say I came here to find a girlfriend.
+	ELSE
+		+50 Loss
+		-- Yes, _FirstName, I will.
+		She leans towards you and grabs you in a tight hug, which you quickly reciprocate.
+	Right after that, the two of you kiss. You hear the cheer of some passers-by.
+	You spend the next few hours together, and Melody seems to enjoy holding your hand and hugging you.

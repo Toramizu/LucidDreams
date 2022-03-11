@@ -204,8 +204,7 @@ public class MapMaker : MonoBehaviour, GridManager
     {
         Debug.Log("Saving " + mapName.text);
 
-        DreamMapData data = new DreamMapData();// (DreamMapData)ScriptableObject.CreateInstance("DreamMapData");
-        //DreamMapData data = new DreamMapData();
+        DreamMapData data = new DreamMapData();
         data.ID = mapName.text;
         data.Nodes = new List<DreamNodeData>();
 
@@ -223,8 +222,6 @@ public class MapMaker : MonoBehaviour, GridManager
 
         AssetDB.Instance.DreamMaps.Add(data);
         AssetDB.Instance.DreamMaps.SaveToXml();
-        //AssetDatabase.CreateAsset(data, "Assets/Data/Dream/Maps/" + data.ID + ".asset");
-        //AssetDatabase.SaveAssets();
     }
 
     public void Load()

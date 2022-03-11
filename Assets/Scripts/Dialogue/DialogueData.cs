@@ -26,5 +26,6 @@ public class DialogueData : XmlAsset
     [XmlElement("End", typeof(DialogueEnd))]
     [XmlElement("Next", typeof(DialogueNext))]
     [XmlElement("Input", typeof(DialogueInput))]
+    [XmlElement("Dom", typeof(DialogueDom))]
     public List<DialogueElement> Elements { get; set; }
 }

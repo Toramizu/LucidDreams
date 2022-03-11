@@ -19,12 +19,19 @@ public class ImageUI : MonoBehaviour
         this.data = data;
 
         if (data == null || data.Image == null)
-            image.sprite = defaultImage;
+        {
+            image.gameObject.SetActive(false);
+            //image.sprite = defaultImage;
+        }
         else
+        {
+            image.gameObject.SetActive(true);
             image.sprite = data.Image;
-
-        if(data != null)
             borrowed.gameObject.SetActive(data.Source != null && data.Source != "");
+        }
+
+        /*if(data != null)
+            borrowed.gameObject.SetActive(data.Source != null && data.Source != "");*/
     }
 
     public void OpenBorrowed()

@@ -44,21 +44,33 @@
     </Relationship>
     <Color R="0" G="255" B="255" />
   </CharacterData>-->
-  <CharacterData ID="BigSis" DisplayName="Big Sis" Icon="BS_T" Succubus="Maid">
+  <CharacterData ID="BigSis" DisplayName="Evelyn" Icon="BS_T" Succubus="Maid">
     <Images>
       <Image ID="" ImageID="BigSis" Source="https://kisekaejade.com/" />
     </Images>
-	
+	<Background>Evelyn is a gloomy girl who doesn't show her emotions. She doesn't seem to have any drive and only does what your parents ask her.</Background>
+	<Relationship Type="Friendship" Name="Big Sister" Icon="Heart_Full"
+		Description="Your sister is a strange and reclusive girl, but you know that's she's a good person. You can ask anything from her and she will do her best to help you, just don't expect her to interact with people out of her comfort zone.">
+		</Relationship>
+		<Relationship Type="Love" Name="Best sister" Icon="Heart_Sparkling"
+		Description="">
+		</Relationship>
+		<Relationship Type="Loss" Name="Sis'" Icon="Heart_Shattered"
+		Description="">
+		</Relationship>
   </CharacterData>
   <CharacterData ID="Player" DisplayName="_FirstName">
     <Images>
-      <Image ID="" ImageID="Silhouette"/>
+      <Image ID="" ImageID="Player"/>
+      <Image ID="Naked" ImageID="Player_N"/>
     </Images>
   </CharacterData>
   <CharacterData ID="Margaret" DisplayName="Margaret">
     <Images>
       <Image ID="" ImageID="Margaret_H"/>
       <Image ID="Demon" ImageID="Margaret_S"/>
+      <Image ID="Naked" ImageID="Margaret_HN"/>
+      <Image ID="Demon Naked" ImageID="Margaret_SN"/>
     </Images>
   </CharacterData>
 </ArrayOfCharacterData>
