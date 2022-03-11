@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCharacterData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<CharacterData ID="ChildhoodFriend" DisplayName="Melody" Icon="ChildhoodFriend_T" Succubus="Holy">
+	<CharacterData ID="ChildhoodFriend" DisplayName="Melody" Icon="Melody_T" Succubus="Holy">
 		<Images>
 			  <Image ID="" ImageID="Melody"/>
 			  <Image ID="Naked" ImageID="Melody_N"/>
